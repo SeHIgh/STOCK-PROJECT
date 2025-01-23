@@ -37,3 +37,14 @@ API](https://apiportal.koreainvestment.com/apiservice/oauth2#L_5c87ba63-740a-416
 |Web FE|Web BE|Web BE|
 |-|-|-|
 |[장세현](https://github.com/SeHIgh)|[장세현](https://github.com/SeHIgh)|[강주호](https://github.com/juhoimda)|
+
+
+## Git Flow
+
+```
+main   # 배포용 브랜치. 최종 안정화된 코드만 포함.
+└── develop     # 개발용 브랜치. 모든 작업 브랜치가 이곳으로 통합됨.
+    ├── FE/#기능/이름     # 프론트 개발 개별 작업 브랜치 (예: FE/#Login/sehyeon, FE/#Auth/sehyeon)
+    │
+    └── BE/#기능/이름     # 백엔드 개발 개별 작업 브랜치 (예: BE/#Login/juho)
+```
