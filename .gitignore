@@ -1,0 +1,12 @@
+# .dist 폴더 제외
+.dist/
+
+# .idea 폴더 제외 (JetBrains IDE 관련 설정)
+.idea/
+
+# 일반적으로 무시해야 하는 것들
+*.log
+.DS_Store
+
+# 사용자 개인 설정
+.gitmessage.txt
