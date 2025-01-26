@@ -2,7 +2,7 @@ package com.example.stockproject.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.example.stockproject.dto.ResponseOutputDTO;
+import com.example.stockproject.dto.VolumeResponseOutput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class KisService {
+public class ApiVolumeService {
     @Value("${appkey}")
     private String appkey;
 
@@ -29,10 +29,11 @@ public class KisService {
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public KisService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper) {
+    public ApiVolumeService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper) {
         this.webClient = webClientBuilder.baseUrl("https://openapi.koreainvestment.com:9443").build();
         this.objectMapper =objectMapper;
     }
+
     private HttpHeaders createVolumeRankHttpHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -44,15 +45,15 @@ public class KisService {
         return headers;
     }
 
-    private Mono<List<ResponseOutputDTO>> parseFVolumeRank(String response) {
+    private Mono<List<VolumeResponseOutput>> parseFVolumeRank(String response) {
         try {
-            List<ResponseOutputDTO> responseDataList = new ArrayList<>();
+            List<VolumeResponseOutput> responseDataList = new ArrayList<>();
             JsonNode rootNode = objectMapper.readTree(response);
-            JsonNode outputNode = rootNode.get("output");
+            JsonNode outputNode = rootNode.get("output");   //header 중 output내용
             if (outputNode != null) {
                 for (JsonNode node : outputNode) {
-                    ResponseOutputDTO responseData = new ResponseOutputDTO();
-                    responseData.setHtsKorIsnm(node.get("hts_kor_isnm").asText());
+                    VolumeResponseOutput responseData = new VolumeResponseOutput();
+                    responseData.setHtsKorIsnm(node.get("hts_kor_isnm").asText());  //hts_kor_isnm 필드가 없지만 setHtsKorIsnm으로 자동매핑.
                     responseData.setMkscShrnIscd(node.get("mksc_shrn_iscd").asText());
                     responseData.setDataRank(node.get("data_rank").asText());
                     responseData.setStckPrpr(node.get("stck_prpr").asText());
@@ -79,7 +80,7 @@ public class KisService {
             return Mono.error(e);
         }
     }
-    public Mono<List<ResponseOutputDTO>> getVolumeRank() {
+    public Mono<List<VolumeResponseOutput>> getVolumeRank() {
         HttpHeaders headers = createVolumeRankHttpHeaders();
 
         return webClient.get()

@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @ToString
-public class ResponseDTO {
+public class VolumeResponse {
 
     // 성공 실패 여부
     private String rtCd;
@@ -21,5 +21,5 @@ public class ResponseDTO {
     private String msg1;
 
     // 응답상세
-    private List<ResponseOutputDTO> output;
+    private List<VolumeResponseOutput> output;
 }
