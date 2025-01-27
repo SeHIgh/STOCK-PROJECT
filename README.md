@@ -34,6 +34,7 @@ API](https://apiportal.koreainvestment.com/apiservice/oauth2#L_5c87ba63-740a-416
 
 ## 팀원 소개
 
-|Web FE|Web BE|Web BE|
+|FE|BE|BE|
 |-|-|-|
+|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|
 |[장세현](https://github.com/SeHIgh)|[장세현](https://github.com/SeHIgh)|[강주호](https://github.com/juhoimda)|
