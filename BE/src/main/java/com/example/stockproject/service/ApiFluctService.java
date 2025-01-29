@@ -52,6 +52,8 @@ public class ApiFluctService {
             JsonNode outputNode = rootNode.get("output");
             if (outputNode != null) {
                 for (JsonNode node : outputNode) {
+                    //System.out.println("output node: " + node.toPrettyString());
+
                     FluctResponseOutput responseData = new FluctResponseOutput();
 
                     responseData.setStckShrnIscd(node.get("stck_shrn_iscd").asText());

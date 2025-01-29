@@ -52,7 +52,9 @@ public class ApiVolumeService {
             JsonNode outputNode = rootNode.get("output");   //header 중 output내용
             if (outputNode != null) {
                 for (JsonNode node : outputNode) {
+                    //System.out.println("output node: " + node.toPrettyString());
                     VolumeResponseOutput responseData = new VolumeResponseOutput();
+
                     responseData.setHtsKorIsnm(node.get("hts_kor_isnm").asText());  //hts_kor_isnm 필드가 없지만 setHtsKorIsnm으로 자동매핑.
                     responseData.setMkscShrnIscd(node.get("mksc_shrn_iscd").asText());
                     responseData.setDataRank(node.get("data_rank").asText());
