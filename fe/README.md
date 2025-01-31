@@ -48,3 +48,8 @@ export default tseslint.config({
   },
 })
 ```
+### Docker 협업 (팀원 사용 방법)
+```zsh
+docker pull sehigh/fe-frontend:latest
+docker run -d -p 5173:5173 --name fe-container sehigh/fe-frontend
+```
