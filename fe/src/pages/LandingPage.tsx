@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import GradientBackground from "../components/GradientBG";
 
 const navigation = [
-    { name: "국내", href: "/" },
+    { name: "국내", href: "/main" },
     { name: "해외", href: "#" },
 ];
 
-const Home = () => {
+const LandingPage = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
@@ -160,4 +159,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default LandingPage;
