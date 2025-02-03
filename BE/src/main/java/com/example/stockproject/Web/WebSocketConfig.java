@@ -51,7 +51,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Value("${websocket.tr-key}")
     private String trKey;
 
-    //clinet
+    //client
     @Bean
     public WebSocketConnectionManager webSocketConnectionManager() {
         WebSocketClient webSocketClient = new StandardWebSocketClient();
@@ -65,7 +65,6 @@ public class WebSocketConfig implements WebSocketConfigurer {
         connectionManager.setAutoStartup(true); // 애플리케이션 시작 시 자동 연결
         return connectionManager; // Spring이 관리하도록 Bean으로 등록
     }
-
 
     //server
     @Override

@@ -1,6 +1,7 @@
 package com.example.stockproject.Web;
 
 import ch.qos.logback.classic.Logger;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,6 +11,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class PriceStockSocketHandler extends TextWebSocketHandler {
 
@@ -80,70 +82,95 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
         session.sendMessage(new TextMessage(jsonRequest));
     }
 
-    //response값 받아옴.
-    //서버에서 메시지를 수신하면 handleTextMessage() 실행됨.
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
-        //서버로부터 메시지를 받았을 때 실행되는 코드
-//        String stockInfo[] = message.getPayload().split("\\^");
-//        if(stockInfo.length >1) {
-//            System.out.println("현재 주식 현재 가격 : "+ stockInfo[1]);
-//        }
-
-        // 메시지 수신 로그
-        logger.info("📩 메시지 수신: {}", message.getPayload());  // 메시지가 들어오는지 로그로 확인
         String payload = message.getPayload();
+        logger.info("📩 메시지 수신: {}", payload); // 원본 메시지 확인
 
         try {
-            // JSON 파싱
-            Map<String, Object> responseMap = objectMapper.readValue(payload, Map.class);
-
-            // "header"와 "body" 부분을 가져오기
-            Map<String, Object> header = (Map<String, Object>) responseMap.get("header");
-            Map<String, Object> body = (Map<String, Object>) responseMap.get("body");
-
-            // body가 null이거나 비어있는 경우 예외 처리
-            if (body == null || body.isEmpty()) {
-                logger.warn("⚠️ body가 존재하지 않거나 비어 있습니다. 메시지를 확인하세요: {}", payload);
-                return;
+            if (payload.startsWith("{")) { // 1️⃣ JSON 형식 메시지 (연결 확인 등)
+                handleJsonMessage(payload);
+            } else { // 2️⃣ '|'와 '^'로 구분된 실시간 데이터
+                handleLiveData(payload);
             }
-
-
-            // "SUBSCRIBE SUCCESS" 확인 후 추가 요청 처리
-            String msg1 = (String) body.get("msg1");
-
-            // 구독 성공 메시지를 받았을 때만 요청을 보냄
-            if ("SUBSCRIBE SUCCESS".equals(msg1)) {
-                logger.info("✅ 구독 성공! 실시간 데이터를 수신할 준비 완료.");
-                //sendSubscriptionRequest();
-            }
-
-            // 받은 JSON을 파싱하여 원하는 데이터를 추출하려면 ObjectMapper를 사용하면 됨
-            // 예제: 메시지를 HashMap 형태로 변환
-
-            // 필요한 데이터 추출
-            String trId = (String) header.get("tr_id");
-            String trKey = (String) header.get("tr_key");
-            String messageCode = (String) body.get("msg_cd");
-            String messageText = (String) body.get("msg1");
-
-            // output 데이터 (실시간 주식 데이터)
-            Map<String, Object> output = (Map<String, Object>) body.get("output");
-
-            logger.info("📌 응답 데이터 - TR ID: {}, TR Key: {}, Message: {}, output: {}", trId, trKey, messageText, output);
-            String iv = output != null ? (String) output.get("iv") : "N/A";
-            String key = output != null ? (String) output.get("key") : "N/A";
-
-            // 추출된 데이터 출력
-            System.out.println("TR ID: " + trId);
-            System.out.println("TR Key: " + trKey);
-            System.out.println("Message Code: " + messageCode);
-            System.out.println("Message Text: " + messageText);
-            System.out.println("IV: " + iv);
-            System.out.println("Key: " + key);
         } catch (Exception e) {
             logger.error("❌ 메시지 처리 중 오류 발생: {}", e.getMessage(), e);
+        }
+    }
+
+    private void handleJsonMessage(String payload) {
+        try {
+
+              // JSON 파싱
+//            Map<String, Object> responseMap = objectMapper.readValue(payload, Map.class);
+//
+//            // "header"와 "body" 부분을 가져오기
+//            Map<String, Object> header = (Map<String, Object>) responseMap.get("header");
+//            Map<String, Object> body = (Map<String, Object>) responseMap.get("body");
+//
+//            // body가 null이거나 비어있는 경우 예외 처리
+//            if (body == null || body.isEmpty()) {
+//                logger.warn("⚠️ body가 존재하지 않거나 비어 있습니다. 메시지를 확인하세요: {}", payload);
+//                return;
+//            }
+//
+//
+//            // "SUBSCRIBE SUCCESS" 확인 후 추가 요청 처리
+//            String msg1 = (String) body.get("msg1");
+//
+//            // 구독 성공 메시지를 받았을 때만 요청을 보냄
+//            if ("SUBSCRIBE SUCCESS".equals(msg1)) {
+//                logger.info("✅ 구독 성공! 실시간 데이터를 수신할 준비 완료.");
+//                //sendSubscriptionRequest();
+//            }
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(payload); //json문자열을 json트리구조로 변경
+
+            String trId = jsonNode.path("header").path("tr_id").asText();   //트리구조의 key값 이용
+            String trKey = jsonNode.path("header").path("tr_key").asText();
+            String msgCode = jsonNode.path("body").path("msg_cd").asText();
+            String msgText = jsonNode.path("body").path("msg1").asText();
+
+            // "SUBSCRIBE SUCCESS" 확인 후 추가 요청 처리
+            // 구독 성공 메시지를 받았을 때만 요청을 보냄
+            if ("SUBSCRIBE SUCCESS".equals(msgText)) {
+                logger.info("✅ 구독 성공! 실시간 데이터를 수신할 준비 완료.");
+            }
+
+            logger.info("📌 응답 데이터: tr_id={}, tr_key={}, msg_cd={}, msg={}", trId, trKey, msgCode, msgText);
+
+            // 필요하면 보안 키(iv, key)도 저장
+            if (jsonNode.path("body").has("output")) {
+                String iv = jsonNode.path("body").path("output").path("iv").asText();
+                String key = jsonNode.path("body").path("output").path("key").asText();
+                logger.info("🔑 보안키 수신: iv={}, key={}", iv, key);
+            }
+        } catch (Exception e) {
+            logger.error("❌ JSON 메시지 처리 실패: {}", e.getMessage(), e);
+        }
+    }
+
+    private void handleLiveData(String payload) {
+        try {
+            // 여러 개의 메시지가 연속해서 오는 경우가 있음 -> `|`로 먼저 분리
+            String[] messages = payload.split("\\|");
+
+                String trNum = messages[0];
+                String trId = messages[1]; // TR ID (예: H0STASP0)
+                String msgCode = messages[2]; // 메시지 코드 (예: 001)
+                String trKey = messages[3]; // 종목 코드 포함 데이터
+
+                // '^'로 세부 데이터 분리
+                String[] stockData = messages[3].split("\\^");
+
+                String stockCode = stockData[0]; // 종목 코드 (005930)
+                String timestamp = stockData[1]; // 시간 (094719)
+                String price = stockData[3]; // 현재가 (51000)
+
+                // 로그 출력
+                logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 호가={}", trId, stockCode, timestamp, price);
+        } catch (Exception e) {
+            logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
         }
     }
 
@@ -168,7 +195,4 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
             logger.error("❌ PING 메시지 전송 실패", e);
         }
     }
-
-
-
 }
