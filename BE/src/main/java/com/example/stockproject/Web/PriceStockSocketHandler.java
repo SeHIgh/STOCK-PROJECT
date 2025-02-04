@@ -3,8 +3,11 @@ package com.example.stockproject.Web;
 import ch.qos.logback.classic.Logger;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.annotations.Comment;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
@@ -12,21 +15,28 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
+//@Scheduled 어노테이션을 사용하려면 해당 클래스가 Spring이 관리하는 빈(Bean)이어야 함.
 
 public class PriceStockSocketHandler extends TextWebSocketHandler {
 
     private WebSocketSession session;
-    private final String approvalKey;
-    private final String trKey;
+
+    @Value("${websocket.approval-key}")
+    private String approvalKey;
+
+    @Value("${websocket.tr-key}")
+    private String trKey;
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PriceStockSocketHandler.class);
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    public PriceStockSocketHandler(String approvalKey, String trKey) {
-        this.approvalKey = approvalKey;
-        this.trKey = trKey;
-    }
+    //Component로 빈으로 등록했기 때문에 생성자 필요없어짐.
+//    public PriceStockSocketHandler(String approvalKey, String trKey) {
+//        this.approvalKey = approvalKey;
+//        this.trKey = trKey;
+//    }
 
     //WebSocket 연결이 성공하면 실행되는 메서드
     //연결이 완료되면 afterConnectionEstablished()가 실행됨.
@@ -63,7 +73,7 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
         Map<String, Map<String, String>> body = new HashMap<>();
         Map<String, String> input = new HashMap<>();
-        input.put("tr_id", "H0STASP0");
+        input.put("tr_id", "H0STCNT0");
         input.put("tr_key", trKey);
 
         body.put("input", input);
@@ -165,10 +175,10 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
                 String stockCode = stockData[0]; // 종목 코드 (005930)
                 String timestamp = stockData[1]; // 시간 (094719)
-                String price = stockData[3]; // 현재가 (51000)
+                String price = stockData[2]; // 현재가 (51000)
 
                 // 로그 출력
-                logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 호가={}", trId, stockCode, timestamp, price);
+                logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 현재가={}", trId, stockCode, timestamp, price);
         } catch (Exception e) {
             logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
         }
@@ -181,10 +191,9 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
         try {
             if (session != null) {
                 if (session.isOpen()) {
-                    logger.info("📤 PING 메시지 전송 시작");
-                    String pingMessage = "{\"header\":{\"tr_id\":\"PINGPONG\"}}";
+                    String pingMessage = "ping";
                     session.sendMessage(new TextMessage(pingMessage));
-                    logger.info("📤 PING 메시지 전송");
+                    logger.info("📍 PING 메시지 전송");
                 } else {
                     logger.warn("⚠️ WebSocket 세션이 열려 있지 않음");
                 }
