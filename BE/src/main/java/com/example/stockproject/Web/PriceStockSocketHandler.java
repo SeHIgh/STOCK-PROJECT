@@ -61,6 +61,7 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
         }
     }
 
+    //필요 정보에 따라 구독 요청을 하면 됨.
     //sendSubscriptionRequest()에서 서버에 구독 요청 JSON 메시지를 전송.
     private void sendSubscriptionRequest() throws Exception {
 
@@ -73,7 +74,7 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
         Map<String, Map<String, String>> body = new HashMap<>();
         Map<String, String> input = new HashMap<>();
-        input.put("tr_id", "H0STCNT0");
+        input.put("tr_id", "H0STCNT0"); //실시간 체결가
         input.put("tr_key", trKey);
 
         body.put("input", input);

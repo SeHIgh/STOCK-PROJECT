@@ -16,13 +16,13 @@ import java.util.List;
 
 @Service
 public class ApiVolumeService {
-    @Value("${appkey}")
+    @Value("${appkey1}")
     private String appkey;
 
-    @Value("${appsecret}")
+    @Value("${appsecret1}")
     private String appSecret;
 
-    @Value("${access_token}")
+    @Value("${access_token1}")
     private String accessToken;
 
     private final WebClient webClient;
