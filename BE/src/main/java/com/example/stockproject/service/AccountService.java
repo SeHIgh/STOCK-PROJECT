@@ -1,7 +1,7 @@
 package com.example.stockproject.service;
 
-import com.example.stockproject.dto.AccountResponseOutput;
-import com.example.stockproject.dto.VolumeResponseOutput;
+import com.example.stockproject.dto.account.AccountBalanceResponseOutput;
+import com.example.stockproject.dto.account.AccountStockResponseOutput;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,48 +46,49 @@ public class AccountService {
         return headers;
     }
 
-    private Mono<List<AccountResponseOutput>> parseAccount(String response) {
+    private Mono<List<Object>> parseAccount(String response) {
         try {
-            List<AccountResponseOutput> responseDataList = new ArrayList<>();
+            List<Object> result = new ArrayList<>();
+            List<AccountStockResponseOutput> stockList = new ArrayList<>();
+            AccountBalanceResponseOutput balanceData = new AccountBalanceResponseOutput();
+
             JsonNode rootNode = objectMapper.readTree(response);
-            JsonNode outputNode1 = rootNode.get("output1");   //header 중 output1내용
-            JsonNode outputNode2 = rootNode.get("output2");   //header 중 output2내용
+            JsonNode outputNode1 = rootNode.get("output1");   // 보유 주식 정보
+            JsonNode outputNode2 = rootNode.get("output2");   // 잔고 정보
 
             if (outputNode1 != null) {
                 for (JsonNode node : outputNode1) {
-                    //System.out.println("output node: " + node.toPrettyString());
-                    AccountResponseOutput responseData = new AccountResponseOutput();
-
-                    responseData.setPdno(node.get("pdno").asText());
-                    responseData.setPrdtName(node.get("prdt_name").asText());
-                    responseData.setTradDvsnName(node.get("trad_dvsn_name").asText());
-                    responseData.setThdtBuyqty(node.get("thdt_buyqty").asText());
-                    responseData.setThdtSllqty(node.get("thdt_sll_qty").asText());
-
-                    responseDataList.add(responseData);
+                    AccountStockResponseOutput stockData = new AccountStockResponseOutput();
+                    stockData.setPdno(node.get("pdno").asText());
+                    stockData.setPrdtName(node.get("prdt_name").asText());
+                    stockData.setTradDvsnName(node.get("trad_dvsn_name").asText());
+                    stockData.setThdtBuyqty(node.get("thdt_buyqty").asText());
+                    stockData.setThdtSllqty(node.get("thdt_sll_qty").asText());
+                    stockList.add(stockData);
                 }
             }
-            if (outputNode2 != null) {
-                for (JsonNode node : outputNode2) {
-                    //System.out.println("output node: " + node.toPrettyString());
-                    AccountResponseOutput responseData2 = new AccountResponseOutput();
 
-                    responseData2.setDncaTotAmt(node.get("dnca_tot_amt").asText());
-                    responseData2.setThdtBuyAmt(node.get("thdt_buy_amt").asText());
-                    responseData2.setThdtSllAmt(node.get("thdt_sll_amt").asText());
-                    responseData2.setNassAmt(node.get("nass_amt").asText());
-
-                    responseDataList.add(responseData2);
-                }
+            if (outputNode2 != null && outputNode2.size() > 0) {
+                JsonNode node = outputNode2.get(0);
+                balanceData.setDncaTotAmt(node.get("dnca_tot_amt").asText());
+                balanceData.setThdtBuyAmt(node.get("thdt_buy_amt").asText());
+                balanceData.setThdtSllAmt(node.get("thdt_sll_amt").asText());
+                balanceData.setNassAmt(node.get("nass_amt").asText());
             }
-            return Mono.just(responseDataList);
+
+            // 두 개의 리스트를 하나의 List<Object>로 반환
+            result.addAll(stockList);
+            result.add(balanceData);
+
+            return Mono.just(result);
         } catch (Exception e) {
             return Mono.error(e);
         }
     }
 
+
     //계좌잔고 조회를 위한 query parameter
-    public Mono<List<AccountResponseOutput>> getAccountInformation() {
+    public Mono<List<Object>> getAccountInformation() {
         HttpHeaders headers = createAccountHttpHeaders();
 
         return webClient.get()
@@ -107,6 +108,7 @@ public class AccountService {
                 .headers(httpHeaders -> httpHeaders.addAll(headers))
                 .retrieve()
                 .bodyToMono(String.class)
-                .flatMap(response -> parseAccount(response));
+                .flatMap(response -> parseAccount(response));  // parseAccount() 반환 타입 변경됨
     }
+
 }
