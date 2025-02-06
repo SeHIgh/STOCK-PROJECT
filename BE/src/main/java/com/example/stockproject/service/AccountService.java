@@ -64,6 +64,12 @@ public class AccountService {
                     stockData.setTradDvsnName(node.get("trad_dvsn_name").asText());
                     stockData.setThdtBuyqty(node.get("thdt_buyqty").asText());
                     stockData.setThdtSllqty(node.get("thdt_sll_qty").asText());
+                    stockData.setHldg_qty(node.get("hldg_qty").asText());
+                    stockData.setPchs_avg_pric(node.get("pchs_avg_pric").asText());
+                    stockData.setPrpr(node.get("prpr").asText());
+                    stockData.setEvlu_amt(node.get("evlu_amt").asText());
+                    stockData.setEvlu_pfls_amt(node.get("evlu_pfls_amt").asText());
+                    stockData.setEvlu_pfls_rt(node.get("evlu_pfls_rt").asText());
                     stockList.add(stockData);
                 }
             }
@@ -73,7 +79,10 @@ public class AccountService {
                 balanceData.setDncaTotAmt(node.get("dnca_tot_amt").asText());
                 balanceData.setThdtBuyAmt(node.get("thdt_buy_amt").asText());
                 balanceData.setThdtSllAmt(node.get("thdt_sll_amt").asText());
+                balanceData.setTotEvluAmt(node.get("tot_evlu_amt").asText());
                 balanceData.setNassAmt(node.get("nass_amt").asText());
+                balanceData.setEvluPflsSmtlAmt(node.get("evlu_pfls_smtl_amt").asText());
+                balanceData.setAsstIcdcAmt(node.get("asst_icdc_amt").asText());
             }
 
             // 두 개의 리스트를 하나의 List<Object>로 반환
