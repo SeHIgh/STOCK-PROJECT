@@ -53,7 +53,7 @@ const Header = () => {
               });
 
     return (
-        <header className="absolute inset-x-0 top-0 z-50 backdrop-blur-2xl">
+        <header className="h-21 inset-x-0 top-0 z-50 backdrop-blur-2xl">
             <nav
                 aria-label="Global"
                 className="flex items-center justify-between p-6 lg:px-8"

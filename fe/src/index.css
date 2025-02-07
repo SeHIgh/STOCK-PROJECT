@@ -15,6 +15,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 작업 환경 (모니터 개수) 에 따라 스크롤바가 보이는 경우 or 보이지 않는 경우가 생겨 스크롤바 없앰  */
+::-webkit-scrollbar{
+  display: none;
+}
+
 :focus {
   outline: none;
 }
@@ -90,4 +95,24 @@ button:focus-visible {
 
 input{
   background-color: rgba(256, 256, 256, 0.4);
+}
+
+.block-main{
+  @apply rounded-xl p-3 flex flex-col justify-between;
+}
+
+.card-main{
+  @apply rounded-xl p-0 flex drop-shadow-md;
+}
+
+.gray-hover{
+  @apply transition duration-400 ease-in-out hover:bg-white/50;
+}
+
+.section-title-main{
+  @apply text-2xl text-gray-700 font-bold ml-3;
+}
+
+tr:nth-child(even){
+  @apply bg-gray-400/10;
 }

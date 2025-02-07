@@ -12,7 +12,7 @@ const links = [
 
 const Footer = () => {
     return (
-        <footer className="flex flex-col justify-between items-center py-2.5 px-5 gap-4">
+        <footer className="flex flex-col justify-between items-center h-26 py-2.5 px-5 gap-4">
             <hr className="w-full" />
             <div className="flex flex-row justify-center gap-4">
                 {links.map((link) => {

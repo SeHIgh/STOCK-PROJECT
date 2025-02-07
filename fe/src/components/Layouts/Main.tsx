@@ -6,7 +6,7 @@ interface GradientBackgroundProps {
 
 const Main: React.FC<GradientBackgroundProps> = ({ children }) => {
     return (
-        <main className="flex flex-col items-center justify-center mx-auto max-w-2xl min-h-dvh py-32 sm:py-48 lg:py-56">
+        <main className="flex-1 flex flex-col items-center justify-center mx-auto max-w-dvw w-dvw">
             {children}
         </main>
     );

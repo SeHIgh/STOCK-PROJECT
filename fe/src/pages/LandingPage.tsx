@@ -6,7 +6,7 @@ const LandingPage = () => {
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                     저희 플랫폼에 대해서 더 알고 싶다면?{" "}
-                    <a href="#" className="font-semibold text-indigo-600">
+                    <a href="/docs" className="font-semibold text-indigo-600">
                         <span aria-hidden="true" className="absolute inset-0" />
                         더 알아보기
                         <span aria-hidden="true">&rarr;</span>
@@ -23,7 +23,7 @@ const LandingPage = () => {
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a
-                        href="/sign-up"
+                        href="/main"
                         className="rounded-md bg-indigo-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                     >
                         시작하기
