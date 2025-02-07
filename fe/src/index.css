@@ -23,10 +23,12 @@ a {
   font-weight: 500;
   /* color: #213547; */
   text-decoration: inherit;
+  @apply transition duration-200 ease-in-out;
 }
 
 a:hover {
   /* color: #283643; */
+  /* @apply scale-110 opacity-70; */
 }
 
 body {
@@ -35,7 +37,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #root{
@@ -45,7 +47,7 @@ body {
 button {
   /* border-radius: 8px; */
   /* border: 1px solid transparent; */
-  padding: 0.6em 1.2em;
+  /* padding: 0.6em 1.2em; */
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

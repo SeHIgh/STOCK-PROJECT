@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface GradientBackgroundProps {
     children: React.ReactNode;
@@ -8,8 +8,8 @@ const GradientBackground: React.FC<GradientBackgroundProps> = ({
     children,
 }) => {
     return (
-        <div className="bg-white">
-            <div className="relative isolate w-dvw">
+        <div className="bg-slate-200">
+            <div className="relative isolate w-dvw min-h-dvh overflow-hidden">
                 <div
                     aria-hidden="true"
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

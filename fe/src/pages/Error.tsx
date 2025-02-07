@@ -1,15 +1,9 @@
+import GradientBackground from "../components/GradientBG";
+
 const ErrorPage = () => {
     return (
-        <>
-            {/*             
-                    This example requires updating your template:
-            
-                    ```
-                    <html class="h-full">
-                    <body class="h-full">
-                    ```
-            */}
-            <main className="flex flex-col w-dvw h-dvh grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <GradientBackground>
+            <main className="flex flex-col w-dvw h-dvh grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
                 <div className="text-center">
                     <p className="text-xl font-semibold text-indigo-400">
                         404
@@ -40,7 +34,7 @@ const ErrorPage = () => {
                     </div>
                 </div>
             </main>
-        </>
+        </GradientBackground>
     );
 }
 
