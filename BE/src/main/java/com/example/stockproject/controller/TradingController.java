@@ -23,10 +23,16 @@ public class TradingController {
     }
 
     //주식 매수 주문
-    @PostMapping("/order")
-    public Mono<List<OrderResponseOutput>> orderStock(@RequestBody OrderRequest orderRequest){
+    @PostMapping("/trading/buy")
+    public Mono<List<OrderResponseOutput>> buyStock(@RequestBody OrderRequest orderRequest){
         logger.debug("🔴Order Request: {}", orderRequest);
-        return stockOrderService.orderStock(orderRequest);
+        return stockOrderService.buyStock(orderRequest);
+    }
+
+    @PostMapping("/trading/sell")
+    public Mono<List<OrderResponseOutput>> sellStock(@RequestBody OrderRequest orderRequest){
+        logger.debug("🔵Order Request: {}", orderRequest);
+        return stockOrderService.sellStock(orderRequest);
     }
 }
 

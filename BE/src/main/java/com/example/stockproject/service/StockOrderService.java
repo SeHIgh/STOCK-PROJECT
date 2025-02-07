@@ -38,13 +38,24 @@ public class StockOrderService {
     }
 
     //주식 매수를 위한 Header request
-    private HttpHeaders createOrderHttpHeaders() {
+    private HttpHeaders createBuyStockHttpHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(accessToken);
         headers.set("appkey", appkey);
         headers.set("appSecret", appSecret);
         headers.set("tr_id", "VTTC0802U");  //주식 현금 매수 주문
+        return headers;
+    }
+
+    //주식 매도를 위한 Header request
+    private HttpHeaders createSellStockHttpHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(accessToken);
+        headers.set("appkey", appkey);
+        headers.set("appSecret", appSecret);
+        headers.set("tr_id", "VTTC0801U");  //주식 현금 매도 주문
         return headers;
     }
 
@@ -78,8 +89,9 @@ public class StockOrderService {
 
 
     //post 요청을 위한 body 데이터
-    public Mono<List<OrderResponseOutput>> orderStock(OrderRequest orderRequest) {
-        HttpHeaders headers = createOrderHttpHeaders();
+    //주식 매수
+    public Mono<List<OrderResponseOutput>> buyStock(OrderRequest orderRequest) {
+        HttpHeaders headers = createBuyStockHttpHeaders();
 //
 //        OrderRequest orderRequest = new OrderRequest();
 //        orderRequest.setCano("50124326");
@@ -88,6 +100,32 @@ public class StockOrderService {
 //        orderRequest.setOrdDvsn("00");
 //        orderRequest.setOrdQty("5");
 //        orderRequest.setOrdUnpr("53700");
+
+        // 요청 바디 데이터
+        Map<String, String> requestBody = new HashMap<>();
+
+        requestBody.put("CANO", orderRequest.getCano());
+        requestBody.put("ACNT_PRDT_CD", orderRequest.getAcntPrdtCd());
+        requestBody.put("PDNO", orderRequest.getPdno());
+        requestBody.put("ORD_DVSN", orderRequest.getOrdDvsn());     //ord_dvsn이 00이면 지정가주문, 01이면 시장가주문 => 시장가 주문일때는 ORD_UNPR(주문단가)을 0으로 지정.
+        requestBody.put("ORD_QTY", orderRequest.getOrdQty());
+        requestBody.put("ORD_UNPR", orderRequest.getOrdUnpr());
+
+
+        return webClient.post()
+                .uri("/uapi/domestic-stock/v1/trading/order-cash")
+                .headers(httpHeaders -> httpHeaders.addAll(headers))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(requestBody)
+                .retrieve()
+                .bodyToMono(String.class)
+                .flatMap(this::parseOrderStock);
+    }
+
+    //post 요청을 위한 body 데이터
+    //주식 매도
+    public Mono<List<OrderResponseOutput>> sellStock(OrderRequest orderRequest) {
+        HttpHeaders headers = createSellStockHttpHeaders();
 
         // 요청 바디 데이터
         Map<String, String> requestBody = new HashMap<>();
