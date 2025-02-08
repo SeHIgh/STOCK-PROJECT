@@ -173,7 +173,7 @@ function classNames(...classes) {
 
 const LiveCharts = () => {
     return (
-        <div className="w-full px-2 py-16 sm:px-0 mx-auto">
+        <div className="w-full px-2 sm:px-0 mx-auto">
             <h1 className="section-title-main">실시간 차트</h1>
             <TabGroup>
                 <TabList className="flex space-x-1 p-1">
@@ -182,10 +182,10 @@ const LiveCharts = () => {
                             key={category}
                             className={({ selected }) =>
                                 classNames(
-                                    "w-full py-2.5 text-sm font-medium leading-5 border-b-2 border-gray-300",
+                                    "w-full py-2.5 text-sm font-medium leading-5 border-b-2 border-gray-300 text-gray-500",
                                     selected
-                                        ? "border-b-2 border-indigo-400 text-indigo-400"
-                                        : "hover:text-indigo-300 hover:border-indigo-300"
+                                        ? "border-b-2 border-gray-500 text-gray-500"
+                                        : "hover:text-gray-300 hover:border-gray-300"
                                 )
                             }
                         >
@@ -209,8 +209,8 @@ const LiveCharts = () => {
 const StockTable = ({ stocks }) => {
     return (
         <div className="overflow-hidden rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200 table-fixed w-full">
-                <thead className="bg-gray-500/20">
+            <table className="min-w-full divide-y divide-transparent table-fixed w-full">
+                <thead>
                     <tr>
                         <th className="w-4 pl-6 pr-3 py-3 text-center text-base font-medium text-gray-500 uppercase tracking-wider"></th>
                         <th className="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
@@ -230,20 +230,20 @@ const StockTable = ({ stocks }) => {
                         </th>
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-transparent">
                     {stocks.map((stock) => (
                         <tr key={stock.id}>
-                            <td className="pl-6 pr-3 py-4 whitespace-nowrap text-base font-medium text-gray-900 text-center">
+                            <td className="whitespace-nowrap text-base font-medium text-gray-900 text-center rounded-l-lg">
                                 {stock.id}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-900">
                                 {stock.symbol}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-500 text-right">
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right">
                                 {stock.current_price}
                             </td>
                             <td
-                                className={`px-6 py-4 whitespace-nowrap text-base text-gray-500 text-right ${
+                                className={`px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right ${
                                     stock.change_rate.startsWith("+")
                                         ? "text-red-400"
                                         : "text-blue-400"
@@ -251,10 +251,10 @@ const StockTable = ({ stocks }) => {
                             >
                                 {stock.change_rate}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-500 text-right">
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right">
                                 {stock.daily_trading_value}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-500 text-right">
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right rounded-r-lg">
                                 {stock.daily_trading_volume}
                             </td>
                         </tr>

@@ -25,8 +25,9 @@ const ExchangeRate = () => {
     return (
         <>
             <h1 className="section-title-main">
-                실시간 환율
+                실시간 환율 
             </h1>
+            {/* <ArrowsRightLeftIcon className="w-6 h-auto rotate-90 drop-shadow-xl fill-gray-500" /> */}
             <ul className="relative w-full flex flex-col justify-between gap-2 overflow-x-scroll pb-2 px-1">
                 {exchangeRates.country.map((exchRate) => (
                     <li className="flex-1 card-main bg-white/30 gray-hover flex flex-row gap-1">
@@ -39,7 +40,7 @@ const ExchangeRate = () => {
                                 className="flex-1 flex flex-row justify-start gap-1"
                             >
                                 <div className="flex flex-col justify-between">
-                                    <h3 className="text-xl font-semibold">
+                                    <h3 className="text-lg font-semibold">
                                         {exchRate.currencyUnit === "달러"
                                             ? "미국"
                                             : exchRate.currencyUnit === "원"
@@ -54,7 +55,7 @@ const ExchangeRate = () => {
                                             : ""}
                                     </h3>
                                 </div>
-                                <span className="text-xl">
+                                <span className="text-lg">
                                     {exchRate.currencyUnit === "달러"
                                         ? "🇺🇸"
                                         : exchRate.currencyUnit === "원"
@@ -66,7 +67,7 @@ const ExchangeRate = () => {
                                 id="exchangerate_input"
                                 className="flex-1 flex flex-col justify-between"
                             >
-                                <h4 className="text-2xl font-bold">
+                                <h4 className="text-xl font-bold">
                                     {exchRate.value}
                                 </h4>
                                 <h4 className="text-sm font-semibold text-gray-500">
@@ -76,7 +77,6 @@ const ExchangeRate = () => {
                         </div>
                     </li>
                 ))}
-                <ArrowsRightLeftIcon className="absolute top-1/2 right-1/4 -translate-y-1/2 -translate-x-1/2 w-6 h-auto rotate-90 drop-shadow-xl fill-gray-500" />
             </ul>
         </>
     );
