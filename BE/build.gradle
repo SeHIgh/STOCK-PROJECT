@@ -37,6 +37,10 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+	implementation 'com.opencsv:opencsv:5.5.2'
+
+	runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.104.Final:osx-aarch_64'
 }
 
 tasks.named('test') {
