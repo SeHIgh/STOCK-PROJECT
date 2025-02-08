@@ -52,10 +52,10 @@ const StockIndex = () => {
                                     id="stockindex_label"
                                     className="flex-1 flex flex-row justify-start gap-1"
                                 >
-                                    <h3 className="text-xl font-semibold">
+                                    <h3 className="text-lg font-semibold">
                                         {index.label}
                                     </h3>
-                                    <span className="text-xl">
+                                    <span className="text-lg">
                                         {index.country === "USA"
                                             ? "🇺🇸"
                                             : index.country === "South Korea"
@@ -63,12 +63,12 @@ const StockIndex = () => {
                                             : "🏳️"}
                                     </span>
                                 </div>
-                                <h4 className="text-2xl font-bold">
+                                <h4 className="text-xl font-bold">
                                     {index.curPrice}
                                 </h4>
                                 {/* 등락률에 따른 색상변화 */}
                                 <h4
-                                    className={`text-lg font-semibold ${
+                                    className={`text-base font-semibold ${
                                         index.changeRate >= 0
                                             ? "text-red-400"
                                             : "text-blue-400"
@@ -91,8 +91,8 @@ const StockIndex = () => {
                                 id="graph_index"
                                 className={`min-w-24 rounded-lg ${
                                     index.changeRate >= 0
-                                        ? "bg-red-400"
-                                        : "bg-blue-400"
+                                        ? "bg-red-400/50"
+                                        : "bg-blue-400/50"
                                 }`}
                             ></div>
                         </a>
