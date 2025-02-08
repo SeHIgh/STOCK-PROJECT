@@ -9,7 +9,7 @@ const GradientBackground: React.FC<GradientBackgroundProps> = ({
 }) => {
     return (
         <div className="bg-slate-200">
-            <div className="relative isolate w-dvw min-h-dvh overflow-hidden">
+            <div className="relative isolate w-dvw min-h-dvh">
                 <div
                     aria-hidden="true"
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -25,7 +25,7 @@ const GradientBackground: React.FC<GradientBackgroundProps> = ({
                 {children}
                 <div
                     aria-hidden="true"
-                    className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                    className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-45rem)]"
                 >
                     <div
                         style={{
