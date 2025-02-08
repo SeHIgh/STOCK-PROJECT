@@ -10,7 +10,7 @@ interface GradientBackgroundProps {
 const MainLayout: React.FC<GradientBackgroundProps> = ({ children }) => {
     return (
         <>
-            <div className="w-dvw min-h-[calc(100dvh+108px)] flex flex-col justify-start">
+            <div className="w-dvw min-h-[calc(100dvh+108px)] h-100vh flex flex-col justify-start">
                 <Header />
                 <Main>{children}</Main>
                 <Footer />
