@@ -13,26 +13,14 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @Configuration
 @EnableWebSocket
 @EnableScheduling
-public class WebSocketConfig implements WebSocketConfigurer {
+public class WebSocketConfig1 implements WebSocketConfigurer {
 
     private final PriceStockSocketHandler priceStockSocketHandler;
+    private WebSocketConnectionManager connectionManager;
 
     @Autowired
-    public WebSocketConfig(PriceStockSocketHandler priceStockSocketHandler) {
+    public WebSocketConfig1(PriceStockSocketHandler priceStockSocketHandler) {
         this.priceStockSocketHandler = priceStockSocketHandler;
-    }
-
-    // 클라이언트 WebSocket 연결 설정
-    @Bean
-    public WebSocketConnectionManager webSocketConnectionManager() {
-        WebSocketConnectionManager connectionManager = new WebSocketConnectionManager(
-                new StandardWebSocketClient(),
-                priceStockSocketHandler,  // ✅ Spring이 관리하는 Bean 사용
-                "ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0"
-        );
-
-        connectionManager.setAutoStartup(true);
-        return connectionManager;
     }
 
     // 서버 WebSocket 핸들러 등록
@@ -40,5 +28,24 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(priceStockSocketHandler, "/live")
                 .setAllowedOrigins("*");
+    }
+
+    // 클라이언트 WebSocket 연결 [수동] 설정
+    public WebSocketConnectionManager webSocketConnectionManager() {
+        connectionManager = new WebSocketConnectionManager(
+                new StandardWebSocketClient(),
+                priceStockSocketHandler,  // ✅ Spring이 관리하는 Bean 사용
+                "ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0"
+        );
+
+        connectionManager.setAutoStartup(false);    //자동 연결을 막음.
+        return connectionManager;
+    }
+
+    //연결 종료 메서드 추가
+    public void stopWebSocketConnection(){
+        if(connectionManager != null){
+            connectionManager.stop();
+        }
     }
 }
