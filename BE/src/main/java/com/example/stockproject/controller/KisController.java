@@ -36,9 +36,14 @@ public class KisController {
     }
 
     //등락률 순위
-    @GetMapping("/fluctuation")
-    public Mono<List<FluctResponseOutput>> getFluctuation(){
-        return apiFluctService.getFluctuation();
+    @GetMapping("/top10-fluctuation")
+    public Mono<List<FluctResponseOutput>> getTop10Fluctuation(){
+        return apiFluctService.getTop10Fluctuation();
+    }
+
+    @GetMapping("/bottom10-fluctuation")
+    public Mono<List<FluctResponseOutput>> getBottom10Fluctuation(){
+        return apiFluctService.getBottom10Fluctuation();
     }
 
     //주식 현재가 조회

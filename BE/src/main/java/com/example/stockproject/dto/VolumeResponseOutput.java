@@ -14,7 +14,7 @@ public class VolumeResponseOutput {
     private String htsKorIsnm;
 
     // 유가증권 단축 종목코드
-    private String mkscShrnIscd;
+    //private String mkscShrnIscd;
 
     // 데이터 순위
     private String dataRank;
@@ -23,10 +23,10 @@ public class VolumeResponseOutput {
     private String stckPrpr;
 
     // 전일 대비 부호
-    private String prdyVrssSign;
+    //private String prdyVrssSign;
 
     // 전일 대비
-    private String prdyVrss;
+    //private String prdyVrss;
 
     // 전일 대비율
     private String prdyCtrt;
@@ -44,7 +44,7 @@ public class VolumeResponseOutput {
     private String avrgVol;
 
     // N일전종가대비현재가대비율
-    private String nBefrClprVrssPrprRate;
+    //private String nBefrClprVrssPrprRate;
 
     // 거래량 증가율
     private String volInrt;
@@ -53,16 +53,16 @@ public class VolumeResponseOutput {
     private String volTnrt;
 
     // N일 거래량 회전율
-    private String ndayVolTnrt;
+    //private String ndayVolTnrt;
 
     // 평균 거래 대액
     private String avrgTrPbmn;
 
     // 거래대금회전률
-    private String trPbmnTnrt;
+    //private String trPbmnTnrt;
 
     // N일 거래대금 회전율
-    private String ndayTrPbmnTnrt;
+    //private String ndayTrPbmnTnrt;
 
     // 누적 거래 대금
     private String acmlTrPbmn;

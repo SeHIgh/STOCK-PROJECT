@@ -10,30 +10,30 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class FluctResponseOutput {
-    private String stckShrnIscd;  //주식 단축 종목코드
-    private String dataRank;       //데이터 순위
-    private String htsKorIsnm;    //HTS한글 종목명
-    private String stckPrpr;       //주식 현재가
-    private String prdyVrss;       //전일대비
-    private String prdyVrssSign;  //전일대비 부호
-    private String prdyCtrt;       //전일 대비율
-    private String acmlVol;
-    private String stckHgpr;
-    private String hgprHour;
-    private String acmlHgprDate;
-    private String stckLwpr;
-    private String lwprHour;
-    private String acmlLwprDate;
-    private String lwprVrssPrprRate;
-    private String dsgtDateClprVrssPrprRate;
-    private String cnntAscnDynu;
-    private String hgprVrssPrprRate;
-    private String cnntDownDynu;
-    private String oprcVrssPrprSign;
-    private String oprcVrssPrpr;
-    private String oprcVrssPrprRate;
-    private String prdRsfl;
-    private String prdRsflRate;
+    //private String stckShrnIscd;  //주식 단축 종목코드
+    private String dataRank;       //데이터 순위 o
+    private String htsKorIsnm;    //HTS한글 종목명 o
+    private String stckPrpr;       //주식 현재가 o
+    //private String prdyVrss;       //전일대비
+    //private String prdyVrssSign;  //전일대비 부호
+    private String prdyCtrt;       //전일 대비율 o
+    //private String acmlVol;
+    //private String stckHgpr;
+    //private String hgprHour;
+    //private String acmlHgprDate;
+    //private String stckLwpr;
+    //private String lwprHour;
+    //private String acmlLwprDate;
+    //private String lwprVrssPrprRate;
+    //private String dsgtDateClprVrssPrprRate;
+    //private String cnntAscnDynu;
+    //private String hgprVrssPrprRate;
+    //private String cnntDownDynu;
+    //private String oprcVrssPrprSign;
+    //private String oprcVrssPrpr;
+    //private String oprcVrssPrprRate;
+    //private String prdRsfl;
+    //private String prdRsflRate;
 
 }
 
