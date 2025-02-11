@@ -4,10 +4,10 @@ package com.example.stockproject.controller;
 import com.example.stockproject.Web.WebSocketConfig1;
 import com.example.stockproject.Web.WebSocketConfig2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class WebSocketController {
     private final WebSocketConfig1 webSocketConfig1;
     private final WebSocketConfig2 webSocketConfig2;
@@ -27,7 +27,7 @@ public class WebSocketController {
         return "trade";
     }
 
-    @GetMapping("/home")   //한 종목에 들어갔을 떄, 매수 매도를 위한 실시간 체결가 정보 제공
+    @GetMapping("/home")   //메인화면에 필요한 실시간 체결가(KOSPI, KOSDAQ) 정보 제공
     public String home(){
         // /trade에서 연결된 웹소켓 끊기
         webSocketConfig1.stopWebSocketConnection();

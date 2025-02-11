@@ -22,7 +22,6 @@ public class WebSocketConfig2 implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-
     }
 
     // 클라이언트 WebSocket 연결 [수동] 설정
@@ -30,7 +29,7 @@ public class WebSocketConfig2 implements WebSocketConfigurer {
         connectionManager = new WebSocketConnectionManager(
                 new StandardWebSocketClient(),
                 kospiSocketHandler,  // ✅ Spring이 관리하는 Bean 사용
-                "ws://ops.koreainvestment.com:21000//tryitout/H0UPCNT0"
+                "ws://ops.koreainvestment.com:21000/tryitout/H0UPCNT0"
         );
 
         connectionManager.setAutoStartup(false);    //자동 연결을 막음.

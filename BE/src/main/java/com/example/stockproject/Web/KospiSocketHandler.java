@@ -35,7 +35,7 @@ public class KospiSocketHandler extends TextWebSocketHandler {
         this.session = session;
         super.afterConnectionEstablished(session);
 
-        logger.info("✅ 실시간 KOSPI지수를 위한 WebSocket 연결 성공! 세션 ID: {}", session.getId());
+        logger.info("✅ 실시간 KOSPI&KOSDAQ지수를 위한 WebSocket 연결 성공! 세션 ID: {}", session.getId());
 
         //buildRequest()를 호출하여 구독 요청을 보냄.
         buildRequest();
@@ -54,34 +54,37 @@ public class KospiSocketHandler extends TextWebSocketHandler {
     //필요 정보에 따라 구독 요청을 하면 됨.
     //sendSubscriptionRequest()에서 서버에 구독 요청 JSON 메시지를 전송.
     private void sendSubscriptionRequest() throws Exception {
+        //2개의 구독 정보
+        String[] marketKeys = {"0001", "1001"}; // KOSPI: 0001, KOSDAQ: 1001
 
         // 한국투자증권 서버에 JSON으로 request를 만들기 위해
-        Map<String, String> header = new HashMap<>();
-        header.put("approval_key", approvalKey);
-        header.put("tr_type", "1");
-        header.put("custtype", "P");
-        header.put("content-type", "utf-8");
+        for (String marketKey : marketKeys) {
+            Map<String, String> header = new HashMap<>();
+            header.put("approval_key", approvalKey);
+            header.put("tr_type", "1");
+            header.put("custtype", "P");
+            header.put("content-type", "utf-8");
 
-        Map<String, Map<String, String>> body = new HashMap<>();
-        Map<String, String> input = new HashMap<>();
-        input.put("tr_id", "H0UPCNT0"); //국내지수 실시간 체결가
-        input.put("tr_key", "0001");    //KOSPI:0001 KOSDAQ:1001
+            Map<String, Map<String, String>> body = new HashMap<>();
+            Map<String, String> input = new HashMap<>();
+            input.put("tr_id", "H0UPCNT0"); // 실시간 체결가 요청 ID
+            input.put("tr_key", marketKey); // KOSPI:0001, KOSDAQ:1001
 
-        body.put("input", input);
+            body.put("input", input);
 
-        // 최종 요청 데이터
-        // header와 body를 합쳐 request 생성
-        Map<String, Object> request = new HashMap<>();
-        request.put("header", header);
-        request.put("body", body);
+            // 최종 요청 데이터
+            // header와 body를 합쳐 request 생성
+            Map<String, Object> request = new HashMap<>();
+            request.put("header", header);
+            request.put("body", body);
 
-        // JSON 변환 후 전송
-        String jsonRequest = objectMapper.writeValueAsString(request);
-        logger.info("📤 요청 전송: {}", jsonRequest);
+            String jsonRequest = objectMapper.writeValueAsString(request);
+            logger.info("📤 [{}] 요청 전송: {}", marketKey.equals("0001") ? "KOSPI" : "KOSDAQ", jsonRequest);
 
-        //session.sendMessage()를 이용해 JSON 데이터를 서버에 전송.
-        session.sendMessage(new TextMessage(jsonRequest));
+            session.sendMessage(new TextMessage(jsonRequest));
+        }
     }
+
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
@@ -136,26 +139,29 @@ public class KospiSocketHandler extends TextWebSocketHandler {
             String trNum = messages[0];
             String trId = messages[1]; // TR ID (예: H0UPCNT0)
             String msgCode = messages[2]; // 메시지 코드 (예: 001)
-            String trKey = messages[3]; // 종목 코드 포함 데이터
+            String trKey = messages[3]; //KOSPI(0001) 또는 KOSDAQ(1001) 코드 포함
 
             // '^'로 세부 데이터 분리
             String[] stockData = messages[3].split("\\^");
 
-            String stockCode = stockData[0]; // 종목 코드 (0001)
-            String timestamp = stockData[1]; // 시간 (094719)
-            String price = stockData[2]; // 현재가 (51000)
-            String bstp_nmix_prdy_vrss = stockData[4];  //전일대비
+            String stockCode = stockData[0];    // 종목 코드 (0001)
+            String timestamp = stockData[1];    // 시간 (094719)
+            String price = stockData[2];        // 현재가 (51000)
+            String bstp_nmix_prdy_vrss = stockData[4];   //전일대비
 
-            // 로그 출력
-            logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 현재가={}, 전일대비={}", trId, stockCode, timestamp, price, bstp_nmix_prdy_vrss);
+            String marketType = "0001".equals(stockCode) ? "KOSPI" : "KOSDAQ"; // 시장 구분
+
+            logger.info("📊 [{}] 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 현재가={}, 전일대비={}",
+                    marketType, trId, stockCode, timestamp, price, bstp_nmix_prdy_vrss);
         } catch (Exception e) {
             logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
         }
     }
 
+
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        logger.info("❌ 실시간 KOSPI 지수 WebSocket 연결 종료: {}", session.getId());
+        logger.info("❌ 실시간 KOSPI&KOSDAQ 지수 WebSocket 연결 종료: {}", session.getId());
         this.session = null;  // 세션을 null로 설정하여 메모리 누수 방지
         super.afterConnectionClosed(session, status);  // 부모 클래스의 메서드 호출
     }
