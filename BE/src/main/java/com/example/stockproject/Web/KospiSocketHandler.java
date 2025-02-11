@@ -1,8 +1,10 @@
 package com.example.stockproject.Web;
 
 import ch.qos.logback.classic.Logger;
+import com.example.stockproject.dto.web.LiveDataDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,15 +20,17 @@ import java.util.Map;
 @Component
 public class KospiSocketHandler extends TextWebSocketHandler {
 
+    @Getter
+    private LiveDataDTO latestStockData;
+
     private WebSocketSession session;
-
-    @Value("${websocket.approval-key}")
-    private String approvalKey;
-
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PriceStockSocketHandler.class);
 
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    @Value("${websocket.approval-key}")
+    private String approvalKey;
 
     //WebSocket 연결이 성공하면 실행되는 메서드
     //연결이 완료되면 afterConnectionEstablished()가 실행됨.
@@ -147,12 +151,25 @@ public class KospiSocketHandler extends TextWebSocketHandler {
             String stockCode = stockData[0];    // 종목 코드 (0001)
             String timestamp = stockData[1];    // 시간 (094719)
             String price = stockData[2];        // 현재가 (51000)
-            String bstp_nmix_prdy_vrss = stockData[4];   //전일대비
+            String change = stockData[4];   //전일대비
 
             String marketType = "0001".equals(stockCode) ? "KOSPI" : "KOSDAQ"; // 시장 구분
 
+            latestStockData = new LiveDataDTO(trId, stockCode, timestamp, price, change);   //json으로 반환할 DTO생성 -> 여기서 이 정보를 바로 프론트로 넘길 수 있는가?
+
+            //이 밑의 코드로 latestStockData객체를 json문자열로 바꾸어 클라이언트에게 전송할 수 있다함.
+//            // 1️⃣ WebSocket 세션을 통해 클라이언트로 실시간 데이터 전송
+//            if (session != null && session.isOpen()) {
+//                ObjectMapper objectMapper = new ObjectMapper();
+//                String jsonResponse = objectMapper.writeValueAsString(latestStockData);
+//                session.sendMessage(new TextMessage(jsonResponse));
+//            }
+
+//            ✅ 이렇게 하면 웹소켓을 통해 실시간 데이터가 프론트엔드로 바로 전송됨.
+//            (프론트엔드에서 WebSocket.onmessage를 사용하면 데이터 수신 가능)
+
             logger.info("📊 [{}] 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 현재가={}, 전일대비={}",
-                    marketType, trId, stockCode, timestamp, price, bstp_nmix_prdy_vrss);
+                    marketType, trId, stockCode, timestamp, price, change);
         } catch (Exception e) {
             logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
         }
