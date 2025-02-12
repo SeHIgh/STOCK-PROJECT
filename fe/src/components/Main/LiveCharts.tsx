@@ -1,5 +1,14 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
+interface StockProps {
+    id: number;
+    symbol: string;
+    current_price: string;
+    change_rate: string;
+    daily_trading_value: string;
+    daily_trading_volume: string;
+}
+
 // 주가 급등 (토스증권 실시간 차트 급상승)
 const stockListTopIncr10 = [
     {
@@ -167,7 +176,7 @@ const stockListTopDecr10 = [
     },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
 }
 
@@ -206,7 +215,7 @@ const LiveCharts = () => {
     );
 };
 
-const StockTable = ({ stocks }) => {
+const StockTable = ({ stocks }: { stocks: StockProps[] }) => {
     return (
         <div className="overflow-hidden rounded-lg">
             <table className="min-w-full divide-y divide-transparent table-fixed w-full">
@@ -231,7 +240,7 @@ const StockTable = ({ stocks }) => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-transparent">
-                    {stocks.map((stock) => (
+                    {stocks.map((stock: StockProps) => (
                         <tr key={stock.id}>
                             <td className="whitespace-nowrap text-base font-medium text-gray-900 text-center rounded-l-lg">
                                 {stock.id}
@@ -243,7 +252,7 @@ const StockTable = ({ stocks }) => {
                                 {stock.current_price}
                             </td>
                             <td
-                                className={`px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right ${
+                                className={`px-6 py-4 whitespace-nowrap text-base text-right ${
                                     stock.change_rate.startsWith("+")
                                         ? "text-red-400"
                                         : "text-blue-400"

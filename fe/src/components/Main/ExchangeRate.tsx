@@ -1,9 +1,6 @@
 // 네이버 환율 검색 API
 // https://m.search.naver.com/p/csearch/content/qapirender.nhn?key=calculator&pkid=141&q=%ED%99%98%EC%9C%A8&where=m&u1=keb&u6=standardUnit&u7=0&u3=USD&u4=KRW&u8=down&u2=1
 // u7=0 속성이 실시간으로 추정
-
-import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
-
 const exchangeRates = {
     pkid: 141,
     count: 1,
