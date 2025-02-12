@@ -41,6 +41,9 @@ dependencies {
 	implementation 'com.opencsv:opencsv:5.5.2'
 
 	runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.104.Final:osx-aarch_64'
+
+	// 크롤링을 위한 Selinium 의존성
+	implementation 'org.seleniumhq.selenium:selenium-java'
 }
 
 tasks.named('test') {
