@@ -39,8 +39,8 @@ const News = () => {
                 <Link to="/news" className="text-lg text-gray-500  mr-3">더 보기</Link>
             </div>
             <ul className="w-full flex flex-row justify-between gap-3 overflow-x-scroll pb-2 px-1">
-                {newsList.map((news) => (
-                    <li className="flex-1 card-main bg-white/30 gray-hover">
+                {newsList.map((news, index) => (
+                    <li key={index} className="flex-1 card-main bg-white/30 gray-hover">
                         <a
                             href={news.link}
                             className="w-100 h-full p-4 flex flex-col gap-1"
