@@ -8,6 +8,7 @@ import com.example.stockproject.service.ApiVolumeService;
 import com.example.stockproject.service.ApiPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -47,8 +48,10 @@ public class KisController {
     }
 
     //주식 현재가 조회
+    //쿼리파라미터로 넘어온 종목이름으로 검색가능
+    //http://localhost:8090/price?stockName=삼성전자
     @GetMapping("/price")
-    public Mono<PriceResponseOutput> getPrice(){
-        return apiPriceService.getPrice();
+    public Mono<PriceResponseOutput> getPrice(@RequestParam String stockName){
+        return apiPriceService.getPriceByStockName(stockName);
     }
 }

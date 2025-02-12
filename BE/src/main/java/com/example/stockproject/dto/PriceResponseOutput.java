@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class PriceResponseOutput {
     private String stckPrpr;                     // 주식 현재가
-    private String iscdStatClsCode;               // 종목 상태 구분
+    //private String iscdStatClsCode;               // 종목 상태 구분
     private String rprsMrktKorName;              // 대표시장한글명
     private String bstpKorIsnm;                  // 업종 한글 종목
     private String prdyVrss;                     // 전일 대비
@@ -30,27 +30,27 @@ public class PriceResponseOutput {
     private String pbr;                          // PBR
     private String eps;                          // EPS
     private String bps;                          // BPS
-    private String d250Hgpr;                    //250일 최고가
-    private String d250HgprDate;                //250일 최고가 일자
-    private String d250HgprVrssPrprRate;        //250일 최고가 대비 현재 비율
-    private String d250Lwpr;                    //250일 최저가
-    private String d250LwprDate;
-    private String d250LwprVrssPrprRate;
-    private String stckDryyHgpr;                //연중 최고가
-    private String dryyHgprVrssPrprRate;        //연중 최고가 대비 현재가 비율
-    private String dryyHgprDate;              //연중 최고가 일자
-    private String stckDryyLwpr;               //연중 최저자
-    private String dryyLwprVrssPrprRate;
-    private String dryyLwprDate;
-    private String w52Hgpr;                     //52일 최고가
-    private String w52HgprVrssPrprCtrt;
-    private String w52HgprDate;
-    private String w52Lwpr;
-    private String w52LwprVrssPrprCtrt;
-    private String w52LwprDate;
-    private String frgnHldnQty;             //외국인 보유 수량
-    private String lastSstsCntgQty;       //최종공매도 체결수량
-    private String mrktWarnClsCode;         //시장경고코드
+//    private String d250Hgpr;                    //250일 최고가
+//    private String d250HgprDate;                //250일 최고가 일자
+//    private String d250HgprVrssPrprRate;        //250일 최고가 대비 현재 비율
+//    private String d250Lwpr;                    //250일 최저가
+//    private String d250LwprDate;
+//    private String d250LwprVrssPrprRate;
+//    private String stckDryyHgpr;                //연중 최고가
+//    private String dryyHgprVrssPrprRate;        //연중 최고가 대비 현재가 비율
+//    private String dryyHgprDate;              //연중 최고가 일자
+//    private String stckDryyLwpr;               //연중 최저자
+//    private String dryyLwprVrssPrprRate;
+//    private String dryyLwprDate;
+//    private String w52Hgpr;                     //52일 최고가
+//    private String w52HgprVrssPrprCtrt;
+//    private String w52HgprDate;
+//    private String w52Lwpr;
+//    private String w52LwprVrssPrprCtrt;
+//    private String w52LwprDate;
+//    private String frgnHldnQty;             //외국인 보유 수량
+//    private String lastSstsCntgQty;       //최종공매도 체결수량
+//    private String mrktWarnClsCode;         //시장경고코드
 }
 
 /*  sk하이닉스

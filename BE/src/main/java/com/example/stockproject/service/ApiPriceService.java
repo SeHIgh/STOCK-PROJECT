@@ -1,6 +1,8 @@
 package com.example.stockproject.service;
 
 import com.example.stockproject.dto.PriceResponseOutput;
+import com.example.stockproject.dto.StockInfo;
+import com.example.stockproject.repository.StockInfoRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+
+import java.util.Optional;
 
 @Service
 public class ApiPriceService {
@@ -24,11 +28,13 @@ public class ApiPriceService {
 
     private final WebClient webClient;
     private final ObjectMapper objectMapper;
+    private final StockInfoRepository stockInfoRepository;
 
     @Autowired
-    public ApiPriceService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper) {
+    public ApiPriceService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper, StockInfoRepository stockInfoRepository) {
         this.webClient = webClientBuilder.baseUrl("https://openapi.koreainvestment.com:9443").build();
         this.objectMapper = objectMapper;
+        this.stockInfoRepository = stockInfoRepository;
     }
 
     private HttpHeaders createHttpHeaders2() {
@@ -60,7 +66,7 @@ public class ApiPriceService {
         PriceResponseOutput responseData = new PriceResponseOutput();
 
         responseData.setStckPrpr(node.has("stck_prpr") ? node.get("stck_prpr").asText() : "N/A");
-        responseData.setIscdStatClsCode(node.has("iscd_stat_cls_code") ? node.get("iscd_stat_cls_code").asText() : "N/A");
+        //responseData.setIscdStatClsCode(node.has("iscd_stat_cls_code") ? node.get("iscd_stat_cls_code").asText() : "N/A");
         responseData.setRprsMrktKorName(node.has("rprs_mrkt_kor_name") ? node.get("rprs_mrkt_kor_name").asText() : "N/A");
         responseData.setBstpKorIsnm(node.has("bstp_kor_isnm") ? node.get("bstp_kor_isnm").asText() : "N/A");
         responseData.setPrdyVrss(node.has("prdy_vrss") ? node.get("prdy_vrss").asText() : "N/A");
@@ -79,39 +85,46 @@ public class ApiPriceService {
         responseData.setPbr(node.has("pbr") ? node.get("pbr").asText() : "N/A");
         responseData.setEps(node.has("eps") ? node.get("eps").asText() : "N/A");
         responseData.setBps(node.has("bps") ? node.get("bps").asText() : "N/A");
-        responseData.setD250Hgpr(node.has("d250_hgpr") ? node.get("d250_hgpr").asText() : "N/A");
-        responseData.setD250HgprDate(node.has("d250_hgpr_date") ? node.get("d250_hgpr_date").asText() : "N/A");
-        responseData.setD250HgprVrssPrprRate(node.has("d250_hgpr_vrss_prpr_rate") ? node.get("d250_hgpr_vrss_prpr_rate").asText() : "N/A");
-        responseData.setD250Lwpr(node.has("d250_lwpr") ? node.get("d250_lwpr").asText() : "N/A");
-        responseData.setD250LwprDate(node.has("d250_lwpr_date") ? node.get("d250_lwpr_date").asText() : "N/A");
-        responseData.setD250LwprVrssPrprRate(node.has("d250_lwpr_vrss_prpr_rate") ? node.get("d250_lwpr_vrss_prpr_rate").asText() : "N/A");
-        responseData.setStckDryyHgpr(node.has("stck_dryy_hgpr") ? node.get("stck_dryy_hgpr").asText() : "N/A");
-        responseData.setDryyHgprVrssPrprRate(node.has("dryy_hgpr_vrss_prpr_rate") ? node.get("dryy_hgpr_vrss_prpr_rate").asText() : "N/A");
-        responseData.setDryyHgprDate(node.has("dryy_hgpr_date") ? node.get("dryy_hgpr_date").asText() : "N/A");
-        responseData.setStckDryyLwpr(node.has("stck_dryy_lwpr") ? node.get("stck_dryy_lwpr").asText() : "N/A");
-        responseData.setDryyLwprVrssPrprRate(node.has("dryy_lwpr_vrss_prpr_rate") ? node.get("dryy_lwpr_vrss_prpr_rate").asText() : "N/A");
-        responseData.setDryyLwprDate(node.has("dryy_lwpr_date") ? node.get("dryy_lwpr_date").asText() : "N/A");
-        responseData.setW52Hgpr(node.has("w52_hgpr") ? node.get("w52_hgpr").asText() : "N/A");
-        responseData.setW52HgprVrssPrprCtrt(node.has("w52_hgpr_vrss_prpr_ctrt") ? node.get("w52_hgpr_vrss_prpr_ctrt").asText() : "N/A");
-        responseData.setW52HgprDate(node.has("w52_hgpr_date") ? node.get("w52_hgpr_date").asText() : "N/A");
-        responseData.setW52Lwpr(node.has("w52_lwpr") ? node.get("w52_lwpr").asText() : "N/A");
-        responseData.setW52LwprVrssPrprCtrt(node.has("w52_lwpr_vrss_prpr_ctrt") ? node.get("w52_lwpr_vrss_prpr_ctrt").asText() : "N/A");
-        responseData.setW52LwprDate(node.has("w52_lwpr_date") ? node.get("w52_lwpr_date").asText() : "N/A");
-        responseData.setFrgnHldnQty(node.has("frgn_hldn_qty") ? node.get("frgn_hldn_qty").asText() : "N/A");
-        responseData.setLastSstsCntgQty(node.has("last_ssts_cntg_qty") ? node.get("last_ssts_cntg_qty").asText() : "N/A");
-        responseData.setMrktWarnClsCode(node.has("mrkt_warn_cls_code") ? node.get("mrkt_warn_cls_code").asText() : "N/A");
+//        responseData.setD250Hgpr(node.has("d250_hgpr") ? node.get("d250_hgpr").asText() : "N/A");
+//        responseData.setD250HgprDate(node.has("d250_hgpr_date") ? node.get("d250_hgpr_date").asText() : "N/A");
+//        responseData.setD250HgprVrssPrprRate(node.has("d250_hgpr_vrss_prpr_rate") ? node.get("d250_hgpr_vrss_prpr_rate").asText() : "N/A");
+//        responseData.setD250Lwpr(node.has("d250_lwpr") ? node.get("d250_lwpr").asText() : "N/A");
+//        responseData.setD250LwprDate(node.has("d250_lwpr_date") ? node.get("d250_lwpr_date").asText() : "N/A");
+//        responseData.setD250LwprVrssPrprRate(node.has("d250_lwpr_vrss_prpr_rate") ? node.get("d250_lwpr_vrss_prpr_rate").asText() : "N/A");
+//        responseData.setStckDryyHgpr(node.has("stck_dryy_hgpr") ? node.get("stck_dryy_hgpr").asText() : "N/A");
+//        responseData.setDryyHgprVrssPrprRate(node.has("dryy_hgpr_vrss_prpr_rate") ? node.get("dryy_hgpr_vrss_prpr_rate").asText() : "N/A");
+//        responseData.setDryyHgprDate(node.has("dryy_hgpr_date") ? node.get("dryy_hgpr_date").asText() : "N/A");
+//        responseData.setStckDryyLwpr(node.has("stck_dryy_lwpr") ? node.get("stck_dryy_lwpr").asText() : "N/A");
+//        responseData.setDryyLwprVrssPrprRate(node.has("dryy_lwpr_vrss_prpr_rate") ? node.get("dryy_lwpr_vrss_prpr_rate").asText() : "N/A");
+//        responseData.setDryyLwprDate(node.has("dryy_lwpr_date") ? node.get("dryy_lwpr_date").asText() : "N/A");
+//        responseData.setW52Hgpr(node.has("w52_hgpr") ? node.get("w52_hgpr").asText() : "N/A");
+//        responseData.setW52HgprVrssPrprCtrt(node.has("w52_hgpr_vrss_prpr_ctrt") ? node.get("w52_hgpr_vrss_prpr_ctrt").asText() : "N/A");
+//        responseData.setW52HgprDate(node.has("w52_hgpr_date") ? node.get("w52_hgpr_date").asText() : "N/A");
+//        responseData.setW52Lwpr(node.has("w52_lwpr") ? node.get("w52_lwpr").asText() : "N/A");
+//        responseData.setW52LwprVrssPrprCtrt(node.has("w52_lwpr_vrss_prpr_ctrt") ? node.get("w52_lwpr_vrss_prpr_ctrt").asText() : "N/A");
+//        responseData.setW52LwprDate(node.has("w52_lwpr_date") ? node.get("w52_lwpr_date").asText() : "N/A");
+//        responseData.setFrgnHldnQty(node.has("frgn_hldn_qty") ? node.get("frgn_hldn_qty").asText() : "N/A");
+//        responseData.setLastSstsCntgQty(node.has("last_ssts_cntg_qty") ? node.get("last_ssts_cntg_qty").asText() : "N/A");
+//        responseData.setMrktWarnClsCode(node.has("mrkt_warn_cls_code") ? node.get("mrkt_warn_cls_code").asText() : "N/A");
 
 
         return responseData;
     }
 
-    public Mono<PriceResponseOutput> getPrice() {
+    public Mono<PriceResponseOutput> getPriceByStockName(String stockName) {
+        Optional<StockInfo> stockInfo = stockInfoRepository.findByStockName(stockName);
+        if(stockInfo.isEmpty()){
+            return Mono.error(new RuntimeException("해당 종목명을 찾을 수 없습니다: " + stockName));
+        }
+
+        String stockCode = stockInfo.get().getStockCode();//stockCode;
+
         HttpHeaders headers = createHttpHeaders2();
 
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/uapi/domestic-stock/v1/quotations/inquire-price")
                         .queryParam("FID_COND_MRKT_DIV_CODE", "J")
-                        .queryParam("FID_INPUT_ISCD", "373220")
+                        .queryParam("FID_INPUT_ISCD", stockCode)
                         .build())
                 .headers(httpHeaders -> httpHeaders.addAll(headers))
                 .retrieve()

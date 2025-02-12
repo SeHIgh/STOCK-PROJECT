@@ -21,7 +21,7 @@ public class StockInfo {
 
     //2열
     @Column(name = "stock_name", nullable = false)
-    private String StockName;   //종목명
+    private String stockName;   //종목명
 
     //6열
     @Column(name = "market_type", nullable = false)
@@ -29,7 +29,7 @@ public class StockInfo {
 
     public StockInfo(String stockCode, String stockName, String marketType) {
         this.stockCode = stockCode;
-        this.StockName = stockName;
+        this.stockName = stockName;
         this.marketType = marketType;
     }
 }
