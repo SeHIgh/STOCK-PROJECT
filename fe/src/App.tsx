@@ -24,7 +24,7 @@ function App() {
                 <Route path="/find-account" element={<FindAccount />} />
 
                 {/* 상세 페이지 */}
-                <Route path="/stocks/:stockId" element={<DetailPage />} />
+                <Route path="/stocks/:productCode" element={<DetailPage />} />
 
                 {/* Layout test */}
                 <Route path="/footer" element={<Footer />} />

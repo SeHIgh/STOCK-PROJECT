@@ -13754,6 +13754,289 @@
             }
         }
     ],
+    "stock_list": [
+        {
+            "productCode": "058860",
+            "name": "케이티아이에스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-058860.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 22500.0,
+                "close": 11400.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 45070738,
+                "marketAmount": 902871178420
+            }
+        },
+        {
+            "productCode": "207940",
+            "name": "삼성바이오로직스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-207940.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 6350.0,
+                "close": 4885.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 289102,
+                "marketAmount": 1835797700
+            }
+        },
+        {
+            "productCode": "016740",
+            "name": "두올",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-016740.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 45100.0,
+                "close": 34700.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 7285634,
+                "marketAmount": 312042608400
+            }
+        },
+        {
+            "productCode": "026890",
+            "name": "스틱인베스트먼트",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-026890.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 3730.0,
+                "close": 2870.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 931881,
+                "marketAmount": 3475916130
+            }
+        },
+
+        {
+            "productCode": "001790",
+            "name": "대한제당",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-001790.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 1202.0,
+                "close": 925.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 1635769,
+                "marketAmount": 1966194338
+            }
+        },
+        {
+            "productCode": "383800",
+            "name": "LX홀딩스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-383800.png?20240509",
+            "price": {
+                "priceType": "MARKET",
+                "base": 3515.0,
+                "close": 2705.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 3224699,
+                "marketAmount": 11116164495
+            }
+        },
+        {
+            "productCode": "272210",
+            "name": "한화시스템",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-272210.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 32800.0,
+                "close": 25300.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 47177131,
+                "marketAmount": 1421712882300
+            }
+        },
+        {
+            "productCode": "005360",
+            "name": "모나미",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-005360.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 1409.0,
+                "close": 1094.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 58658101,
+                "marketAmount": 78973363447
+            }
+        },
+        {
+            "productCode": "140910",
+            "name": "에이리츠",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-140910.png?230112",
+            "price": {
+                "priceType": "MARKET",
+                "base": 1870.0,
+                "close": 1471.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 9502877,
+                "marketAmount": 16555923293
+            }
+        },
+        {
+            "productCode": "010400",
+            "name": "우진아이엔에스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-010400.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 60400.0,
+                "close": 48750.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 1346998,
+                "marketAmount": 80196169050
+            }
+        },
+        {
+            "productCode": "042670",
+            "name": "HD현대인프라코어",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-042670.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 873.0,
+                "close": 1080.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 7139363,
+                "marketAmount": 7753892430
+            }
+        },
+        {
+            "productCode": "025620",
+            "name": "제이준코스메틱",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-025620.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 22700.0,
+                "close": 27700.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 8270033,
+                "marketAmount": 216487605950
+            }
+        },
+        {
+            "productCode": "063160",
+            "name": "종근당바이오",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-063160.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 4500.0,
+                "close": 5450.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 9143383,
+                "marketAmount": 47503289120
+            }
+        },
+        {
+            "productCode": "000680",
+            "name": "LS네트웍스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-000680.png?20240503",
+            "price": {
+                "priceType": "MARKET",
+                "base": 3475.0,
+                "close": 4190.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 21112660,
+                "marketAmount": 87810497915
+            }
+        },
+        {
+            "productCode": "018250",
+            "name": "애경산업",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-018250.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 908.0,
+                "close": 1091.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 2129598,
+                "marketAmount": 2297448520
+            }
+        },
+        {
+            "productCode": "036570",
+            "name": "엔씨소프트",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-036570.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 27440.0,
+                "close": 32320.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 694,
+                "marketAmount": 21424625
+            }
+        },
+        {
+            "productCode": "039490",
+            "name": "키움증권",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-039490.png?20241108",
+            "price": {
+                "priceType": "MARKET",
+                "base": 34800.0,
+                "close": 40520.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 11172,
+                "marketAmount": 436528375
+            }
+        },
+        {
+            "productCode": "000880",
+            "name": "한화",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-000880.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 32500.0,
+                "close": 37700.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 3596243,
+                "marketAmount": 130757201650
+            }
+        },
+        {
+            "productCode": "006380",
+            "name": "카프로",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-006380.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 2290.0,
+                "close": 2655.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 3236261,
+                "marketAmount": 8402279110
+            }
+        },
+        {
+            "productCode": "329180",
+            "name": "HD현대중공업",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-329180.png?20230830",
+            "price": {
+                "priceType": "MARKET",
+                "base": 306000.0,
+                "close": 353000.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 1353473,
+                "marketAmount": 463042961500
+            }
+        }
+    ],
     "news": [
         {
             "newsId": "asiae_2025021308231328590",

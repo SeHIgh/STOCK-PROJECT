@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://SeHIgh.github.io/STOCK-PROJECT/",
+  "homepage": "https://SeHIgh.github.io/STOCK-PROJECT",
   "scripts": {
     "watch:json-server": "json-server db.json --port 3000",
     "watch:vite": "vite --host 0.0.0.0",
