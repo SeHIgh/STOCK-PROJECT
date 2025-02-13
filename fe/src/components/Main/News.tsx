@@ -43,12 +43,12 @@ const News = () => {
                     <li className="flex-1 card-main bg-white/30 gray-hover">
                         <a
                             href={news.link}
-                            className="w-full h-full p-4 flex flex-col gap-1"
+                            className="w-100 h-full p-4 flex flex-col gap-1"
                         >
                             <div className="w-full h-40 bg-linear-to-r from-indigo-300/30 to-[#4a69bd]/30 rounded-xl">
                                 {/* <img src="#" alt="#" /> */}
                             </div>
-                            <h4 className="text-base">{news.title}</h4>
+                            <h4 className="text-base overflow-hidden whitespace-nowrap text-ellipsis">{news.title}</h4>
                             <div className="text-sm text-gray-500">
                                 <span>{news.time}</span>
                                 <span>∙</span>

@@ -18,7 +18,6 @@ const Footer = () => {
                 {links.map((link) => {
                     // iconMap에서 해당 아이콘 컴포넌트를 가져옴
                     const IconComponent = link.icon;
-                    console.log(IconComponent);
                     return (
                         <a
                             key={link.target}

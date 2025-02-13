@@ -7,6 +7,7 @@ import GradientBackground from "./components/GradientBG";
 import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Layouts/Footer";
 import MainPage from "./pages/MainPage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
     return (
@@ -16,9 +17,14 @@ function App() {
                 <Route path="/main" element={<MainPage />} />
                 {/* 404 및 기타 오류 시 나타나는 페이지 - ErrorPage */}
                 <Route path="*" element={<ErrorPage />} />
+
+                {/* 계정 관련 페이지 */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/find-account" element={<FindAccount />} />
+
+                {/* 상세 페이지 */}
+                <Route path="/detail/:stockId" element={<DetailPage />} />
 
                 {/* Layout test */}
                 <Route path="/footer" element={<Footer />} />

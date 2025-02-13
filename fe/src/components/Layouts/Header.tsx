@@ -38,19 +38,26 @@ const stocks = [
     { id: 10, name: "삼양식품" },
 ];
 
+interface StockProp {
+    id: number;
+    name: string;
+}
+
 const Header = () => {
     // 메뉴 크기
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     // 검색 창
     const [query, setQuery] = useState("");
-    const [selectedStock, setSelectedStock] = useState("");
+    const [selectedStock, setSelectedStock] = useState<StockProp | null>(null);
     // 목록 필터링 - 소문자 통일
     const filterStocks =
         query === ""
             ? stocks
-            : stocks.filter((stock) => {
-                  return stock.name.toLowerCase().includes(query.toLowerCase());
-              });
+            : stocks.filter((stock) =>
+                  stock.name.toLowerCase().includes(query.toLowerCase())
+              );
+    
+    console.log(filterStocks);
 
     return (
         <header className="h-21 inset-x-0 sticky top-0 z-50 backdrop-blur-2xl">
@@ -89,7 +96,7 @@ const Header = () => {
                         </a>
                     ))}
                 </div>
-                <form className="hidden lg:flex lg:ml-0">
+                <form className="hidden lg:flex">
                     <Combobox
                         value={selectedStock}
                         onChange={setSelectedStock}
@@ -98,7 +105,9 @@ const Header = () => {
                         <div className="relative cursor-pointer">
                             <ComboboxInput
                                 placeholder="종목을 검색하세요"
-                                displayValue={(stock) => stock.name}
+                                displayValue={(stock: StockProp | null) =>
+                                    stock ? stock.name : ""
+                                }
                                 onChange={(event) =>
                                     setQuery(event.target.value)
                                 }
@@ -187,7 +196,9 @@ const Header = () => {
                                     <div className="relative cursor-pointer">
                                         <ComboboxInput
                                             placeholder="종목을 검색하세요"
-                                            displayValue={(stock) => stock.name}
+                                            displayValue={(
+                                                stock: StockProp | null
+                                            ) => (stock ? stock.name : "")}
                                             onChange={(event) =>
                                                 setQuery(event.target.value)
                                             }

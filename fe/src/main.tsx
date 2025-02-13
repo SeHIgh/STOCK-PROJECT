@@ -1,13 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { BrowserRouter } from "react-router-dom";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-)
+const PUBLIC_URL = import.meta.env.PUBLIC_URL || "/";
+
+createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+        <BrowserRouter basename={`${PUBLIC_URL}`}>
+            <App />
+        </BrowserRouter>
+    </StrictMode>
+);
