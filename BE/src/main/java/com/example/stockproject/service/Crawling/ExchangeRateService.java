@@ -48,7 +48,7 @@ public class ExchangeRateService {
 
                 // 결과 출력
                 //System.out.println("현재 원/달러 환율: " + exchangeRate);
-                logger.info("현재 원/달러 환율: {}", exchangeRate);
+                logger.info("📊현재 원/달러 환율: {}", exchangeRate);
 
                 // 10초 대기 후 다시 가져오기
                 TimeUnit.SECONDS.sleep(10);

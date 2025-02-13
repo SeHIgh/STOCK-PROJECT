@@ -151,7 +151,7 @@ public class KospiSocketHandler extends TextWebSocketHandler {
             String stockCode = stockData[0];    // 종목 코드 (0001)
             String timestamp = stockData[1];    // 시간 (094719)
             String price = stockData[2];        // 현재가 (51000)
-            String change = stockData[4];   //전일대비
+            String change = stockData[9];   //전일대비
 
             String marketType = "0001".equals(stockCode) ? "KOSPI" : "KOSDAQ"; // 시장 구분
 
