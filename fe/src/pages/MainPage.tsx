@@ -7,7 +7,7 @@ import News from "../components/Main/News";
 const MainPage = () => {
     return (
         <MainLayout>
-            <div className="w-full h-full p-4 grid grid-flow-row grid-cols-[minmax(400px,_1fr)_300px] grid-rows-[200px_350px_1fr] gap-4">
+            <div className="max-w-[1280px] h-full px-10 py-6 grid grid-flow-row grid-cols-[minmax(400px,_1fr)_300px] grid-rows-[200px_350px_1fr] gap-4">
                 {/* 주가지수 (코스피, 코스닥, 나스닥, S&P 500) 섹션 */}
                 <div id="stock-index" className="block-main col-span-1">
                     <StockIndex />

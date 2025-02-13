@@ -26,8 +26,8 @@ const ExchangeRate = () => {
             </h1>
             {/* <ArrowsRightLeftIcon className="w-6 h-auto rotate-90 drop-shadow-xl fill-gray-500" /> */}
             <ul className="relative w-full flex flex-col justify-between gap-2 overflow-x-scroll pb-2 px-1">
-                {exchangeRates.country.map((exchRate) => (
-                    <li className="flex-1 card-main bg-white/30 gray-hover flex flex-row gap-1">
+                {exchangeRates.country.map((exchRate, index) => (
+                    <li key={index} className="flex-1 card-main bg-white/30 gray-hover flex flex-row gap-1">
                         <div
                             id="text_index"
                             className="flex-1 flex flex-row justify-between px-4 py-1"

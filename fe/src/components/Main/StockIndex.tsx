@@ -38,10 +38,13 @@ const StockIndex = () => {
         <>
             <h1 className="section-title-main">주가지수</h1>
             <ul className="w-full flex flex-row justify-between gap-3 overflow-x-scroll pb-2 px-1">
-                {stockIndexList.map((index) => (
-                    <li className="flex-1 card-main bg-white/30 gray-hover">
+                {stockIndexList.map((stockIndex, index) => (
+                    <li
+                        key={index}
+                        className="flex-1 card-main bg-white/30 gray-hover"
+                    >
                         <a
-                            href={`/indices/${index.index_name}`}
+                            href={`/indices/${stockIndex.index_name}`}
                             className="w-full h-full p-4 flex flex-row gap-1"
                         >
                             <div
@@ -53,36 +56,37 @@ const StockIndex = () => {
                                     className="flex-1 flex flex-row justify-start gap-1"
                                 >
                                     <h3 className="text-lg font-semibold">
-                                        {index.label}
+                                        {stockIndex.label}
                                     </h3>
                                     <span className="text-lg">
-                                        {index.country === "USA"
+                                        {stockIndex.country === "USA"
                                             ? "🇺🇸"
-                                            : index.country === "South Korea"
+                                            : stockIndex.country ===
+                                              "South Korea"
                                             ? "🇰🇷"
                                             : "🏳️"}
                                     </span>
                                 </div>
                                 <h4 className="text-xl font-bold">
-                                    {index.curPrice}
+                                    {stockIndex.curPrice}
                                 </h4>
                                 {/* 등락률에 따른 색상변화 */}
                                 <h4
                                     className={`text-base font-semibold ${
-                                        index.changeRate >= 0
+                                        stockIndex.changeRate >= 0
                                             ? "text-red-400"
                                             : "text-blue-400"
                                     } text-nowrap`}
                                 >
                                     {/* 현재가 및 등락률 을 이용한 퍼센트 계산 - 빨 : 상승, 파 : 하락 */}
                                     {`${
-                                        index.changeRate >= 0
-                                            ? `+${index.changeRate}`
-                                            : index.changeRate
+                                        stockIndex.changeRate >= 0
+                                            ? `+${stockIndex.changeRate}`
+                                            : stockIndex.changeRate
                                     } (${Math.abs(
-                                        (index.changeRate /
-                                            (index.curPrice -
-                                                index.changeRate)) *
+                                        (stockIndex.changeRate /
+                                            (stockIndex.curPrice -
+                                                stockIndex.changeRate)) *
                                             100
                                     ).toFixed(2)}%)`}
                                 </h4>
@@ -90,7 +94,7 @@ const StockIndex = () => {
                             <div
                                 id="graph_index"
                                 className={`min-w-24 rounded-lg ${
-                                    index.changeRate >= 0
+                                    stockIndex.changeRate >= 0
                                         ? "bg-red-400/50"
                                         : "bg-blue-400/50"
                                 }`}
