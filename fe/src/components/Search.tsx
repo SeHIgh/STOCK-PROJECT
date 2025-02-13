@@ -115,7 +115,7 @@ const Search = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (selectedStock) {
-            navigate(`/detail/${selectedStock.단축코드}`);
+            navigate(`/stocks/${selectedStock.단축코드}`);
         }
     };
 

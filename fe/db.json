@@ -13468,5 +13468,942 @@
             "액면가": "500",
             "상장주식수": "240424899"
         }
+    ],
+    "stockListTopIncr10": [
+        {
+            "productCode": "058860",
+            "name": "케이티아이에스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-058860.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 22500.0,
+                "close": 11400.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 45070738,
+                "marketAmount": 902871178420
+            }
+        },
+        {
+            "productCode": "207940",
+            "name": "삼성바이오로직스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-207940.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 6350.0,
+                "close": 4885.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 289102,
+                "marketAmount": 1835797700
+            }
+        },
+        {
+            "productCode": "016740",
+            "name": "두올",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-016740.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 45100.0,
+                "close": 34700.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 7285634,
+                "marketAmount": 312042608400
+            }
+        },
+        {
+            "productCode": "026890",
+            "name": "스틱인베스트먼트",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-026890.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 3730.0,
+                "close": 2870.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 931881,
+                "marketAmount": 3475916130
+            }
+        },
+
+        {
+            "productCode": "001790",
+            "name": "대한제당",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-001790.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 1202.0,
+                "close": 925.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 1635769,
+                "marketAmount": 1966194338
+            }
+        },
+        {
+            "productCode": "383800",
+            "name": "LX홀딩스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-383800.png?20240509",
+            "price": {
+                "priceType": "MARKET",
+                "base": 3515.0,
+                "close": 2705.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 3224699,
+                "marketAmount": 11116164495
+            }
+        },
+        {
+            "productCode": "272210",
+            "name": "한화시스템",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-272210.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 32800.0,
+                "close": 25300.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 47177131,
+                "marketAmount": 1421712882300
+            }
+        },
+        {
+            "productCode": "005360",
+            "name": "모나미",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-005360.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 1409.0,
+                "close": 1094.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 58658101,
+                "marketAmount": 78973363447
+            }
+        },
+        {
+            "productCode": "140910",
+            "name": "에이리츠",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-140910.png?230112",
+            "price": {
+                "priceType": "MARKET",
+                "base": 1870.0,
+                "close": 1471.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 9502877,
+                "marketAmount": 16555923293
+            }
+        },
+        {
+            "productCode": "010400",
+            "name": "우진아이엔에스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-010400.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 60400.0,
+                "close": 48750.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 1346998,
+                "marketAmount": 80196169050
+            }
+        }
+    ],
+    "stockListTopDecr10": [
+        {
+            "productCode": "042670",
+            "name": "HD현대인프라코어",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-042670.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 873.0,
+                "close": 1080.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 7139363,
+                "marketAmount": 7753892430
+            }
+        },
+        {
+            "productCode": "025620",
+            "name": "제이준코스메틱",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-025620.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 22700.0,
+                "close": 27700.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 8270033,
+                "marketAmount": 216487605950
+            }
+        },
+        {
+            "productCode": "063160",
+            "name": "종근당바이오",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-063160.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 4500.0,
+                "close": 5450.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 9143383,
+                "marketAmount": 47503289120
+            }
+        },
+        {
+            "productCode": "000680",
+            "name": "LS네트웍스",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-000680.png?20240503",
+            "price": {
+                "priceType": "MARKET",
+                "base": 3475.0,
+                "close": 4190.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 21112660,
+                "marketAmount": 87810497915
+            }
+        },
+        {
+            "productCode": "018250",
+            "name": "애경산업",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-018250.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 908.0,
+                "close": 1091.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 2129598,
+                "marketAmount": 2297448520
+            }
+        },
+        {
+            "productCode": "036570",
+            "name": "엔씨소프트",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-036570.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 27440.0,
+                "close": 32320.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 694,
+                "marketAmount": 21424625
+            }
+        },
+        {
+            "productCode": "039490",
+            "name": "키움증권",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-039490.png?20241108",
+            "price": {
+                "priceType": "MARKET",
+                "base": 34800.0,
+                "close": 40520.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 11172,
+                "marketAmount": 436528375
+            }
+        },
+        {
+            "productCode": "000880",
+            "name": "한화",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-000880.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 32500.0,
+                "close": 37700.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 3596243,
+                "marketAmount": 130757201650
+            }
+        },
+        {
+            "productCode": "006380",
+            "name": "카프로",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-006380.png",
+            "price": {
+                "priceType": "MARKET",
+                "base": 2290.0,
+                "close": 2655.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 3236261,
+                "marketAmount": 8402279110
+            }
+        },
+        {
+            "productCode": "329180",
+            "name": "HD현대중공업",
+            "logoImageUrl": "https://static.toss.im/png-icons/securities/icn-sec-fill-329180.png?20230830",
+            "price": {
+                "priceType": "MARKET",
+                "base": 306000.0,
+                "close": 353000.0,
+                "baseKrw": null,
+                "closeKrw": null,
+                "marketVolume": 1353473,
+                "marketAmount": 463042961500
+            }
+        }
+    ],
+    "news": [
+        {
+            "newsId": "asiae_2025021308231328590",
+            "title": "[굿모닝 증시] 美 소비자물가 상승에도 혼조세 마감",
+            "contentText": "파월 발언, 자동차 관세 배제 등 낙폭 축소 13일 미국 뉴욕증시 주요 지수는 소비자물가지수 발표 충격에도 미 연방준비제도의 우려 완화 등으로 보합권에서 혼조로 마감했다. 미국 상호관세에서 자동차와 의약품이 배제될 수 있다는 소식에 국내 관련주가 긍정적 영향을 받을 것으로 전망된다. 이날 뉴욕증권거래소에서 다우존스30산업평균지수는 전 거래일보다 225.09포인트 하락한 4만4368.56에 거래를 마쳤다. S&P500지수는 16.53포인트 내린 6051.97, 나스닥종합지수는 6.09포인트 오른 1만9649.95에 장을 마감했다. 1",
+            "stockCodes": [],
+            "newsType": "cluster_market|series|market_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image14.png",
+            "source": "asiae",
+            "agencyName": "아시아경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:26:36",
+            "nation": "US"
+        },
+        {
+            "newsId": "edaily_2025021307404200219",
+            "title": "日 혼다-닛산, 오늘 합병 협의 종료 결정",
+            "contentText": "각 이사회서 경영통합 협의 종료 양사 대표 따로 기자회견 진행 세계 자동차 업계의 관심을 모았던 일본 2위 완성차 기업 혼다와 3위 닛산이 13일 합병 철회를 정식 결정한다. 니혼게이자이신문에 따르면 양사는 이날 열리는 각 이사회에서 경영통합 협의 종료를 결정한다. 이후 양사 대표가 합병 종료에 대해 따로 기자회견을 진행할 전망이다. 이로써 현대차를 제치고 세계 자동차 판매 대수가 800만대를 넘는 세계 3위 자동차그룹의 탄생을 목표로한 일본 완성차 기업의 연합은 무산됐다. 앞서 닛산의 마츠모토 우치다 사장은 지난 6일 혼다 본사를",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://image.edaily.co.kr/images/photo/files/NP/S/2025/02/PS25021300312.jpg",
+            "source": "edaily",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:40:42",
+            "nation": "KR"
+        },
+        {
+            "newsId": "etoday_2025021300007",
+            "title": "[유럽증시] 예상 웃돈 미국 인플레에도 소폭 상승...스톡스600 0.11%↑",
+            "contentText": "“관세, 유로존 인플레 위험도 증가시킨다” 주요기업 결산 실적 호조...하이네켄 14%↑ 프랑스 명품 그룹 케어링, 매출 시장 전망 웃돌아 유럽증시는 미국 물가상승률이 예상보다 높게 나오면서 인플레이션 우려가 커졌지만, 주요기업 결산 실적 호조에 소폭 상승했다. 12일 범유럽증시 벤치마크인 스톡스유럽600지수는 전 거래일 대비 0.60포인트 오른 547.78에 마감했다. 독일 프랑크푸르트증시 DAX지수는 110.20포인트 뛴 2만2148.03에, 영국 런던증시 FTSE지수는 30.05포인트 상승한 8807.44에, 프랑스 파리증시 ",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image21.png",
+            "source": "etoday",
+            "agencyName": "이투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:09:37",
+            "nation": "US"
+        },
+        {
+            "newsId": "edaily_2025021308154300315",
+            "title": "\"고점이 어디야?\"…메타, 18거래일 연속 상승",
+            "contentText": "나스닥100지수 산출 이후 최장 연속 연초 대비 24% 상승 AI 적극 투자 빠른 수익 창출 트럼프 대통령과 우호적 관계도 긍정적 페이스북 모회사 메타플랫폼가 18거래일 연속 상승을 이어가며 고점을 갈아치우고 있다. 12일 미국 뉴욕 증시에서 메타는 전 거래일보다 0.78% 오른 725.38달러에 거래를 마쳤다. 지난달 17일부터 이날까지 연속 상승 일수가 18거래일로 늘어나게 됐다. 이는 1985년 1월 31일 나스닥100지수가 산출된 이후 최장기간 연속 상승 기록이다. 메타는 지난 4일 역대 처음 700달러선을 넘어선 데 이어 ",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://image.edaily.co.kr/images/photo/files/NP/S/2025/02/PS25021300349.jpg",
+            "source": "edaily",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:15:43",
+            "nation": "US"
+        },
+        {
+            "newsId": "hankyung_X20250213.092331",
+            "title": "코스피, 미 물가 충격에도 개인·기관 '사자'에 2550선 위로",
+            "contentText": "미 1월 CPI 전월 대비 0.5% 상승 코스피지수가 미국 물가 충격에도 개인과 기관투자가의 동반 매수세에 힘입어 장 초반 상승세를 보이고 있다. 13일 오전 9시7분 현재 코스피지수는 전 거래일 대비 12.09포인트 오른 2560.48을 기록 중이다. 간밤 뉴욕증시는 '뜨거운 물가'에 혼조세를 나타냈다. 미 노동부에 따르면 1월 소비자물가지수는 전월 대비 0.5% 상승했다. 이는 2023년 8월 이후 최대치이며 시장 예상치인 0.3%도 웃도는 수치다. 변동성이 큰 식료품과 에너지를 제외한 1월 근원 CPI도 전월 대비 0.4% 상",
+            "stockCodes": [],
+            "newsType": "market_news",
+            "imageUrl": "https://img.hankyung.com/photo/202502/01.39489067.1.jpg",
+            "source": "hankyung",
+            "agencyName": "한국경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T09:23:31",
+            "nation": "KR"
+        },
+        {
+            "newsId": "ajukyung_20250213082405637",
+            "title": "[뉴욕증시 마감] 美소비자물가 상승에 혼조…테슬라 2.4%↑",
+            "contentText": "다우 0.5%·S&P 0.3%↓·나스닥은 보합 양자 종목 반등…디웨이브 13.3% 폭등 미국 뉴욕증시의 3대 지수가 12일 혼조세로 마감했다. 1월 미국 소비자물가지수가 예상을 옷돌면서 투매 물량이 쏟아졌지만 저가 매수세가 낙폭을 빠르게 줄였다. 이날 뉴욕증시에서 블루칩 중심의 다우존스30 산업평균지수는 전장보다 225.09포인트 내린 4만4368.56에 거래를 마감했다. 대형주 중심의 S&P500지수는 전장보다 16.53포인트 내린 6051.97을 기록했다. 기술주 중심의 나스닥종합지수는 전장보다 6.09포인트 오른 1만9649.",
+            "stockCodes": [],
+            "newsType": "cluster_market|series",
+            "imageUrl": "https://image.ajunews.com/content/image/2025/02/13/20250213082434539930.jpg",
+            "source": "ajukyung",
+            "agencyName": "아주경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:25:54",
+            "nation": "US"
+        },
+        {
+            "newsId": "news1_5688334",
+            "title": "美 소비자물가 1년반만에 최대 상승…올해 금리인하 없을 위험",
+            "contentText": "지난달 미국 소비자 물가가 1년 반 만에 가장 많이 상승하면서 올해 금리인하가 전혀 없을 가능성까지 염두에 둬야 하는 상황이다. 예상을 웃도는 인플레이션 수치에 중앙은행 연방준비제도가 금리인하를 서두르지 않겠다는 입장이 더욱 확고해졌다. 주거·식품·가스 인플레 가속화…올해 금리인하 제로 가능성 12일 노동통계국 보고서에 따르면 1월 소비자물가지수는 전년 동기 대비 3% 상승해 4개월 연속 오름세를 나타냈다. 예상 2.9%를 상회했고 2024년 6월 이후 가장 큰 폭으로 상승했다. 특히 소비자 기대에 크게 영향을 미치는 주거, 식품,",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image19.png",
+            "source": "news1",
+            "agencyName": "뉴스1",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T09:15:43",
+            "nation": "US"
+        },
+        {
+            "newsId": "hankyung_X20250213.092321",
+            "title": "토종 AI 반도체 기업 퓨리오사AI, 美 메타에 팔리나",
+            "contentText": "포브스 등 메타가 인수 논의 중 이르면 이달내 인수 완료 전망도 이 기사는 02월 12일 09:51 마켓인사이트에 게재된 기사입니다. 인공지능 반도체 팹리스인 퓨리오사AI가 미국 메타와 매각협상을 벌이고 있는 것으로 전해졌다. 메타는 페이스북의 모회사다. 11일 미 경제매체 포브스는 인수 논의가 이르면 이달 안에 끝날 수도 있다며 이같이 보도했다. 퓨리오사AI 관계자도 매각 협상이 이뤄지고 있는 것은 사실이라고 확인했다. 퓨리오사AI는 데이터센터 서버용 AI 추론 연산 특화 반도체를 개발하는 스타트업이다. 삼성전자와 미국 반도체 기",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image5.png",
+            "source": "hankyung",
+            "agencyName": "한국경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T09:23:21",
+            "nation": "KR"
+        },
+        {
+            "newsId": "ajukyung_20250213091732701",
+            "title": "[개장시황] 국내 증시, 美 CPI 쇼크에도 강세",
+            "contentText": "국내 증시가 미국 소비자물가지수 쇼크에도 강세를 나타내고 있다. 13일 한국거래소에 따르면 코스피는 이날 오전 9시7분 현재 전 거래일 대비 12.19포인트 오른 2560.58에 거래되고 있다. 개인과 기관은 각각 368억원, 630억원 순매수하는 가운데 외국인은 929억원 순매도 중이다. 시가총액 상위종목에서는 △SK하이닉스 △LG에너지솔루션 △현대차 △기아 등이 상승세를 나타내는 가운데 KB금융은 하락세를 보이고 있다. 코스닥은 전 거래일 대비 6.46포인트 오른 751.64에 거래 중이다. 개인과 외국인은 장 초반 매수, 매도",
+            "stockCodes": [],
+            "newsType": "series|market_news",
+            "imageUrl": "https://image.ajunews.com/content/image/2025/02/13/20250213091813290132.png",
+            "source": "ajukyung",
+            "agencyName": "아주경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T09:18:22",
+            "nation": "KR"
+        },
+        {
+            "newsId": "hankyung_X20250213.074657",
+            "title": "예상보다 뜨거운 물가에 '혼조'…메타는 18일 연속 상승 [뉴욕증시 브리핑] ",
+            "contentText": "뉴욕증시의 주요 지수가 변동성을 보인 끝에 혼조로 마감했다. 올 1월 미국의 물가 상승률이 예상보다 더 높게 나타나면서 투매가 촉발된 영향으로 보인다. 12일 뉴욕증권거래소에서 다우존스30산업평균지수는 전장보다 225.09포인트 내린 4만4368.56에 거래를 마감했다. 스탠더드앤드푸어스500지수는 16.53포인트 하락한 6051.97, 기술주 중심의 나스닥종합지수는 6.09포인트 오른 1만9649.95에 장을 마쳤다. 1월 미국 소비자물가지수가 시장의 예상치를 웃돌며 가파르게 상승하자 증시가 충격을 받았다. 미 노동부에 따르면 1",
+            "stockCodes": [],
+            "newsType": "hot_news|cluster_market|series|market_news",
+            "imageUrl": "https://img.hankyung.com/photo/202502/AD.39338695.1.jpg",
+            "source": "hankyung",
+            "agencyName": "한국경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:46:57",
+            "nation": "US"
+        },
+        {
+            "newsId": "seokyung_2GOYB5HERM",
+            "title": "‘관세 엎친데 물가 덮쳤네’ 뉴욕증시 혼조···다우존스 0.5%↓",
+            "contentText": "S&P500 0.27%↓, 나스닥 0.03%↑ 美 1월 CPI 3.0%···예상치 상회 7개월 만에 다시 3%대 복귀 美10년물 금리 10bp↑···4.6% 위로 뉴욕증시가 물가 불안에 혼조세를 보였다. 도널드 트럼프 미국 대통령의 관세 정책으로 인한 글로벌 무역 불안이 지속되는 가운데 미국 물가가 치솟으면서 투자자 심리가 위축됐다. 높은 물가에 미국 국채 수익률은 4.6%로 뛰었고 이는 증시를 눌렀다. 12일 뉴욕 증시에서 다우존스30산업평균지수는 225.09포인트 내린 4만4368.56에 거래를 마쳤다. 스탠더드앤드푸어스500은",
+            "stockCodes": [],
+            "newsType": "cluster_market|series|market_news",
+            "imageUrl": "https://newsimg.sedaily.com/2025/02/13/2GOYB5HERM_1.jpg",
+            "source": "seokyung",
+            "agencyName": "서울경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:38:18",
+            "nation": "US"
+        },
+        {
+            "newsId": "seokyung_2GOYCF0G0L",
+            "title": "올트먼 \"GPT-4.5 몇 주 내 출시··· 이후 일반·추론 AI 통합\"",
+            "contentText": "샘 올트먼 오픈AI 최고경영자가 몇 주 안에 신규 인공지능 모델 ‘GPT-4.5’를 공개하겠다고 밝혔다. 현 세대인 GPT-4o의 뒤를 잇는 마지막 ‘비 추론 AI’로, 이후 출시하는 GPT-5부터는 추론과 일반 AI를 통합시킨다는 계획이다. 12일 올트먼은 자신의 소셜미디어 엑스에 GPT-4.5와 GPT-5에 대한 청사진을 공유했다. 올트먼은 “다음 단계로 ‘오라이온’이라 불리는 GPT-4.5를 출시할 예정”이라며 “오픈AI의 마지막 비 사고의 사슬 모델”이라고 밝혔다. GPT-4.5 이후 공개할 모델은 GPT-5다. 올트먼은 “",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://newsimg.sedaily.com/2025/02/13/2GOYCF0G0L_1.jpg",
+            "source": "seokyung",
+            "agencyName": "서울경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:47:10",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_AKR20250213023800016",
+            "title": "월가 \"트럼프 중국 관세, 빅테크 특히 해친다\"",
+            "contentText": "도널드 트럼프 미국 대통령의 대중 관세가 결국 미국의 거대 기술 기업들에게 치명타를 입힐 것이라는 월가의 분석이 나왔다. 12일 월가 투자은행 파이퍼샌들러는 S&P500 대형주, 특히 기술주는 중국에 과도하게 노출되어 있다며 이같이 주장했다. 파이퍼샌들러는 중국의 경제가 휘청이는 동시에 중국은 해외 사업에 더욱 적대적인 모습을 보인다며 이는 결국 미국 기업들의 손해로 이어질 것이라고 설명했다. 트럼프 대통령의 관세 전쟁은 갈등의 수위를 고조시키고 빅테크 기업의 리스크도 증폭시킨다는 것이다. 빅테크 기업 중에서도 반도체 기업이 이 같",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image17.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:59:18",
+            "nation": "US"
+        },
+        {
+            "newsId": "infostockdaily_0000205698",
+            "title": "[0213개장체크] 예상 밖 CPI 상승… 인플레이션 우려 재점화",
+            "contentText": "인포스탁데일리가 매일 아침 전 세계 투자 정보를 담은 ‘읽어주는 뉴스’를 배달해드립니다. 미국증시 마감과 시장 이슈, 주목할만한 인사이트가 담긴 주요 외신, 국내 시장 종목들의 시세를 움직일 뉴스 등을 엄선했습니다. 증시 개장 전 빠르게 변하는 시장 현황을 살펴보고 이를 통해 투자전략을 점검할 수 있도록 마련된 코너입니다. ■ 국내증시 코스피 지수는 0.37% 상승한 2548.39에 마감했다. 수급별로는 외국인과 기관이 각각 966억, 529억 순매수, 개인은 1,984억 순매도했다. 선물시장에서는 기관이 196계약 순매수, 외국인",
+            "stockCodes": [],
+            "newsType": "market_news",
+            "imageUrl": "https://www.infostockdaily.co.kr/news/photo/202502/205698_204038_559.png",
+            "source": "infostockdaily",
+            "agencyName": "인포스탁데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:06:43",
+            "nation": "KR"
+        },
+        {
+            "newsId": "maekyung_5093967",
+            "title": "트럼프 금리 인하 압박에도 파월 \"당분간 긴축적 통화정책 기조 유지\"",
+            "contentText": "제롬 파월 미 연방준비제도 의장은 현지시간으로 어제 금리 인하를 압박하는 도널드 트럼프 미국 대통령의 발언이 연준의 금리 결정에 영향을 미치지 않을 것이라고 강조했습니다. 파월 의장은 이날 열린 연방 하원 청문회에서 트럼프 대통령의 금리 발언에 대한 의원 질의에 국민들은 연준이 계속해서 묵묵히 맡은 바 임무를 수행하며 경제 상황에 근거해 결정을 내릴 것이라고 확신해도 된다라고 말했습니다. 앞서 트럼프 대통령은 이날 사회관계망서비스 트루스소셜에 올린 글에서 금리는 인하돼야 한다며 이는 다가올 관세와 함께 진행될 것이라고 적은 바 있습",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://img.mbn.co.kr/filewww/news/2025/02/13/173939859867ad1dc656218.jpg",
+            "source": "maekyung",
+            "agencyName": "매일경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:21:56",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_AKR20250213010800016",
+            "title": "[뉴욕채권] 국채가, '깜놀' CPI에 급락…10년물 금리 4.6% 돌파",
+            "contentText": "파월 지금은 제약적 정책 유지…상반기 내내 동결 가능성 60% 후반대로 *그림1* 김성진 기자 = 미국 국채가격은 일제히 급락했다. 미국의 지난달 소비자물가가 강한 오름세를 보이면서 연방준비제도 금리 인하 기대가 상당히 약해졌다. 금리 선물시장에 반영된 상반기 내내 금리 동결 가능성은 60% 후반대까지 높아졌다. 10년물 입찰은 수요가 부진해 흐름을 되돌리는 데 도움을 전혀 주지 못했다. 연합인포맥스의 해외금리 일중 화면에 따르면 12일 오후 3시 현재 뉴욕 채권시장에서 10년물 국채금리는 전 거래일 오후 3시 기준가보다 10.10",
+            "stockCodes": [],
+            "newsType": "hot_news|cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image5.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T05:59:14",
+            "nation": "US"
+        },
+        {
+            "newsId": "etoday_2025021300045",
+            "title": "트럼프 “금리 낮아져야…다가올 관세와 함께 진행될 것”",
+            "contentText": "파월, 트럼프 압박 영향 없다 입장 재확인 도널드 트럼프 미국 대통령이 12일 미국 중앙은행인 연방준비제도에 또 기준금리 인하를 압박했다. 로이터통신에 따르면 트럼프 대통령은 이날 오전 자신이 설립한 소셜미디어 트루스소셜에 “금리는 낮아져야 한다”면서 “이는 다가올 관세와 함께 진행될 것”이라고 밝혔다. 앞서 10일 트럼프는 다수의 국가에 11∼12일 상호관세 부과 계획을 발표할 것이라고 예고했다. 트럼프는 대선 때부터 지속적으로 금리 인하를 요구해 왔는데, 이번에도 재차 언급했다. 이에 제롬 파월 연준 의장은 트럼프의 요구가 금리",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://img.etoday.co.kr/pto_db/2025/02/600/20250213082031_2136156_1200_800.jpg",
+            "source": "etoday",
+            "agencyName": "이투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:44:58",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_AKR20250213022500016",
+            "title": "시스코, 실적 호조에 시간외거래서 약 6% 급등",
+            "contentText": "*그림* 문정현 기자 = 미국 네트워크 장비업체인 시스코 주가가 월가 예상치를 넘는 실적과 전망치 덕에 시간외거래에서 급등했다. 12일 시스코 주가는 전일 대비 0.16% 오른 62.53달러에 정규장을 마감한 데 이어 오후 5시37분 시간외거래에서는 5.90% 급등한 66.22달러를 기록 중이다. CNBC에 따르면 시스코는 1월 25일로 마감된 회계연도 기준 2분기에 주당 94센트의 순이익을 기록했다. 월가 예상치인 91센트보다 높다. 매출도 예상치인 138억7천만달러보다 높은 139억9천만달러를 기록했다. 지난해 같은 기간 대비 ",
+            "stockCodes": [],
+            "newsType": "hot_news|cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image10.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:47:32",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_ICH738893",
+            "title": "인플레이션 가속, 금리인상 위험 커지고 있어",
+            "contentText": "1월 CPI 인플레이션이 전월 대비 가속되고 컨센서스를 상회한 데 대해, 주요 IB는 다음과 같이 언급하고 있다. CME Group의 Erik Norland 이코노미스트는 “1월 CPI 인플레이션에서는 주거비가 +0.4% MoM을 기록하면서 전월 +0.3%에서 상승하는 등, 근원 CPI에 중요한 상승압력으로 나타나고 있다. 모기지 금리가 상승하고, 렌털 주택 공실률이 역대 최저수준을 기록하고 있는 점이 주거비 상승압력을 가하고 있다”고 분석했다. “이번 인플레이션 자료는 미 연준이 추가 금리인하를 단행하기 어려울 것임을 예고한다”고",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image7.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T09:27:42",
+            "nation": "US"
+        },
+        {
+            "newsId": "edaily_2025021307382100216",
+            "title": "빨라야 10월 금리인하\" 뉴욕증시, 물가반등에 하락",
+            "contentText": "계란가격 급등에 물가반등…“매우 불편한 수치” 파월 “제약적 정책 유지해야”…과잉반응 경계도 시장 “빨라야 10월 금리인하”…10년물 4.6% 재돌파 우러 전쟁 휴전 가능성에 국제유가 2% 이상 급락 뉴욕증시 3대지수가 나스닥을 제외하고 일제히 하락했다. 미국의 1월 소비자물가가 예상보다 더 크게 오르면서 투심이 악화됐다. 견고한 고용시장과 함께 인플레이션 둔화세가 계속 멈춘 상황에서 연방준비제도는 금리 인하에 더욱 신중론을 펼칠 가능성이 크다. 시장은 올해 한차례 정도만 금리인하가 가능할 것으로 조정했다. 12일 뉴욕증권거래소에서",
+            "stockCodes": [],
+            "newsType": "writer|cluster_market|market_news",
+            "imageUrl": "https://image.edaily.co.kr/images/photo/files/NP/S/2025/02/PS25021300330.jpg",
+            "source": "edaily",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:38:21",
+            "nation": "US"
+        },
+        {
+            "newsId": "herald_10418937",
+            "title": "‘코스닥 새내기’ 동방메디컬, 34% 급등",
+            "contentText": "미용 의료기기 기업 동방메디컬이 코스닥 상장 첫날 급등하고 있다. 13일 오전 9시 32분 현재 동방메디컬은 공모가보다 34.29% 오른 1만4100원을 나타내고 있다. 동방메디컬은 한방 침, 부항 컵 등 한방 의료 제품과 필러, 각종 특수 침 등 미용 의료 제품을 만드는 기업이다. 기관투자자 대상 수요예측에서 910.14대 1의 경쟁률을 기록했으며, 일반 청약에서는 106.3대 1의 경쟁률을 보였다. \u0003",
+            "stockCodes": [],
+            "newsType": "cluster_popular",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image9.png",
+            "source": "herald",
+            "agencyName": "해럴드경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T09:36:45",
+            "nation": "KR"
+        },
+        {
+            "newsId": "edaily_2025021308173800318",
+            "title": "예상치 상회한 미 1월 CPI…국고채 약세 출발 전망[채권브리핑] ",
+            "contentText": "간밤 미국채 10년물 금리 9bp↑ 미 1월 근원 CPI, 전월 대비 0.5%↑ 상반기 내 미 금리 인하 기대 사라져 국고채 스프레드, 일제히 확대 지속 13일 국내 국고채 시장은 간밤 미국채 금리 흐름을 반영하며 약세 출발할 것으로 예상된다. 미국 1월 소비자물가지수가 예상치를 상회하면서 간밤 미국채 금리는 급등했다. 이에 국내 금리 상승도 불가피해 보이나 특정 레벨 이상에선 저가매수가 유입되며 금리 상방을 제한할 공산도 있다. 간밤 미국채 10년물 금리는 전거래일 대비 9bp 오른 4.62%에 마감했다. 통화정책에 상대적으로 민",
+            "stockCodes": [],
+            "newsType": "cluster_market|market_news",
+            "imageUrl": "https://image.edaily.co.kr/images/photo/files/NP/S/2025/02/PS25021300366.jpg",
+            "source": "edaily",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:17:38",
+            "nation": "US"
+        },
+        {
+            "newsId": "asiae_2025021306383807061",
+            "title": "[뉴욕증시] 1월 CPI '깜짝 상승' 경계감에 다우·S&P ↓…美 국채 금리 급등",
+            "contentText": "1월 CPI, 전년比 3% 상승 '예상 상회' Fed 금리 인하 재개 늦어질 듯 美 국채 10년물 금리 급등 우크라戰 종전 기대에 국제유가 2%대 하락 13일 PPI, 14일 소매판매 발표 미국 뉴욕증시의 3대 지수가 12일 보합권에서 혼조세로 마감했다. 지난달 소비자물가지수 상승률이 다시 3%대에 진입, 미 연방준비제도의 금리 인하 재개 시점이 더욱 늦춰질 것이란 전망에 투자자들의 경계감이 커졌다. 미 국채 금리는 10년물 기준 10bp가량 치솟고 있다. 미국과 러시아가 우크라이나 전쟁 종전 협상을 즉시 개시하기로 합의했다는 소식",
+            "stockCodes": [],
+            "newsType": "cluster_market|series|market_news",
+            "imageUrl": "https://cphoto.asiae.co.kr/listimg_link.php?idx=2&no=2024082923251311880_1730078878.jpg",
+            "source": "asiae",
+            "agencyName": "아시아경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T06:38:38",
+            "nation": "US"
+        },
+        {
+            "newsId": "etoday_2025021300044",
+            "title": "엔화, 예상보다 높은 미국 인플레에 약세",
+            "contentText": "관세 전쟁 우려 완화...유로화 강세 미 달러화 가치는 12일 미국 1월 물가상승률이 시장 예상보다 높게 집계되자 금리가 높게 유지될 수 있다는 전망에 장 초반 108을 넘어 급등했으나 이후 상승폭이 줄었다. 주요 6개 통화 대비 달러 가치를 보여주는 ICE달러인덱스는 전날보다 0.01% 오른 107.98으로 집계됐다. 유로ㆍ달러 환율은 0.5% 상승한 1.0362달러를 기록했다. 달러ㆍ엔 환율은 1.3% 오른 154.44엔을 나타냈다. 파운드·달러 환율은 0.6% 높은 1.2444달러를 보였다. 미국 소비자물가지수가 예상 밖 상승",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://img.etoday.co.kr/pto_db/2025/02/600/20250205154323_2133304_1200_681.jpg",
+            "source": "etoday",
+            "agencyName": "이투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:44:24",
+            "nation": "US"
+        },
+        {
+            "newsId": "herald_10418817",
+            "title": "금값 끌어올린 ‘골드 무브’ 끝나가나…하락 경고 이어져",
+            "contentText": "금값이 글로벌 불확실성 상황에서 치솟는 가운데 일각에서는 하락 가능성을 경고하는 목소리도 이어지고 있다. 12일 미국 뉴욕상업거래소에서 금 선물 가격은 전 거래일 대비 0.1% 하락한 2928.70달로로 마쳤다. 금값은 지난해 연간 27% 오른데 이어 올해 들어서 추가로 10% 오르는 등 가파르게 상승하고 있다. 특히 지난 10일 트로이온스당 2968.50달러까지 오르며 3000달러 선을 코앞에 뒀다. 금값을 끌어올린 가장 큰 이유는 도널드 트럼프 미국 대통령의 관세 정책에 따른 불확실성 확대로 안전자산인 금에 대한 선호가 커졌기 ",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image2.png",
+            "source": "herald",
+            "agencyName": "해럴드경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:45:21",
+            "nation": "KR"
+        },
+        {
+            "newsId": "yonhap_usa_AKR20250213013300016",
+            "title": "달러, 美 CPI에 급등 후 반락…우크라 종전 협상에 유로↑",
+            "contentText": "*그림1* 최진우 특파원 = 미국 달러화 가치가 소폭 상승했다. 달러는 미국의 지난달 소비자물가지수가 예상보다 크게 올랐다는 소식에 급등세를 보인 뒤 우크라이나 전쟁 종전 협상 이슈가 부상하자 뒷걸음질쳤다. 유로는 유로존 경제의 발목을 잡아온 우크라이나 전쟁의 해결 실마리가 나오자 강세를 보였다. 연합인포맥스에 따르면 12일 오후 4시 현재 뉴욕 외환시장에서 달러-엔 환율은 154.440엔으로, 전 거래일 뉴욕장 마감가 152.560엔보다 1.880엔 급등했다. 달러-엔 환율은 뉴욕 장 들어 154.792엔까지 치솟았다. 싱가포르 ",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image6.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T06:43:48",
+            "nation": "US"
+        },
+        {
+            "newsId": "hankyung_X20250213.072233",
+            "title": "트럼프, 우크라 종전 협상 합의…뉴욕증시, 물가 상승에 하락",
+            "contentText": "◆트럼프, 푸틴·젤렌스키와 통화…우크라이나 종전 협상 시작 합의 도널드 트럼프 미국 대통령은 12일 현지시간 오전 이뤄진 푸틴 대통령과의 통화에서 종전 협상을 즉각 시작하기로 합의했습니다. 이어 이어진 젤렌스키 대통령과의 통화에서도 평화를 이루길 원한다는 젤렌스키 대통령의 발언을 끌어냈습니다. 트럼프 대통령은 자신이 설립한 소셜미디어 투르스소셜에 푸틴 대통령과의 통화 사실을 알리면서 우리는 전쟁으로 발생하는 수백만 명의 죽음을 중단하기를 원한다는 데 동의했다고 전했습니다. 또 트루스소셜을 통해 젤렌스키 대통령과 통화한 사실도 알렸습",
+            "stockCodes": [],
+            "newsType": "market_news",
+            "imageUrl": "https://img.hankyung.com/photo/202502/01.12608176.1.jpg",
+            "source": "hankyung",
+            "agencyName": "한국경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T07:22:33",
+            "nation": "US"
+        },
+        {
+            "newsId": "etoday_2025021300025",
+            "title": "국내 증시, 美 1월 CPI 쇼크에 약보합 출발 전망",
+            "contentText": "증시 전문가는 13일 국내 증시가 약보합권으로 출발할 것으로 전망했다. 이날 이성훈 키움증권 연구원은 “전날 코스피는 제롬 파월 미국 연방준비제도 의장의 금리 인하 속도 조절 발언에도 조선, 방산 등에 연이은 호재성 뉴스에 관련 업종을 중심으로 상승했다”고 했다. 이 연구원은 “최근 상승세가 가팔랐던 코스닥은 로봇주 중심으로 일부 차익실현 매물이 출회되며 조정을 받았다”고 했다. 이 연구원은 “이날 국내 증시는 1월 소비자물가지수 쇼크 및 미국채 10년물 금리 급등을 반영하며 약보합권으로 출발할 것”이라고 전망했다. 다만 그는 “최",
+            "stockCodes": [],
+            "newsType": "series",
+            "imageUrl": "https://img.etoday.co.kr/pto_db/2025/02/20250213081459_2136151_600_400.jpg",
+            "source": "etoday",
+            "agencyName": "이투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T08:30:00",
+            "nation": "KR"
+        },
+        {
+            "newsId": "edaily_overseas_2025021305131600061",
+            "title": "바이두, 차세대 AI 모델 공개 계획…주가 4% 상승",
+            "contentText": "중국 기술기업 바이두는 2025년 하반기 차세대 인공지능 모델 ‘어니 5.0’을 공개할 계획이라고 밝혔다. 업그레이드된 모델은 텍스트, 영상, 이미지, 오디오 등 다양한 형식을 처리할 수 있는 멀티모달 기능을 갖출 것으로 예상된다. 12일 오후3시3분 바이두 주가는 전일대비 4.83% 상승한 93.75달러에 거래되고 있다. 배런스에 따르면 이번 AI 모델 개발은 중국 내 AI 시장 경쟁이 심화되는 가운데 바이두가 경쟁력을 강화하려는 전략적 움직임으로 해석된다. 최근 스타트업 딥시크가 오픈AI의 GPT와 유사한 성능을 낮은 비용으로 ",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image3.png",
+            "source": "edaily_overseas",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T05:13:16",
+            "nation": "US"
+        },
+        {
+            "newsId": "edaily_overseas_2025021302010200024",
+            "title": "레딧, 인터컨티넨털 익스체인지와 금융 데이터 분석 제품 개발",
+            "contentText": "소셜 플랫폼 운영 기업 레딧은 12일 세계 최대 증권거래소 인터컨티넨털 익스체인지와 손잡고 금융 산업을 위한 데이터 분석 제품을 개발한다고 발표했다. 마켓워치 보도에 따르면 이번 프로젝트는 레딧의 익명 대화 내용을 인터컨티넨털 익스체인지의 데이터 과학 및 머신러닝 인프라와 연결해 새로운 데이터셋과 분석 도구를 제공하는 것을 목표로 하고 있다. 레딧은 “이번 협력으로 금융 전문가와 기업들이 레딧의 방대한 콘텐츠에 보다 쉽게 접근해 분석할 수 있게 되며 이를 통해 시장 참여자들은 투자 결정과 리스크 관리에 유용한 정보를 얻게될 것”이라",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image13.png",
+            "source": "edaily_overseas",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T02:01:02",
+            "nation": "US"
+        },
+        {
+            "newsId": "yna_AKR20250213005600002",
+            "title": "달러-원, 뜨거운 美 물가 vs 우크라 협상 개시…1,456.00원 마감",
+            "contentText": "달러-원, 뜨거운 美 물가 vs 우크라 협상 개시…1,456.00원 마감 김성진 연합인포맥스 기자 = 달러-원 환율은 야간 거래에서 미국의 지난달 소비자물가가 예상보다 높게 나온 여파에 상승했다. 다만 우크라이나 전쟁 종전 협상이 조만간 시작될 것이라는 기대에 오름폭이 일정 부분 되돌려졌다. 13일 새벽 2시 달러-원 환율은 전장 서울환시 종가 대비 3.40원 상승한 1,456.00원에 거래를 마쳤다. 이번 장 주간 거래 종가 1,453.40원 대비로는 2.60원 높아졌다. 달러-원은 뉴욕 오전 장 초반 미국의 지난달 소비자물가지수",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image9.png",
+            "source": "yna",
+            "agencyName": "연합뉴스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-13T03:13:52",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_ICH738889",
+            "title": "2월 12일 주요 종목에 대한 IB 투자의견",
+            "contentText": "▲ 엔비디아: Benchmark는 자동차용 반도체 시장에서의 사업 확대가 추가적인 성장동력이 될 수 있다고 예상했다. 투자의견을 매수로 유지했다. ▲ 넷플릭스: Bernstein은 팟캐스팅 사업의 시장기회가 밝다고만은 할 수 없지만, 컨텐츠 다각화 측면에서 효과적인 전략일 수 있다고 보았다. Outperform 의견을 유지했다. ▲ 테슬라: 모간스탠리는 미국 제조업 성장 가능성이 주목받고 있는 가운데 테슬라가 핵심적인 종목이라고 보고, 저가매수를 권고했다. ▲ 코카콜라: 웰스파고는 대표적인 대형주 중에서 차별화되어 있다고 강조했으며",
+            "stockCodes": [],
+            "newsType": "cluster_popular",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image14.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T23:05:09",
+            "nation": "US"
+        },
+        {
+            "newsId": "edaily_overseas_2025021222005301150",
+            "title": "테슬라, 개장 전 반등…모건스탠리 \"낙관전망 유지\"",
+            "contentText": "테슬라가 개장 전 거래에서 2%대 반등을 시도 중이다. 12일 오전 7시52분 개장 전 거래에서 테슬라 주가는 전일대비 2.35% 오른 336.21달러에서 출발을 준비하고 있다. 전일 테슬라는 6% 넘는 급락으로 마감됐다. 중국내 최대 전기차 제조업체인 BYD가 딥시크와 합력해 자율주행시스템을 탑해할 것이라고 밝히며 테슬라에 부담으로 작용한 것이다. 특히 1만달러 이하의 저가모델에도 해당 기능을 제공할 것으로 알려지며 테슬라에는 더 부담요인으로 작용할 것이라고 월가는 판단했다. 올해에만 18% 넘게 빠지며 매그니피센트7종목 가운데 ",
+            "stockCodes": [],
+            "newsType": "cluster_popular",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image7.png",
+            "source": "edaily_overseas",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T22:00:53",
+            "nation": "US"
+        },
+        {
+            "newsId": "maekyung_000011239616",
+            "title": "“이 남자 또 급발진하네”…테슬라 올라탔던 서학개미들 어질어질, 이유가",
+            "contentText": "獨극우정당 지지 오픈AI 인수 제안…돌발행동에 투자자 멘붕 美정부효율부 이끄는 머스크 트럼프 전폭 지지에 기세등등 연일 극단적 정치 행보로 구설 오너리스크에 테슬라 주가 뚝 두달여 만에 30% 넘게 떨어져 유럽서 전기차 판매실적 급감 브로드컴·TSMC에 시총 역전 일론 머스크 테슬라 최고경영자가 광폭 정치 행보를 보이며 논쟁적인 이슈를 양산하자 투자자들의 실망감이 커지고 있다. 특히 유럽, 중국, 미국 일부 지역의 전기차 판매 부진에도 아랑곳하지 않고, 정치활동에 주력하자 ‘오너 리스크’가 점점 더 커지고 있다는 비판이 일고 있다.",
+            "stockCodes": [],
+            "newsType": "cluster_popular",
+            "imageUrl": "https://wimg.mk.co.kr/news/cms/202502/12/news-p.v1.20250212.8dc3817fe94f417c80c8931dbd6b8712_P1.png",
+            "source": "maekyung",
+            "agencyName": "매일경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T21:16:22",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_ICH738878",
+            "title": "테슬라, 1분기 40만 대 인도하지 못할 수 있어",
+            "contentText": "Benzinga는 테슬라의 인도대수가 감소세를 보일 것이라는 우려가 제기되고 있다고 보도했다. “Troy Teslike는 테슬라의 ‘25년 1분기 전기차 인도대수가 40만 대를 하회할 것이라고 예상했다. 테슬라의 분기 인도대수가 40만 대를 하회했던 마지막 사례는 ‘22년 3분기였다”고 언급했다. “특히 Model Y 리프레시 차량의 생산량이 충분히 확보되지 못한 점, 브랜드 투자심리가 저조한 점, 계절적 패턴이 수요를 제한하고 있는 점 등이 이러한 인도대수 부진 전망의 배경이 되었다”고 전했다. 이어 “분기 인도대수가 40만 대를",
+            "stockCodes": [],
+            "newsType": "cluster_popular",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image8.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T20:00:04",
+            "nation": "US"
+        },
+        {
+            "newsId": "yonhap_usa_ICH738883",
+            "title": "크래프트 하인즈, EPS 가이던스 실망에 하락",
+            "contentText": "크래프트 하인즈는 ‘24년 4분기 실적을 다음과 같이 발표했다. ▲ 매출 65.8억 달러를 기록했다. 이는 컨센서스를 0.9억 달러 하회한다. ▲ 비GAAP EPS 0.84달러를 기록했다. 이는 컨센서스를 0.06달러 상회한다. ▲ 동사의 주가는 프리마켓에서 3.68% 하락하고 있다. 자체매출은 전년 동기 대비 3.1% 감소했으며, 조정 매출총이익률은 34.4%로 0.4%p 하락했다. 지역별로는 북미 매출 49.7억 달러 / 해외선진국 9.1억 달러 / 해외신흥국 6.9억 달러 등을 기록했다. 경영진은 ‘25년 전체 자체매출 증가율",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image8.png",
+            "source": "yonhap_usa",
+            "agencyName": "연합인포맥스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T21:26:29",
+            "nation": "US"
+        },
+        {
+            "newsId": "seokyung_2GOXWLFPIA",
+            "title": "세계 최대 배터리 기업 中 CATL, 홍콩에도 상장···IPO 규모 50억달러 육박",
+            "contentText": "CATL 홍콩 상장 신청서 당국에 제출 상장 규모 50억 달러 관측에 홍콩 IPO 들썩 세계 최대 전기차 배터리 생산업체로 불리는 중국의 CATL이 홍콩 증시 상장에 나선다. 12일 블룸버그통신 등에 따르면 CATL은 전날 홍콩증권거래소에 상장 신청서를 제출했다. 구체적인 상장 일정은 공개하지 않은 가운데 뱅크오브아메리카, JP모건 등이 공동으로 주관사 역할을 맡는다. 현재 CATL은 중국 선전거래소에 상장돼 있지만 홍콩에 추가 상장해 성장을 위한 기반을 마련하겠다는 구상으로 읽힌다. CATL은 선전 증시에서 주가수익비율 19배 수",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://newsimg.sedaily.com/2025/02/12/2GOXWLFPIA_2.jpg",
+            "source": "seokyung",
+            "agencyName": "서울경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T19:39:01",
+            "nation": "US"
+        },
+        {
+            "newsId": "hankyung_X20250212.212416",
+            "title": "중국 AI 열풍에 알리바바 회생…한 달새 46% 급등",
+            "contentText": "바이두 제치고 중국 아이폰에 AI기능 탑재 보도 중국 AI주들 가운데 구체적 중기 수익 전망 가져 중국 인공지능 열풍과 중국내 아이폰 AI에 탑재된다는 소식으로 알리바바 그룹이 다시 한 번 투자자들에게 인기있는 기업으로 부상하고 있다. 12일 블룸버그 등 외신들에 따르면, 알리바바의 홍콩상장 주식은 1월 13일에 최저치를 기록한 이후 이 날 까지 46% 급등했다. 같은 기간 항셍 기술 지수의 25% 상승을 크게 웃돌았다. 이 날 미국증시 개장전 거래에서도 알리바바의 미국증시예탁증서은 3.8% 오른 117달러에 거래되고 있다. 이 날",
+            "stockCodes": [],
+            "newsType": "writer",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image18.png",
+            "source": "hankyung",
+            "agencyName": "한국경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T21:24:16",
+            "nation": "US"
+        },
+        {
+            "newsId": "maekyung_000011239506",
+            "title": "중국내 車판매 BYD 첫 선두 폭스바겐 제쳐",
+            "contentText": "중국 승용차 시장에서 민영 최대 기업 비야디가 지난해 처음으로 독일 폭스바겐을 제치고 판매 1위를 차지한 가운데 중국 자동차 산업 주도권이 국영 기업에서 민간 기업으로 이동하고 있다는 분석이 나왔다. 과거에는 정부가 외국 기술을 도입해 자동차 산업을 육성하는 전략을 추진했다면, 지금은 민간 대기업들이 성장하며 시장을 주도하기 시작했다는 것이다. 12일 니혼게이자이신문은 중국 국유 기업과 외국계 자본의 합자회사가 지배해왔던 중국 자동차 시장의 주역이 바뀌고 있다며 전기차 등 분야에서 힘을 모은 중국차의 영향력이 세계에서도 강해질 듯하",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image16.png",
+            "source": "maekyung",
+            "agencyName": "매일경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T17:38:39",
+            "nation": "US"
+        },
+        {
+            "newsId": "moneytoday_2025021218160249000",
+            "title": "손정의 '비전펀드' 적자에 소프트뱅크그룹 분기 실적도 '순손실'",
+            "contentText": "일본 소프트뱅크그룹이 지난해 4분기에 3조원 이상의 적자를 기록했다. 비전펀드 투자수익 악화가 전체 실적에도 영향을 미쳤다. 12일 니혼게이자이신문·CNBC 등에 따르면 소프트뱅크그룹은 이날 일본 증시 거래 종료 후 지난해 4분기에 3691억엔 순손실을 기록했다고 밝혔다. 이는 전문가 예상치에 못 미치는 것은 물론 전분기의 1조1766억엔 흑자에서 적자로 전환한 것이다. 비전펀드 사업의 투자수익 악화가 이번 적자의 주요 원인이다. 지난해 4분기 비전펀드는 3527억엔 순손실을 기록하며 전분기 흑자에서 적자로 전환했다. 비전펀드의 주",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://thumb.mt.co.kr/06/2025/02/2025021218160249000_2.jpg",
+            "source": "moneytoday",
+            "agencyName": "머니투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T18:48:00",
+            "nation": "US"
+        },
+        {
+            "newsId": "ajukyung_20250212175347504",
+            "title": "\"中, 10조원 들여 '자금난 부동산업체' 완커 살린다\"",
+            "contentText": "4조원 완커 미분양 주택 매입 등에 사용 중국 상하이의 한 완커 건설 현장 중국 정부가 약 500억 위안을 들여 채무불이행 위기에 직면한 중국 대형 부동산 개발업체 완커를 지원할 방침이라고 블룸버그통신이 소식통들을 인용해 12일 보도했다. 소식통에 따르면 중국 정부는 우선 지방정부 특별채권 할당량 중 200억 위안을 완커의 미분양 주택과 유휴용지를 매입하는 데 사용할 예정이다. 완커는 이 자금을 올해 만기가 도래하는 공공 및 민간 부채 상환에 사용할 것으로 보인다. 또한 중국 정부는 완커의 부채 상환을 위해 신규 채권 발행 및 은행",
+            "stockCodes": [],
+            "newsType": "writer",
+            "imageUrl": "https://image.ajunews.com/content/image/2025/02/12/20250212175825555076.jpg",
+            "source": "ajukyung",
+            "agencyName": "아주경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T18:25:43",
+            "nation": "US"
+        },
+        {
+            "newsId": "news1_5687876",
+            "title": "트럼프, '상호 관세' 발표 임박…글로벌 무역 전쟁 확대 우려 최고조",
+            "contentText": "도널드 트럼프 미국 대통령이 조만간 '상호 관세' 부과 계획을 발표할 전망이다. 트럼프 대통령의 '관세 몰아치기'에 정점을 찍을 가능성이 있는 만큼 국제사회에 무역전쟁의 전운이 짙게 감돌고 있다. 트럼프, 관세 폭탄…이번 주 추가 관세 발표 가능성 트럼프 대통령의 관세 리스크의 증폭이 이르면 이번 주 분수령을 맞을 전망이다. 백악관 한 소식통은 이번 주 후반에 추가 관세 구조에 대한 발표가 있을 수 있다고 로이터통신에 12일 말했다. 앞서 트럼프 대통령은 지난 10일 앞으로 이틀 내에 부과 계획을 발표할 것이라고 강조한 바 있다. ",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image6.png",
+            "source": "news1",
+            "agencyName": "뉴스1",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T16:55:16",
+            "nation": "US"
+        },
+        {
+            "newsId": "etoday_2025021200286",
+            "title": "폭스콘 회장, 닛산 인수설 부인…“원하는 건 협력”",
+            "contentText": "“협력 위해 지분 인수는 고려 가능” 류양웨이 폭스콘 회장이 12일 닛산 인수설을 부인했다. 최근 혼다와의 합병 추진이 중단된 닛산을 폭스콘이 사들일 것이라는 관측이 제기된 데 대해 처음으로 공식 입장을 내놓았다. 로이터통신에 따르면 류 회장은 이날 대만 신베이에 있는 본사에서 기자들의 질문을 받고 “닛산 인수를 고려하고 있지 않다”면서 “협력을 위해 필요하다면 지분을 사들이는 것을 고려할 수 있다”고 말했다. 그는 또 “우리의 목표는 닛산의 주식을 매수하는 것이 아니라 협력이다”라고 설명했다. 애플과 엔비디아의 주문자상표부착생산 ",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://img.etoday.co.kr/pto_db/2025/02/600/20250212163546_2136021_1200_800.jpg",
+            "source": "etoday",
+            "agencyName": "이투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T16:43:50",
+            "nation": "US"
+        },
+        {
+            "newsId": "edaily_2025021215424700801",
+            "title": "[코스닥 마감] 외인·기관 매도에 이틀째 약세…레인보우로보틱스 6%↓",
+            "contentText": "2거래일 연속 내림세…745.18 외인 1526억 순매도 vs 개인 2230억 순매수 업종 대부분 약세…시총 상위 혼조 코스닥 지수가 외국인과 기관의 팔자에 2거래일 연속 하락했다. 12일 엠피닥터에 따르면 코스닥지수는 전 거래일보다 4.41포인트 내린 745.18에 거래를 마쳤다. 이날 지수는 전장보다 0.12% 내린 748.65에 개장해 장중 약세를 지속했다. 특히 외국인과 기관이 각각 1526억원, 557억원어치 순매도 하면서 지수에 부담을 줬다. 개인이 홀로 2230억원 매수우위를 보였지만 지수 하락을 방어하기엔 역부족이었다",
+            "stockCodes": [],
+            "newsType": "series|market_news",
+            "imageUrl": "https://image.edaily.co.kr/images/photo/files/NP/S/2025/02/PS25021201051.jpg",
+            "source": "edaily",
+            "agencyName": "이데일리",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T15:42:47",
+            "nation": "KR"
+        },
+        {
+            "newsId": "financial_202502121058264635",
+            "title": "김 빠진 '트럼프 트레이드' 달러-코인-증시 호황 기대 밑돌아",
+            "contentText": "트럼프 당선 이후 치솟던 美 달러 지수, 지난달부터 꺾여 美 증시 및 비트코인 시세도 시원치 않아...테슬라 연일 하락 '트럼프 트레이드'로 주목받던 자산들, 기대보다 성적 나빠 금리 인상 기대 꺼지고 트럼프 관세 전쟁에 따른 침체 우려 커져 아직까지 구체적인 증시코인 정책 나오지 않아 강달러에 긴장하던 신흥시장 화폐 숨 돌려 미국의 도널드 트럼프 대통령 2기 정부 출범으로 주목받던 달러, 비트코인 같은 이른바 '트럼프 트레이드' 자산의 가격이 최근 떨어지거나 정체되고 있다. 시장에서는 미국 기준금리가 기대만큼 움직이지 않는데다 트",
+            "stockCodes": [],
+            "newsType": "cluster_market",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image2.png",
+            "source": "financial",
+            "agencyName": "파이낸셜뉴스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T15:20:12",
+            "nation": "US"
+        },
+        {
+            "newsId": "ajukyung_20250212170514457",
+            "title": "中증시, '자금난' 부동산기업 지원 소식에 상승…알리바바 관련주 급등",
+            "contentText": "中당국, 완커 지원 위해 지방채 통해 자금 조달 완커 상한가 찍어...SMIC 4분기 호실적에 3%↑ 항셍지수 2.6% 급등...'애플 협력' 알리바바 8%↑ 중국 증시 지수를 보여주는 상하이 루자쭈이 금융지구 전광판. [사진=로이터·연합뉴스? 중국 정부의 부동산 시장 지원 신호로 중국 증시 주요 주가 지수 모두 상승세를 나타냈다. 중국 IT공룡 알리바바와 애플의 협력 소식도 지수 상승을 견인했다. 12일 상하이종합지수는 28.33포인트 오른 3346.39, 선전성분지수는 151.26포인트 상승한 1만708.88에 장을 마쳤다. 대",
+            "stockCodes": [],
+            "newsType": "writer",
+            "imageUrl": "https://image.ajunews.com/content/image/2025/02/12/20250212171337738683.jpg",
+            "source": "ajukyung",
+            "agencyName": "아주경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T17:18:04",
+            "nation": "US"
+        },
+        {
+            "newsId": "hankyung_X20250212.142729",
+            "title": "닐 모한 유튜브 CEO \"미국에서 유튜브는 이미 TV를 넘어섰다\"",
+            "contentText": "유튜브가 미국 시장에서 TV를 제쳤다는 주장이 나왔다. 더 많은 이용자가 스마트폰보다 TV에서 유튜브를 시청하고 있어서다. 유튜브도 이런 추세에 발맞춰 앱을 개편하기 시작했다. 기존 콘텐츠 제작사의 영역으로 유튜브가 발을 들이밀고 있다는 분석이 나온다. 닐 모한 유튜브 최고경영자는 11일 연례 서한을 통해 지난해 미국에서 스마트폰보다 TV를 통해 유튜브를 시청한 이용자가 더 많아졌다며 유튜브가 '오래된 TV'를 넘어서 '새로운 TV'가 되고 있다고 밝혔다. 유튜브 시청 기기 순위에서 TV가 스마트폰을 제친 건 이번이 처음이다. 유튜",
+            "stockCodes": [],
+            "newsType": "writer",
+            "imageUrl": "https://img.hankyung.com/photo/202502/01.34589360.1.jpg",
+            "source": "hankyung",
+            "agencyName": "한국경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T14:27:29",
+            "nation": "KR"
+        },
+        {
+            "newsId": "moneytoday_2025021218140437414",
+            "title": "철강 관세폭탄에 '협상력' 부재 우려…'일본은 제외 요청이라도 하는데'",
+            "contentText": "미국이 철강·알루미늄 수입품에 대한 25% 관세를 부과하면서 전 세계가 출렁인다. 일본은 자국 기업에 대한 예외 인정을 요청했다. 유럽연합과 캐나다는 강경 대응을 예고하면서도 협상 여지를 남겼다. 탄핵 정국으로 국정 공백 상태인 우리의 경우 산업통상자원부가 미국과 접촉한다. 미국 상무부 수장이 현재로선 공석인 상태지만 실무 차원의 접촉과 논의가 필요해서다. 12일 정부부처에 따르면 박종원 산업통상자원부 통상차관보가 다음 주 미국을 방문할 예정이다. 철강·알루미늄 관세 부과 전부터 예정된 일정이지만 해당 주제도 논의 대상이 된다. 정",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://thumb.mt.co.kr/06/2025/02/2025021218140437414_1.jpg",
+            "source": "moneytoday",
+            "agencyName": "머니투데이",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T18:47:03",
+            "nation": "KR"
+        },
+        {
+            "newsId": "seokyung_2GOXX8TXCX",
+            "title": "'코인 ETF' 도입 군불···\"조기대선 어젠다 될 수도\"",
+            "contentText": "■親코인 목소리 높이는 금융권 트럼프發 가상자산 ETF 돈 몰려 美비트코인 ETF 순유입액만 59조 원 정은보·서유석 韓도 상장 필요 금융당국선 '신중론' 유지하지만 총선 때처럼 대선 공약으로 급부상 연내 현물 ETF 제도화 논의 전망 국내 금융투자 업계 대표 인사들이 가상자산 현물 상장지수펀드 도입과 관련해 수차례 강한 메시지를 내면서 그 배경에 투자자들의 관심이 쏠리고 있다. 금융당국은 여전히 투자자 보호가 더 중요하다는 입장이지만 조기 대선이 현실화하면 연내 가상자산 현물 ETF 제도화 논의가 급물살을 탈 것이란 전망이 나온다",
+            "stockCodes": [],
+            "newsType": "cluster_popular",
+            "imageUrl": "https://newsimg.sedaily.com/2025/02/12/2GOXX8TXCX_2.jpg",
+            "source": "seokyung",
+            "agencyName": "서울경제",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T18:10:09",
+            "nation": "KR"
+        },
+        {
+            "newsId": "yna_AKR20250212135800003",
+            "title": "\"올해 AI 서버 성장세 둔화 가능성…美규제·딥시크 등 영향\"",
+            "contentText": "올해 AI 서버 성장세 둔화 가능성…美규제·딥시크 등 영향 트렌드포스 분석…작년에는 글로벌 AI 서버 출하량 46%↑ 김아람 기자 = 지난해 인공지능 서버 시장이 가파르게 성장했으나 올해는 미국의 칩 수출 규제 등으로 인해 상대적으로 불확실성에 직면했다는 분석이 나왔다. 12일 시장조사업체 트렌드포스에 따르면 지난해 글로벌 AI 서버 출하량은 강력한 수요에 힘입어 전년보다 46% 증가했다. 그러나 미국의 대중국 반도체 수출 제한, 중국산 생성형 AI 서비스 딥시크 효과 등이 올해 AI 서버 출하량에 영향을 미칠 전망이다. 이 같은 ",
+            "stockCodes": [],
+            "newsType": "hot_news",
+            "imageUrl": "https://static.tossinvestcdn.com/assets/image/detail-news-default/image19.png",
+            "source": "yna",
+            "agencyName": "연합뉴스",
+            "relatedStocks": [],
+            "createdAt": "2025-02-12T16:35:48",
+            "nation": "KR"
+        }
     ]
 }
