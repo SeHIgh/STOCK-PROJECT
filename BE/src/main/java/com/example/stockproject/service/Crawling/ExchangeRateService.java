@@ -17,6 +17,7 @@ public class ExchangeRateService {
     // Logger 생성
     private static final Logger logger = LoggerFactory.getLogger(ExchangeRateService.class);
 
+
     public void getExchangeRate() {
 
 
@@ -31,6 +32,7 @@ public class ExchangeRateService {
 
         // 웹드라이버 실행 (크롬 브라우저 띄우기)
         WebDriver driver = new ChromeDriver();
+
         // 네이버 증권 환율 페이지 접속
         driver.get("https://finance.naver.com/marketindex/");
         logger.info("✅환율 정보 크롤링 시작");
@@ -64,4 +66,11 @@ public class ExchangeRateService {
         driver.quit();
         logger.info("🔴Chrome WebDriver 종료");
     }
+
+//    // 크롤링을 중지하는 메서드
+//    public void stopExchangeRateService() {
+//        // WebDriver 종료
+//        driver.quit();
+//        logger.info("🔴Chrome WebDriver 종료");
+//    }
 }

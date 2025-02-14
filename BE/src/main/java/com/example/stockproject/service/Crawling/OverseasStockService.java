@@ -3,6 +3,7 @@ package com.example.stockproject.service.Crawling;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import com.example.stockproject.dto.crawling.IndexDTO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -67,6 +68,8 @@ public class OverseasStockService {
                 String sp500ChangeSign = sp500Element.findElements(By.tagName("span")).get(1).getText();
                 String sp500ChangeRate = sp500Element.findElement(By.tagName("span")).getText();
 
+                IndexDTO indexDTO = new IndexDTO(nasdaqIndex, nasdaqChange, nasdaqChangeSign, nasdaqChangeRate);
+
                 // 로그 출력 (변동률과 실제 값 구분)
                 logger.info("📊나스닥 종합 지수: {} (변동: {}{} 변동률: {})", nasdaqIndex, nasdaqChangeSign, nasdaqChange, nasdaqChangeRate);
                 logger.info("📊S&P500 지수: {} (변동: {}{} 변동률: {})", sp500Index, sp500ChangeSign, sp500Change, sp500ChangeRate);
@@ -85,4 +88,11 @@ public class OverseasStockService {
         driver.quit();
         logger.info("🔴Chrome WebDriver 종료");
     }
+
+//    // 크롤링을 중지하는 메서드
+//    public void stopOverseasStockService() {
+//        // WebDriver 종료
+//        driver.quit();
+//        logger.info("🔴Chrome WebDriver 종료");
+//    }
 }
