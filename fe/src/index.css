@@ -101,6 +101,10 @@ input {
   @apply rounded-xl p-3 flex flex-col justify-between;
 }
 
+.block-detail {
+  @apply rounded-xl p-4 flex flex-col justify-between;
+}
+
 .card-main {
   @apply rounded-xl p-0 flex drop-shadow-md;
 }
@@ -111,6 +115,10 @@ input {
 
 .section-title-main {
   @apply text-2xl text-gray-700 font-bold ml-3;
+}
+
+thead>tr {
+  @apply text-nowrap;
 }
 
 tbody>tr:nth-child(odd) {
