@@ -13,7 +13,7 @@ const links = [
 const Footer = () => {
     return (
         <footer className="flex flex-col justify-between items-center h-26 py-2.5 px-5 gap-4">
-            <hr className="w-full" />
+            <hr className="w-full border-neutral-400 border-1" />
             <div className="flex flex-row justify-center gap-4">
                 {links.map((link) => {
                     // iconMap에서 해당 아이콘 컴포넌트를 가져옴
@@ -36,7 +36,7 @@ const Footer = () => {
                 <a href="/main">
                     <img
                         alt=""
-                        src="/개미_outlined.svg"
+                        src="/AnTrading_Logo_mini_color_neautral.svg"
                         className="w-10 transition duration-600 ease-in-out rotate-y-180 hover:scale-115 hover:opacity-70
                         hover:-rotate-20 hover:-translate-y-1.5
                         "

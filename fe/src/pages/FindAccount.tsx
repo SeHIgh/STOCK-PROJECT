@@ -83,10 +83,10 @@ const FindAccount: React.FC = () => {
                 </h2>
                 <TabGroup className="flex-auto flex flex-col justify-between">
                     <TabList className="px-4 flex justify-between gap-2">
-                        <Tab className="flex-1 py-2 px-4 text-sm font-semibold border-b-2 border-gray-300 data-[selected]:border-indigo-400 hover:border-indigo-200">
+                        <Tab className="flex-1 py-2 px-4 text-sm font-semibold border-b-2 border-gray-300 data-[selected]:border-neutral-400 hover:border-neutral-400/70">
                             아이디 찾기
                         </Tab>
-                        <Tab className="flex-1 py-2 px-4 text-sm font-semibold border-b-2 border-gray-300 data-[selected]:border-indigo-400 hover:border-indigo-200">
+                        <Tab className="flex-1 py-2 px-4 text-sm font-semibold border-b-2 border-gray-300 data-[selected]:border-neutral-400 hover:border-neutral-400/70">
                             비밀번호 찾기
                         </Tab>
                     </TabList>
@@ -105,7 +105,7 @@ const FindAccount: React.FC = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                                        className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                                         required
                                     />
                                 </div>
@@ -127,7 +127,7 @@ const FindAccount: React.FC = () => {
                                 )}
                                 <button
                                     type="submit"
-                                    className="w-full mt-2 bg-indigo-400 py-2 px-4 rounded-lg text-white hover:bg-indigo-300"
+                                    className="w-full mt-2 bg-neutral-400 py-2 px-4 rounded-lg text-white hover:bg-neutral-400/70"
                                 >
                                     아이디 찾기
                                 </button>
@@ -147,7 +147,7 @@ const FindAccount: React.FC = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                                        className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                                         required
                                     />
                                 </div>
@@ -161,7 +161,7 @@ const FindAccount: React.FC = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         placeholder="stock@stock.com"
-                                        className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                                        className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                                         required
                                     />
                                 </div>
@@ -184,7 +184,7 @@ const FindAccount: React.FC = () => {
 
                                 <button
                                     type="submit"
-                                    className="w-full mt-2 bg-indigo-400 py-2 px-4 rounded-lg text-white hover:bg-indigo-300"
+                                    className="w-full mt-2 bg-neutral-400 py-2 px-4 rounded-lg text-white hover:bg-neutral-400/70"
                                 >
                                     비밀번호 찾기
                                 </button>

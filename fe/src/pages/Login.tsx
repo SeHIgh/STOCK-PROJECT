@@ -52,7 +52,7 @@ const Login: React.FC = () => {
                             type="email"
                             id="email"
                             placeholder="stock@stock.com"
-                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -68,7 +68,7 @@ const Login: React.FC = () => {
                             type="password"
                             id="password"
                             placeholder="문자, 숫자, 특수문자 포함 8자 이상"
-                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -77,7 +77,7 @@ const Login: React.FC = () => {
                     {error ? <p className="text-red-500 text-sm">{error}</p> : <p className="text-transparent text-sm">good</p>}
                     <button
                         type="submit"
-                        className="w-full mt-2 bg-indigo-400 py-2 px-4 rounded-lg text-white hover:bg-indigo-300"
+                        className="w-full mt-2 bg-neutral-400 py-2 px-4 rounded-lg text-white hover:bg-neutral-300"
                     >
                         로그인
                     </button>

@@ -63,10 +63,10 @@ const LiveCharts = () => {
                             key={category}
                             className={({ selected }) =>
                                 classNames(
-                                    "w-full py-2.5 text-sm font-medium leading-5 border-b-2 border-gray-300 text-gray-500",
+                                    "w-full py-2.5 text-sm font-medium leading-5 border-b-2 border-neutral-300 text-neutral-400",
                                     selected
-                                        ? "border-b-2 border-gray-500 text-gray-500"
-                                        : "hover:text-gray-300 hover:border-gray-300"
+                                        ? "border-b-2 border-neutral-400 text-neutral-500"
+                                        : "hover:text-neutral-400 hover:border-neutral-400/70"
                                 )
                             }
                         >

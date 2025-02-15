@@ -60,7 +60,7 @@ const DetailPage = () => {
 
     return (
         <MainLayout>
-            <div className="w-full min-h-[calc(100dvh-84px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
+            <div className="w-full min-h-[calc(100dvh-96px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
                 <div className="flex flex-row items-center gap-3 col-span-3">
                     <img
                         src={stockData.logoImageUrl}
