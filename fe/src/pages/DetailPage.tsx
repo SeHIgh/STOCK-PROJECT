@@ -121,21 +121,21 @@ const DetailPage = () => {
                     id="stock-order"
                     className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-1 row-span-2"
                 >
-                    <OrderSection productCode={productCode!} />
+                    {/* <OrderSection productCode={productCode!} /> */}
                 </div>
                 {/* 호가 (채결 강도) [로그인 시 열람 가능] */}
                 <div
                     id="order-flow"
                     className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-1 row-span-2"
                 >
-                    <Quote productCode={productCode!} />
+                    {/* <Quote productCode={productCode!} /> */}
                 </div>
                 {/* 실시간 시세 */}
                 <div
                     id="real-time-quotes"
                     className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-2"
                 >
-                    <LivePrice productCode={productCode!} />
+                    {/* <LivePrice productCode={productCode!} /> */}
                 </div>
             </div>
         </MainLayout>
