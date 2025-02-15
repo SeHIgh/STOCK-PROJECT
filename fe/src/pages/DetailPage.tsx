@@ -32,7 +32,8 @@ const DetailPage = () => {
     const getData = useCallback(async () => {
         try {
             const response = await axios.get<StockProps[]>(
-                `http://localhost:3000/stock_list?productCode=${productCode}`
+                // `http://localhost:3000/stock_list?productCode=${productCode}`
+                "/api/v1/dashboard/wts/overview/indicator/index?market=kr"
             );
             setStockData(response.data[0]);
         } catch (error) {
@@ -46,6 +47,8 @@ const DetailPage = () => {
         }
     }, [productCode]);
 
+    console.log("토스 환율 API :", stockData);
+
     useEffect(() => {
         if (productCode) getData(); // productCode가 있을 때만 실행
     }, [productCode, getData]); // productCode가 변경될 때마다 실행
@@ -57,7 +60,7 @@ const DetailPage = () => {
 
     return (
         <MainLayout>
-            <div className="w-full min-h-[calc(100dvh-84px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
+            <div className="w-full min-h-[calc(100dvh-96px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
                 <div className="flex flex-row items-center gap-3 col-span-3">
                     <img
                         src={stockData.logoImageUrl}
@@ -121,21 +124,21 @@ const DetailPage = () => {
                     id="stock-order"
                     className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-1 row-span-2"
                 >
-                    <OrderSection productCode={productCode!} />
+                    {/* <OrderSection productCode={productCode!} /> */}
                 </div>
                 {/* 호가 (채결 강도) [로그인 시 열람 가능] */}
                 <div
                     id="order-flow"
                     className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-1 row-span-2"
                 >
-                    <Quote productCode={productCode!} />
+                    {/* <Quote productCode={productCode!} /> */}
                 </div>
                 {/* 실시간 시세 */}
                 <div
                     id="real-time-quotes"
                     className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-2"
                 >
-                    <LivePrice productCode={productCode!} />
+                    {/* <LivePrice productCode={productCode!} /> */}
                 </div>
             </div>
         </MainLayout>

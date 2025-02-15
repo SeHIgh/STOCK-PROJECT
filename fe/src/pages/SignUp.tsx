@@ -58,13 +58,13 @@ const SignUp: React.FC = () => {
                                 htmlFor="name"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                이름 <span className="text-sm text-indigo-400">*</span>
+                                이름 <span className="text-sm text-neutral-400">*</span>
                             </label>
                             <input
                                 type="text"
                                 id="name"
                                 placeholder="김투자"
-                                className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                                className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -74,13 +74,13 @@ const SignUp: React.FC = () => {
                                 htmlFor="nickname"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                별명 <span className="text-xs text-gray-400">(미입력 시 이름으로 설정)</span>
+                                별명 <span className="text-[11px] text-gray-400">(미입력 시 이름으로 설정)</span>
                             </label>
                             <input
                                 type="text"
                                 id="nickname"
                                 placeholder="투자왕"
-                                className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                                className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                                 value={nickname}
                                 onChange={(e) => setNickname(e.target.value)}
                             />
@@ -91,13 +91,13 @@ const SignUp: React.FC = () => {
                             htmlFor="email"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            이메일 <span className="text-sm text-indigo-400">*</span>
+                            이메일 <span className="text-sm text-neutral-400">*</span>
                         </label>
                         <input
                             type="email"
                             id="email"
                             placeholder="stock@stock.com"
-                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -107,13 +107,13 @@ const SignUp: React.FC = () => {
                             htmlFor="password"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            비밀번호 <span className="text-sm text-indigo-400">*</span>
+                            비밀번호 <span className="text-sm text-neutral-400">*</span>
                         </label>
                         <input
                             type="password"
                             id="password"
                             placeholder="(문자, 숫자, 특수문자 포함 8자 이상)"
-                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -123,13 +123,13 @@ const SignUp: React.FC = () => {
                             htmlFor="confirmPassword"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            비밀번호 확인 <span className="text-sm text-indigo-400">*</span>
+                            비밀번호 확인 <span className="text-sm text-neutral-400">*</span>
                         </label>
                         <input
                             type="password"
                             id="confirmPassword"
                             placeholder="비밀번호 재입력"
-                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
@@ -139,12 +139,12 @@ const SignUp: React.FC = () => {
                             htmlFor="birth"
                             className="block text-sm font-medium text-gray-700"
                         >
-                            생년월일 <span className="text-sm text-indigo-400">*</span>
+                            생년월일 <span className="text-sm text-neutral-400">*</span>
                         </label>
                         <input
                             type="date"
                             id="birth"
-                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-400 focus:border-indigo-400 text-sm"
+                            className="mt-1 block w-full px-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-neutral-400 focus:border-neutral-400 text-sm"
                             value={birth}
                             onChange={(e) => setBirth(e.target.value)}
                         />
@@ -153,7 +153,7 @@ const SignUp: React.FC = () => {
                     {error ? <p className="text-red-500 text-sm">{error}</p> : <p className="text-transparent text-sm">good</p>}
                     <button
                         type="submit"
-                        className="w-full mt-2 bg-indigo-400 py-2 px-4 rounded-lg text-white hover:bg-indigo-300"
+                        className="w-full mt-2 bg-neutral-400 py-2 px-4 rounded-lg text-white hover:bg-neutral-400/70"
                     >
                         가입 하기
                     </button>

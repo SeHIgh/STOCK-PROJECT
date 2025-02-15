@@ -11,7 +11,7 @@ import DetailPage from "./pages/DetailPage";
 
 function App() {
     return (
-        <GradientBackground>
+        // <GradientBackground>
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/main" element={<MainPage />} />
@@ -29,7 +29,7 @@ function App() {
                 {/* Layout test */}
                 <Route path="/footer" element={<Footer />} />
             </Routes>
-        </GradientBackground>
+        // </GradientBackground>
     );
 }
 

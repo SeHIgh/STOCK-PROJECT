@@ -33,10 +33,10 @@ const MemoizedComboboxOption = React.memo(({ value }: { value: StockData }) => {
     return (
         <ComboboxOption
             value={value}
-            className="group flex items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-white/10"
+            className="group flex items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-neutral-600/10"
         >
             <div className="w-full text-sm/6 flex flex-row justify-start gap-2 px-1 items-center cursor-pointer">
-                <BuildingOffice2Icon className="size-4 fill-indigo-900" />
+                <BuildingOffice2Icon className="size-4 fill-neutral-900" />
                 {value["한글 종목약명"]}
             </div>
         </ComboboxOption>
@@ -142,7 +142,7 @@ const Search = () => {
                             stock ? stock["한글 종목약명"] : ""
                         }
                         onChange={handleInputChange}
-                        className="w-full rounded-lg border-none bg-white/5 py-1.5 pr-8 pl-3 text-sm/6 focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
+                        className="w-full rounded-lg border-2 border-neutral-400 bg-white/5 py-1.5 pr-8 pl-3 text-sm/6 focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
                     />
                 </div>
                 {/* filteredStocks가 없거나 query가 비어있으면 목록을 렌더링하지 않음 */}
@@ -150,7 +150,7 @@ const Search = () => {
                     <ComboboxOptions
                         anchor="bottom"
                         transition
-                        className="w-[var(--input-width)] rounded-xl border border-white/5 bg-white/5 p-1 [--anchor-gap:var(--spacing-1)] empty:invisible transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 backdrop-blur-xs"
+                        className="z-100 w-[var(--input-width)] rounded-xl border-2 border-neutral-400 bg-white/5 p-1 mt-1 [--anchor-gap:var(--spacing-1)] empty:invisible transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 backdrop-blur-xs"
                     >
                         {currentPageData.map((stock) => (
                             <MemoizedComboboxOption
@@ -171,8 +171,8 @@ const Search = () => {
                                     disabled={currentPage === index + 1}
                                     className={`${
                                         currentPage === index + 1
-                                            ? "text-indigo-500"
-                                            : "text-gray-200"
+                                            ? "text-neutral-700"
+                                            : "text-neutral-400"
                                     }`}
                                 >
                                     {index + 1}
@@ -187,7 +187,7 @@ const Search = () => {
                 disabled={stockData.length === 0}
                 className="w-8 h-8 p-1 items-center"
             >
-                <MagnifyingGlassIcon className="w-6 h-6 fill-indigo-900 hover:fill-indigo-400" />
+                <MagnifyingGlassIcon className="w-7 h-7 fill-neutral-900 hover:fill-neutral-500" />
             </button>
         </form>
     );
