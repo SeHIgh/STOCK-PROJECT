@@ -21,11 +21,11 @@ const Header = () => {
             >
                 <div className="flex lg:flex-1">
                     <a href="/main" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Your Company</span>
+                        {/* <span className="sr-only">Your Company</span> */}
                         <img
                             alt=""
-                            src="/monitoring.svg"
-                            className="h-8 w-auto"
+                            src="/개미상회_Logo_InChart.svg"
+                            className="absolute top-2 h-auto w-24"
                         />
                     </a>
                 </div>

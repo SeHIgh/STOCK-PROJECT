@@ -32,7 +32,8 @@ const DetailPage = () => {
     const getData = useCallback(async () => {
         try {
             const response = await axios.get<StockProps[]>(
-                `http://localhost:3000/stock_list?productCode=${productCode}`
+                // `http://localhost:3000/stock_list?productCode=${productCode}`
+                "/api/v1/dashboard/wts/overview/indicator/index?market=kr"
             );
             setStockData(response.data[0]);
         } catch (error) {
@@ -45,6 +46,8 @@ const DetailPage = () => {
             }
         }
     }, [productCode]);
+
+    console.log("토스 환율 API :", stockData);
 
     useEffect(() => {
         if (productCode) getData(); // productCode가 있을 때만 실행

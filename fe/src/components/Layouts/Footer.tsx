@@ -1,8 +1,8 @@
 import GithubLogo from "../../assets/github-mark/github-mark.svg?react";
-import MainLogo from "../../assets/monitoring.svg?react";
+import MainLogo from "../../assets/logo/개미상회_Logo_InChart.svg?react";
 
 const links = [
-    { target: "stockproject", href: "/", icon: MainLogo },
+    // { target: "antrading", href: "/", icon: MainLogo },
     {
         target: "github",
         href: "https://github.com/SeHIgh/STOCK-PROJECT",
@@ -25,12 +25,24 @@ const Footer = () => {
                             href={link.href}
                             className="w-8.25 h-8"
                         >
-                            <IconComponent className="transition duration-200 ease-in-out hover:scale-115 hover:opacity-70"/>
+                            <IconComponent className="transition duration-200 ease-in-out hover:scale-115 hover:opacity-70" />
                         </a>
                     );
                 })}
             </div>
-            <p className="text-sm">© 2025 Stock Project Team.</p>
+            <div className="flex flex-row items-center gap-2">
+                <p className="text-sm">© 2025 AnTrading Co.</p>{" "}
+                {/* <MainLogo className="w-30 h-auto -translate-y-3" /> */}
+                <a href="/main">
+                    <img
+                        alt=""
+                        src="/개미_outlined.svg"
+                        className="w-10 transition duration-600 ease-in-out rotate-y-180 hover:scale-115 hover:opacity-70
+                        hover:-rotate-20 hover:-translate-y-1.5
+                        "
+                    />
+                </a>
+            </div>
         </footer>
     );
 };
