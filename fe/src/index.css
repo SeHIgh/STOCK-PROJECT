@@ -26,9 +26,10 @@
 }
 
 h1 {
-  font-family: "Gugi", cursive;
-  @apply text-neutral-600;
+  /* font-family: "Gugi", cursive;
+  @apply text-neutral-600; */
 }
+
 
 /* 작업 환경 (모니터 개수) 에 따라 스크롤바가 보이는 경우 or 보이지 않는 경우가 생겨 스크롤바 없앰  */
 ::-webkit-scrollbar {
@@ -90,11 +91,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-
+  
   a:hover {
     /* color: #283643; */
   }
-
+  
   button {
     /* background-color: #f9f9f9; */
   }
@@ -173,3 +174,8 @@ header {
 }
 
 /* 하단 디자인 */
+
+/* 폰트 */
+.gugi-font {
+  font-family: "Gugi", cursive;
+}
