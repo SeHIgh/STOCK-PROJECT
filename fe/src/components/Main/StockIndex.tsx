@@ -1,46 +1,57 @@
-const stockIndexList = [
-    {
-        id: 1,
-        label: "코스피",
-        index_name: "KOSPI",
-        country: "South Korea",
-        curPrice: 2531.99,
-        changeRate: -4.76,
-    },
-    {
-        id: 2,
-        label: "코스닥",
-        index_name: "KOSDAQ",
-        country: "South Korea",
-        curPrice: 741.17,
-        changeRate: -0.85,
-    },
-    {
-        id: 3,
-        label: "나스닥",
-        index_name: "NASDAQ",
-        country: "USA",
-        curPrice: 19791.99,
-        changeRate: +99.66,
-    },
-    {
-        id: 4,
-        label: "S&P 500",
-        index_name: "SPX",
-        country: "USA",
-        curPrice: 6083.57,
-        changeRate: +22.09,
-    },
-];
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
+
+interface StockIndexProps {
+    id: string;
+    label: string;
+    index_name: string;
+    index: string;
+    change_rate: string;
+    change_sign: string;
+}
 
 const StockIndex = () => {
+    const [stockIndex, setStockIndex] = useState<StockIndexProps[]>([]);
+
+    const getData = useCallback(async () => {
+        try {
+            const response = await axios.get<StockIndexProps[]>(
+                "http://localhost:3000/stockindex"
+            );
+            setStockIndex(response.data);
+        } catch (error) {
+            console.error("데이터 요청 실패:", error);
+        }
+    }, []);
+
+    const calculateChange = (
+        index: string,
+        change_rate: string,
+        change_sign: string
+    ) => {
+        const indexValue = parseFloat(index.replace(/,/g, "")); // 지수에서 콤마 제거 후 숫자로 변환
+        const changeRateValue = parseFloat(change_rate); // 변화율을 숫자로 변환
+        let changeAmount = indexValue * (changeRateValue / 100); // 변동값 계산
+
+        // 등락 방향 반영
+        if (change_sign === "-") {
+            changeAmount *= -1; // 감소이면 음수로 변환
+        }
+
+        return changeAmount.toFixed(2); // 소수 둘째 자리까지 반환
+    };
+
+    useEffect(() => {
+        getData();
+    }, [getData]);
+
     return (
         <>
             <h1 className="section-title-main">주가지수</h1>
             <ul className="w-full flex flex-row justify-between gap-3 overflow-x-scroll pb-2 px-1">
-                {stockIndexList.map((stockIndex, index) => (
+                {stockIndex.map((stockIndex) => (
                     <li
-                        key={index}
+                        key={stockIndex.id}
                         className="flex-1 card-main bg-white/30 gray-hover"
                     >
                         <a
@@ -58,43 +69,46 @@ const StockIndex = () => {
                                     <h3 className="text-lg font-semibold">
                                         {stockIndex.label}
                                     </h3>
-                                    <span className="text-lg">
-                                        {stockIndex.country === "USA"
-                                            ? "🇺🇸"
-                                            : stockIndex.country ===
-                                              "South Korea"
-                                            ? "🇰🇷"
-                                            : "🏳️"}
+                                    <span className="text-lg mt-1.5">
+                                        {stockIndex.index_name.startsWith(
+                                            "KO"
+                                        ) ? (
+                                            <img
+                                                alt="KR"
+                                                src="https://thumb.tossinvest.com/image/resized/16x0/https%3A%2F%2Fstatic.toss.im%2Ficons%2Fpng%2F4x%2Ficon-flag-kr.png"
+                                            />
+                                        ) : (
+                                            <img
+                                                alt="US"
+                                                src="https://thumb.tossinvest.com/image/resized/16x0/https%3A%2F%2Fstatic.toss.im%2Ficons%2Fpng%2F4x%2Ficon-flag-us.png"
+                                            />
+                                        )}
                                     </span>
                                 </div>
                                 <h4 className="text-xl font-bold">
-                                    {stockIndex.curPrice}
+                                    {stockIndex.index}
                                 </h4>
                                 {/* 등락률에 따른 색상변화 */}
                                 <h4
                                     className={`text-base font-semibold ${
-                                        stockIndex.changeRate >= 0
+                                        stockIndex.change_sign === "+"
                                             ? "text-red-400"
                                             : "text-blue-400"
                                     } text-nowrap`}
                                 >
-                                    {/* 현재가 및 등락률 을 이용한 퍼센트 계산 - 빨 : 상승, 파 : 하락 */}
-                                    {`${
-                                        stockIndex.changeRate >= 0
-                                            ? `+${stockIndex.changeRate}`
-                                            : stockIndex.changeRate
-                                    } (${Math.abs(
-                                        (stockIndex.changeRate /
-                                            (stockIndex.curPrice -
-                                                stockIndex.changeRate)) *
-                                            100
-                                    ).toFixed(2)}%)`}
+                                    {/* 빨 : 상승, 파 : 하락 */}
+                                    {stockIndex.change_sign === "+" ? "+" : ""}
+                                    {`${calculateChange(
+                                        stockIndex.index,
+                                        stockIndex.change_rate,
+                                        stockIndex.change_sign
+                                    )} (${stockIndex.change_rate}%)`}
                                 </h4>
                             </div>
                             <div
                                 id="graph_index"
                                 className={`min-w-24 rounded-lg ${
-                                    stockIndex.changeRate >= 0
+                                    stockIndex.change_sign === "+"
                                         ? "bg-red-400/50"
                                         : "bg-blue-400/50"
                                 }`}
