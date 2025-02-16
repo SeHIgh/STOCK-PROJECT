@@ -56,30 +56,25 @@ public class ApiFluctService {
                     if (count >= 10) break;  // 최대 10개까지만 저장
                     FluctResponseOutput responseData = new FluctResponseOutput();
 
-                    //responseData.setStckShrnIscd(node.get("stck_shrn_iscd").asText());
-                    responseData.setDataRank(node.get("data_rank").asText());
-                    responseData.setHtsKorIsnm(node.get("hts_kor_isnm").asText());
-                    responseData.setStckPrpr(node.get("stck_prpr").asText());
-                    //responseData.setPrdyVrss(node.get("prdy_vrss").asText());
-                    //responseData.setPrdyVrssSign(node.get("prdy_vrss_sign").asText());
-                    responseData.setPrdyCtrt(node.get("prdy_ctrt").asText());
-                    //responseData.setAcmlVol(node.get("acml_vol").asText());
-                    //responseData.setStckHgpr(node.get("stck_hgpr").asText());
-                    //responseData.setHgprHour(node.get("hgpr_hour").asText());
-                    //responseData.setAcmlHgprDate(node.get("acml_hgpr_date").asText());
-                    //responseData.setStckLwpr(node.get("stck_lwpr").asText());
-                    //responseData.setLwprHour(node.get("lwpr_hour").asText());
-                    //responseData.setAcmlLwprDate(node.get("acml_lwpr_date").asText());
-                    //responseData.setLwprVrssPrprRate(node.get("lwpr_vrss_prpr_rate").asText());
-                    //responseData.setDsgtDateClprVrssPrprRate(node.get("dsgt_date_clpr_vrss_prpr_rate").asText());
-                    //responseData.setCnntAscnDynu(node.get("cnnt_ascn_dynu").asText());
-                    //responseData.setHgprVrssPrprRate(node.get("hgpr_vrss_prpr_rate").asText());
-                    //responseData.setCnntDownDynu(node.get("cnnt_down_dynu").asText());
-                    //responseData.setOprcVrssPrprSign(node.get("oprc_vrss_prpr_sign").asText());
-                    //responseData.setOprcVrssPrpr(node.get("oprc_vrss_prpr").asText());
-                    //responseData.setOprcVrssPrprRate(node.get("oprc_vrss_prpr_rate").asText());
-                    //responseData.setPrdRsfl(node.get("prd_rsfl").asText());
-                    //responseData.setPrdRsflRate(node.get("prd_rsfl_rate").asText());
+                    responseData.setData_rank(node.get("data_rank").asText());
+                    responseData.setHts_kor_isnm(node.get("hts_kor_isnm").asText());
+                    responseData.setStck_prpr(node.get("stck_prpr").asText());
+                    //responseData.setPrdy_vrss(node.get("prdy_vrss").asText());
+                    //responseData.setPrdy_vrss_sign(node.get("prdy_vrss_sign").asText());
+                    responseData.setPrdy_ctrt(node.get("prdy_ctrt").asText());
+                    responseData.setAcml_vol(node.get("acml_vol").asText());
+
+                    // stck_prpr(현재가)와 acml_vol(누적 거래량) 곱하기
+                    try {
+                        long price = Long.parseLong(node.get("stck_prpr").asText().replace(",", ""));
+                        long volume = Long.parseLong(node.get("acml_vol").asText().replace(",", ""));
+                        long transactionAmount = price * volume;
+
+                        // 계산된 거래대금을 문자열로 변환 후 저장
+                        responseData.setAcml_tr_pbmn(String.valueOf(transactionAmount));
+                    } catch (NumberFormatException e) {
+                        responseData.setAcml_tr_pbmn("0"); // 변환 실패 시 기본값 설정
+                    }
 
                     responseDataList.add(responseData);
                     count++;

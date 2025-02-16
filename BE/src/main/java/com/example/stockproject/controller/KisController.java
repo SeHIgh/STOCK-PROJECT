@@ -1,8 +1,10 @@
 package com.example.stockproject.controller;
 
+import com.example.stockproject.dto.DailyChartResponseOutput;
 import com.example.stockproject.dto.FluctResponseOutput;
 import com.example.stockproject.dto.PriceResponseOutput;
 import com.example.stockproject.dto.VolumeResponseOutput;
+import com.example.stockproject.service.ApiDailychartService;
 import com.example.stockproject.service.ApiFluctService;
 import com.example.stockproject.service.ApiVolumeService;
 import com.example.stockproject.service.ApiPriceService;
@@ -20,14 +22,17 @@ public class KisController {
     private ApiPriceService apiPriceService;
     private ApiVolumeService apiVolumeService;
     private ApiFluctService apiFluctService;
+    private ApiDailychartService apiDailychartService;
 
     @Autowired
     public KisController(ApiVolumeService apiVolumeService,
                          ApiFluctService apiFluctService,
-                         ApiPriceService apiPriceService) {
+                         ApiPriceService apiPriceService,
+                         ApiDailychartService apiDailychartService) {
         this.apiVolumeService = apiVolumeService;
         this.apiFluctService = apiFluctService;
         this.apiPriceService = apiPriceService;
+        this.apiDailychartService = apiDailychartService;
     }
 
     //거래량 순위를 위한 controller
@@ -53,5 +58,10 @@ public class KisController {
     @GetMapping("/price")
     public Mono<PriceResponseOutput> getPrice(@RequestParam String stockName){
         return apiPriceService.getPriceByStockName(stockName);
+    }
+
+    @GetMapping("/dailychart")
+    public Mono<List<DailyChartResponseOutput>> getDailyChart(){
+        return apiDailychartService.getDailyChart();
     }
 }

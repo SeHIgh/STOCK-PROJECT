@@ -56,25 +56,12 @@ public class ApiVolumeService {
                     if (count >= 10) break;     //10개까지 저장
                     VolumeResponseOutput responseData = new VolumeResponseOutput();
 
-                    responseData.setHtsKorIsnm(node.get("hts_kor_isnm").asText());  //hts_kor_isnm 필드가 없지만 setHtsKorIsnm으로 자동매핑.
-                    //responseData.setMkscShrnIscd(node.get("mksc_shrn_iscd").asText());
-                    responseData.setDataRank(node.get("data_rank").asText());
-                    responseData.setStckPrpr(node.get("stck_prpr").asText());
-                    //responseData.setPrdyVrssSign(node.get("prdy_vrss_sign").asText());
-                    //responseData.setPrdyVrss(node.get("prdy_vrss").asText());
-                    responseData.setPrdyCtrt(node.get("prdy_ctrt").asText());
-                    responseData.setAcmlVol(node.get("acml_vol").asText());
-                    responseData.setPrdyVol(node.get("prdy_vol").asText());
-                    responseData.setLstnStcn(node.get("lstn_stcn").asText());
-                    responseData.setAvrgVol(node.get("avrg_vol").asText());
-                    //responseData.setNBefrClprVrssPrprRate(node.get("n_befr_clpr_vrss_prpr_rate").asText());
-                    responseData.setVolInrt(node.get("vol_inrt").asText());
-                    responseData.setVolTnrt(node.get("vol_tnrt").asText());
-                    //responseData.setNdayVolTnrt(node.get("nday_vol_tnrt").asText());
-                    responseData.setAvrgTrPbmn(node.get("avrg_tr_pbmn").asText());
-                    //responseData.setTrPbmnTnrt(node.get("tr_pbmn_tnrt").asText());
-                    //responseData.setNdayTrPbmnTnrt(node.get("nday_tr_pbmn_tnrt").asText());
-                    responseData.setAcmlTrPbmn(node.get("acml_tr_pbmn").asText());
+                    responseData.setHts_kor_isnm(node.get("hts_kor_isnm").asText());  //hts_kor_isnm 필드가 없지만 setHtsKorIsnm으로 자동매핑.
+                    responseData.setData_rank(node.get("data_rank").asText());
+                    responseData.setStck_prpr(node.get("stck_prpr").asText());
+                    responseData.setAcml_vol(node.get("acml_vol").asText());
+                    responseData.setVol_inrt(node.get("vol_inrt").asText());
+                    responseData.setAcml_tr_pbmn(node.get("acml_tr_pbmn").asText());
 
                     responseDataList.add(responseData);
                     count++;
@@ -96,7 +83,7 @@ public class ApiVolumeService {
                         .queryParam("FID_COND_SCR_DIV_CODE", "20171")
                         .queryParam("FID_INPUT_ISCD", "0002")
                         .queryParam("FID_DIV_CLS_CODE", "0")
-                        .queryParam("FID_BLNG_CLS_CODE", "0")   //0 : 평균거래량 1:거래증가율 2:평균거래회전율 3:거래금액순 4:평균거래금액회전율
+                        .queryParam("FID_BLNG_CLS_CODE", "1")   //0 : 평균거래량 1:거래증가율 2:평균거래회전율 3:거래금액순 4:평균거래금액회전율
                         .queryParam("FID_TRGT_CLS_CODE", "111111111")
                         .queryParam("FID_TRGT_EXLS_CLS_CODE", "000000")
                         .queryParam("FID_INPUT_PRICE_1", "0")
