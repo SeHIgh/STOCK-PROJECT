@@ -8,9 +8,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class IndexDTO {
-    String nasdaqIndex;
-    String nasdaqChange;
-    String nasdaqChangeSign;
-    String nasdaqChangeRate;
-
+    String id;
+    String label;
+    String index_name;
+    String nasdaq_index;
+    String nasdaq_change_rate;
+    String nasdaq_change_sign;
 }

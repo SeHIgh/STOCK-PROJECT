@@ -1,36 +1,34 @@
 package com.example.stockproject.controller;
 
+import com.example.stockproject.dto.crawling.IndexDTO;
 import com.example.stockproject.service.Crawling.ExchangeRateService;
-import com.example.stockproject.service.Crawling.OverseasStockService;
-import org.openqa.selenium.WebDriver;
+import com.example.stockproject.service.Crawling.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//현재 페이지 이동 시, 크롤링이 종료가 안됨.
-//초기 URL을 컨트롤러의 전역으로 설정하고, 이를 비교하는 형식으로 해야하나?
+import java.util.List;
 
 @RestController
 public class CrawlingController {
 
     private final ExchangeRateService exchangeRateService;
-    private final OverseasStockService overseasStockService;
-
+    private final IndexService indexService;
     @Autowired
-    public CrawlingController(ExchangeRateService exchangeRateService, OverseasStockService overseasStockService) {
+    public CrawlingController(ExchangeRateService exchangeRateService, IndexService indexService) {
         this.exchangeRateService = exchangeRateService;
-        this.overseasStockService = overseasStockService;
+        this.indexService = indexService;
     }
 
-    @GetMapping("/exchange")
-    public void getExchangeRate() {
-        //overseasStockService.stopOverseasStockService();
-        exchangeRateService.getExchangeRate();
+    //환율 크롤링
+    @GetMapping("/api/exchangerate")
+    public String getExchangeRate() {
+        return exchangeRateService.getExchangeRate();
     }
 
-    @GetMapping("/overseasStock")
-    public void getOverseasStock() {
-        //exchangeRateService.stopExchangeRateService();
-        overseasStockService.getOverseasStock();
+    //지수(4가지) 크롤링
+    @GetMapping("/api/stockindex")
+    public List<IndexDTO> getStockIndex() {
+        return indexService.getAllStockIndex();
     }
 }

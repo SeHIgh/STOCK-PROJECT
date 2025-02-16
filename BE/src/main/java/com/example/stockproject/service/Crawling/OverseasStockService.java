@@ -1,7 +1,8 @@
 package com.example.stockproject.service.Crawling;
 
 import java.io.File;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.stockproject.dto.crawling.IndexDTO;
 import org.openqa.selenium.By;
@@ -11,15 +12,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class OverseasStockService {
     // Logger 생성
     private static final Logger logger = LoggerFactory.getLogger(ExchangeRateService.class);
 
-    public void getOverseasStock() {
+    public List<IndexDTO> getOverseasStock() {
 
         // resources 폴더 내 chromedriver 파일 경로 설정
         String driverPath = new File(ExchangeRateService.class.getResource("/static/chromedriver_mac/chromedriver").getFile()).getPath();
@@ -33,66 +32,35 @@ public class OverseasStockService {
         driver.get("https://finance.naver.com/world/");
         logger.info("✅ 해외증시 지수 정보 크롤링 시작");
 
-//        String initialUrl = driver.getCurrentUrl(); //초기 URL저장
-//        logger.info(initialUrl);
+        // 나스닥 지수 크롤링
+        WebElement nasdaqElement = driver.findElement(By.cssSelector("#worldIndexColumn2 li.on .point_status"));
+        String nasdaqIndex = nasdaqElement.findElement(By.tagName("strong")).getText();
+        String nasdaqChange = nasdaqElement.findElement(By.tagName("em")).getText();
+        String nasdaqChangeSign = nasdaqElement.findElements(By.tagName("span")).get(1).getText();
+        String nasdaqChangeRate = nasdaqElement.findElement(By.tagName("span")).getText().substring(1,5); //+0.41%
 
-        // 초기 요청 URL을 세션에 저장
-        String initialUrl = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getRequestURL().toString();
-        logger.info("✅ 초기 URL: {}", initialUrl);
+        // S&P500 지수 크롤링
+        WebElement sp500Element = driver.findElement(By.cssSelector("#worldIndexColumn3 li.on .point_status"));
+        String sp500Index = sp500Element.findElement(By.tagName("strong")).getText();
+        String sp500Change = sp500Element.findElement(By.tagName("em")).getText();
+        String sp500ChangeSign = sp500Element.findElements(By.tagName("span")).get(1).getText();
+        String sp500ChangeRate = sp500Element.findElement(By.tagName("span")).getText().substring(1,5); //+0.41%;
 
-        while (true) {
-            try {
-//                String currentUrl = driver.getCurrentUrl();
-//                logger.info(currentUrl);
-//
-                // 현재 요청 URL을 확인
-                String currentUrl = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getRequestURL().toString();
-                logger.info("✅ 현재 URL: {}", currentUrl);
+        IndexDTO nasdaq = new IndexDTO("3", "나스닥", "NASDAQ", nasdaqIndex, nasdaqChangeRate, nasdaqChangeSign);
+        IndexDTO sp500 = new IndexDTO("4","S&P500", "SPX",sp500Index, sp500Change, sp500ChangeSign);
 
-                if(!currentUrl.equals(initialUrl)) {                 // 페이지 이동 감지
-                    logger.info("🔴페이지가 이동되어 크롤링을 종료합니다.");
-                    break;                                           // 페이지가 이동하면 크롤링 종료
-                }
 
-                //나스닥 지수 크롤링
-                WebElement nasdaqElement = driver.findElement(By.cssSelector("#worldIndexColumn2 li.on .point_status"));
-                String nasdaqIndex = nasdaqElement.findElement(By.tagName("strong")).getText();
-                String nasdaqChange = nasdaqElement.findElement(By.tagName("em")).getText();
-                String nasdaqChangeSign = nasdaqElement.findElements(By.tagName("span")).get(1).getText();
-                String nasdaqChangeRate = nasdaqElement.findElement(By.tagName("span")).getText();
+        logger.info("📊 나스닥 지수 {}, 등락율 {}, 부호 {}", nasdaqIndex, nasdaqChangeRate, nasdaqChangeSign);
+        logger.info("📊 S&P500 지수 {}, 등락율 {}, 부호 {}", sp500Index, sp500Change, sp500ChangeSign);
 
-                // S&P500 지수 크롤링
-                WebElement sp500Element = driver.findElement(By.cssSelector("#worldIndexColumn3 li.on .point_status"));
-                String sp500Index = sp500Element.findElement(By.tagName("strong")).getText();
-                String sp500Change = sp500Element.findElement(By.tagName("em")).getText();
-                String sp500ChangeSign = sp500Element.findElements(By.tagName("span")).get(1).getText();
-                String sp500ChangeRate = sp500Element.findElement(By.tagName("span")).getText();
+        List<IndexDTO> stockIndexList = new ArrayList<>();
+        stockIndexList.add(nasdaq);
+        stockIndexList.add(sp500);
 
-                IndexDTO indexDTO = new IndexDTO(nasdaqIndex, nasdaqChange, nasdaqChangeSign, nasdaqChangeRate);
-
-                // 로그 출력 (변동률과 실제 값 구분)
-                logger.info("📊나스닥 종합 지수: {} (변동: {}{} 변동률: {})", nasdaqIndex, nasdaqChangeSign, nasdaqChange, nasdaqChangeRate);
-                logger.info("📊S&P500 지수: {} (변동: {}{} 변동률: {})", sp500Index, sp500ChangeSign, sp500Change, sp500ChangeRate);
-
-                // 10초 대기 후 다시 가져오기
-                TimeUnit.SECONDS.sleep(10);
-
-            } catch (InterruptedException e) {
-                logger.error("❌ sleep 중 오류 발생: {}", e.getMessage());
-                Thread.currentThread().interrupt(); // 인터럽트 상태 복구
-                break;
-            }
-        }
-
-        // WebDriver 종료
         driver.quit();
         logger.info("🔴Chrome WebDriver 종료");
-    }
 
-//    // 크롤링을 중지하는 메서드
-//    public void stopOverseasStockService() {
-//        // WebDriver 종료
-//        driver.quit();
-//        logger.info("🔴Chrome WebDriver 종료");
-//    }
+        return stockIndexList;
+    }
 }
+
