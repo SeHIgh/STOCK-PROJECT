@@ -167,11 +167,11 @@ header {
 }
 
 .card-main {
-  @apply rounded-se-xl rounded-es-xl p-0 flex drop-shadow-md border-2 border-neutral-400 bg-neutral-100/70;
+  @apply rounded-se-xl rounded-es-xl p-0 flex drop-shadow-md border-2 border-neutral-400/70 bg-neutral-100/70;
 }
 
 .block-detail {
-  @apply rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400 bg-neutral-100/70 drop-shadow-sm;
+  @apply rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400/70 bg-neutral-100/70 drop-shadow-sm;
 }
 
 .gray-hover {
@@ -188,3 +188,20 @@ header {
 .gugi-font {
   font-family: "Gugi", cursive;
 }
+
+/* 스켈레톤 로딩 */
+.skeleton {
+  @apply animate-pulse;
+}
+
+.skeleton-box{
+  @apply bg-neutral-400/70 rounded-xl;
+}
+
+.skeleton-text{
+  @apply bg-neutral-400/70 rounded-lg text-transparent;
+}
+
+/* .skeleton>*{
+  @apply bg-neutral-400/70 rounded-lg;
+} */

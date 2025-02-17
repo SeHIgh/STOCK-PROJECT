@@ -1,20 +1,6 @@
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-interface NewsProps {
-    newsId: string;
-    title: string;
-    contentText: string;
-    stockCodes: string[];
-    newsType: string;
-    imageUrl: string;
-    source: string;
-    agencyName: string;
-    relatedStocks: string[];
-    createdAt: string;
-    nation: string;
-}
+import useFetchData from "../../hooks/useFetchData";
+import { fetchNewsList } from "../../api/api";
 
 // 시간을 상대적인 시간으로 표시하는 함수
 const formatRelativeTime = (date: string) => {
@@ -40,22 +26,32 @@ const formatRelativeTime = (date: string) => {
 };
 
 const News = () => {
-    const [newsList, setNewsList] = useState<NewsProps[]>([]);
+    // 뉴스 데이터 api 호출
+    const { data: newsList, loading, error } = useFetchData(fetchNewsList);
 
-    const getData = useCallback(async () => {
-        try {
-            const response = await axios.get<NewsProps[]>(
-                "http://localhost:3000/news"
-            );
-            setNewsList(response.data);
-        } catch (error) {
-            console.error("데이터 요청 실패:", error);
-        }
-    }, []);
-
-    useEffect(() => {
-        getData();
-    }, [getData]);
+    // 로딩 및 에러 화면
+    if (loading || error)
+        return (
+            <>
+                <div className="flex flex-row justify-between items-center">
+                    <h1 className="section-title-main">주요 뉴스</h1>
+                    <Link to="/news" className="text-lg text-gray-500  mr-3">
+                        더 보기
+                    </Link>
+                </div>
+                <ul className="w-full overflow-x-scroll pb-2 px-1 grid grid-flow-row grid-cols-[minmax(260px,_1fr)_minmax(260px,_1fr)_minmax(260px,_1fr)_minmax(260px,_1fr)] gap-3">
+                    {Array.from({ length: 4 }).map((_, index) => (
+                        <li key={index} className="flex-1 card-main gray-hover">
+                            <div className="w-full h-full p-4 flex flex-col gap-1 skeleton">
+                                <div className="w-full h-40 overflow-hidden flex items-center skeleton-box"></div>
+                                <h4 className="w-full h-6 text-base overflow-hidden whitespace-nowrap text-ellipsis skeleton-text"></h4>
+                                <div className="w-25 h-5 text-sm text-gray-500 skeleton-text"></div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </>
+        );
 
     return (
         <>
@@ -66,11 +62,8 @@ const News = () => {
                 </Link>
             </div>
             <ul className="w-full overflow-x-scroll pb-2 px-1 grid grid-flow-row grid-cols-[minmax(260px,_1fr)_minmax(260px,_1fr)_minmax(260px,_1fr)_minmax(260px,_1fr)] gap-3">
-                {newsList.slice(0, 4).map((news, index) => (
-                    <li
-                        key={index}
-                        className="flex-1 card-main gray-hover"
-                    >
+                {newsList?.slice(0, 4).map((news, index) => (
+                    <li key={index} className="flex-1 card-main gray-hover">
                         <a
                             href="*"
                             className="w-full h-full p-4 flex flex-col gap-1"

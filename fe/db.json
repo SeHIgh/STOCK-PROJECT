@@ -14694,33 +14694,37 @@
             "id": "1",
             "label": "코스피",
             "index_name": "KOSPI",
-            "index": "2,591.05",
-            "change_rate": "0.3",
-            "change_sign": "+"
+            "index": "2,610.42",
+            "change_rate": "0.7",
+            "change_sign": "+",
+            "change_value": "19.37"
         },
         {
             "id": "2",
             "label": "코스닥",
             "index_name": "KOSDAQ",
-            "index": "756.32",
-            "change_rate": "0.9",
-            "change_sign": "-"
+            "index": "768.48",
+            "change_rate": "1.6",
+            "change_sign": "+",
+            "change_value": "12.16"
         },
         {
             "id": "3",
             "label": "나스닥",
             "index_name": "NASDAQ",
             "index": "20,026.77",
-            "change_rate": "0.41",
-            "change_sign": "+"
+            "change_rate": "0.4",
+            "change_sign": "+",
+            "change_value": "81.13"
         },
         {
             "id": "4",
             "label": "S&P 500",
             "index_name": "SPX",
             "index": "6,114.63",
-            "change_rate": "0.04",
-            "change_sign": "-"
+            "change_rate": "0.00",
+            "change_sign": "-",
+            "change_value": "0.44"
         }
     ],
     "exchangerate": {
@@ -14729,259 +14733,301 @@
     "livechart": {
         "top_10_by_prdy_ctrt": [
             {
-                "data_rank": 1,
-                "hts_kor_isnm": "A사",
-                "stck_prpr": 75000,
-                "prdy_ctrt": 1500,
-                "acml_vol": 5000,
-                "acml_tr_pbmn": 375000000
+                "data_rank": "1",
+                "hts_kor_isnm": "HD현대인프라코어",
+                "stck_prpr": "75000",
+                "prdy_ctrt": "1500",
+                "acml_vol": "5000",
+                "acml_tr_pbmn": "375000000"
             },
             {
-                "data_rank": 2,
-                "hts_kor_isnm": "B사",
-                "stck_prpr": 52000,
-                "prdy_ctrt": 1200,
-                "acml_vol": 4300,
-                "acml_tr_pbmn": 223600000
+                "data_rank": "2",
+                "hts_kor_isnm": "제이준코스메틱",
+                "stck_prpr": "52000",
+                "prdy_ctrt": "1200",
+                "acml_vol": "4300",
+                "acml_tr_pbmn": "223600000"
             },
             {
-                "data_rank": 3,
-                "hts_kor_isnm": "C사",
-                "stck_prpr": 68000,
-                "prdy_ctrt": 1100,
-                "acml_vol": 6200,
-                "acml_tr_pbmn": 421600000
+                "data_rank": "3",
+                "hts_kor_isnm": "종근당바이오",
+                "stck_prpr": "68000",
+                "prdy_ctrt": "1100",
+                "acml_vol": "6200",
+                "acml_tr_pbmn": "421600000"
             },
             {
-                "data_rank": 4,
-                "hts_kor_isnm": "D사",
-                "stck_prpr": 47000,
-                "prdy_ctrt": 980,
-                "acml_vol": 3900,
-                "acml_tr_pbmn": 183300000
+                "data_rank": "4",
+                "hts_kor_isnm": "LS네트웍스",
+                "stck_prpr": "47000",
+                "prdy_ctrt": "980",
+                "acml_vol": "3900",
+                "acml_tr_pbmn": "183300000"
             },
             {
-                "data_rank": 5,
-                "hts_kor_isnm": "E사",
-                "stck_prpr": 89000,
-                "prdy_ctrt": 920,
-                "acml_vol": 7200,
-                "acml_tr_pbmn": 640800000
+                "data_rank": "5",
+                "hts_kor_isnm": "애경산업",
+                "stck_prpr": "89000",
+                "prdy_ctrt": "920",
+                "acml_vol": "7200",
+                "acml_tr_pbmn": "640800000"
             },
             {
-                "data_rank": 6,
-                "hts_kor_isnm": "F사",
-                "stck_prpr": 61000,
-                "prdy_ctrt": 850,
-                "acml_vol": 3100,
-                "acml_tr_pbmn": 189100000
+                "data_rank": "6",
+                "hts_kor_isnm": "엔씨소프트",
+                "stck_prpr": "61000",
+                "prdy_ctrt": "850",
+                "acml_vol": "3100",
+                "acml_tr_pbmn": "189100000"
             },
             {
-                "data_rank": 7,
-                "hts_kor_isnm": "G사",
-                "stck_prpr": 93000,
-                "prdy_ctrt": 780,
-                "acml_vol": 5800,
-                "acml_tr_pbmn": 539400000
+                "data_rank": "7",
+                "hts_kor_isnm": "키움증권",
+                "stck_prpr": "93000",
+                "prdy_ctrt": "780",
+                "acml_vol": "5800",
+                "acml_tr_pbmn": "539400000"
             },
             {
-                "data_rank": 8,
-                "hts_kor_isnm": "H사",
-                "stck_prpr": 56000,
-                "prdy_ctrt": 710,
-                "acml_vol": 4100,
-                "acml_tr_pbmn": 229600000
+                "data_rank": "8",
+                "hts_kor_isnm": "한화",
+                "stck_prpr": "56000",
+                "prdy_ctrt": "710",
+                "acml_vol": "4100",
+                "acml_tr_pbmn": "229600000"
             },
             {
-                "data_rank": 9,
-                "hts_kor_isnm": "I사",
-                "stck_prpr": 72000,
-                "prdy_ctrt": 690,
-                "acml_vol": 3400,
-                "acml_tr_pbmn": 244800000
+                "data_rank": "9",
+                "hts_kor_isnm": "카프로",
+                "stck_prpr": "72000",
+                "prdy_ctrt": "690",
+                "acml_vol": "3400",
+                "acml_tr_pbmn": "244800000"
             },
             {
-                "data_rank": 10,
-                "hts_kor_isnm": "J사",
-                "stck_prpr": 80000,
-                "prdy_ctrt": 650,
-                "acml_vol": 5300,
-                "acml_tr_pbmn": 424000000
+                "data_rank": "10",
+                "hts_kor_isnm": "HD현대중공업",
+                "stck_prpr": "80000",
+                "prdy_ctrt": "650",
+                "acml_vol": "5300",
+                "acml_tr_pbmn": "424000000"
             }
         ],
         "bottom_10_by_prdy_ctrt": [
             {
-                "data_rank": 1,
-                "hts_kor_isnm": "K사",
-                "stck_prpr": 45000,
-                "prdy_ctrt": -1400,
-                "acml_vol": 4800,
-                "acml_tr_pbmn": 216000000
+                "data_rank": "1",
+                "hts_kor_isnm": "케이티아이에스",
+                "stck_prpr": "45000",
+                "prdy_ctrt": "-1400",
+                "acml_vol": "4800",
+                "acml_tr_pbmn": "216000000"
             },
             {
-                "data_rank": 2,
-                "hts_kor_isnm": "L사",
-                "stck_prpr": 50000,
-                "prdy_ctrt": -1300,
-                "acml_vol": 5300,
-                "acml_tr_pbmn": 265000000
+                "data_rank": "2",
+                "hts_kor_isnm": "삼성바이오로직스",
+                "stck_prpr": "50000",
+                "prdy_ctrt": "-1300",
+                "acml_vol": "5300",
+                "acml_tr_pbmn": "265000000"
             },
             {
-                "data_rank": 3,
-                "hts_kor_isnm": "M사",
-                "stck_prpr": 62000,
-                "prdy_ctrt": -1100,
-                "acml_vol": 4900,
-                "acml_tr_pbmn": 303800000
+                "data_rank": "3",
+                "hts_kor_isnm": "두올",
+                "stck_prpr": "62000",
+                "prdy_ctrt": "-1100",
+                "acml_vol": "4900",
+                "acml_tr_pbmn": "303800000"
             },
             {
-                "data_rank": 4,
-                "hts_kor_isnm": "N사",
-                "stck_prpr": 47000,
-                "prdy_ctrt": -1050,
-                "acml_vol": 3700,
-                "acml_tr_pbmn": 173900000
+                "data_rank": "4",
+                "hts_kor_isnm": "스틱인베스트먼트",
+                "stck_prpr": "47000",
+                "prdy_ctrt": "-1050",
+                "acml_vol": "3700",
+                "acml_tr_pbmn": "173900000"
             },
             {
-                "data_rank": 5,
-                "hts_kor_isnm": "O사",
-                "stck_prpr": 57000,
-                "prdy_ctrt": -980,
-                "acml_vol": 4500,
-                "acml_tr_pbmn": 256500000
+                "data_rank": "5",
+                "hts_kor_isnm": "대한제당",
+                "stck_prpr": "57000",
+                "prdy_ctrt": "-980",
+                "acml_vol": "4500",
+                "acml_tr_pbmn": "256500000"
             },
             {
-                "data_rank": 6,
-                "hts_kor_isnm": "P사",
-                "stck_prpr": 49000,
-                "prdy_ctrt": -920,
-                "acml_vol": 3300,
-                "acml_tr_pbmn": 161700000
+                "data_rank": "6",
+                "hts_kor_isnm": "LX홀딩스",
+                "stck_prpr": "49000",
+                "prdy_ctrt": "-920",
+                "acml_vol": "3300",
+                "acml_tr_pbmn": "161700000"
             },
             {
-                "data_rank": 7,
-                "hts_kor_isnm": "Q사",
-                "stck_prpr": 53000,
-                "prdy_ctrt": -870,
-                "acml_vol": 4100,
-                "acml_tr_pbmn": 217300000
+                "data_rank": "7",
+                "hts_kor_isnm": "한화시스템",
+                "stck_prpr": "53000",
+                "prdy_ctrt": "-870",
+                "acml_vol": "4100",
+                "acml_tr_pbmn": "217300000"
             },
             {
-                "data_rank": 8,
-                "hts_kor_isnm": "R사",
-                "stck_prpr": 69000,
-                "prdy_ctrt": -800,
-                "acml_vol": 5400,
-                "acml_tr_pbmn": 372600000
+                "data_rank": "8",
+                "hts_kor_isnm": "모나미",
+                "stck_prpr": "69000",
+                "prdy_ctrt": "-800",
+                "acml_vol": "5400",
+                "acml_tr_pbmn": "372600000"
             },
             {
-                "data_rank": 9,
-                "hts_kor_isnm": "S사",
-                "stck_prpr": 64000,
-                "prdy_ctrt": -750,
-                "acml_vol": 3600,
-                "acml_tr_pbmn": 230400000
+                "data_rank": "9",
+                "hts_kor_isnm": "에이리츠",
+                "stck_prpr": "64000",
+                "prdy_ctrt": "-750",
+                "acml_vol": "3600",
+                "acml_tr_pbmn": "230400000"
             },
             {
-                "data_rank": 10,
-                "hts_kor_isnm": "T사",
-                "stck_prpr": 71000,
-                "prdy_ctrt": -700,
-                "acml_vol": 5000,
-                "acml_tr_pbmn": 355000000
+                "data_rank": "10",
+                "hts_kor_isnm": "우진아이엔에스",
+                "stck_prpr": "71000",
+                "prdy_ctrt": "-700",
+                "acml_vol": "5000",
+                "acml_tr_pbmn": "355000000"
             }
         ],
         "top_10_by_acml_vol": [
             {
-                "data_rank": 1,
-                "hts_kor_isnm": "U사",
-                "stck_prpr": 61000,
-                "prdy_ctrt": 300,
-                "acml_vol": 10000,
-                "acml_tr_pbmn": 610000000,
-                "vol_growth_rate": 15.2
+                "data_rank": "1",
+                "hts_kor_isnm": "HD현대인프라코어",
+                "stck_prpr": "61000",
+                "prdy_ctrt": "300",
+                "acml_vol": "10000",
+                "acml_tr_pbmn": "610000000",
+                "vol_growth_rate": "15.2"
             },
             {
-                "data_rank": 2,
-                "hts_kor_isnm": "V사",
-                "stck_prpr": 45000,
-                "prdy_ctrt": -200,
-                "acml_vol": 9500,
-                "acml_tr_pbmn": 427500000,
-                "vol_growth_rate": 12.5
+                "data_rank": "2",
+                "hts_kor_isnm": "제이준코스메틱",
+                "stck_prpr": "45000",
+                "prdy_ctrt": "-200",
+                "acml_vol": "9500",
+                "acml_tr_pbmn": "427500000",
+                "vol_growth_rate": "12.5"
             },
             {
-                "data_rank": 3,
-                "hts_kor_isnm": "W사",
-                "stck_prpr": 73000,
-                "prdy_ctrt": 400,
-                "acml_vol": 9200,
-                "acml_tr_pbmn": 671600000,
-                "vol_growth_rate": 11.0
+                "data_rank": "3",
+                "hts_kor_isnm": "우진아이엔에스",
+                "stck_prpr": "73000",
+                "prdy_ctrt": "400",
+                "acml_vol": "9200",
+                "acml_tr_pbmn": "671600000",
+                "vol_growth_rate": "11.0"
             },
             {
-                "data_rank": 4,
-                "hts_kor_isnm": "X사",
-                "stck_prpr": 50000,
-                "prdy_ctrt": 250,
-                "acml_vol": 8900,
-                "acml_tr_pbmn": 445000000,
-                "vol_growth_rate": 10.8
+                "data_rank": "4",
+                "hts_kor_isnm": "LX홀딩스",
+                "stck_prpr": "50000",
+                "prdy_ctrt": "250",
+                "acml_vol": "8900",
+                "acml_tr_pbmn": "445000000",
+                "vol_growth_rate": "10.8"
             },
             {
-                "data_rank": 5,
-                "hts_kor_isnm": "Y사",
-                "stck_prpr": 55000,
-                "prdy_ctrt": -100,
-                "acml_vol": 8700,
-                "acml_tr_pbmn": 478500000,
-                "vol_growth_rate": 9.3
+                "data_rank": "5",
+                "hts_kor_isnm": "한화시스템",
+                "stck_prpr": "55000",
+                "prdy_ctrt": "-100",
+                "acml_vol": "8700",
+                "acml_tr_pbmn": "478500000",
+                "vol_growth_rate": "9.3"
             },
             {
-                "data_rank": 6,
-                "hts_kor_isnm": "Z사",
-                "stck_prpr": 67000,
-                "prdy_ctrt": 350,
-                "acml_vol": 8500,
-                "acml_tr_pbmn": 569500000,
-                "vol_growth_rate": 8.7
+                "data_rank": "6",
+                "hts_kor_isnm": "HD현대중공업",
+                "stck_prpr": "67000",
+                "prdy_ctrt": "350",
+                "acml_vol": "8500",
+                "acml_tr_pbmn": "569500000",
+                "vol_growth_rate": "8.7"
             },
             {
-                "data_rank": 7,
-                "hts_kor_isnm": "AA사",
-                "stck_prpr": 72000,
-                "prdy_ctrt": 500,
-                "acml_vol": 8300,
-                "acml_tr_pbmn": 597600000,
-                "vol_growth_rate": 7.5
+                "data_rank": "7",
+                "hts_kor_isnm": "케이티아이에스",
+                "stck_prpr": "72000",
+                "prdy_ctrt": "500",
+                "acml_vol": "8300",
+                "acml_tr_pbmn": "597600000",
+                "vol_growth_rate": "7.5"
             },
             {
-                "data_rank": 8,
-                "hts_kor_isnm": "BB사",
-                "stck_prpr": 60000,
-                "prdy_ctrt": 150,
-                "acml_vol": 8100,
-                "acml_tr_pbmn": 486000000,
-                "vol_growth_rate": 6.8
+                "data_rank": "8",
+                "hts_kor_isnm": "삼성바이오로직스",
+                "stck_prpr": "60000",
+                "prdy_ctrt": "150",
+                "acml_vol": "8100",
+                "acml_tr_pbmn": "486000000",
+                "vol_growth_rate": "6.8"
             },
             {
-                "data_rank": 9,
-                "hts_kor_isnm": "CC사",
-                "stck_prpr": 68000,
-                "prdy_ctrt": 280,
-                "acml_vol": 7900,
-                "acml_tr_pbmn": 537200000,
-                "vol_growth_rate": 5.9
+                "data_rank": "9",
+                "hts_kor_isnm": "두올",
+                "stck_prpr": "68000",
+                "prdy_ctrt": "280",
+                "acml_vol": "7900",
+                "acml_tr_pbmn": "537200000",
+                "vol_growth_rate": "5.9"
             },
             {
-                "data_rank": 10,
-                "hts_kor_isnm": "DD사",
-                "stck_prpr": 71000,
-                "prdy_ctrt": -50,
-                "acml_vol": 7700,
-                "acml_tr_pbmn": 546700000,
-                "vol_growth_rate": 5.0
+                "data_rank": "10",
+                "hts_kor_isnm": "스틱인베스트먼트",
+                "stck_prpr": "71000",
+                "prdy_ctrt": "-50",
+                "acml_vol": "7700",
+                "acml_tr_pbmn": "546700000",
+                "vol_growth_rate": "5.0"
             }
         ]
-    }
+    },
+    "dailyprice": [
+        {
+            "stck_bsop_date": "20250217",
+            "stck_clpr": "55800",
+            "stck_oprc": "56100",
+            "stck_hgpr": "56500",
+            "stck_lwpr": "55700",
+            "acml_vol": "10628700",
+            "acml_tr_pbmn": "595142353900",
+            "prdy_ctrt": "-0.36"
+        },
+        {
+            "stck_bsop_date": "20250214",
+            "stck_clpr": "56000",
+            "stck_oprc": "56000",
+            "stck_hgpr": "57300",
+            "stck_lwpr": "56000",
+            "acml_vol": "23979780",
+            "acml_tr_pbmn": "1354475009700",
+            "prdy_ctrt": "0.36"
+        },
+        {
+            "stck_bsop_date": "20250213",
+            "stck_clpr": "55800",
+            "stck_oprc": "56100",
+            "stck_hgpr": "56400",
+            "stck_lwpr": "55600",
+            "acml_vol": "22448376",
+            "acml_tr_pbmn": "1256946474000",
+            "prdy_ctrt": "0.00"
+        },
+        {
+            "stck_bsop_date": "20250212",
+            "stck_clpr": "55800",
+            "stck_oprc": "55100",
+            "stck_hgpr": "55900",
+            "stck_lwpr": "54500",
+            "acml_vol": "26428596",
+            "acml_tr_pbmn": "1460112004958",
+            "prdy_ctrt": "0.18"
+        }
+    ]
 }
