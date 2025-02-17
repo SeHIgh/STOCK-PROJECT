@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+//DB 설계
 @Getter
 @Setter
 @NoArgsConstructor

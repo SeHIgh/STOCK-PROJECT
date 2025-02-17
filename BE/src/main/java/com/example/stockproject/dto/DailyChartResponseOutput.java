@@ -10,9 +10,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class DailyChartResponseOutput {
-    private String stck_bsop_date;
-    private String stck_clpr;
-    private String stck_hgpr;
+    private String stck_bsop_date;      //일자
+    private String stck_clpr;           //종가
+    private String stck_oprc;           //시가
+    private String stck_hgpr;           //최고가
+    private String stck_lwpr;           //최저가
+    //private String prdy_vrss;           //전일 대비 등락(등락률을 지원하지 않음.) ex) 200, -300(부호출력)
+    private String acml_vol;            //거래량
+    private String acml_tr_pbmn;        //거래대금
+    private String prdy_ctrt;           //등락률
 }
 
 

@@ -60,8 +60,9 @@ public class KisController {
         return apiPriceService.getPriceByStockName(stockName);
     }
 
+    //http://localhost:8090/dailychart?stockName=삼성전자
     @GetMapping("/dailychart")
-    public Mono<List<DailyChartResponseOutput>> getDailyChart(){
-        return apiDailychartService.getDailyChart();
+    public Mono<List<DailyChartResponseOutput>> getDailyChart(@RequestParam String stockName){
+        return apiDailychartService.getDailyChartByStockName(stockName);
     }
 }
