@@ -38,6 +38,7 @@ public class OverseasStockService {
         String nasdaqChange = nasdaqElement.findElement(By.tagName("em")).getText();
         String nasdaqChangeSign = nasdaqElement.findElements(By.tagName("span")).get(1).getText();
         String nasdaqChangeRate = nasdaqElement.findElement(By.tagName("span")).getText().substring(1,5); //+0.41%
+        String nasdaqChangeValue = nasdaqElement.findElement(By.tagName("em")).getText();
 
         // S&P500 지수 크롤링
         WebElement sp500Element = driver.findElement(By.cssSelector("#worldIndexColumn3 li.on .point_status"));
@@ -45,13 +46,14 @@ public class OverseasStockService {
         String sp500Change = sp500Element.findElement(By.tagName("em")).getText();
         String sp500ChangeSign = sp500Element.findElements(By.tagName("span")).get(1).getText();
         String sp500ChangeRate = sp500Element.findElement(By.tagName("span")).getText().substring(1,5); //+0.41%;
+        String sp500ChangeValue = sp500Element.findElement(By.tagName("em")).getText();
 
-        IndexDTO nasdaq = new IndexDTO("3", "나스닥", "NASDAQ", nasdaqIndex, nasdaqChangeRate, nasdaqChangeSign);
-        IndexDTO sp500 = new IndexDTO("4","S&P500", "SPX",sp500Index, sp500Change, sp500ChangeSign);
+        IndexDTO nasdaq = new IndexDTO("3", "나스닥", "NASDAQ", nasdaqIndex, nasdaqChangeRate, nasdaqChangeSign, nasdaqChangeValue);
+        IndexDTO sp500 = new IndexDTO("4","S&P500", "SPX",sp500Index, sp500ChangeRate, sp500ChangeSign, sp500ChangeValue);
 
 
-        logger.info("📊 나스닥 지수 {}, 등락율 {}, 부호 {}", nasdaqIndex, nasdaqChangeRate, nasdaqChangeSign);
-        logger.info("📊 S&P500 지수 {}, 등락율 {}, 부호 {}", sp500Index, sp500Change, sp500ChangeSign);
+        logger.info("📊 나스닥 지수 {}, 등락율 {}, 부호 {}, 등락 지수{}", nasdaqIndex, nasdaqChangeRate, nasdaqChangeSign, nasdaqChangeValue);
+        logger.info("📊 S&P500 지수 {}, 등락율 {}, 부호 {}, 등락 지수{}", sp500Index, sp500Change, sp500ChangeSign, sp500ChangeValue);
 
         List<IndexDTO> stockIndexList = new ArrayList<>();
         stockIndexList.add(nasdaq);

@@ -11,7 +11,8 @@ public class IndexDTO {
     String id;
     String label;
     String index_name;
-    String nasdaq_index;
-    String nasdaq_change_rate;
-    String nasdaq_change_sign;
+    String index;
+    String change_rate;
+    String change_sign;
+    String change_value;
 }

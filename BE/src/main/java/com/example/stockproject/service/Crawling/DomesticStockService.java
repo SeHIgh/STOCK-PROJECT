@@ -36,6 +36,7 @@ public class DomesticStockService {
         String[] kospiChangeParts = kospiChangeElement.getText().split(" "); // 공백 기준으로 분리 //코스피 등락율 [7.88 +0.31%상승]
         String kospiChangeRate = kospiChangeParts[1].substring(1, 5); ////+0.31
         String kospiChangeSign = kospiChangeRate.startsWith("+") ? "+" : "-" ;  //+
+        String kospiChangeValue = kospiChangeParts[0];
 
         WebElement kosdaqElement = driver.findElement(By.cssSelector("#KOSDAQ_now"));
         String kosdaqIndex = kosdaqElement.getText();
@@ -43,12 +44,13 @@ public class DomesticStockService {
         String[] kosdaqChangeParts = kosdaqChangeElement.getText().split(" ");
         String kosdaqChangeRate = kosdaqChangeParts[1].substring(1, 5);
         String kosdaqChangeSign = kosdaqChangeRate.startsWith("+") ? "+" : "-";
+        String kosdaqChangeValue = kosdaqChangeParts[0];
 
-        IndexDTO kospi = new IndexDTO("1","코스피","KOSPI", kosdaqIndex, kospiChangeRate, kospiChangeSign);
-        IndexDTO kosdaq = new IndexDTO("2","코스닥", "KOSDAQ", kosdaqIndex, kosdaqChangeRate, kosdaqChangeSign );
+        IndexDTO kospi = new IndexDTO("1","코스피","KOSPI", kospiIndex, kospiChangeRate, kospiChangeSign, kospiChangeValue);
+        IndexDTO kosdaq = new IndexDTO("2","코스닥", "KOSDAQ", kosdaqIndex, kosdaqChangeRate, kosdaqChangeSign, kosdaqChangeValue);
 
-        logger.info("📊 코스피 지수 {}, 등락율 {}, 부호 {}", kospiIndex, kospiChangeRate, kospiChangeSign);
-        logger.info("📊 코스닥 지수 {}, 등락율 {}, 부호 {}", kosdaqIndex, kosdaqChangeRate, kosdaqChangeSign);
+        logger.info("📊 코스피 지수 {}, 등락율 {}, 부호 {}, 등락 지수 {}", kospiIndex, kospiChangeRate, kospiChangeSign, kospiChangeValue);
+        logger.info("📊 코스닥 지수 {}, 등락율 {}, 부호 {}, 등락 지수 {}", kosdaqIndex, kosdaqChangeRate, kosdaqChangeSign, kosdaqChangeValue);
 
         List<IndexDTO> stockIndexList = new ArrayList<>();
         stockIndexList.add(kosdaq);
