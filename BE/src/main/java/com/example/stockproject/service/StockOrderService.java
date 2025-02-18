@@ -104,12 +104,12 @@ public class StockOrderService {
         // 요청 바디 데이터
         Map<String, String> requestBody = new HashMap<>();
 
-        requestBody.put("CANO", orderRequest.getCANO());
-        requestBody.put("ACNT_PRDT_CD", orderRequest.getACNT_PRDT_CD());
-        requestBody.put("PDNO", orderRequest.getPDNO());
-        requestBody.put("ORD_DVSN", orderRequest.getORD_DVSN());     //ord_dvsn이 00이면 지정가주문, 01이면 시장가주문 => 시장가 주문일때는 ORD_UNPR(주문단가)을 0으로 지정.
-        requestBody.put("ORD_QTY", orderRequest.getORD_QTY());
-        requestBody.put("ORD_UNPR", orderRequest.getORD_UNPR());
+        requestBody.put("CANO", orderRequest.getCano());
+        requestBody.put("ACNT_PRDT_CD", orderRequest.getAcntPrdtCd());
+        requestBody.put("PDNO", orderRequest.getPdno());
+        requestBody.put("ORD_DVSN", orderRequest.getOrdDvsn());
+        requestBody.put("ORD_QTY", orderRequest.getOrdQty());
+        requestBody.put("ORD_UNPR", orderRequest.getOrdUnpr());
 
 
         return webClient.post()
@@ -130,12 +130,12 @@ public class StockOrderService {
         // 요청 바디 데이터
         Map<String, String> requestBody = new HashMap<>();
 
-        requestBody.put("CANO", orderRequest.getCANO());
-        requestBody.put("ACNT_PRDT_CD", orderRequest.getACNT_PRDT_CD());
-        requestBody.put("PDNO", orderRequest.getPDNO());
-        requestBody.put("ORD_DVSN", orderRequest.getORD_DVSN());
-        requestBody.put("ORD_QTY", orderRequest.getORD_QTY());
-        requestBody.put("ORD_UNPR", orderRequest.getORD_UNPR());
+        requestBody.put("CANO", orderRequest.getCano());
+        requestBody.put("ACNT_PRDT_CD", orderRequest.getAcntPrdtCd());
+        requestBody.put("PDNO", orderRequest.getPdno());
+        requestBody.put("ORD_DVSN", orderRequest.getOrdDvsn());
+        requestBody.put("ORD_QTY", orderRequest.getOrdQty());
+        requestBody.put("ORD_UNPR", orderRequest.getOrdUnpr());
 
 
         return webClient.post()

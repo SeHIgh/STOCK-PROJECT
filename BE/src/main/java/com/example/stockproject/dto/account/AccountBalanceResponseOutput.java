@@ -19,3 +19,5 @@ public class AccountBalanceResponseOutput {
     private String evluPflsSmtlAmt; //평가손익합계금액
     private String asstIcdcAmt; //자산증감액
 }
+
+//원금, 총 수익, 일간수익

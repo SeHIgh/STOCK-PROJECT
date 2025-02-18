@@ -17,6 +17,7 @@ public class PriceResponseOutput {
     private String acmlVol;                      // 누적 거래량
     private String prdyVrssVolRate;              // 전일 대비 거래량 비율
     private String stckOprc;                     // 시가
+    //종가 = 현재가  - 전일대비
     private String stckHgpr;                     // 최고가
     private String stckLwpr;                     // 최저가
     private String stckMxpr;                     // 상한가
@@ -27,6 +28,7 @@ public class PriceResponseOutput {
     private String pbr;                          // PBR
     private String eps;                          // EPS
     private String bps;                          // BPS
+
 //    private String d250Hgpr;                    //250일 최고가
 //    private String d250HgprDate;                //250일 최고가 일자
 //    private String d250HgprVrssPrprRate;        //250일 최고가 대비 현재 비율

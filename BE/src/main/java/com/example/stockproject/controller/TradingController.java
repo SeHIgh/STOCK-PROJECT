@@ -25,13 +25,13 @@ public class TradingController {
     //주식 매수 주문
     @PostMapping("/trading/buy")
     public Mono<List<OrderResponseOutput>> buyStock(@RequestBody OrderRequest orderRequest){
-        logger.debug("🔴Order Request: {}", orderRequest);
+        logger.debug("🔴매수 Order Request: {}", orderRequest);
         return stockOrderService.buyStock(orderRequest);
     }
 
     @PostMapping("/trading/sell")
     public Mono<List<OrderResponseOutput>> sellStock(@RequestBody OrderRequest orderRequest){
-        logger.debug("🔵Order Request: {}", orderRequest);
+        logger.debug("🔵매도 Order Request: {}", orderRequest);
         return stockOrderService.sellStock(orderRequest);
     }
 }

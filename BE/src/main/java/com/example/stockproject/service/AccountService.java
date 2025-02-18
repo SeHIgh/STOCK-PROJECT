@@ -1,5 +1,6 @@
 package com.example.stockproject.service;
 
+import com.example.stockproject.dto.PriceResponseOutput;
 import com.example.stockproject.dto.account.AccountBalanceResponseOutput;
 import com.example.stockproject.dto.account.AccountStockResponseOutput;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.CoreSubscriber;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -28,11 +30,12 @@ public class AccountService {
 
     private final WebClient webClient;
     private final ObjectMapper objectMapper;
-
+    private final ApiPriceService apiPriceService;
     @Autowired
-    public AccountService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper) {
+    public AccountService(WebClient.Builder webClientBuilder, ObjectMapper objectMapper, ApiPriceService apiPriceService) {
         this.webClient = webClientBuilder.baseUrl("https://openapivts.koreainvestment.com:29443").build();
         this.objectMapper =objectMapper;
+        this.apiPriceService = apiPriceService;
     }
 
     //계좌잔고 조회를 위한 Header request
@@ -59,17 +62,40 @@ public class AccountService {
             if (outputNode1 != null) {
                 for (JsonNode node : outputNode1) {
                     AccountStockResponseOutput stockData = new AccountStockResponseOutput();
-                    stockData.setPdno(node.get("pdno").asText());
                     stockData.setPrdtName(node.get("prdt_name").asText());
-                    stockData.setTradDvsnName(node.get("trad_dvsn_name").asText());
-                    stockData.setThdtBuyqty(node.get("thdt_buyqty").asText());
-                    stockData.setThdtSllqty(node.get("thdt_sll_qty").asText());
-                    stockData.setHldg_qty(node.get("hldg_qty").asText());
+                    stockData.setEvlu_pfls_rt(node.get("evlu_pfls_rt").asText());
+                    stockData.setEvlu_pfls_amt(node.get("evlu_pfls_amt").asText());
                     stockData.setPchs_avg_pric(node.get("pchs_avg_pric").asText());
                     stockData.setPrpr(node.get("prpr").asText());
+                    stockData.setHldg_qty(node.get("hldg_qty").asText());
                     stockData.setEvlu_amt(node.get("evlu_amt").asText());
-                    stockData.setEvlu_pfls_amt(node.get("evlu_pfls_amt").asText());
-                    stockData.setEvlu_pfls_rt(node.get("evlu_pfls_rt").asText());
+                    stockData.setPchs_amt(node.get("pchs_amt").asText());
+
+                    // `getPriceByStockName`을 호출하고, `block()`을 사용하여 결과를 동기적으로 처리
+//                    //종가 계산 (ApiPrice서비스에서 현재가와 전일대비 항목을 가져와 계산)
+//                    String stockName = node.get("prdt_name").asText();
+//                    Mono<PriceResponseOutput> priceData = new Mono<PriceResponseOutput>
+//                    priceData = apiPriceService.getPriceByStockName(stockName).block();
+//                    int currentPrice = Integer.parseInt(priceData.getStckPrpr());
+
+
+//                    int priceChange = Integer.parseInt(priceData.getPrdyVrss());
+//                    int previousClosePrice = currentPrice - priceChange;
+//
+//                    // 🔹 보유수량 가져오기
+//                    int holdingQuantity = Integer.parseInt(node.get("hldg_qty").asText());
+//
+//                    // 🔹 일간 수익금 계산 (일간 수익금 = (현재가 - 전일 종가) × 보유수량)
+//                    int int_dailyProfit = (currentPrice - previousClosePrice) * holdingQuantity;
+//                    String dailyProfit = String.valueOf(int_dailyProfit);
+//
+//                    // 🔹 일간 수익률 계산 (일간 수익률 = ((현재가 - 전일 종가) / 전일 종가) × 100)
+//                    double dailyProfitRate_double = ((double) (currentPrice - previousClosePrice) / previousClosePrice) * 100;
+//                    String dailyProfitRate = String.format("%.2f", dailyProfitRate_double);
+//
+//                    stockData.setDaily_profit(dailyProfit);
+//                    stockData.setDaily_profitRate(dailyProfitRate);
+
                     stockList.add(stockData);
                 }
             }
