@@ -10,12 +10,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class FluctResponseOutput {
-    //private String stckShrnIscd;  //주식 단축 종목코드
+    private String stck_shrn_iscd;  //주식 단축 종목코드
     private String data_rank;       //데이터 순위 o
     private String hts_kor_isnm;    //HTS한글 종목명 o
     private String stck_prpr;       //주식 현재가 o
-    //private String prdy_vrss;       //전일대비
-    //private String prdy_vrss_sign;  //전일대비 부호
+    private String prdy_vrss;       //전일대비
+    private String prdy_vrss_sign;  //전일대비 부호
     private String prdy_ctrt;       //전일 대비율 o
     private String acml_vol;         //누적 거래량
     private String acml_tr_pbmn;    //거래대금(현재가 * 거래량)

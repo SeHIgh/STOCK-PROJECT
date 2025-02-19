@@ -22,7 +22,7 @@ public class AccountStockResponseOutput {
     private String evlu_amt;    //평가금액
     private String pchs_amt;        //매입금액  (총 매입금액 = 원금)
     private String daily_profit;      //일간수익
-    private String daily_profitRate;    //일간수익금
+    private String daily_profit_rate;    //일간수익금
 
     //private String ord_psbl_qty;    //주문가능수량
 

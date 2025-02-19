@@ -36,8 +36,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
+	// 웹소켓
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
+	//csv파일
 	implementation 'com.opencsv:opencsv:5.5.2'
 
 	runtimeOnly 'io.netty:netty-resolver-dns-native-macos:4.1.104.Final:osx-aarch_64'

@@ -56,10 +56,19 @@ public class ApiFluctService {
                     if (count >= 10) break;  // 최대 10개까지만 저장
                     FluctResponseOutput responseData = new FluctResponseOutput();
 
+                    responseData.setStck_shrn_iscd(node.get("stck_shrn_iscd").asText());
                     responseData.setData_rank(node.get("data_rank").asText());
                     responseData.setHts_kor_isnm(node.get("hts_kor_isnm").asText());
                     responseData.setStck_prpr(node.get("stck_prpr").asText());
-                    //responseData.setPrdy_vrss(node.get("prdy_vrss").asText());
+                    responseData.setPrdy_vrss(node.get("prdy_vrss").asText());
+                    String sign = node.get("prdy_vrss_sign").asText();
+                    if ("1".equals(sign)) {
+                        responseData.setPrdy_vrss_sign("+");
+                    } else if ("5".equals(sign)) {
+                        responseData.setPrdy_vrss_sign("-");
+                    } else {
+                        responseData.setPrdy_vrss_sign(sign);  // 기본적으로 원래 값 유지
+                    }
                     //responseData.setPrdy_vrss_sign(node.get("prdy_vrss_sign").asText());
                     responseData.setPrdy_ctrt(node.get("prdy_ctrt").asText());
                     responseData.setAcml_vol(node.get("acml_vol").asText());
