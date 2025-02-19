@@ -3,6 +3,7 @@ import StockIndex from "../components/Main/StockIndex";
 import MainLayout from "../components/MainLayout";
 import LiveCharts from "../components/Main/LiveCharts";
 import News from "../components/Main/News";
+import Footer from "../components/Layouts/Footer";
 
 const MainPage = () => {
     return (
@@ -17,17 +18,11 @@ const MainPage = () => {
                     <ExchangeRate />
                 </div>
                 {/* 주요 뉴스 */}
-                <div
-                    id="latest-news"
-                    className="block-main col-span-2"
-                >
+                <div id="latest-news" className="block-main col-span-2">
                     <News />
                 </div>
                 {/* 실시간 차트 (급상승, 급하락 종목) 섹션 */}
-                <div
-                    id="live-charts"
-                    className="block-main col-span-2"
-                >
+                <div id="live-charts" className="block-main col-span-2">
                     <LiveCharts />
                 </div>
             </div>

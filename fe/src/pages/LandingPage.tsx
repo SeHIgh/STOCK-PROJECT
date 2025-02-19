@@ -1,9 +1,9 @@
-import MainLayout from "../components/MainLayout";
+import SubLayout from "../components/SubLayout";
 
 const LandingPage = () => {
     return (
-        <MainLayout>
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center flex flex-col gap-1 group">
+        <SubLayout>
+            <div className="sm:mb-8 sm:flex sm:justify-center flex flex-col gap-1 group">
                 <img
                     alt=""
                     src="/AnTrading_Logo_mini_color_neautral.svg"
@@ -41,7 +41,7 @@ const LandingPage = () => {
                     </a>
                 </div>
             </div>
-        </MainLayout>
+        </SubLayout>
     );
 };
 

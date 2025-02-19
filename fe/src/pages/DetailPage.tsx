@@ -1,9 +1,9 @@
 import { useLocation, useParams } from "react-router-dom";
-import MainLayout from "../components/MainLayout";
 import useFetchData from "../hooks/useFetchData";
 import { fetchStockDetail } from "../api/api";
 import { formatCurrency } from "../utils/format";
 import { useCallback } from "react";
+import SubLayout from "../components/SubLayout";
 
 const DetailPage = () => {
     const location = useLocation();
@@ -24,7 +24,7 @@ const DetailPage = () => {
 
     if (loadingDetailData || errorDetailData)
         return (
-            <MainLayout>
+            <SubLayout>
                 <div className="w-full min-h-[calc(100dvh-96px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll skeleton">
                     <div className="flex flex-row items-center gap-3 col-span-3 skeleton">
                         <div className="w-14 h-14 rounded-xl skeleton-img" />
@@ -83,11 +83,11 @@ const DetailPage = () => {
                         {/* <LivePrice productCode={productCode!} /> */}
                     </div>
                 </div>
-            </MainLayout>
+            </SubLayout>
         );
 
     return (
-        <MainLayout>
+        <SubLayout>
             <div className="w-full min-h-[calc(100dvh-96px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
                 <div className="flex flex-row items-center gap-3 col-span-3">
                     <img
@@ -158,7 +158,7 @@ const DetailPage = () => {
                     {/* <LivePrice productCode={productCode!} /> */}
                 </div>
             </div>
-        </MainLayout>
+        </SubLayout>
     );
 };
 
