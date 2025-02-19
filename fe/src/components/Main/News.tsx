@@ -69,13 +69,13 @@ const News = () => {
                 {newsList.slice(0, 4).map((news, index) => (
                     <li
                         key={index}
-                        className="flex-1 card-main bg-white/30 gray-hover"
+                        className="flex-1 card-main gray-hover"
                     >
                         <a
                             href="*"
                             className="w-full h-full p-4 flex flex-col gap-1"
                         >
-                            <div className="w-full h-40 bg-linear-to-r from-indigo-300/30 to-[#4a69bd]/30 rounded-xl overflow-hidden flex items-center">
+                            <div className="w-full h-40 bg-linear-to-r from-neutral-300/30 to-[#4a69bd]/30 rounded-xl overflow-hidden flex items-center">
                                 <img
                                     src={news.imageUrl}
                                     alt={news.newsId}

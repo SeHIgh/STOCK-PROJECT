@@ -27,7 +27,7 @@ const ExchangeRate = () => {
             {/* <ArrowsRightLeftIcon className="w-6 h-auto rotate-90 drop-shadow-xl fill-gray-500" /> */}
             <ul className="relative w-full flex flex-col justify-between gap-2 overflow-x-scroll pb-2 px-1">
                 {exchangeRates.country.map((exchRate, index) => (
-                    <li key={index} className="flex-1 card-main bg-neutral-100/30 gray-hover flex flex-row gap-1">
+                    <li key={index} className="flex-1 card-main gray-hover flex flex-row gap-1">
                         <div
                             id="text_index"
                             className="flex-1 flex flex-row justify-between px-4 py-1"
@@ -52,11 +52,11 @@ const ExchangeRate = () => {
                                             : ""}
                                     </h3>
                                 </div>
-                                <span className="text-lg">
+                                <span className="text-lg pt-2">
                                     {exchRate.currencyUnit === "달러"
-                                        ? "🇺🇸"
+                                        ? <img alt="US" src="https://thumb.tossinvest.com/image/resized/16x0/https%3A%2F%2Fstatic.toss.im%2Ficons%2Fpng%2F4x%2Ficon-flag-us.png" />
                                         : exchRate.currencyUnit === "원"
-                                        ? "🇰🇷"
+                                        ? <img alt="KR" src="https://thumb.tossinvest.com/image/resized/16x0/https%3A%2F%2Fstatic.toss.im%2Ficons%2Fpng%2F4x%2Ficon-flag-kr.png" />
                                         : "🏳️"}
                                 </span>
                             </div>

@@ -115,7 +115,7 @@ const StockTable = ({ stocks }: { stocks: StockProps[] }) => {
                     {stocks.map((stock: StockProps) => (
                         <tr key={stock.productCode}>
                             {/* 등수 */}
-                            <td className="whitespace-nowrap text-base font-medium text-indigo-300 text-center rounded-l-lg">
+                            <td className="whitespace-nowrap text-base font-medium text-indigo-300 text-center rounded-es-lg">
                                 {indexOf(stocks, stock) + 1}
                             </td>
                             {/* 종목 명 */}
@@ -162,7 +162,7 @@ const StockTable = ({ stocks }: { stocks: StockProps[] }) => {
                                     .toLocaleString()}
                                 억원
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right rounded-r-lg">
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right rounded-se-lg">
                                 {stock.price.marketVolume.toLocaleString()}주
                             </td>
                         </tr>

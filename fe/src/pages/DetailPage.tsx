@@ -32,8 +32,8 @@ const DetailPage = () => {
     const getData = useCallback(async () => {
         try {
             const response = await axios.get<StockProps[]>(
-                // `http://localhost:3000/stock_list?productCode=${productCode}`
-                "/api/v1/dashboard/wts/overview/indicator/index?market=kr"
+                `http://localhost:3000/stock_list?productCode=${productCode}`
+                // "/api/v1/dashboard/wts/overview/indicator/index?market=kr"
             );
             setStockData(response.data[0]);
         } catch (error) {
@@ -115,28 +115,28 @@ const DetailPage = () => {
                 {/* 차트 섹션 */}
                 <div
                     id="stock-chart"
-                    className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-2"
+                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-2"
                 >
                     <StockChart productCode={productCode!} />
                 </div>
                 {/* 주문 (매수, 매도) [로그인 시 열람 가능] */}
                 <div
                     id="stock-order"
-                    className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-1 row-span-2"
+                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-1 row-span-2"
                 >
                     {/* <OrderSection productCode={productCode!} /> */}
                 </div>
                 {/* 호가 (채결 강도) [로그인 시 열람 가능] */}
                 <div
                     id="order-flow"
-                    className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-1 row-span-2"
+                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-1 row-span-2"
                 >
                     {/* <Quote productCode={productCode!} /> */}
                 </div>
                 {/* 실시간 시세 */}
                 <div
                     id="real-time-quotes"
-                    className="flex-1 block-detail bg-white/50 gray-hover flex flex-row gap-1 col-span-2"
+                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-2"
                 >
                     {/* <LivePrice productCode={productCode!} /> */}
                 </div>

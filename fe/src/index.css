@@ -23,12 +23,18 @@
   font-style: normal;
 
   @apply bg-neutral-200 text-neutral-600;
+
+  /* background-image: url("/AnTrading_Logo_mini_color_neautral.svg");
+  background-repeat: repeat-y repeat-y;
+  background-position: center;
+  background-size: 100%; */
 }
 
 h1 {
-  font-family: "Gugi", cursive;
-  @apply text-neutral-600;
+  /* font-family: "Gugi", cursive;
+  @apply text-neutral-600; */
 }
+
 
 /* 작업 환경 (모니터 개수) 에 따라 스크롤바가 보이는 경우 or 보이지 않는 경우가 생겨 스크롤바 없앰  */
 ::-webkit-scrollbar {
@@ -57,11 +63,13 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  height: 100vh;
+  height: fit-content;
+
+  /* @apply backdrop-blur-3xl; */
 }
 
 #root {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 button {
@@ -118,13 +126,15 @@ thead>tr {
 }
 
 tbody>tr:nth-child(odd) {
-  @apply bg-neutral-400/20;
+  @apply bg-neutral-100/70 drop-shadow-md;
+  /* @apply bg-neutral-400/20; */
   /* @apply bg-white/30; */
   /* @apply bg-indigo-200/30; */
 }
 
 tbody>tr {
-  @apply transition duration-200 ease-in-out cursor-pointer border-none;
+  @apply transition duration-200 ease-in-out cursor-pointer;
+  /* @apply transition duration-200 ease-in-out cursor-pointer border-none; */
 }
 
 tbody>tr:hover {
@@ -153,15 +163,15 @@ header {
 
 /* 카드 디자인 */
 .block-main {
-  @apply rounded-xl p-3 flex flex-col justify-between;
-}
-
-.block-detail {
-  @apply rounded-xl p-4 flex flex-col justify-between border-2 border-neutral-400;
+  @apply rounded-xl rounded p-3 flex flex-col justify-between;
 }
 
 .card-main {
-  @apply rounded-xl p-0 flex drop-shadow-md border-2 border-neutral-400;
+  @apply rounded-se-xl rounded-es-xl p-0 flex drop-shadow-md border-2 border-neutral-400 bg-neutral-100/70;
+}
+
+.block-detail {
+  @apply rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400 bg-neutral-100/70 drop-shadow-sm;
 }
 
 .gray-hover {
@@ -173,3 +183,8 @@ header {
 }
 
 /* 하단 디자인 */
+
+/* 폰트 */
+.gugi-font {
+  font-family: "Gugi", cursive;
+}
