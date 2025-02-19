@@ -14730,264 +14730,352 @@
     "exchangerate": {
         "value": "1443.70"
     },
-    "livechart": {
-        "top_10_by_prdy_ctrt": [
-            {
-                "data_rank": "1",
-                "hts_kor_isnm": "HD현대인프라코어",
-                "stck_prpr": "75000",
-                "prdy_ctrt": "1500",
-                "acml_vol": "5000",
-                "acml_tr_pbmn": "375000000"
-            },
-            {
-                "data_rank": "2",
-                "hts_kor_isnm": "제이준코스메틱",
-                "stck_prpr": "52000",
-                "prdy_ctrt": "1200",
-                "acml_vol": "4300",
-                "acml_tr_pbmn": "223600000"
-            },
-            {
-                "data_rank": "3",
-                "hts_kor_isnm": "종근당바이오",
-                "stck_prpr": "68000",
-                "prdy_ctrt": "1100",
-                "acml_vol": "6200",
-                "acml_tr_pbmn": "421600000"
-            },
-            {
-                "data_rank": "4",
-                "hts_kor_isnm": "LS네트웍스",
-                "stck_prpr": "47000",
-                "prdy_ctrt": "980",
-                "acml_vol": "3900",
-                "acml_tr_pbmn": "183300000"
-            },
-            {
-                "data_rank": "5",
-                "hts_kor_isnm": "애경산업",
-                "stck_prpr": "89000",
-                "prdy_ctrt": "920",
-                "acml_vol": "7200",
-                "acml_tr_pbmn": "640800000"
-            },
-            {
-                "data_rank": "6",
-                "hts_kor_isnm": "엔씨소프트",
-                "stck_prpr": "61000",
-                "prdy_ctrt": "850",
-                "acml_vol": "3100",
-                "acml_tr_pbmn": "189100000"
-            },
-            {
-                "data_rank": "7",
-                "hts_kor_isnm": "키움증권",
-                "stck_prpr": "93000",
-                "prdy_ctrt": "780",
-                "acml_vol": "5800",
-                "acml_tr_pbmn": "539400000"
-            },
-            {
-                "data_rank": "8",
-                "hts_kor_isnm": "한화",
-                "stck_prpr": "56000",
-                "prdy_ctrt": "710",
-                "acml_vol": "4100",
-                "acml_tr_pbmn": "229600000"
-            },
-            {
-                "data_rank": "9",
-                "hts_kor_isnm": "카프로",
-                "stck_prpr": "72000",
-                "prdy_ctrt": "690",
-                "acml_vol": "3400",
-                "acml_tr_pbmn": "244800000"
-            },
-            {
-                "data_rank": "10",
-                "hts_kor_isnm": "HD현대중공업",
-                "stck_prpr": "80000",
-                "prdy_ctrt": "650",
-                "acml_vol": "5300",
-                "acml_tr_pbmn": "424000000"
-            }
-        ],
-        "bottom_10_by_prdy_ctrt": [
-            {
-                "data_rank": "1",
-                "hts_kor_isnm": "케이티아이에스",
-                "stck_prpr": "45000",
-                "prdy_ctrt": "-1400",
-                "acml_vol": "4800",
-                "acml_tr_pbmn": "216000000"
-            },
-            {
-                "data_rank": "2",
-                "hts_kor_isnm": "삼성바이오로직스",
-                "stck_prpr": "50000",
-                "prdy_ctrt": "-1300",
-                "acml_vol": "5300",
-                "acml_tr_pbmn": "265000000"
-            },
-            {
-                "data_rank": "3",
-                "hts_kor_isnm": "두올",
-                "stck_prpr": "62000",
-                "prdy_ctrt": "-1100",
-                "acml_vol": "4900",
-                "acml_tr_pbmn": "303800000"
-            },
-            {
-                "data_rank": "4",
-                "hts_kor_isnm": "스틱인베스트먼트",
-                "stck_prpr": "47000",
-                "prdy_ctrt": "-1050",
-                "acml_vol": "3700",
-                "acml_tr_pbmn": "173900000"
-            },
-            {
-                "data_rank": "5",
-                "hts_kor_isnm": "대한제당",
-                "stck_prpr": "57000",
-                "prdy_ctrt": "-980",
-                "acml_vol": "4500",
-                "acml_tr_pbmn": "256500000"
-            },
-            {
-                "data_rank": "6",
-                "hts_kor_isnm": "LX홀딩스",
-                "stck_prpr": "49000",
-                "prdy_ctrt": "-920",
-                "acml_vol": "3300",
-                "acml_tr_pbmn": "161700000"
-            },
-            {
-                "data_rank": "7",
-                "hts_kor_isnm": "한화시스템",
-                "stck_prpr": "53000",
-                "prdy_ctrt": "-870",
-                "acml_vol": "4100",
-                "acml_tr_pbmn": "217300000"
-            },
-            {
-                "data_rank": "8",
-                "hts_kor_isnm": "모나미",
-                "stck_prpr": "69000",
-                "prdy_ctrt": "-800",
-                "acml_vol": "5400",
-                "acml_tr_pbmn": "372600000"
-            },
-            {
-                "data_rank": "9",
-                "hts_kor_isnm": "에이리츠",
-                "stck_prpr": "64000",
-                "prdy_ctrt": "-750",
-                "acml_vol": "3600",
-                "acml_tr_pbmn": "230400000"
-            },
-            {
-                "data_rank": "10",
-                "hts_kor_isnm": "우진아이엔에스",
-                "stck_prpr": "71000",
-                "prdy_ctrt": "-700",
-                "acml_vol": "5000",
-                "acml_tr_pbmn": "355000000"
-            }
-        ],
-        "top_10_by_acml_vol": [
-            {
-                "data_rank": "1",
-                "hts_kor_isnm": "HD현대인프라코어",
-                "stck_prpr": "61000",
-                "prdy_ctrt": "300",
-                "acml_vol": "10000",
-                "acml_tr_pbmn": "610000000",
-                "vol_growth_rate": "15.2"
-            },
-            {
-                "data_rank": "2",
-                "hts_kor_isnm": "제이준코스메틱",
-                "stck_prpr": "45000",
-                "prdy_ctrt": "-200",
-                "acml_vol": "9500",
-                "acml_tr_pbmn": "427500000",
-                "vol_growth_rate": "12.5"
-            },
-            {
-                "data_rank": "3",
-                "hts_kor_isnm": "우진아이엔에스",
-                "stck_prpr": "73000",
-                "prdy_ctrt": "400",
-                "acml_vol": "9200",
-                "acml_tr_pbmn": "671600000",
-                "vol_growth_rate": "11.0"
-            },
-            {
-                "data_rank": "4",
-                "hts_kor_isnm": "LX홀딩스",
-                "stck_prpr": "50000",
-                "prdy_ctrt": "250",
-                "acml_vol": "8900",
-                "acml_tr_pbmn": "445000000",
-                "vol_growth_rate": "10.8"
-            },
-            {
-                "data_rank": "5",
-                "hts_kor_isnm": "한화시스템",
-                "stck_prpr": "55000",
-                "prdy_ctrt": "-100",
-                "acml_vol": "8700",
-                "acml_tr_pbmn": "478500000",
-                "vol_growth_rate": "9.3"
-            },
-            {
-                "data_rank": "6",
-                "hts_kor_isnm": "HD현대중공업",
-                "stck_prpr": "67000",
-                "prdy_ctrt": "350",
-                "acml_vol": "8500",
-                "acml_tr_pbmn": "569500000",
-                "vol_growth_rate": "8.7"
-            },
-            {
-                "data_rank": "7",
-                "hts_kor_isnm": "케이티아이에스",
-                "stck_prpr": "72000",
-                "prdy_ctrt": "500",
-                "acml_vol": "8300",
-                "acml_tr_pbmn": "597600000",
-                "vol_growth_rate": "7.5"
-            },
-            {
-                "data_rank": "8",
-                "hts_kor_isnm": "삼성바이오로직스",
-                "stck_prpr": "60000",
-                "prdy_ctrt": "150",
-                "acml_vol": "8100",
-                "acml_tr_pbmn": "486000000",
-                "vol_growth_rate": "6.8"
-            },
-            {
-                "data_rank": "9",
-                "hts_kor_isnm": "두올",
-                "stck_prpr": "68000",
-                "prdy_ctrt": "280",
-                "acml_vol": "7900",
-                "acml_tr_pbmn": "537200000",
-                "vol_growth_rate": "5.9"
-            },
-            {
-                "data_rank": "10",
-                "hts_kor_isnm": "스틱인베스트먼트",
-                "stck_prpr": "71000",
-                "prdy_ctrt": "-50",
-                "acml_vol": "7700",
-                "acml_tr_pbmn": "546700000",
-                "vol_growth_rate": "5.0"
-            }
-        ]
-    },
+    "top10-fluctuation": [
+        {
+            "stck_shrn_iscd": "180400",
+            "data_rank": "1",
+            "hts_kor_isnm": "DXVX",
+            "stck_prpr": "1872",
+            "prdy_vrss": "432",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "30.00",
+            "acml_vol": "9883158",
+            "acml_tr_pbmn": "18501271776"
+        },
+        {
+            "stck_shrn_iscd": "388720",
+            "data_rank": "2",
+            "hts_kor_isnm": "유일로보틱스",
+            "stck_prpr": "65000",
+            "prdy_vrss": "15000",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "30.00",
+            "acml_vol": "3621743",
+            "acml_tr_pbmn": "235413295000"
+        },
+        {
+            "stck_shrn_iscd": "475830",
+            "data_rank": "3",
+            "hts_kor_isnm": "오름테라퓨틱",
+            "stck_prpr": "36750",
+            "prdy_vrss": "8450",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.86",
+            "acml_vol": "10024734",
+            "acml_tr_pbmn": "368408974500"
+        },
+        {
+            "stck_shrn_iscd": "438700",
+            "data_rank": "4",
+            "hts_kor_isnm": "버넥트",
+            "stck_prpr": "5330",
+            "prdy_vrss": "1225",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.84",
+            "acml_vol": "217631",
+            "acml_tr_pbmn": "1159973230"
+        },
+        {
+            "stck_shrn_iscd": "352770",
+            "data_rank": "5",
+            "hts_kor_isnm": "클리노믹스",
+            "stck_prpr": "370",
+            "prdy_vrss": "85",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.82",
+            "acml_vol": "15904075",
+            "acml_tr_pbmn": "5884507750"
+        },
+        {
+            "stck_shrn_iscd": "101140",
+            "data_rank": "6",
+            "hts_kor_isnm": "인바이오젠",
+            "stck_prpr": "5900",
+            "prdy_vrss": "1355",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.81",
+            "acml_vol": "283841",
+            "acml_tr_pbmn": "1674661900"
+        },
+        {
+            "stck_shrn_iscd": "460940",
+            "data_rank": "7",
+            "hts_kor_isnm": "피앤에스미캐닉스",
+            "stck_prpr": "19650",
+            "prdy_vrss": "4080",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "26.20",
+            "acml_vol": "4623602",
+            "acml_tr_pbmn": "90853779300"
+        },
+        {
+            "stck_shrn_iscd": "217190",
+            "data_rank": "8",
+            "hts_kor_isnm": "제너셈",
+            "stck_prpr": "9260",
+            "prdy_vrss": "1780",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "23.80",
+            "acml_vol": "2660793",
+            "acml_tr_pbmn": "24638943180"
+        },
+        {
+            "stck_shrn_iscd": "303810",
+            "data_rank": "9",
+            "hts_kor_isnm": "동국생명과학",
+            "stck_prpr": "15330",
+            "prdy_vrss": "2800",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "22.35",
+            "acml_vol": "26700010",
+            "acml_tr_pbmn": "409311153300"
+        },
+        {
+            "stck_shrn_iscd": "298380",
+            "data_rank": "10",
+            "hts_kor_isnm": "에이비엘바이오",
+            "stck_prpr": "46900",
+            "prdy_vrss": "8200",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "21.19",
+            "acml_vol": "6917732",
+            "acml_tr_pbmn": "324441630800"
+        }
+    ],
+    "bottom10-fluctuation": [
+        {
+            "stck_shrn_iscd": "298380",
+            "data_rank": "1",
+            "hts_kor_isnm": "에이비엘바이오",
+            "stck_prpr": "46900",
+            "prdy_vrss": "8200",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "21.19",
+            "acml_vol": "6917732",
+            "acml_tr_pbmn": "324441630800"
+        },
+        {
+            "stck_shrn_iscd": "303810",
+            "data_rank": "2",
+            "hts_kor_isnm": "동국생명과학",
+            "stck_prpr": "15330",
+            "prdy_vrss": "2800",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "22.35",
+            "acml_vol": "26700010",
+            "acml_tr_pbmn": "409311153300"
+        },
+        {
+            "stck_shrn_iscd": "217190",
+            "data_rank": "3",
+            "hts_kor_isnm": "제너셈",
+            "stck_prpr": "9260",
+            "prdy_vrss": "1780",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "23.80",
+            "acml_vol": "2660793",
+            "acml_tr_pbmn": "24638943180"
+        },
+        {
+            "stck_shrn_iscd": "460940",
+            "data_rank": "4",
+            "hts_kor_isnm": "피앤에스미캐닉스",
+            "stck_prpr": "19650",
+            "prdy_vrss": "4080",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "26.20",
+            "acml_vol": "4623602",
+            "acml_tr_pbmn": "90853779300"
+        },
+        {
+            "stck_shrn_iscd": "101140",
+            "data_rank": "5",
+            "hts_kor_isnm": "인바이오젠",
+            "stck_prpr": "5900",
+            "prdy_vrss": "1355",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "29.81",
+            "acml_vol": "283841",
+            "acml_tr_pbmn": "1674661900"
+        },
+        {
+            "stck_shrn_iscd": "352770",
+            "data_rank": "6",
+            "hts_kor_isnm": "클리노믹스",
+            "stck_prpr": "370",
+            "prdy_vrss": "85",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "29.82",
+            "acml_vol": "15904075",
+            "acml_tr_pbmn": "5884507750"
+        },
+        {
+            "stck_shrn_iscd": "438700",
+            "data_rank": "7",
+            "hts_kor_isnm": "버넥트",
+            "stck_prpr": "5330",
+            "prdy_vrss": "1225",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "29.84",
+            "acml_vol": "217631",
+            "acml_tr_pbmn": "1159973230"
+        },
+        {
+            "stck_shrn_iscd": "475830",
+            "data_rank": "8",
+            "hts_kor_isnm": "오름테라퓨틱",
+            "stck_prpr": "36750",
+            "prdy_vrss": "8450",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "29.86",
+            "acml_vol": "10024734",
+            "acml_tr_pbmn": "368408974500"
+        },
+        {
+            "stck_shrn_iscd": "388720",
+            "data_rank": "9",
+            "hts_kor_isnm": "유일로보틱스",
+            "stck_prpr": "65000",
+            "prdy_vrss": "15000",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "30.00",
+            "acml_vol": "3621743",
+            "acml_tr_pbmn": "235413295000"
+        },
+        {
+            "stck_shrn_iscd": "180400",
+            "data_rank": "10",
+            "hts_kor_isnm": "DXVX",
+            "stck_prpr": "1872",
+            "prdy_vrss": "432",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "30.00",
+            "acml_vol": "9883158",
+            "acml_tr_pbmn": "18501271776"
+        }
+    ],
+    "volume-rank": [
+        {
+            "stck_shrn_iscd": "475830",
+            "data_rank": "1",
+            "hts_kor_isnm": "오름테라퓨틱",
+            "stck_prpr": "1872",
+            "prdy_vrss": "432",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "30.00",
+            "acml_vol": "9883158",
+            "acml_tr_pbmn": "18501271776",
+            "vol_growth_rate": "15.2"
+        },
+        {
+            "stck_shrn_iscd": "352770",
+            "data_rank": "2",
+            "hts_kor_isnm": "클리노믹스",
+            "stck_prpr": "65000",
+            "prdy_vrss": "15000",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "30.00",
+            "acml_vol": "3621743",
+            "acml_tr_pbmn": "235413295000",
+            "vol_growth_rate": "12.5"
+        },
+        {
+            "stck_shrn_iscd": "298380",
+            "data_rank": "3",
+            "hts_kor_isnm": "에이비엘바이오",
+            "stck_prpr": "36750",
+            "prdy_vrss": "8450",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.86",
+            "acml_vol": "10024734",
+            "acml_tr_pbmn": "368408974500",
+            "vol_growth_rate": "11.0"
+        },
+        {
+            "stck_shrn_iscd": "388720",
+            "data_rank": "4",
+            "hts_kor_isnm": "유일로보틱스",
+            "stck_prpr": "5330",
+            "prdy_vrss": "1225",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.84",
+            "acml_vol": "217631",
+            "acml_tr_pbmn": "1159973230",
+            "vol_growth_rate": "10.8"
+        },
+        {
+            "stck_shrn_iscd": "303810",
+            "data_rank": "5",
+            "hts_kor_isnm": "동국생명과학",
+            "stck_prpr": "370",
+            "prdy_vrss": "85",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "29.82",
+            "acml_vol": "15904075",
+            "acml_tr_pbmn": "5884507750",
+            "vol_growth_rate": "9.3"
+        },
+        {
+            "stck_shrn_iscd": "101140",
+            "data_rank": "6",
+            "hts_kor_isnm": "인바이오젠",
+            "stck_prpr": "5900",
+            "prdy_vrss": "1355",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "29.81",
+            "acml_vol": "283841",
+            "acml_tr_pbmn": "1674661900",
+            "vol_growth_rate": "8.7"
+        },
+        {
+            "stck_shrn_iscd": "217190",
+            "data_rank": "7",
+            "hts_kor_isnm": "제너셈",
+            "stck_prpr": "19650",
+            "prdy_vrss": "4080",
+            "prdy_vrss_sign": "+",
+            "prdy_ctrt": "26.20",
+            "acml_vol": "4623602",
+            "acml_tr_pbmn": "90853779300",
+            "vol_growth_rate": "7.5"
+        },
+        {
+            "stck_shrn_iscd": "438700",
+            "data_rank": "8",
+            "hts_kor_isnm": "버넥트",
+            "stck_prpr": "9260",
+            "prdy_vrss": "1780",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "23.80",
+            "acml_vol": "2660793",
+            "acml_tr_pbmn": "24638943180",
+            "vol_growth_rate": "6.8"
+        },
+        {
+            "stck_shrn_iscd": "460940",
+            "data_rank": "9",
+            "hts_kor_isnm": "피앤에스미캐닉스",
+            "stck_prpr": "15330",
+            "prdy_vrss": "2800",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "22.35",
+            "acml_vol": "26700010",
+            "acml_tr_pbmn": "409311153300",
+            "vol_growth_rate": "5.9"
+        },
+        {
+            "stck_shrn_iscd": "180400",
+            "data_rank": "10",
+            "hts_kor_isnm": "DXVX",
+            "stck_prpr": "46900",
+            "prdy_vrss": "8200",
+            "prdy_vrss_sign": "-",
+            "prdy_ctrt": "21.19",
+            "acml_vol": "6917732",
+            "acml_tr_pbmn": "324441630800",
+            "vol_growth_rate": "5.0"
+        }
+    ],
     "dailyprice": [
         {
             "stck_bsop_date": "20250217",
@@ -15029,5 +15117,24 @@
             "acml_tr_pbmn": "1460112004958",
             "prdy_ctrt": "0.18"
         }
-    ]
+    ],
+    "price": {
+        "stck_prpr": "76800",
+        "prdy_vrss": "1200",
+        "prdy_vrss_sign": "+",
+        "prdy_ctrt": "1.59",
+        "acml_vol": "15243500",
+        "prdy_vrss_vol_rate": "120.5",
+        "stck_oprc": "75600",
+        "stck_hgpr": "77200",
+        "stck_lwpr": "75300",
+        "stck_mxpr": "85000",
+        "stck_llam": "65000",
+        "stck_sdpr": "75600",
+        "lstn_stcn": "5969782550",
+        "per": "13.5",
+        "pbr": "1.45",
+        "eps": "5689",
+        "bps": "53123"
+    }
 }

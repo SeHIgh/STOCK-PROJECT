@@ -116,7 +116,7 @@ const Search = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (selectedStock) {
-            navigate(`/stocks/${selectedStock.단축코드}`);
+            navigate(`/stocks/${selectedStock["한글 종목약명"]}`);
         }
     };
 

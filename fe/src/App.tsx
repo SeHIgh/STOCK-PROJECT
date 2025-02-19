@@ -8,6 +8,7 @@ import LandingPage from "./pages/LandingPage";
 import Footer from "./components/Layouts/Footer";
 import MainPage from "./pages/MainPage";
 import DetailPage from "./pages/DetailPage";
+import StockLiveData from "./components/WebSocket/StockLiveData";
 
 function App() {
     return (
@@ -24,10 +25,10 @@ function App() {
                 <Route path="/find-account" element={<FindAccount />} />
 
                 {/* 상세 페이지 */}
-                <Route path="/stocks/:productCode" element={<DetailPage />} />
+                <Route path="/stocks/:stockName" element={<DetailPage />} />
 
-                {/* Layout test */}
-                <Route path="/footer" element={<Footer />} />
+                {/* Websocket 용 Test 페이지 */}
+                <Route path="/websocket" element={<StockLiveData />} />
             </Routes>
         // </GradientBackground>
     );

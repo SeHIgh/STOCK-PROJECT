@@ -194,14 +194,23 @@ header {
   @apply animate-pulse;
 }
 
-.skeleton-box{
+.skeleton-box {
   @apply bg-neutral-400/70 rounded-xl;
 }
 
-.skeleton-text{
+.skeleton-text {
   @apply bg-neutral-400/70 rounded-lg text-transparent;
+}
+
+.skeleton-img {
+  @apply bg-neutral-400/70 rounded-lg;
 }
 
 /* .skeleton>*{
   @apply bg-neutral-400/70 rounded-lg;
 } */
+
+/* 테스트 용 컴포넌트 */
+.test-component {
+  @apply p-4 border rounded-lg shadow-md absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%];
+}

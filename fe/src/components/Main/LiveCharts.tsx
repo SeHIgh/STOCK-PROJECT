@@ -7,25 +7,8 @@ import {
     fetchLiveChartTopVol10,
 } from "../../api/api";
 import useFetchData from "../../hooks/useFetchData";
-import { StockProps } from "../../types";
-
-// // 250213 최신화 (토스증권 실시간 차트 json 반영)
-// interface StockPrice {
-//     priceType: "MARKET" | string;
-//     base: number;
-//     close: number;
-//     baseKrw?: number | null;
-//     closeKrw?: number | null;
-//     marketVolume: number;
-//     marketAmount: number;
-// }
-
-// interface StockProps {
-//     productCode: string;
-//     name: string;
-//     logoImageUrl: string;
-//     price: StockPrice;
-// }
+import { LiveChartProps } from "../../types";
+import { formatCurrency, formatTradeAmount } from "../../utils/format";
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -169,13 +152,13 @@ const LiveCharts = () => {
                 </TabList>
                 <TabPanels className="mt-2">
                     <TabPanel>
-                        <StockTable stocks={stockListTopIncr10} />
+                        <StockTable stocks={liveChartVol} />
                     </TabPanel>
                     <TabPanel>
-                        <StockTable stocks={stockListTopDecr10} />
+                        <StockTable stocks={liveChartIncr} />
                     </TabPanel>
                     <TabPanel>
-                        <StockTable stocks={stockListTopDecr10} />
+                        <StockTable stocks={liveChartDecr} />
                     </TabPanel>
                 </TabPanels>
             </TabGroup>
@@ -183,7 +166,7 @@ const LiveCharts = () => {
     );
 };
 
-const StockTable = ({ stocks }: { stocks: StockProps[] }) => {
+const StockTable = ({ stocks }: { stocks: LiveChartProps[] | null }) => {
     return (
         <div className="overflow-hidden rounded-lg">
             <table className="min-w-full divide-y divide-transparent table-fixed w-full">
@@ -208,58 +191,55 @@ const StockTable = ({ stocks }: { stocks: StockProps[] }) => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-transparent">
-                    {stocks.map((stock: StockProps) => (
-                        <tr key={stock.productCode}>
+                    {stocks?.map((stock: LiveChartProps) => (
+                        <tr key={stock.data_rank}>
                             {/* 등수 */}
                             <td className="whitespace-nowrap text-base font-medium text-indigo-300 text-center rounded-es-lg">
                                 {indexOf(stocks, stock) + 1}
                             </td>
                             {/* 종목 명 */}
                             <td className="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-900">
+                                {/* 종목 명으로 파라미터 전달 및 세부 페이지 이동*/}
+                                {/* 종목 명 및 종목 코드 사용을 위해 state로 데이터 전달 */}
                                 <Link
-                                    to={`/stocks/${stock.productCode}`}
+                                    to={`/stocks/${stock.hts_kor_isnm}`}
+                                    state={{
+                                        productCode: stock.stck_shrn_iscd,
+                                    }}
                                     className="w-full h-full flex flex-row items-center justify-start"
                                 >
+                                    {/* 종목 코드를 이용한 토스증권 회사 이미지 이용 */}
                                     <img
-                                        src={stock.logoImageUrl}
-                                        alt={stock.name}
+                                        src={`https://static.toss.im/png-icons/securities/icn-sec-fill-${stock.stck_shrn_iscd}.png`}
+                                        alt={stock.hts_kor_isnm}
                                         className="w-6 h-6 mr-2 rounded-full"
                                     ></img>
-                                    <span>{stock.name}</span>
+                                    <span>{stock.hts_kor_isnm}</span>
                                 </Link>
                             </td>
+                            {/* 현재가 */}
                             <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right">
-                                {stock.price.base.toLocaleString()}원
+                                {formatCurrency(stock.stck_prpr)}원
                             </td>
+                            {/* 등락률 */}
                             <td
                                 className={`px-6 py-4 whitespace-nowrap text-base text-right ${
-                                    stock.price.base - stock.price.close > 0
+                                    stock.prdy_vrss_sign === "+"
                                         ? "text-red-400"
                                         : "text-blue-400"
                                 }`}
                             >
-                                {stock.price.base - stock.price.close > 0
-                                    ? "+"
-                                    : ""}
-                                {(
-                                    stock.price.base - stock.price.close
-                                ).toLocaleString()}
-                                원(
-                                {Math.abs(
-                                    ((stock.price.base - stock.price.close) /
-                                        stock.price.base) *
-                                        100
-                                ).toFixed(2)}
-                                %)
+                                {stock.prdy_vrss_sign === "+" ? "+" : "-"}
+                                {formatCurrency(stock.prdy_vrss)}
+                                원({stock.prdy_ctrt}%)
                             </td>
+                            {/* 거래대금 */}
                             <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right">
-                                {(stock.price.marketAmount / 100000000)
-                                    .toFixed(1)
-                                    .toLocaleString()}
-                                억원
+                                {formatTradeAmount(stock.acml_tr_pbmn)}
                             </td>
+                            {/* 거래량 */}
                             <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right rounded-se-lg">
-                                {stock.price.marketVolume.toLocaleString()}주
+                                {formatCurrency(stock.acml_vol)}주
                             </td>
                         </tr>
                     ))}
