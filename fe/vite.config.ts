@@ -10,10 +10,8 @@ export default defineConfig({
     server: {
         proxy: {
             "/api": {
-                target: "https://wts-cert-api.tossinvest.com",
+                target: "env.VITE_API_BASE_URL",
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, ""),
-                secure: true, // HTTPS를 사용할 경우 true로 설정
             },
         },
     },

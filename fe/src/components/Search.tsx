@@ -68,13 +68,14 @@ const Search = () => {
 
     // 데이터 요청 함수
     const getData = useCallback(async () => {
+        const apiUrl = import.meta.env.VITE_API_BASE_URL;
         try {
             const response = await axios.get<StockData[]>(
-                "http://localhost:3000/kospi_list"
+                `${apiUrl}/kospi_list`
             );
             setStockData(response.data);
         } catch (error) {
-            console.error("데이터 요청 실패:", error);
+            console.error("⛔️ 검색 - 데이터 요청 실패:", error);
         }
     }, []);
 
@@ -115,11 +116,9 @@ const Search = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (selectedStock) {
-            navigate(`/stocks/${selectedStock.단축코드}`);
+            navigate(`/stocks/${selectedStock["한글 종목약명"]}`);
         }
     };
-
-    console.log(stockData);
 
     return (
         <form

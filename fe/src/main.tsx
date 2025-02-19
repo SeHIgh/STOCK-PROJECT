@@ -7,9 +7,9 @@ import { BrowserRouter } from "react-router-dom";
 const PUBLIC_URL = import.meta.env.PUBLIC_URL || "/";
 
 createRoot(document.getElementById("root")!).render(
-    <StrictMode>
+    // <StrictMode>
         <BrowserRouter basename={`${PUBLIC_URL}`}>
             <App />
         </BrowserRouter>
-    </StrictMode>
+    // </StrictMode>
 );
