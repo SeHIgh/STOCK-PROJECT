@@ -36,18 +36,18 @@ public class KisController {
     }
 
     //거래량 순위를 위한 controller
-    @GetMapping("/volume-rank")
+    @GetMapping("/api/volume-rank")
     public Mono<List<VolumeResponseOutput>> getVolumeRank() {
         return apiVolumeService.getVolumeRank();
     }
 
     //등락률 순위
-    @GetMapping("/top10-fluctuation")
+    @GetMapping("/api/top10-fluctuation")
     public Mono<List<FluctResponseOutput>> getTop10Fluctuation(){
         return apiFluctService.getTop10Fluctuation();
     }
 
-    @GetMapping("/bottom10-fluctuation")
+    @GetMapping("/api/bottom10-fluctuation")
     public Mono<List<FluctResponseOutput>> getBottom10Fluctuation(){
         return apiFluctService.getBottom10Fluctuation();
     }
@@ -55,13 +55,13 @@ public class KisController {
     //주식 현재가 조회
     //쿼리파라미터로 넘어온 종목이름으로 검색가능
     //http://localhost:8090/price?stockName=삼성전자
-    @GetMapping("/price")
+    @GetMapping("/api/price")
     public Mono<PriceResponseOutput> getPrice(@RequestParam String stockName){
         return apiPriceService.getPriceByStockName(stockName);
     }
 
     //http://localhost:8090/dailychart?stockName=삼성전자
-    @GetMapping("/dailychart")
+    @GetMapping("/api/dailychart")
     public Mono<List<DailyChartResponseOutput>> getDailyChart(@RequestParam String stockName){
         return apiDailychartService.getDailyChartByStockName(stockName);
     }

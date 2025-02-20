@@ -1,6 +1,7 @@
 package com.example.stockproject.controller;
 
 import com.example.stockproject.dto.crawling.IndexDTO;
+import com.example.stockproject.dto.crawling.valueDTO;
 import com.example.stockproject.service.Crawling.ExchangeRateService;
 import com.example.stockproject.service.Crawling.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class CrawlingController {
 
     //환율 크롤링
     @GetMapping("/api/exchangerate")
-    public String getExchangeRate() {
+    public valueDTO getExchangeRate() {
         return exchangeRateService.getExchangeRate();
     }
 

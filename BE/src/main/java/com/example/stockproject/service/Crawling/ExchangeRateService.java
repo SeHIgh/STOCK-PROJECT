@@ -1,5 +1,6 @@
 package com.example.stockproject.service.Crawling;
 
+import com.example.stockproject.dto.crawling.valueDTO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,8 +18,7 @@ public class ExchangeRateService {
     private static final Logger logger = LoggerFactory.getLogger(ExchangeRateService.class);
 
 
-    public String getExchangeRate() {
-
+    public valueDTO getExchangeRate() {
 
         // ChromeDriver 경로 설정 (다운로드한 chromedriver.exe 위치)
         //System.setProperty("webdriver.chrome.driver", "/Users/kangjuho/Desktop/projectSorce/chromedriver-mac-arm64/chromedriver"); // 경로
@@ -44,6 +44,8 @@ public class ExchangeRateService {
 
         String value = exchangeRateElement.getText();
 
+        valueDTO exchangeRate = new valueDTO(value);
+
         // 결과 출력
         //System.out.println("현재 원/달러 환율: " + exchangeRate);
         logger.info("📊현재 원/달러 환율: {}", value);
@@ -52,6 +54,6 @@ public class ExchangeRateService {
         driver.quit();
         logger.info("🔴Chrome WebDriver 종료");
 
-        return value;
+        return exchangeRate;
     }
 }
