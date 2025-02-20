@@ -1,5 +1,4 @@
 import GithubLogo from "../../assets/github-mark/github-mark.svg?react";
-import MainLogo from "../../assets/logo/개미상회_Logo_InChart.svg?react";
 
 const links = [
     // { target: "antrading", href: "/", icon: MainLogo },
