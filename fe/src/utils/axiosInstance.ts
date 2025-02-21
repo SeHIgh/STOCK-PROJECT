@@ -1,12 +1,13 @@
 import axios from "axios";
+import { apiUrl } from "./\bglobalFunc";
 
 // 서버 모드에 따라 API 서버의 URL을 다르게 설정 (.env.development 파일 참조)
-const serverMode = import.meta.env.VITE_SERVER_MODE;
+// const serverMode = import.meta.env.VITE_SERVER_MODE;
 // 서버 모드 : local -> 프론트 json-server, "" -> 백엔드 서버 ("/api"로 시작하는 URL)
-const apiUrl =
-    serverMode === "local"
-        ? import.meta.env.VITE_API_BASE_URL
-        : `${import.meta.env.VITE_API_BASE_URL}/api`;
+// const apiUrl =
+//     serverMode === "local"
+//         ? import.meta.env.VITE_API_BASE_URL
+//         : import.meta.env.VITE_API_BASE_URL;
 
 const axiosInstance = axios.create({
     baseURL: apiUrl, // 백엔드 API 서버의 URL

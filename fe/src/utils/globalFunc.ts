@@ -5,5 +5,5 @@ export const isLocalMode = import.meta.env.VITE_SERVER_MODE === "local"; // .env
 
 // 개발 모드에 따른 API 서버 URL
 export const apiUrl = isLocalMode
-    ? import.meta.env.VITE_API_BASE_URL
-    : `${import.meta.env.VITE_API_BASE_URL}/api`;
+    ? import.meta.env.VITE_API_MOCK_URL
+    : import.meta.env.VITE_API_BASE_URL;

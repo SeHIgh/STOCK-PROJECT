@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 type FetchState<T> = {
-    data: T | null;
+    data: T;
     loading: boolean;
     error: string | null;
 };
 
 const useFetchData = <T>(apiCall: () => Promise<T>) => {
     const [state, setState] = useState<FetchState<T>>({
-        data: null,
+        data: [] as T,
         loading: true,
         error: null,
     });
@@ -17,7 +17,7 @@ const useFetchData = <T>(apiCall: () => Promise<T>) => {
         let isMounted = true;
 
         const fetchData = async () => {
-            setState({ data: null, loading: true, error: null });
+            setState({ data: [] as T, loading: true, error: null });
             try {
                 const data = await apiCall();
                 if (isMounted) {
@@ -26,7 +26,7 @@ const useFetchData = <T>(apiCall: () => Promise<T>) => {
             } catch (error: any) {
                 if (isMounted) {
                     setState({
-                        data: null,
+                        data: [] as T,
                         loading: false,
                         error: error.message || "데이터 요청 실패",
                     });
