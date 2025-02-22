@@ -1,8 +1,17 @@
-# STOCK-PROJECT (이름 미정)
+# 개미상회
 
-#### 실시간 주식 데이터를 활용하여 증권 거래를 체험해볼 수 있는 플랫폼 서비스
+<p align="center">
+  2025년 동계 웹 개발 프로젝트
+</p>
 
-#### 2025년 동계 웹 개발 프로젝트
+<p align="center">
+  <img width="500" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/69039c82-7baa-48f1-8f4d-d9931879bc3b" />
+</p>
+
+<p align="center">
+  실시간 주식 데이터를 활용하여 증권 거래를 체험해볼 수 있는 플랫폼 서비스
+</p>
+
 ## 플랫폼 기능
 ### 국내 주식 (해외 주식은 추후 추가예정)
 
@@ -25,7 +34,7 @@
 
 ## 소프트웨어 아키텍처
 
-- 프론트 : React
+- 프론트 : React - Vite
 - 백엔드 : Spring Boot
 - DB : MySQL
 - API :
@@ -38,5 +47,5 @@ API](https://apiportal.koreainvestment.com/apiservice/oauth2#L_5c87ba63-740a-416
 
 |FE|BE|
 |-|-|
-|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|
+|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|<img width="80" alt="Juhoimda_Logo_img" src="https://github.com/user-attachments/assets/26ed1077-017f-4f35-be3a-ab531effe4ce" />|
 |[장세현](https://github.com/SeHIgh)|[강주호](https://github.com/juhoimda)|
