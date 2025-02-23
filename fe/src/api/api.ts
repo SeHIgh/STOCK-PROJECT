@@ -2,7 +2,8 @@
 import axiosInstance from "../utils/axiosInstance";
 import {
     ExchangeRateProps,
-    LiveChartProps,
+    LiveChartFluctuationProps,
+    LiveChartVolProps,
     StockIndexProps,
     StockPriceProps,
 } from "../types";
@@ -50,9 +51,9 @@ export const fetchNewsList = async (): Promise<NewsProps[]> => {
 };
 
 // 실시간 차트 API - 거래량 상위 10개
-export const fetchLiveChartTopVol10 = async (): Promise<LiveChartProps[]> => {
+export const fetchLiveChartTopVol10 = async (): Promise<LiveChartVolProps[]> => {
     try {
-        const response = await axiosInstance.get<LiveChartProps[]>(
+        const response = await axiosInstance.get<LiveChartVolProps[]>(
             "/volume-rank"
         );
         return response.data;
@@ -63,9 +64,9 @@ export const fetchLiveChartTopVol10 = async (): Promise<LiveChartProps[]> => {
 };
 
 // 실시간 차트 API - 급상승 상위 10개
-export const fetchLiveChartTopIncr10 = async (): Promise<LiveChartProps[]> => {
+export const fetchLiveChartTopIncr10 = async (): Promise<LiveChartFluctuationProps[]> => {
     try {
-        const response = await axiosInstance.get<LiveChartProps[]>(
+        const response = await axiosInstance.get<LiveChartFluctuationProps[]>(
             "/top10-fluctuation"
         );
         return response.data;
@@ -76,9 +77,9 @@ export const fetchLiveChartTopIncr10 = async (): Promise<LiveChartProps[]> => {
 };
 
 // 실시간 차트 API - 급하락 상위 10개
-export const fetchLiveChartTopDecr10 = async (): Promise<LiveChartProps[]> => {
+export const fetchLiveChartTopDecr10 = async (): Promise<LiveChartFluctuationProps[]> => {
     try {
-        const response = await axiosInstance.get<LiveChartProps[]>(
+        const response = await axiosInstance.get<LiveChartFluctuationProps[]>(
             "/bottom10-fluctuation"
         );
         return response.data;

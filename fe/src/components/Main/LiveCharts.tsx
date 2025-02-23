@@ -7,8 +7,8 @@ import {
     fetchLiveChartTopVol10,
 } from "../../api/api";
 import useFetchData from "../../hooks/useFetchData";
-import { LiveChartProps } from "../../types";
 import { formatCurrency, formatTradeAmount } from "../../utils/format";
+import { LiveChartFluctuationProps, LiveChartVolProps } from "../../types";
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -152,13 +152,13 @@ const LiveCharts = () => {
                 </TabList>
                 <TabPanels className="mt-2">
                     <TabPanel>
-                        <StockTable stocks={liveChartVol} />
+                        <VolStockTable stocks={liveChartVol} />
                     </TabPanel>
                     <TabPanel>
-                        <StockTable stocks={liveChartIncr} />
+                        <FluctStockTable stocks={liveChartIncr} />
                     </TabPanel>
                     <TabPanel>
-                        <StockTable stocks={liveChartDecr} />
+                        <FluctStockTable stocks={liveChartDecr} />
                     </TabPanel>
                 </TabPanels>
             </TabGroup>
@@ -166,7 +166,7 @@ const LiveCharts = () => {
     );
 };
 
-const StockTable = ({ stocks }: { stocks: LiveChartProps[] | null }) => {
+const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
     return (
         <div className="overflow-hidden rounded-lg">
             <table className="min-w-full divide-y divide-transparent table-fixed w-full">
@@ -191,7 +191,90 @@ const StockTable = ({ stocks }: { stocks: LiveChartProps[] | null }) => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-transparent">
-                    {stocks?.map((stock: LiveChartProps) => (
+                    {stocks?.map((stock: LiveChartVolProps) => (
+                        <tr key={stock.data_rank}>
+                            {/* 등수 */}
+                            <td className="whitespace-nowrap text-base font-medium text-indigo-300 text-center rounded-es-lg">
+                                {indexOf(stocks, stock) + 1}
+                            </td>
+                            {/* 종목 명 */}
+                            <td className="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-900">
+                                {/* 종목 명으로 파라미터 전달 및 세부 페이지 이동*/}
+                                {/* 종목 명 및 종목 코드 사용을 위해 state로 데이터 전달 */}
+                                <Link
+                                    to={`/stocks/${stock.hts_kor_isnm}`}
+                                    state={{
+                                        productCode: stock.mksc_shrn_iscd,
+                                    }}
+                                    className="w-full h-full flex flex-row items-center justify-start"
+                                >
+                                    {/* 종목 코드를 이용한 토스증권 회사 이미지 이용 */}
+                                    <img
+                                        src={`https://static.toss.im/png-icons/securities/icn-sec-fill-${stock.mksc_shrn_iscd}.png`}
+                                        alt={stock.hts_kor_isnm}
+                                        className="w-6 h-6 mr-2 rounded-full"
+                                    ></img>
+                                    <span>{stock.hts_kor_isnm}</span>
+                                </Link>
+                            </td>
+                            {/* 현재가 */}
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right">
+                                {formatCurrency(stock.stck_prpr)}원
+                            </td>
+                            {/* 등락률 */}
+                            <td
+                                className={`px-6 py-4 whitespace-nowrap text-base text-right ${
+                                    stock.prdy_vol_sign === "+"
+                                        ? "text-red-400"
+                                        : "text-blue-400"
+                                }`}
+                            >
+                                {stock.prdy_vol_sign === "+" ? "+" : "-"}
+                                {formatCurrency(stock.prdy_vol_value)}
+                                주({stock.vol_inrt}%)
+                            </td>
+                            {/* 거래대금 */}
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right">
+                                {formatTradeAmount(stock.acml_tr_pbmn)}
+                            </td>
+                            {/* 거래량 */}
+                            <td className="px-6 py-4 whitespace-nowrap text-base text-gray-700 text-right rounded-se-lg">
+                                {formatCurrency(stock.acml_vol)}주
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
+const FluctStockTable = ({ stocks }: { stocks: LiveChartFluctuationProps[] | null }) => {
+    return (
+        <div className="overflow-hidden rounded-lg">
+            <table className="min-w-full divide-y divide-transparent table-fixed w-full">
+                <thead>
+                    <tr>
+                        <th className="w-4 pl-6 pr-3 py-3 text-center text-base font-medium text-gray-500 uppercase tracking-wider"></th>
+                        <th className="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                            종목
+                        </th>
+                        <th className="w-1/5 px-6 py-3 text-right text-base font-medium text-gray-500 uppercase tracking-wider">
+                            현재가
+                        </th>
+                        <th className="w-1/5 px-6 py-3 text-right text-base font-medium text-gray-500 uppercase tracking-wider">
+                            등락률
+                        </th>
+                        <th className="w-1/5 px-6 py-3 text-right text-base font-medium text-gray-500 uppercase tracking-wider">
+                            거래대금
+                        </th>
+                        <th className="w-1/5 px-6 py-3 text-right text-base font-medium text-gray-500 uppercase tracking-wider">
+                            거래량
+                        </th>
+                    </tr>
+                </thead>
+                <tbody className="divide-y divide-transparent">
+                    {stocks?.map((stock: LiveChartFluctuationProps) => (
                         <tr key={stock.data_rank}>
                             {/* 등수 */}
                             <td className="whitespace-nowrap text-base font-medium text-indigo-300 text-center rounded-es-lg">

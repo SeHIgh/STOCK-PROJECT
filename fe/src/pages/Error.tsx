@@ -1,9 +1,7 @@
-import GradientBackground from "../components/GradientBG";
-
 const ErrorPage = () => {
     return (
         // <GradientBackground>
-            <main className="flex flex-col w-dvw h-dvh grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
+            <main className="w-dvw h-dvh grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
                 <div className="text-center">
                     <p className="text-xl font-semibold text-neutral-400">
                         404

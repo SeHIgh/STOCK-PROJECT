@@ -29,8 +29,24 @@ export interface ExchangeRateProps {
     value: string;
 }
 
-// 실시간 차트 타입 정의
-export interface LiveChartProps {
+// 실시간 차트 - 거래량 순위 타입 정의
+export interface LiveChartVolProps {
+    mksc_shrn_iscd: string; // 종목코드 (필요)
+    
+    hts_kor_isnm: string; // 종목명
+    data_rank: string;  // 순위
+    stck_prpr: string; // 현재가
+    acml_vol: string; // 누적 거래량
+
+    prdy_vol_value: string; // 거래량 전일대비 수치 (필요 - 필수)
+    prdy_vol_sign: string; // 거래량 전일대비 부호 (필요 - 선택)
+
+    vol_inrt: string; // 거래량 증가율 - 등락률 대신 사용
+    acml_tr_pbmn: string; // 누적거래대금 (현재가 * 거래량)
+}
+
+// 실시간 차트 - 급등락 순위 타입 정의
+export interface LiveChartFluctuationProps {
     stck_shrn_iscd: string; // 종목코드
     data_rank: string;  // 순위
     hts_kor_isnm: string; // 종목명
