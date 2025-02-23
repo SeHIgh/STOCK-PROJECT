@@ -26,8 +26,8 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
     @Value("${websocket.approval-key}")
     private String approvalKey;
 
-    @Value("${websocket.tr-key}")
-    private String trKey;
+//    @Value("${websocket.tr-key}")
+//    private String trKey;
 
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PriceStockSocketHandler.class);
 
@@ -76,7 +76,7 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
         Map<String, Map<String, String>> body = new HashMap<>();
         Map<String, String> input = new HashMap<>();
         input.put("tr_id", "H0STCNT0"); //실시간 체결가
-        input.put("tr_key", trKey);
+        input.put("tr_key", "005930");
 
         body.put("input", input);
 

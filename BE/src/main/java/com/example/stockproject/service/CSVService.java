@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 //주식종목 CSV파일의 내용을 로컬 DB에 저장하는 서비스 코드
+//UTF-8로 받아서 한글 안 꺠지도록 해야함.
 @Slf4j
 @Service
 @Transactional(readOnly = true)
