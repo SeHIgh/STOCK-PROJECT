@@ -14,7 +14,7 @@ public class VolumeResponseOutput {
     private String hts_kor_isnm;
 
     // 유가증권 단축 종목코드
-    //private String mkscShrnIscd;
+    private String mksc_shrn_iscd;
 
     // 데이터 순위
     private String data_rank;
@@ -23,9 +23,11 @@ public class VolumeResponseOutput {
     private String stck_prpr;
 
     // 전일 대비 부호
-    //private String prdyVrssSign;
+    private String prdy_vol_sign;
+    //private String prdy_vrss_sign;
 
-    // 전일 대비
+    // 전일 대비 수치
+    private String prdy_vol_value;
     //private String prdyVrss;
 
     // 전일 대비율

@@ -62,6 +62,17 @@ public class ApiVolumeService {
                     responseData.setAcml_vol(node.get("acml_vol").asText());
                     responseData.setVol_inrt(node.get("vol_inrt").asText());
                     responseData.setAcml_tr_pbmn(node.get("acml_tr_pbmn").asText());
+                    responseData.setMksc_shrn_iscd(node.get("mksc_shrn_iscd").asText());
+                    responseData.setPrdy_vol_value(node.get("prdy_vrss").asText());
+                    // prdy_vrss_sign 값이 2이면 "+", 5이면 "-"를 설정
+                    String prdyVolSign = node.get("prdy_vrss_sign").asText();
+                    if ("2".equals(prdyVolSign)) {
+                        responseData.setPrdy_vol_sign("+");
+                    } else if ("5".equals(prdyVolSign)) {
+                        responseData.setPrdy_vol_sign("-");
+                    } else {
+                        responseData.setPrdy_vol_sign(prdyVolSign); // 기본값 유지
+                    }
 
                     responseDataList.add(responseData);
                     count++;
