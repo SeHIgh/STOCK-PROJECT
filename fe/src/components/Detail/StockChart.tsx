@@ -23,19 +23,19 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
 }
 
-const StockChart: React.FC<Pick<StockProps, "productCode">> = ({ productCode }) => {
+const StockChart: React.FC<{ stockName: string }> = ({ stockName }) => {
     return (
         <>
             <div className="relative w-full h-full flex flex-col justify-between">
-                <h2 className="text-lg font-semibold">차트</h2>
+                <h2 className="text-base font-semibold">차트</h2>
                 <TabGroup className="flex flex-col items-center w-full h-full">
-                    <TabList className="absolute -top-3 w-fit flex space-x-1 p-1 justify-between">
+                    <TabList className="text-sm absolute -top-3 w-fit flex space-x-1 p-1 justify-between">
                         {["분", "일", "주", "월", "년"].map((category) => (
                             <Tab
                                 key={category}
                                 className={({ selected }) =>
                                     classNames(
-                                        "w-10 py-2.5 text-sm font-medium leading-5 text-gray-600 rounded-xl",
+                                        "w-9 py-2 text-sm font-medium leading-5 text-gray-600 rounded-xl",
                                         selected
                                             ? "bg-gray-500/20 text-gray-600"
                                             : "hover:bg-gray-400/20"

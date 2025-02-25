@@ -20,9 +20,7 @@ interface StockProps {
     date?: string;
 }
 
-const OrderSection: React.FC<Pick<StockProps, "productCode">> = ({
-    productCode,
-}) => {
+const OrderSection: React.FC<{ stockName: string }> = ({ stockName }) => {
     // // 주문 목록 가져오기
     // const fetchOrders = async () => {
     //     try {
@@ -45,7 +43,7 @@ const OrderSection: React.FC<Pick<StockProps, "productCode">> = ({
 
     return (
         <>
-            <h2 className="text-lg font-semibold">주문하기</h2>
+            <h2 className="text-base font-semibold">주문하기</h2>
             <div>
                 <button className="bg-green-400/50 text-white px-4 py-2 rounded mr-2">
                     매수

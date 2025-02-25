@@ -4,6 +4,10 @@ import { fetchStockDetail } from "../api/api";
 import { formatCurrency } from "../utils/format";
 import { useCallback } from "react";
 import SubLayout from "../components/SubLayout";
+import StockChart from "../components/Detail/StockChart";
+import OrderSection from "../components/Detail/OrderSection";
+import Quote from "../components/Detail/Quote";
+import LivePrice from "../components/Detail/LivePrice";
 
 const DetailPage = () => {
     const location = useLocation();
@@ -25,7 +29,7 @@ const DetailPage = () => {
     if (loadingDetailData || errorDetailData)
         return (
             <SubLayout>
-                <div className="w-full min-h-[calc(100dvh-96px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll skeleton">
+                <div className="w-full h-[calc(100dvh-72px)] min-h-[calc(100dvh-72px)] px-3 pt-3 pb-4 grid grid-flow-row grid-rows-[56px_minmax(300px,1fr)_minmax(230px,0.5fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll skeleton">
                     <div className="flex flex-row items-center gap-3 col-span-3 skeleton">
                         <div className="w-14 h-14 rounded-xl skeleton-img" />
                         <div className="flex flex-col justify-around">
@@ -57,28 +61,28 @@ const DetailPage = () => {
                     {/* 차트 섹션 */}
                     <div
                         id="stock-chart"
-                        className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-2 skeleton-box"
+                        className="flex-1 block-detail flex flex-row gap-1 col-span-2 skeleton-box"
                     >
                         {/* <StockChart productCode={productCode!} /> */}
                     </div>
                     {/* 주문 (매수, 매도) [로그인 시 열람 가능] */}
                     <div
                         id="stock-order"
-                        className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-1 row-span-2 skeleton-box"
+                        className="flex-1 block-detail flex flex-row gap-1 col-span-1 row-span-2 skeleton-box"
                     >
                         {/* <OrderSection productCode={productCode!} /> */}
                     </div>
                     {/* 호가 (채결 강도) [로그인 시 열람 가능] */}
                     <div
                         id="order-flow"
-                        className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-1 row-span-2 skeleton-box"
+                        className="flex-1 block-detail flex flex-row gap-1 col-span-1 row-span-2 skeleton-box"
                     >
                         {/* <Quote productCode={productCode!} /> */}
                     </div>
                     {/* 실시간 시세 */}
                     <div
                         id="real-time-quotes"
-                        className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-2 skeleton-box"
+                        className="flex-1 block-detail flex flex-row gap-1 col-span-2 skeleton-box"
                     >
                         {/* <LivePrice productCode={productCode!} /> */}
                     </div>
@@ -88,7 +92,7 @@ const DetailPage = () => {
 
     return (
         <SubLayout>
-            <div className="w-full min-h-[calc(100dvh-96px)] px-10 py-4 pb-10 grid grid-flow-row grid-rows-[56px_360px_minmax(200px,1fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
+            <div className="w-full h-[calc(100dvh-72px)] min-h-[calc(100dvh-72px)] px-3 pt-3 pb-4 grid grid-flow-row grid-rows-[56px_minmax(300px,1fr)_minmax(230px,0.5fr)] grid-cols-[minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)_minmax(280px,1fr)] gap-3 overflow-x-scroll">
                 <div className="flex flex-row items-center gap-3 col-span-3">
                     <img
                         src={`https://static.toss.im/png-icons/securities/icn-sec-fill-${productCode}.png`}
@@ -127,35 +131,35 @@ const DetailPage = () => {
                         </h1>
                     </div>
                 </div>
-                {/* 데이터 로딩을 거치기 때문에 productCode 타입을 string 형태로 단언 : productCode! */}
+                {/* 데이터 로딩을 거치기 때문에 stockName 타입을 string 형태로 단언 : stockName! */}
 
                 {/* 차트 섹션 */}
                 <div
                     id="stock-chart"
-                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-2"
+                    className="flex-1 block-detail flex flex-row gap-1 col-span-2"
                 >
-                    {/* <StockChart productCode={productCode!} /> */}
-                </div>
-                {/* 주문 (매수, 매도) [로그인 시 열람 가능] */}
-                <div
-                    id="stock-order"
-                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-1 row-span-2"
-                >
-                    {/* <OrderSection productCode={productCode!} /> */}
+                    <StockChart stockName={stockName!} />
                 </div>
                 {/* 호가 (채결 강도) [로그인 시 열람 가능] */}
                 <div
                     id="order-flow"
-                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-1 row-span-2"
+                    className="flex-1 block-detail flex flex-row gap-1 col-span-1 row-span-2"
                 >
-                    {/* <Quote productCode={productCode!} /> */}
+                    <Quote stockName={stockName!} />
+                </div>
+                {/* 주문 (매수, 매도) [로그인 시 열람 가능] */}
+                <div
+                    id="stock-order"
+                    className="flex-1 block-detail flex flex-row gap-1 col-span-1 row-span-2"
+                >
+                    <OrderSection stockName={stockName!} />
                 </div>
                 {/* 실시간 시세 */}
                 <div
                     id="real-time-quotes"
-                    className="flex-1 block-detail gray-hover flex flex-row gap-1 col-span-2"
+                    className="flex-1 block-detail flex flex-row gap-1 col-span-2"
                 >
-                    {/* <LivePrice productCode={productCode!} /> */}
+                    <LivePrice stockName={stockName!} />
                 </div>
             </div>
         </SubLayout>

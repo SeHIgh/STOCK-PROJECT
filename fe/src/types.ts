@@ -32,9 +32,9 @@ export interface ExchangeRateProps {
 // 실시간 차트 - 거래량 순위 타입 정의
 export interface LiveChartVolProps {
     mksc_shrn_iscd: string; // 종목코드 (필요)
-    
+
     hts_kor_isnm: string; // 종목명
-    data_rank: string;  // 순위
+    data_rank: string; // 순위
     stck_prpr: string; // 현재가
     acml_vol: string; // 누적 거래량
 
@@ -48,7 +48,7 @@ export interface LiveChartVolProps {
 // 실시간 차트 - 급등락 순위 타입 정의
 export interface LiveChartFluctuationProps {
     stck_shrn_iscd: string; // 종목코드
-    data_rank: string;  // 순위
+    data_rank: string; // 순위
     hts_kor_isnm: string; // 종목명
     stck_prpr: string; // 현재가
     prdy_vrss: string; // 전일대비 수치
@@ -90,4 +90,25 @@ export interface StockPriceProps {
     pbr: string; // PBR
     eps: string; // EPS
     bps: string; // BPS
+}
+
+// 종목 상세 정보 - 실시간 시세 조회 타입 정의
+export interface LivePriceProps {
+    stck_prpr: string; // 체결가
+    stck_qnty: string; // 체결량 (주)
+    prdy_ctrt: string; // 등락률 (%)
+    acml_vol: string; // 거래량 (주)
+    tr_time: string; // 시간 (HH:mm:ss)
+}
+
+// 종목 상세 정보 - 일별 시세 조회 타입 정의
+export interface DailyPriceProps {
+    stck_bsop_date: string; // 일자
+    stck_clpr: string; // 종가
+    stck_oprc: string; // 시가
+    stck_hgpr: string; // 최고가
+    stck_lwpr: string; // 최저가
+    acml_vol: string; // 거래량
+    acml_tr_pbmn: string; // 거래대금
+    prdy_ctrt: string; // 등락률
 }

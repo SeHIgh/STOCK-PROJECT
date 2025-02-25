@@ -1,9 +1,11 @@
 // src/api/newsApi.ts
 import axiosInstance from "../utils/axiosInstance";
 import {
+    DailyPriceProps,
     ExchangeRateProps,
     LiveChartFluctuationProps,
     LiveChartVolProps,
+    LivePriceProps,
     StockIndexProps,
     StockPriceProps,
 } from "../types";
@@ -112,6 +114,60 @@ export const fetchStockDetail = async (
         return response.data;
     } catch (error) {
         console.error("⛔️ 종목 상세 정보 - API 데이터 요청 실패", error);
+        throw error;
+    }
+};
+
+// 종목 상세 정보 - 실시간 시세 API
+export const fetchStockLivePrice = async (
+    stockName: string
+): Promise<LivePriceProps[]> => {
+    if (isLocalMode) {
+        try {
+            const response = await axiosInstance.get<LivePriceProps[]>("/liveprice");
+            return response.data;
+        } catch (error) {
+            console.error(
+                "⛔️ 종목 상세 정보 (로컬 모드) - 실시간 시세 API 데이터 요청 실패",
+                error
+            );
+            throw error;
+        }
+    }
+    try {
+        const response = await axiosInstance.get<LivePriceProps[]>("/liveprice", {
+            params: { name: stockName },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("⛔️ 종목 상세 정보 - 실시간 시세 API 데이터 요청 실패", error);
+        throw error;
+    }
+};
+
+// 종목 상세 정보 - 일별 시세 API
+export const fetchStockDailyPrice = async (
+    stockName: string
+): Promise<DailyPriceProps[]> => {
+    if (isLocalMode) {
+        try {
+            const response = await axiosInstance.get<DailyPriceProps[]>("/dailyprice");
+            return response.data;
+        } catch (error) {
+            console.error(
+                "⛔️ 종목 상세 정보 (로컬 모드) - 일별 시세 API 데이터 요청 실패",
+                error
+            );
+            throw error;
+        }
+    }
+    try {
+        const response = await axiosInstance.get<DailyPriceProps[]>("/dailyprice", {
+            params: { name: stockName },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("⛔️ 종목 상세 정보 - 일별 시세 API 데이터 요청 실패", error);
         throw error;
     }
 };

@@ -58,7 +58,7 @@ const LiveCharts = () => {
                         {Array.from({ length: 3 }).map((_, index) => (
                             <TabPanel key={index}>
                                 <div className="overflow-hidden rounded-lg">
-                                    <table className="min-w-full divide-y divide-transparent table-fixed w-full">
+                                    <table className="min-w-full divide-y divide-transparent table-fixed w-full stockmain-livechart-table">
                                         <thead>
                                             <tr>
                                                 <th className="w-4 pl-6 pr-3 py-3 text-center text-base font-medium text-gray-500 uppercase tracking-wider"></th>
@@ -169,7 +169,7 @@ const LiveCharts = () => {
 const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
     return (
         <div className="overflow-hidden rounded-lg">
-            <table className="min-w-full divide-y divide-transparent table-fixed w-full">
+            <table className="min-w-full divide-y divide-transparent table-fixed w-full stockmain-livechart-table">
                 <thead>
                     <tr>
                         <th className="w-4 pl-6 pr-3 py-3 text-center text-base font-medium text-gray-500 uppercase tracking-wider"></th>
@@ -180,7 +180,7 @@ const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
                             현재가
                         </th>
                         <th className="w-1/5 px-6 py-3 text-right text-base font-medium text-gray-500 uppercase tracking-wider">
-                            등락률
+                            증가율
                         </th>
                         <th className="w-1/5 px-6 py-3 text-right text-base font-medium text-gray-500 uppercase tracking-wider">
                             거래대금
@@ -249,10 +249,14 @@ const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
     );
 };
 
-const FluctStockTable = ({ stocks }: { stocks: LiveChartFluctuationProps[] | null }) => {
+const FluctStockTable = ({
+    stocks,
+}: {
+    stocks: LiveChartFluctuationProps[] | null;
+}) => {
     return (
         <div className="overflow-hidden rounded-lg">
-            <table className="min-w-full divide-y divide-transparent table-fixed w-full">
+            <table className="min-w-full divide-y divide-transparent table-fixed w-full stockmain-livechart-table">
                 <thead>
                     <tr>
                         <th className="w-4 pl-6 pr-3 py-3 text-center text-base font-medium text-gray-500 uppercase tracking-wider"></th>
