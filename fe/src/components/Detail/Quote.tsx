@@ -1,5 +1,5 @@
 import { random } from "lodash";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 // const generateData = (standardPrice: number) =>
 //     Array.from({ length: 10 }).map((_, i) => ({
@@ -16,7 +16,7 @@ const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
             if (scrollRef.current) {
                 if (scrollRef.current) {
                     scrollRef.current.scrollTop =
-                        scrollRef.current.scrollHeight / 5;
+                        scrollRef.current.scrollHeight / 6;
                 }
             }
         });
@@ -72,7 +72,7 @@ const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
                                         </div>
                                         <div>
                                             <button
-                                                className={`w-full h-full p-1 text-red-400 rounded-xl flex flex-col justify-center items-center gap-0.5 hover:bg-neutral-400/10 border-2 ${
+                                                className={`w-full h-full overflow-hidden p-0 text-red-400 rounded-xl flex flex-col justify-center items-center gap-0.5 hover:bg-neutral-400/10 border-2 ${
                                                     i === 9
                                                         ? "border-neutral-600/60"
                                                         : "border-transparent"
@@ -85,8 +85,8 @@ const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
                                                 ) : (
                                                     <></>
                                                 )}
-                                                <div className="flex flex-row items-center gap-1">
-                                                    <span className="text-sm font-semibold">
+                                                <div className="overflow-hidden flex flex-col lg:flex-row items-center gap-1">
+                                                    <span className="text-xs lg:text-sm font-semibold">
                                                         {`${changePrice.toLocaleString()}`}
                                                     </span>
                                                     <span
@@ -175,9 +175,9 @@ const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
                                         key={i}
                                     >
                                         <div>
-                                            <button className="w-full h-full p-1 text-blue-400 rounded-xl flex flex-col justify-center items-center gap-0.5 hover:bg-neutral-400/10">
-                                                <div className="flex flex-row items-center gap-1">
-                                                    <span className="text-sm font-semibold">
+                                            <button className="w-full h-full overflow-hidden p-0 text-blue-400 rounded-xl flex flex-col justify-center items-center gap-0.5 hover:bg-neutral-400/10">
+                                                <div className="overflow-hidden flex flex-col items-center gap-1 lg:flex-row">
+                                                    <span className="text-xs lg:text-sm font-semibold">
                                                         {`${changePrice.toLocaleString()}`}
                                                     </span>
                                                     <span

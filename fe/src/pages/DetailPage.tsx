@@ -8,6 +8,7 @@ import StockChart from "../components/Detail/StockChart";
 import OrderSection from "../components/Detail/OrderSection";
 import Quote from "../components/Detail/Quote";
 import LivePrice from "../components/Detail/LivePrice";
+import OrderLog from "../components/Detail/OrderLog";
 
 const DetailPage = () => {
     const location = useLocation();
@@ -150,9 +151,11 @@ const DetailPage = () => {
                 {/* 주문 (매수, 매도) [로그인 시 열람 가능] */}
                 <div
                     id="stock-order"
-                    className="flex-1 block-detail flex flex-row gap-1 col-span-1 row-span-2"
+                    className="flex-1 block-detail flex flex-col gap-1 col-span-1 row-span-2"
                 >
-                    <OrderSection stockName={stockName!} />
+                    <OrderSection stockName={stockName!} upperLimit={"68000"} />
+                    <hr className="border-1 border-neutral-400/40"/>
+                    <OrderLog stockName={stockName!} />
                 </div>
                 {/* 실시간 시세 */}
                 <div

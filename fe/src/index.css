@@ -171,7 +171,7 @@ header {
 }
 
 .block-detail {
-  @apply w-full h-full rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400/70 bg-neutral-100/70 drop-shadow-sm overflow-hidden;
+  @apply w-full h-full rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400/70 bg-neutral-50/70 drop-shadow-sm overflow-hidden;
 }
 
 .gray-hover {
@@ -431,4 +431,82 @@ img {
 
 .quote-ul-strong>div>li>span {
   @apply text-xs text-nowrap;
+}
+
+/* 그림자 효과 커스텀 */
+@theme {
+  --shadow-round: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* 옵션 버튼 */
+.button-option {
+  @apply min-w-4/5 px-3 py-1 border-2 bg-neutral-100 border-neutral-400/30 hover:border-neutral-600/30 rounded-lg text-sm overflow-hidden flex flex-row justify-between items-center;
+}
+
+/* 옵션 박스 */
+.box-options {
+  @apply absolute top-9 right-0 w-4/5 mt-1 p-1 text-sm bg-neutral-100 border border-none rounded-lg shadow-lg overflow-hidden z-100 flex flex-col gap-1;
+}
+
+.box-option {
+  @apply px-2 py-1 cursor-pointer hover:bg-neutral-200/40 rounded-lg border-2 border-transparent transition duration-300 ease-in-out;
+}
+
+.type-disabled {
+  @apply cursor-not-allowed text-neutral-400 bg-neutral-200 hover:bg-neutral-200;
+}
+
+/* 주문 하기 - 입력 란 */
+.input-order {
+  @apply min-w-4/5 px-3 py-1 bg-neutral-100 border-2 border-neutral-400/30 hover:border-neutral-600/30 rounded-lg text-sm overflow-hidden flex flex-row justify-between items-center disabled:bg-neutral-200;
+}
+
+.input-order>div {
+  @apply bg-transparent;
+}
+
+.input-order>div:first-child {
+  @apply justify-start;
+}
+
+.input-order>div:last-child {
+  @apply justify-end;
+}
+
+.input-order>div>input {
+  @apply bg-transparent overflow-visible flex items-center p-0;
+}
+
+.input-order>div>.btn-order {
+  @apply bg-transparent px-1 py-0.5 rounded-lg transition duration-300 ease-in-out hover:bg-neutral-300/30;
+}
+
+/* 제출 버튼 */
+.button-submit {
+  @apply w-full py-2 rounded-lg font-bold;
+}
+
+/* 주문 하기 - 1줄 */
+.div-order {
+  @apply relative flex flex-row justify-between items-start gap-2;
+}
+
+.div-order>label {
+  @apply min-w-1/6 min-w-fit mt-1;
+}
+
+.order-disabled {
+  @apply cursor-not-allowed text-neutral-400 bg-neutral-200 border-neutral-200 hover:bg-neutral-200 hover:border-neutral-200;
+}
+
+.order-disabled>input {
+  @apply cursor-not-allowed;
+}
+
+.order-disabled>div>.btn-order {
+  @apply cursor-not-allowed hover:bg-transparent;
+}
+
+.order-disabled>div>input {
+  @apply cursor-not-allowed;
 }
