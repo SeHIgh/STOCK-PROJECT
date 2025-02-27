@@ -189,7 +189,7 @@ private Mono<List<Object>> parseAccount(String response) {
                 if (outputNode2 != null && outputNode2.size() > 0) {
                     JsonNode node = outputNode2.get(0);
                     balanceData.setTotEvluAmt(node.get("tot_evlu_amt").asText());
-                    //balanceData.setDncaTotAmt(node.get("dnca_tot_amt").asText());
+                    balanceData.setDncaTotAmt(node.get("dnca_tot_amt").asText());
                     balanceData.setEvluPflsSmtlAmt(node.get("evlu_pfls_smtl_amt").asText());
                     //balanceData.setThdtBuyAmt(node.get("thdt_buy_amt").asText());
                     //balanceData.setThdtSllAmt(node.get("thdt_sll_amt").asText());
