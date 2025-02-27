@@ -1,7 +1,27 @@
-import { randomInt } from "crypto";
 import { random } from "lodash";
+import { useLayoutEffect, useRef, useState } from "react";
+
+// const generateData = (standardPrice: number) =>
+//     Array.from({ length: 10 }).map((_, i) => ({
+//         price: standardPrice + 100 * (10 - i),
+//         volume: random(0, 1000000),
+//     }));
 
 const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        // 스크롤을 리로딩시 중앙으로 이동
+        requestAnimationFrame(() => {
+            if (scrollRef.current) {
+                if (scrollRef.current) {
+                    scrollRef.current.scrollTop =
+                        scrollRef.current.scrollHeight / 5;
+                }
+            }
+        });
+    }, []);
+
     const standardVol = 1000000;
     let changeVol = random(0, 1000000);
     const standardPrice = 58200;
@@ -10,7 +30,10 @@ const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
     return (
         <div className="w-full h-full px-2 sm:px-0 mx-auto overflow-hidden flex flex-col gap-2 scrollbar">
             <h2 className="text-base font-semibold">호가</h2>
-            <div className="w-full h-full overflow-y-scroll scrollbar">
+            <div
+                ref={scrollRef}
+                className="w-full h-full min-h-150 overflow-y-scroll scrollbar"
+            >
                 <div className="pl-1 w-full h-full grid grid-flow-row grid-rows-[minmax(500px,1fr)_minmax(500px,1fr)] grid-cols-[minmax(20px,1fr)_minmax(40px,1.5fr)_minmax(20px,1fr)]">
                     <ul className="quote-ul col-span-2">
                         {Array.from({ length: 10 }).map(
