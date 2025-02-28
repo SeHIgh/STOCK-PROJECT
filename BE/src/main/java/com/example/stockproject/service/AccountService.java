@@ -54,74 +54,7 @@ public class AccountService {
         headers.set("tr_id", "VTTC8434R");  //계좌잔고 조회
         return headers;
     }
-//
-//    private Mono<List<Object>> parseAccount(String response) {
-//        try {
-//            List<Object> result = new ArrayList<>();
-//            List<AccountStockResponseOutput> stockList = new ArrayList<>();
-//            AccountBalanceResponseOutput balanceData = new AccountBalanceResponseOutput();
-//
-//            JsonNode rootNode = objectMapper.readTree(response);
-//            JsonNode outputNode1 = rootNode.get("output1");   // 보유 주식 정보
-//            JsonNode outputNode2 = rootNode.get("output2");   // 잔고 정보
-//
-//            if (outputNode1 != null) {
-//                for (JsonNode node : outputNode1) {
-//                    AccountStockResponseOutput stockData = new AccountStockResponseOutput();
-//                    stockData.setPrdtName(node.get("prdt_name").asText());
-//                    stockData.setEvlu_pfls_rt(node.get("evlu_pfls_rt").asText());
-//                    stockData.setEvlu_pfls_amt(node.get("evlu_pfls_amt").asText());
-//                    stockData.setPchs_avg_pric(node.get("pchs_avg_pric").asText());
-//                    stockData.setPrpr(node.get("prpr").asText());
-//                    stockData.setHldg_qty(node.get("hldg_qty").asText());
-//                    stockData.setEvlu_amt(node.get("evlu_amt").asText());
-//                    stockData.setPchs_amt(node.get("pchs_amt").asText());
-//
-//                     //2`getPriceByStockName`을 호출하고, `block()`을 사용하여 결과를 동기적으로 처리
-//                    String stockName = node.get("prdt_name").asText();
-//                    int holdingQuantity = Integer.parseInt(node.get("hldg_qty").asText());
-//
-//                    PriceResponseOutput priceData = apiPriceService.getPriceByStockName(stockName).block();
-//                    if (priceData != null) {
-//                        int currentPrice = Integer.parseInt(priceData.getStckPrpr());
-//                        int priceChange = Integer.parseInt(priceData.getPrdyVrss());
-//                        int previousClosePrice = currentPrice - priceChange;
-//
-//                        int int_dailyProfit = (currentPrice - previousClosePrice) * holdingQuantity;
-//                        double double_dailyProfitRate = ((double) (currentPrice - previousClosePrice) / previousClosePrice) * 100;
-//
-//                        String dailyProfit = String.valueOf(int_dailyProfit);
-//                        String dailyProfitRate = String.format("%.2f", double_dailyProfitRate);
-//
-//                        logger.info("🔖Stock: {}, Current Price: {}, Previous Close Price: {}, Holding Quantity: {}, Daily Profit: {}, Daily Profit Rate: {}",
-//                                stockName, currentPrice, previousClosePrice, holdingQuantity, dailyProfit, dailyProfitRate);
-//
-//                        stockData.setDaily_profit(dailyProfit);
-//                        stockData.setDaily_profit_rate(dailyProfitRate);
-//                    }
-//                }
-//            }
-//
-//            if (outputNode2 != null && outputNode2.size() > 0) {
-//                JsonNode node = outputNode2.get(0);
-//                balanceData.setDncaTotAmt(node.get("dnca_tot_amt").asText());
-//                balanceData.setThdtBuyAmt(node.get("thdt_buy_amt").asText());
-//                balanceData.setThdtSllAmt(node.get("thdt_sll_amt").asText());
-//                balanceData.setTotEvluAmt(node.get("tot_evlu_amt").asText());
-//                balanceData.setNassAmt(node.get("nass_amt").asText());
-//                balanceData.setEvluPflsSmtlAmt(node.get("evlu_pfls_smtl_amt").asText());
-//                balanceData.setAsstIcdcAmt(node.get("asst_icdc_amt").asText());
-//            }
-//
-//            // 두 개의 리스트를 하나의 List<Object>로 반환
-//            result.addAll(stockList);
-//            result.add(balanceData);
-//
-//            return Mono.just(result);
-//        } catch (Exception e) {
-//            return Mono.error(e);
-//        }
-//    }
+
 
 private Mono<List<Object>> parseAccount(String response) {
     try {
@@ -231,9 +164,6 @@ private Mono<List<Object>> parseAccount(String response) {
         return Mono.error(e);
     }
 }
-
-
-
     //계좌잔고 조회를 위한 query parameter
     public Mono<List<Object>> getAccountInformation() {
         HttpHeaders headers = createAccountHttpHeaders();
@@ -259,3 +189,73 @@ private Mono<List<Object>> parseAccount(String response) {
     }
 
 }
+
+
+//    간단한 비동기 처리 -> 오류남. Mono로 처리했기 때문에 block()이 안되는것같음.
+//    private Mono<List<Object>> parseAccount(String response) {
+//        try {
+//            List<Object> result = new ArrayList<>();
+//            List<AccountStockResponseOutput> stockList = new ArrayList<>();
+//            AccountBalanceResponseOutput balanceData = new AccountBalanceResponseOutput();
+//
+//            JsonNode rootNode = objectMapper.readTree(response);
+//            JsonNode outputNode1 = rootNode.get("output1");   // 보유 주식 정보
+//            JsonNode outputNode2 = rootNode.get("output2");   // 잔고 정보
+//
+//            if (outputNode1 != null) {
+//                for (JsonNode node : outputNode1) {
+//                    AccountStockResponseOutput stockData = new AccountStockResponseOutput();
+//                    stockData.setPrdtName(node.get("prdt_name").asText());
+//                    stockData.setEvlu_pfls_rt(node.get("evlu_pfls_rt").asText());
+//                    stockData.setEvlu_pfls_amt(node.get("evlu_pfls_amt").asText());
+//                    stockData.setPchs_avg_pric(node.get("pchs_avg_pric").asText());
+//                    stockData.setPrpr(node.get("prpr").asText());
+//                    stockData.setHldg_qty(node.get("hldg_qty").asText());
+//                    stockData.setEvlu_amt(node.get("evlu_amt").asText());
+//                    stockData.setPchs_amt(node.get("pchs_amt").asText());
+//
+//                     //2`getPriceByStockName`을 호출하고, `block()`을 사용하여 결과를 동기적으로 처리
+//                    String stockName = node.get("prdt_name").asText();
+//                    int holdingQuantity = Integer.parseInt(node.get("hldg_qty").asText());
+//
+//                    PriceResponseOutput priceData = apiPriceService.getPriceByStockName(stockName).block();
+//                    if (priceData != null) {
+//                        int currentPrice = Integer.parseInt(priceData.getStckPrpr());
+//                        int priceChange = Integer.parseInt(priceData.getPrdyVrss());
+//                        int previousClosePrice = currentPrice - priceChange;
+//
+//                        int int_dailyProfit = (currentPrice - previousClosePrice) * holdingQuantity;
+//                        double double_dailyProfitRate = ((double) (currentPrice - previousClosePrice) / previousClosePrice) * 100;
+//
+//                        String dailyProfit = String.valueOf(int_dailyProfit);
+//                        String dailyProfitRate = String.format("%.2f", double_dailyProfitRate);
+//
+//                        logger.info("🔖Stock: {}, Current Price: {}, Previous Close Price: {}, Holding Quantity: {}, Daily Profit: {}, Daily Profit Rate: {}",
+//                                stockName, currentPrice, previousClosePrice, holdingQuantity, dailyProfit, dailyProfitRate);
+//
+//                        stockData.setDaily_profit(dailyProfit);
+//                        stockData.setDaily_profit_rate(dailyProfitRate);
+//                    }
+//                }
+//            }
+//
+//            if (outputNode2 != null && outputNode2.size() > 0) {
+//                JsonNode node = outputNode2.get(0);
+//                balanceData.setDncaTotAmt(node.get("dnca_tot_amt").asText());
+//                balanceData.setThdtBuyAmt(node.get("thdt_buy_amt").asText());
+//                balanceData.setThdtSllAmt(node.get("thdt_sll_amt").asText());
+//                balanceData.setTotEvluAmt(node.get("tot_evlu_amt").asText());
+//                balanceData.setNassAmt(node.get("nass_amt").asText());
+//                balanceData.setEvluPflsSmtlAmt(node.get("evlu_pfls_smtl_amt").asText());
+//                balanceData.setAsstIcdcAmt(node.get("asst_icdc_amt").asText());
+//            }
+//
+//            // 두 개의 리스트를 하나의 List<Object>로 반환
+//            result.addAll(stockList);
+//            result.add(balanceData);
+//
+//            return Mono.just(result);
+//        } catch (Exception e) {
+//            return Mono.error(e);
+//        }
+//    }

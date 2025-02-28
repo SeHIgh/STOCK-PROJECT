@@ -3,7 +3,6 @@ package com.example.stockproject.Web;
 import ch.qos.logback.classic.Logger;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hibernate.annotations.Comment;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -76,7 +75,7 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
         Map<String, Map<String, String>> body = new HashMap<>();
         Map<String, String> input = new HashMap<>();
         input.put("tr_id", "H0STCNT0"); //실시간 체결가
-        input.put("tr_key", "005930");
+        input.put("tr_key", "000660");
 
         body.put("input", input);
 
@@ -88,7 +87,7 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
         // JSON 변환 후 전송
         String jsonRequest = objectMapper.writeValueAsString(request);
-        logger.info("📤 요청 전송: {}", jsonRequest);
+        logger.info("📤 서버에 구독 요청 전송: {}", jsonRequest);
 
         //session.sendMessage()를 이용해 JSON 데이터를 서버에 전송.
         session.sendMessage(new TextMessage(jsonRequest));
@@ -181,6 +180,15 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
                 // 로그 출력
                 logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 현재가={}", trId, stockCode, timestamp, price);
+
+                // price 값만 프론트엔드로 전송
+                if (session != null && session.isOpen()) {
+                    session.sendMessage(new TextMessage(price));
+                    logger.info("📤 프론트엔드로 가격 전송: {}", price);
+                } else {
+                    logger.warn("⚠️ WebSocket 세션이 닫혀 있어 데이터를 전송할 수 없음.");
+                }
+
         } catch (Exception e) {
             logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
         }

@@ -1,6 +1,7 @@
 package com.example.stockproject.Web;
 
 import ch.qos.logback.classic.Logger;
+import com.example.stockproject.dto.web.TradeNotifyDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.LoggerFactory;
@@ -82,7 +83,7 @@ public class TradeNotifySocketHandler extends TextWebSocketHandler {
 
         // JSON 변환 후 전송
         String jsonRequest = objectMapper.writeValueAsString(request);
-        logger.info("📤 요청 전송: {}", jsonRequest);
+        logger.info("📤 서버에 구독 요청 전송: {}", jsonRequest);
 
         //session.sendMessage()를 이용해 JSON 데이터를 서버에 전송.
         session.sendMessage(new TextMessage(jsonRequest));
@@ -182,9 +183,22 @@ public class TradeNotifySocketHandler extends TextWebSocketHandler {
             String stockName = stockData[18];     // 종목명
             //String orderPrice = stockData[19];    // 주문가격
 
+            TradeNotifyDTO tradeNotifyDTO = new TradeNotifyDTO(
+                    orderType, orderKind, stockCode, stockName, orderQuantity,
+                    executedQuantity, executedPrice, timestamp, executionStatus
+            );
+
             // 로그 출력
             logger.info("📊 주문구분: {}, 주문종류: {}, 종목코드: {}, 종목명: {}, 주문수량: {},,체결수량: {}, 체결단가: {}, 체결시간: {}, 체결여부: {}",
                     orderType, orderKind, stockCode, stockName, orderQuantity,executedQuantity, executedPrice, timestamp, executionStatus);
+
+            //JSON 변환
+            String jsonMessage = objectMapper.writeValueAsString(tradeNotifyDTO);
+            // WebSocket으로 전송
+            if (session != null && session.isOpen()) {
+                session.sendMessage(new TextMessage(jsonMessage));
+                logger.info("📤 JSON 데이터 전송: {}", jsonMessage);
+            }
 
         } catch (Exception e) {
             logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);

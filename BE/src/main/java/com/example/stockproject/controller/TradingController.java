@@ -1,13 +1,13 @@
 package com.example.stockproject.controller;
 
+import com.example.stockproject.dto.order.TradePossibleDTO;
 import com.example.stockproject.dto.order.OrderRequest;
 import com.example.stockproject.dto.order.OrderResponseOutput;
 import com.example.stockproject.service.StockOrderService;
+import com.example.stockproject.service.TradeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -15,11 +15,13 @@ import java.util.List;
 @RestController
 public class TradingController {
     private static final Logger logger = LoggerFactory.getLogger(TradingController.class);
+    private final TradeService tradeService;
 
     private StockOrderService stockOrderService;
 
-    public TradingController(StockOrderService stockOrderService) {
+    public TradingController(StockOrderService stockOrderService, TradeService tradeService) {
         this.stockOrderService = stockOrderService;
+        this.tradeService = tradeService;
     }
 
     //주식 매수 주문
@@ -33,6 +35,13 @@ public class TradingController {
     public Mono<List<OrderResponseOutput>> sellStock(@RequestBody OrderRequest orderRequest){
         logger.debug("🔵매도 Order Request: {}", orderRequest);
         return stockOrderService.sellStock(orderRequest);
+    }
+
+    // http://localhost:8090/trading?stockName=삼성전자
+    @GetMapping("/trading")
+    public Mono<TradePossibleDTO> tradeStock(@RequestParam String stockName){
+        logger.info("📌 거래 시 필요 정보 - 종목명: {}", stockName);
+        return tradeService.getTradeInfo(stockName);
     }
 }
 
