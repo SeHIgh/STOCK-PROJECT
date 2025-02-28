@@ -4,23 +4,27 @@ import useFetchData from "../../hooks/useFetchData";
 import { fetchStockDailyPrice, fetchStockLivePrice } from "../../api/api";
 import { DailyPriceProps, LivePriceProps } from "../../types";
 import { formatCurrency, formatTradeAmount } from "../../utils/format";
+import useLiveStockPrice from "../../api/apiws";
 
 const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
-    const fetchStockLivePriceCallback = useCallback(
-        () => fetchStockLivePrice(stockName || ""),
-        [stockName]
-    );
+    // const fetchStockLivePriceCallback = useCallback(
+    //     () => fetchStockLivePrice(stockName || ""),
+    //     [stockName]
+    // );
 
     const fetchStockDailyPriceCallback = useCallback(
         () => fetchStockDailyPrice(stockName || ""),
         [stockName]
     );
 
-    const {
-        data: stockLive,
-        loading: stockLiveLoading,
-        error: stockLiveError,
-    } = useFetchData(fetchStockLivePriceCallback);
+    // const {
+    //     data: stockLive,
+    //     loading: stockLiveLoading,
+    //     error: stockLiveError,
+    // } = useFetchData(fetchStockLivePriceCallback);
+
+    // WebSocket 기반 실시간 데이터 훅 사용
+    const { stockLive, isConnected } = useLiveStockPrice(stockName);
 
     const {
         data: stockDaily,
@@ -28,7 +32,7 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
         error: stockDailyError,
     } = useFetchData(fetchStockDailyPriceCallback);
 
-    if (stockLiveLoading || stockLiveError) return <div>로딩 중...</div>;
+    // if (!isConnected) return <div>🔴 WebSocket 연결 대기 중...</div>;
 
     if (stockDailyLoading || stockDailyError) return <div>로딩 중...</div>;
 
@@ -54,7 +58,10 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
                 </TabList>
                 <TabPanels className="h-full mt-0 overflow-hidden">
                     <TabPanel className="h-full overflow-hidden">
-                        <LivePriceTable stocks={stockLive} />
+                        <LivePriceTable
+                            stocks={stockLive}
+                            isConnected={isConnected}
+                        />
                     </TabPanel>
                     <TabPanel className="h-full overflow-hidden">
                         <DailyPriceTable stocks={stockDaily} />
@@ -65,8 +72,95 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
     );
 };
 
-const LivePriceTable = ({ stocks }: { stocks: LivePriceProps[] | null }) => {
-    return (
+const LivePriceTable = ({
+    stocks,
+    isConnected,
+}: {
+    stocks: LivePriceProps[] | null;
+    isConnected: boolean;
+}) => {
+    return !isConnected ? (
+        <div className="h-full overflow-hidden rounded-lg flex flex-col">
+            <table className="min-w-full h-full divide-y divide-gray-300 table-fixed w-full stockdetail-price-table flex flex-col">
+                <thead>
+                    <tr>
+                        <th className="liveprice-th">체결가</th>
+                        <th className="liveprice-th">체결량(주)</th>
+                        <th className="liveprice-th">등락률</th>
+                        <th className="liveprice-th">거래량</th>
+                        <th className="liveprice-th">시간</th>
+                    </tr>
+                </thead>
+                <tbody className="divide-y divide-transparent h-full overflow-y-scroll skeleton">
+                    {Array.from({ length: 7 }).map((_, index) => (
+                        <tr key={index}>
+                            {/* 체결가 */}
+                            <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right">
+                                <span className="skeleton-text">
+                                    {formatCurrency("24582")}원
+                                </span>
+                            </td>
+                            {/* 체결량(주) : orderType에 따라 (매수: 빨강, 매도: 파랑) 으로 표시, orderType 명칭은 변경 가능 */}
+                            <td
+                                className={`px-1 py-0.5 whitespace-nowrap text-xs text-right rounded-r-lg`}
+                            >
+                                <span className="skeleton-text">
+                                    {formatCurrency("198")}
+                                </span>
+                            </td>
+                            {/* 등락률 */}
+                            <td
+                                className={`px-1 py-0.5 whitespace-nowrap text-xs text-right ${
+                                    parseFloat("6.5") > 0
+                                        ? "text-red-400"
+                                        : parseFloat("6.5") < 0
+                                        ? "text-blue-400"
+                                        : "text-gray-500"
+                                }`}
+                            >
+                                <span className="skeleton-text">
+                                    {parseFloat("6.5") > 0 ? "+" : ""}
+                                    {"6.5"}%
+                                </span>
+                            </td>
+                            {/* 거래량(주) */}
+                            <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right rounded-r-lg">
+                                <span className="skeleton-text">
+                                    {/* {formatCurrency(stock.executedQuantity)} */}
+                                    {formatCurrency("1344396")}
+                                </span>
+                            </td>
+                            {/* 시간 */}
+                            <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right rounded-r-lg">
+                                <span className="skeleton-text">
+                                    {(() => {
+                                        // 현재 날짜 가져오기 (YYYY-MM-DD)
+                                        const today = new Date()
+                                            .toISOString()
+                                            .split("T")[0];
+
+                                        // string 형태의 일자를 가져오므로 Date 객체로 변환 필요
+                                        // stock.tr_time을 현재 날짜와 합쳐서 Date 객체 생성
+                                        const dateTimeString = `${today} ${"23:11:23"}`;
+                                        const formattedTime = new Date(
+                                            dateTimeString
+                                        ).toLocaleTimeString("ko-KR", {
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            second: "2-digit",
+                                            hour12: false, // 24시간 형식 사용
+                                        });
+
+                                        return formattedTime;
+                                    })()}
+                                </span>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    ) : (
         <div className="h-full overflow-hidden rounded-lg flex flex-col">
             <table className="min-w-full h-full divide-y divide-gray-300 table-fixed w-full stockdetail-price-table flex flex-col">
                 <thead>
@@ -83,22 +177,22 @@ const LivePriceTable = ({ stocks }: { stocks: LivePriceProps[] | null }) => {
                         <tr key={index}>
                             {/* 체결가 */}
                             <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right">
-                                {formatCurrency(stock.stck_prpr)}원
+                                {formatCurrency(stock.executedPrice)}원
                             </td>
-                            {/* 체결량(주) */}
+                            {/* 체결량(주) : orderType에 따라 (매수: 빨강, 매도: 파랑) 으로 표시, orderType 명칭은 변경 가능 */}
                             <td
                                 className={`px-1 py-0.5 whitespace-nowrap text-xs text-right rounded-r-lg ${
-                                    parseFloat(stock.prdy_ctrt) > 0
+                                    stock.orderType === "buy"
                                         ? "text-red-400"
-                                        : parseFloat(stock.prdy_ctrt) < 0
+                                        : stock.orderType === "sell"
                                         ? "text-blue-400"
                                         : "text-gray-500"
                                 }`}
                             >
-                                {formatCurrency(stock.stck_qnty)}
+                                {formatCurrency(stock.executedQuantity)}
                             </td>
                             {/* 등락률 */}
-                            <td
+                            {/* <td
                                 className={`px-1 py-0.5 whitespace-nowrap text-xs text-right ${
                                     parseFloat(stock.prdy_ctrt) > 0
                                         ? "text-red-400"
@@ -109,10 +203,23 @@ const LivePriceTable = ({ stocks }: { stocks: LivePriceProps[] | null }) => {
                             >
                                 {parseFloat(stock.prdy_ctrt) > 0 ? "+" : ""}
                                 {stock.prdy_ctrt}%
+                            </td> */}
+                            <td
+                                className={`px-1 py-0.5 whitespace-nowrap text-xs text-right ${
+                                    parseFloat("6.5") > 0
+                                        ? "text-red-400"
+                                        : parseFloat("6.5") < 0
+                                        ? "text-blue-400"
+                                        : "text-gray-500"
+                                }`}
+                            >
+                                {parseFloat("6.5") > 0 ? "+" : ""}
+                                {"6.5"}%
                             </td>
                             {/* 거래량(주) */}
                             <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right rounded-r-lg">
-                                {formatCurrency(stock.acml_vol)}
+                                {/* {formatCurrency(stock.executedQuantity)} */}
+                                {formatCurrency("1344396")}
                             </td>
                             {/* 시간 */}
                             <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right rounded-r-lg">
@@ -124,7 +231,7 @@ const LivePriceTable = ({ stocks }: { stocks: LivePriceProps[] | null }) => {
 
                                     // string 형태의 일자를 가져오므로 Date 객체로 변환 필요
                                     // stock.tr_time을 현재 날짜와 합쳐서 Date 객체 생성
-                                    const dateTimeString = `${today} ${stock.tr_time}`;
+                                    const dateTimeString = `${today} ${stock.timestamp}`;
                                     const formattedTime = new Date(
                                         dateTimeString
                                     ).toLocaleTimeString("ko-KR", {

@@ -156,7 +156,7 @@ const Quote: React.FC<{ stockName: string }> = ({ stockName }) => {
                                 <span className="text-red-400">142.40%</span>
                             </li>
                             {Array.from({ length: 15 }).map((_, i) => (
-                                <li>
+                                <li key={i}>
                                     <span>57,200</span>
                                     <span className="text-blue-400">
                                         {random(1, 150)}

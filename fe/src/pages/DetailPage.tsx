@@ -1,6 +1,6 @@
 import { useLocation, useParams } from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
-import { fetchStockDetail } from "../api/api";
+import { fetchStockDetail, fetchStockTradeInfo } from "../api/api";
 import { formatCurrency } from "../utils/format";
 import { useCallback } from "react";
 import SubLayout from "../components/SubLayout";
@@ -21,11 +21,22 @@ const DetailPage = () => {
         [stockName]
     );
 
+    const fetchStockTradeInfoCallback = useCallback(
+        () => fetchStockTradeInfo(stockName || ""),
+        [stockName]
+    );
+
     const {
         data: stockDetailData,
         loading: loadingDetailData,
         error: errorDetailData,
     } = useFetchData(fetchStockDetailCallback);
+
+    const {
+        data: stockTradeInfoData,
+        loading: loadingTradeInfoData,
+        error: errorTradeInfoData,
+    } = useFetchData(fetchStockTradeInfoCallback);
 
     if (loadingDetailData || errorDetailData)
         return (
@@ -90,6 +101,9 @@ const DetailPage = () => {
                 </div>
             </SubLayout>
         );
+    if (!loadingTradeInfoData && !errorTradeInfoData) {
+        console.log("📈 종목 주문 정보 : ", JSON.stringify(stockTradeInfoData, null, 2));
+    }
 
     return (
         <SubLayout>
