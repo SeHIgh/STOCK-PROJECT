@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
     Listbox,
     ListboxButton,
@@ -16,6 +16,7 @@ import {
     PlusIcon,
 } from "@heroicons/react/24/solid";
 import { formatCurrency } from "../../utils/format";
+import { fetchOrder } from "../../api/api";
 
 const ORDER_TYPES = [
     { id: "00", name: "일반 주문", disabled: false },
@@ -27,12 +28,11 @@ const ORDER_DVSN = [
     { id: "01", name: "시장가", disabled: true },
 ];
 
-const DEFAULT_ACCOUNT = { cano: "50124326", acntPrdtCd: "01" };
-
-const OrderSection: React.FC<{ stockName: string; upperLimit: string }> = ({
-    stockName,
-    upperLimit,
-}) => {
+const OrderSection: React.FC<{
+    stockName: string;
+    productCode: string;
+    upperLimit: string;
+}> = ({ stockName, productCode, upperLimit }) => {
     const [orderType, setOrderType] = useState(ORDER_TYPES[0]);
     const [orderDvsn, setOrderDvsn] = useState(ORDER_DVSN[0]);
     const [price, setPrice] = useState<number>(0);
@@ -41,11 +41,37 @@ const OrderSection: React.FC<{ stockName: string; upperLimit: string }> = ({
     const [activeTab, setActiveTab] = useState("buy");
     const unitStep = 100; // 수량 증감 단위 (100원)
 
+    const isBuy = activeTab === "buy";
     const totalPrice =
         orderDvsn.id === "00"
             ? Number(price) * Number(quantity)
             : Number(upperLimit) * Number(quantity);
-    const isBuy = activeTab === "buy";
+
+    const fetchOrderCallback = useCallback(async () => {
+        // POST 요청 함수
+        return fetchOrder({
+            isBuy,
+            orderDvsn: orderDvsn.id,
+            quantity,
+            price: orderDvsn.id === "00" ? totalPrice.toString() : "0",
+            productCode,
+        });
+    }, [isBuy, orderDvsn, quantity, totalPrice, productCode]);
+
+    // 주문하기 버튼 핸들러
+    const handleSubmit = async () => {
+        if (!quantity || (orderDvsn.id === "00" && totalPrice === 0)) {
+            alert("모든 필드를 입력해주세요.");
+            return;
+        }
+        try {
+            // 버튼 클릭 시에만 fetchOrderCallback을 호출
+            await fetchOrderCallback();
+            alert("주문이 완료되었습니다.");
+        } catch (error) {
+            alert("주문 실패");
+        }
+    };
 
     // 가격 입력 핸들러
     const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,36 +93,37 @@ const OrderSection: React.FC<{ stockName: string; upperLimit: string }> = ({
         setState((prev) => Math.max(1, prev + delta));
     };
 
-    console.log(totalPrice);
+    // 최적화: 불필요한 상태 변수 제거 및 렌더링 최소화
+    const orderTypeOptions = ORDER_TYPES.map((type) => (
+        <ListboxOption
+            key={type.id}
+            value={type}
+            disabled={type.disabled}
+            className={({ selected }) =>
+                `box-option ${selected ? "text-red-500" : ""} ${
+                    type.disabled ? "type-disabled" : ""
+                }`
+            }
+        >
+            {type.name}
+        </ListboxOption>
+    ));
 
-    // 주문하기 버튼 핸들러
-    const handleSubmit = async () => {
-        if (!quantity || (orderDvsn.id === "00" && !price)) {
-            alert("모든 필드를 입력해주세요.");
-            return;
-        }
-
-        const endpoint = isBuy ? "/trading/buy" : "/trading/sell";
-        const payload = {
-            ...DEFAULT_ACCOUNT,
-            pdno: "032350",
-            ordDvsn: orderDvsn.id,
-            ordQty: quantity,
-            ordUnpr: orderDvsn.id === "00" ? totalPrice.toString : "0",
-        };
-
-        try {
-            const response = await fetch(endpoint, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-            });
-            const data = await response.json();
-            alert(`주문 완료: ${JSON.stringify(data)}`);
-        } catch (error) {
-            alert("주문 실패");
-        }
-    };
+    const orderDvsnTabs = ORDER_DVSN.map((dvsn, index) => (
+        <Tab
+            key={dvsn.id}
+            className={({ selected }) =>
+                `w-full py-1 text-sm font-semibold rounded-lg transition duration-400 ease-in-out ${
+                    selected
+                        ? "bg-neutral-50/70 text-neutral-600"
+                        : "text-neutral-400 hover:text-neutral-600"
+                }`
+            }
+            onClick={() => setOrderDvsn(ORDER_DVSN[index])}
+        >
+            {dvsn.name}
+        </Tab>
+    ));
 
     return (
         <div className="w-full h-fit flex-2 max-w-md px-2 sm:px-0 mx-auto overflow-hidden flex flex-col gap-2">
@@ -578,7 +605,7 @@ const OrderSection: React.FC<{ stockName: string; upperLimit: string }> = ({
                                     </TabGroup>
                                 </div>
                             </div>
-
+                            {/* TODO : 사용자가 보유한 주식의 수량에 따라 한계치 설정 필요 */}
                             <div className="div-order">
                                 <label className="text-sm text-nowrap font-medium">
                                     수량
@@ -635,7 +662,7 @@ const OrderSection: React.FC<{ stockName: string; upperLimit: string }> = ({
 
                             <div className="div-order">
                                 <label className="text-sm font-medium">
-                                    총 주문 금액
+                                    총 판매 금액
                                 </label>
                                 <p className="mt-1 text-gray-700">
                                     {orderDvsn.id === "00"

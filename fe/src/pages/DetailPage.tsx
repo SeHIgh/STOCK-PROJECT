@@ -153,8 +153,12 @@ const DetailPage = () => {
                     id="stock-order"
                     className="flex-1 block-detail flex flex-col gap-1 col-span-1 row-span-2"
                 >
-                    <OrderSection stockName={stockName!} upperLimit={"68000"} />
-                    <hr className="border-1 border-neutral-400/40"/>
+                    <OrderSection
+                        stockName={stockName!}
+                        productCode={productCode}
+                        upperLimit={"68000"}
+                    />
+                    <hr className="border-1 border-neutral-400/40" />
                     <OrderLog stockName={stockName!} />
                 </div>
                 {/* 실시간 시세 */}

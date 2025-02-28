@@ -112,3 +112,22 @@ export interface DailyPriceProps {
     acml_tr_pbmn: string; // 거래대금
     prdy_ctrt: string; // 등락률
 }
+
+// 종목 상세 정보 - 주문 하기 타입 정의
+export interface OrderProps {
+    cano: string; // 계좌번호
+    acntPrdtCd: string; // 계좌상품코드
+    pdno: string; // 종목코드
+    ordDvsn: string; // 주문구분     //00: 지정가, 01:시장가
+    ordQty: string; // 주문수량
+    ordUnpr: string; // 주문단가     //지정가일때 희망가격, 시장가일때 0
+}
+// 종목 상세 정보 - 주문 하기 타입 정의 (예시)
+// {
+// "cano": "50124326",
+// "acntPrdtCd": "01",
+// "pdno": "032350",
+// "ordDvsn": "01",
+// "ordQty": "20",
+// "ordUnpr": "0"
+// }

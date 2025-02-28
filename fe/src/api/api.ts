@@ -6,11 +6,13 @@ import {
     LiveChartFluctuationProps,
     LiveChartVolProps,
     LivePriceProps,
+    OrderProps,
     StockIndexProps,
     StockPriceProps,
 } from "../types";
 import { NewsProps } from "../types";
 import { isLocalMode } from "../utils/\bglobalFunc";
+import { ACCOUNT_INFO } from "../\bconfig";
 
 // 주가지수 API
 export const fetchIndexList = async (): Promise<StockIndexProps[]> => {
@@ -53,7 +55,9 @@ export const fetchNewsList = async (): Promise<NewsProps[]> => {
 };
 
 // 실시간 차트 API - 거래량 상위 10개
-export const fetchLiveChartTopVol10 = async (): Promise<LiveChartVolProps[]> => {
+export const fetchLiveChartTopVol10 = async (): Promise<
+    LiveChartVolProps[]
+> => {
     try {
         const response = await axiosInstance.get<LiveChartVolProps[]>(
             "/volume-rank"
@@ -66,7 +70,9 @@ export const fetchLiveChartTopVol10 = async (): Promise<LiveChartVolProps[]> => 
 };
 
 // 실시간 차트 API - 급상승 상위 10개
-export const fetchLiveChartTopIncr10 = async (): Promise<LiveChartFluctuationProps[]> => {
+export const fetchLiveChartTopIncr10 = async (): Promise<
+    LiveChartFluctuationProps[]
+> => {
     try {
         const response = await axiosInstance.get<LiveChartFluctuationProps[]>(
             "/top10-fluctuation"
@@ -79,7 +85,9 @@ export const fetchLiveChartTopIncr10 = async (): Promise<LiveChartFluctuationPro
 };
 
 // 실시간 차트 API - 급하락 상위 10개
-export const fetchLiveChartTopDecr10 = async (): Promise<LiveChartFluctuationProps[]> => {
+export const fetchLiveChartTopDecr10 = async (): Promise<
+    LiveChartFluctuationProps[]
+> => {
     try {
         const response = await axiosInstance.get<LiveChartFluctuationProps[]>(
             "/bottom10-fluctuation"
@@ -124,7 +132,9 @@ export const fetchStockLivePrice = async (
 ): Promise<LivePriceProps[]> => {
     if (isLocalMode) {
         try {
-            const response = await axiosInstance.get<LivePriceProps[]>("/liveprice");
+            const response = await axiosInstance.get<LivePriceProps[]>(
+                "/liveprice"
+            );
             return response.data;
         } catch (error) {
             console.error(
@@ -135,12 +145,18 @@ export const fetchStockLivePrice = async (
         }
     }
     try {
-        const response = await axiosInstance.get<LivePriceProps[]>("/liveprice", {
-            params: { name: stockName },
-        });
+        const response = await axiosInstance.get<LivePriceProps[]>(
+            "/liveprice",
+            {
+                params: { name: stockName },
+            }
+        );
         return response.data;
     } catch (error) {
-        console.error("⛔️ 종목 상세 정보 - 실시간 시세 API 데이터 요청 실패", error);
+        console.error(
+            "⛔️ 종목 상세 정보 - 실시간 시세 API 데이터 요청 실패",
+            error
+        );
         throw error;
     }
 };
@@ -151,7 +167,9 @@ export const fetchStockDailyPrice = async (
 ): Promise<DailyPriceProps[]> => {
     if (isLocalMode) {
         try {
-            const response = await axiosInstance.get<DailyPriceProps[]>("/dailyprice");
+            const response = await axiosInstance.get<DailyPriceProps[]>(
+                "/dailyprice"
+            );
             return response.data;
         } catch (error) {
             console.error(
@@ -162,12 +180,161 @@ export const fetchStockDailyPrice = async (
         }
     }
     try {
-        const response = await axiosInstance.get<DailyPriceProps[]>("/dailyprice", {
-            params: { name: stockName },
-        });
+        const response = await axiosInstance.get<DailyPriceProps[]>(
+            "/dailyprice",
+            {
+                params: { name: stockName },
+            }
+        );
         return response.data;
     } catch (error) {
-        console.error("⛔️ 종목 상세 정보 - 일별 시세 API 데이터 요청 실패", error);
+        console.error(
+            "⛔️ 종목 상세 정보 - 일별 시세 API 데이터 요청 실패",
+            error
+        );
+        throw error;
+    }
+};
+
+// 종목 상세 정보 - 주문 하기 API - 매수
+export const fetchStockOrderBuy = async (
+    productCode: string,
+    orderDivision: string, // 주문구분: '00' - 지정가, '01' - 시장가
+    orderQuantity: string, // 주문수량
+    orderPrice: string // 주문단가: 지정가일 때 희망가격, 시장가일 때 0
+): Promise<OrderProps> => {
+    const orderData = {
+        ...ACCOUNT_INFO,
+        pdno: productCode,
+        ordDvsn: orderDivision,
+        ordQty: orderQuantity,
+        ordUnpr: orderPrice,
+    };
+    if (isLocalMode) {
+        try {
+            const response = await axiosInstance.post<OrderProps>(
+                "/trading/buy",
+                orderData
+            );
+            return response.data;
+        } catch (error) {
+            console.error(
+                "⛔️ 종목 상세 정보 (로컬 모드) - 주문 하기(매수) API 데이터 요청 실패",
+                error
+            );
+            throw error;
+        }
+    }
+    try {
+        const response = await axiosInstance.post<OrderProps>(
+            "/trading/buy",
+            orderData
+        );
+        return response.data;
+    } catch (error) {
+        console.error(
+            "⛔️ 종목 상세 정보 - 주문 하기(매수) API 데이터 요청 실패",
+            error
+        );
+        throw error;
+    }
+};
+
+// 종목 상세 정보 - 주문 하기 API - 매도
+export const fetchStockOrderSell = async (
+    productCode: string,
+    orderDivision: string, // 주문구분: '00' - 지정가, '01' - 시장가
+    orderQuantity: string, // 주문수량
+    orderPrice: string // 주문단가: 지정가일 때 희망가격, 시장가일 때 0
+): Promise<OrderProps> => {
+    const orderData = {
+        ...ACCOUNT_INFO,
+        pdno: productCode,
+        ordDvsn: orderDivision,
+        ordQty: orderQuantity,
+        ordUnpr: orderPrice,
+    };
+    if (isLocalMode) {
+        try {
+            const response = await axiosInstance.post<OrderProps>(
+                "/trading/sell",
+                orderData
+            );
+            return response.data;
+        } catch (error) {
+            console.error(
+                "⛔️ 종목 상세 정보 (로컬 모드) - 주문 하기(매도) API 데이터 요청 실패",
+                error
+            );
+            throw error;
+        }
+    }
+    try {
+        const response = await axiosInstance.post<OrderProps>(
+            "/trading/sell",
+            orderData
+        );
+        return response.data;
+    } catch (error) {
+        console.error(
+            "⛔️ 종목 상세 정보 - 주문 하기(매도) API 데이터 요청 실패",
+            error
+        );
+        throw error;
+    }
+};
+
+// 주문하기 API
+export const fetchOrder = async ({
+    isBuy,
+    orderDvsn,
+    quantity,
+    price,
+    productCode,
+}: {
+    isBuy: boolean;
+    orderDvsn: string;
+    quantity: number;
+    price: string;
+    productCode: string;
+}) => {
+    try {
+        const endpoint = isLocalMode
+            ? isBuy
+                ? "/buy"
+                : "/sell"
+            : isBuy
+            ? "/trading/buy"
+            : "/trading/sell";
+        const response = await axiosInstance.post(endpoint, {
+            ...ACCOUNT_INFO,
+            pdno: productCode,
+            ordDvsn: orderDvsn,
+            ordQty: quantity,
+            ordUnpr: price,
+        });
+
+        return response.data;
+    } catch (error) {
+        isLocalMode
+            ? isBuy
+                ? console.error(
+                      "⛔ 종목 상세 정보 (로컬 모드) - 주문 하기(매수) API 데이터 전송 실패",
+                      error
+                  )
+                : console.error(
+                      "⛔ 종목 상세 정보 (로컬 모드) - 주문 하기(매도) API 데이터 전송 실패",
+                      error
+                  )
+            : isBuy
+            ? console.error(
+                  "⛔ 종목 상세 정보 - 주문 하기(매수) API 데이터 전송 실패",
+                  error
+              )
+            : console.error(
+                  "⛔ 종목 상세 정보 - 주문 하기(매도) API 데이터 전송 실패",
+                  error
+              );
         throw error;
     }
 };
