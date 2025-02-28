@@ -72,9 +72,9 @@ const FindAccount: React.FC = () => {
 
     return (
         <div className="flex flex-col w-dvw h-dvh py-4 justify-between">
-            <div className="h-10 flex justify-center items-center">
+            <div className="h-20 flex justify-center items-center">
                 <a href="/" className="-m-1.5 p-1.5">
-                    <img alt="" src="/monitoring.svg" className="h-8 w-auto" />
+                    <img alt="" src="/AnTrading_Logo_v2.svg" className="h-16 w-auto" />
                 </a>
             </div>
             <div className="w-100 min-h-104 mx-auto bg-white/20 backdrop-blur-xs p-8 rounded-lg shadow-md max-w-md flex flex-col justify-between">
