@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
 
-// type FetchState<T> = {
-//     data: T | null;
-//     loading: boolean;
-//     error: string | null;
-// };
-
 type FetchState<T> = {
     data: T;
     loading: boolean;

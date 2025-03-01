@@ -3,7 +3,6 @@ import StockIndex from "../components/Main/StockIndex";
 import MainLayout from "../components/MainLayout";
 import LiveCharts from "../components/Main/LiveCharts";
 import News from "../components/Main/News";
-import Footer from "../components/Layouts/Footer";
 
 const MainPage = () => {
     return (

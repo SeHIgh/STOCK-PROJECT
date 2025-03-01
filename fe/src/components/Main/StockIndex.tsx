@@ -46,7 +46,7 @@ const StockIndex = () => {
         <>
             <h1 className="section-title-main">주가지수</h1>
             <ul className="w-full h-full flex flex-row justify-between gap-3 overflow-x-scroll pb-2 px-1 mt-3">
-                {stockIndex && stockIndex?.map((stockIndex) => (
+                {stockIndex?.map((stockIndex) => (
                     <li
                         key={stockIndex.id}
                         className="flex-1 card-main bg-white/30 gray-hover"

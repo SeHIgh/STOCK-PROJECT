@@ -14,18 +14,18 @@ const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header className="h-24 inset-x-0 sticky top-0 z-50 backdrop-blur-2xl flex items-center">
+        <header className="h-18 inset-x-0 sticky top-0 z-50 backdrop-blur-2xl flex items-center">
             <nav
                 aria-label="Global"
                 className="w-full h-full flex items-center justify-between px-6 py-1 lg:px-8"
             >
                 <div className="flex lg:flex-1">
-                    <a href="/main" className="-m-1.5 p-1.5">
+                    <a href="/main" className="-m-1.5 p-1.5 w-fit h-14">
                         {/* <span className="sr-only">Your Company</span> */}
                         <img
                             alt=""
-                            src="/AnTrading_Logo_color_neautral.svg"
-                            className="absolute top-0 h-20 w-auto"
+                            src="/AnTrading_Logo_v2.svg"
+                            className="h-14 w-auto"
                         />
                     </a>
                 </div>

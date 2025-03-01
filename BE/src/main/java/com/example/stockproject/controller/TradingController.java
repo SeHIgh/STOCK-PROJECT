@@ -1,8 +1,12 @@
 package com.example.stockproject.controller;
 
+import com.example.stockproject.Web.PriceStockSocketHandler;
+import com.example.stockproject.Web.WebSocketConfig1;
+import com.example.stockproject.dto.StockInfo;
 import com.example.stockproject.dto.order.TradePossibleDTO;
 import com.example.stockproject.dto.order.OrderRequest;
 import com.example.stockproject.dto.order.OrderResponseOutput;
+import com.example.stockproject.repository.StockInfoRepository;
 import com.example.stockproject.service.StockOrderService;
 import com.example.stockproject.service.TradeService;
 import org.slf4j.Logger;
@@ -11,17 +15,25 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TradingController {
     private static final Logger logger = LoggerFactory.getLogger(TradingController.class);
     private final TradeService tradeService;
+    private final PriceStockSocketHandler priceStockSocketHandler;
+    private final StockOrderService stockOrderService;
+    private final StockInfoRepository stockInfoRepository;
+    private final WebSocketConfig1 webSocketConfig1;
 
-    private StockOrderService stockOrderService;
-
-    public TradingController(StockOrderService stockOrderService, TradeService tradeService) {
+    public TradingController(StockOrderService stockOrderService, TradeService tradeService, PriceStockSocketHandler priceStockSocketHandler,
+                             StockInfoRepository stockInfoRepository,
+                             WebSocketConfig1 webSocketConfig1) {
         this.stockOrderService = stockOrderService;
         this.tradeService = tradeService;
+        this.priceStockSocketHandler = priceStockSocketHandler;
+        this.stockInfoRepository = stockInfoRepository;
+        this.webSocketConfig1 = webSocketConfig1;
     }
 
     //주식 매수 주문
@@ -37,10 +49,20 @@ public class TradingController {
         return stockOrderService.sellStock(orderRequest);
     }
 
+
     // http://localhost:8090/trading?stockName=삼성전자
-    @GetMapping("/trading")
+    //실시간 체결가 웹소켓 통신 & 매수&매도 가능정보 반환 (+실시간 호가 웹소켓통신)
+    @GetMapping("/api/trading")
     public Mono<TradePossibleDTO> tradeStock(@RequestParam String stockName){
         logger.info("📌 거래 시 필요 정보 - 종목명: {}", stockName);
+
+        Optional<StockInfo> stockInfo = stockInfoRepository.findByStockName(stockName);
+        String stockCode = stockInfo.get().getStockCode();//stockCode;
+        priceStockSocketHandler.setTrKey(stockCode);
+
+        //웹소켓 연결시도
+        webSocketConfig1.webSocketConnectionManager().start();
+
         return tradeService.getTradeInfo(stockName);
     }
 }

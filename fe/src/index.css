@@ -120,34 +120,34 @@ input {
   background-color: rgba(256, 256, 256, 0.4);
 }
 
-/* 테이블 디자인 */
-thead>tr {
+/* 메인화면 - 실시간차트 테이블 디자인 */
+.stockmain-livechart-table>thead>tr {
   @apply text-nowrap;
 }
 
-tbody>tr:nth-child(odd) {
+.stockmain-livechart-table>tbody>tr:nth-child(odd) {
   @apply bg-neutral-100/70 drop-shadow-md;
   /* @apply bg-neutral-400/20; */
   /* @apply bg-white/30; */
   /* @apply bg-indigo-200/30; */
 }
 
-tbody>tr {
+.stockmain-livechart-table>tbody>tr {
   @apply transition duration-200 ease-in-out cursor-pointer;
   /* @apply transition duration-200 ease-in-out cursor-pointer border-none; */
 }
 
-tbody>tr:hover {
+.stockmain-livechart-table>tbody>tr:hover {
   @apply bg-neutral-400/50;
   /* @apply bg-white/50; */
   /* @apply bg-indigo-300/30; */
 }
 
-tbody>tr>td {
+.stockmain-livechart-table>tbody>tr>td {
   @apply text-ellipsis overflow-hidden;
 }
 
-tbody>tr>td>a>span {
+.stockmain-livechart-table>tbody>tr>td>a>span {
   @apply text-ellipsis overflow-hidden;
 }
 
@@ -171,7 +171,7 @@ header {
 }
 
 .block-detail {
-  @apply rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400/70 bg-neutral-100/70 drop-shadow-sm;
+  @apply w-full h-full rounded-se-xl rounded-es-xl p-4 flex flex-col justify-between border-2 border-neutral-400/70 bg-neutral-50/70 drop-shadow-sm overflow-hidden;
 }
 
 .gray-hover {
@@ -213,4 +213,300 @@ header {
 /* 테스트 용 컴포넌트 */
 .test-component {
   @apply p-4 border rounded-lg shadow-md absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%];
+}
+
+img {
+  image-rendering: optimizeQuality;
+}
+
+/* 실시간 · 일별 시세 테이블*/
+.liveprice-th {
+  @apply px-1 py-0.5 text-right text-xs font-medium text-gray-500 uppercase tracking-wider flex-1;
+}
+
+.liveprice-th:first-child {
+  @apply text-left;
+}
+
+.dailyprice-th {
+  @apply px-1 py-0.5 text-right text-xs font-medium text-gray-500 uppercase tracking-wider flex-1;
+}
+
+.dailyprice-th:first-child {
+  @apply text-left;
+}
+
+/* 종목 상세 정보 - 테이블 디자인 */
+.stockdetail-price-table>thead>tr {
+  @apply text-nowrap flex flex-row justify-between;
+}
+
+.stockdetail-price-table>thead>tr>td {
+  @apply flex-1;
+}
+
+.stockdetail-price-table>thead>tr>td:last-child {
+  @apply pr-1;
+}
+
+.stockdetail-price-table>tbody {
+  @apply overflow-y-scroll;
+}
+
+.stockdetail-price-table>tbody::-webkit-scrollbar {
+  display: inline;
+  cursor: pointer;
+  width: 4px;
+  /* 스크롤바 너비 */
+}
+
+.stockdetail-price-table>tbody::-webkit-scrollbar-thumb {
+  @apply bg-transparent;
+  border-radius: 4px;
+  /* 스크롤바 둥글게 */
+}
+
+.stockdetail-price-table>tbody:hover::-webkit-scrollbar-thumb {
+  @apply bg-neutral-400/60;
+}
+
+.stockdetail-price-table>tbody::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500/60 cursor-pointer;
+  /* 마우스 오버 시 색상 */
+}
+
+.stockdetail-price-table>tbody>tr:nth-child(odd) {
+  @apply bg-transparent;
+}
+
+.stockdetail-price-table>tbody>tr {
+  @apply transition duration-200 ease-in-out cursor-pointer flex flex-row justify-between;
+}
+
+.stockdetail-price-table>tbody>tr:hover {
+  @apply bg-transparent;
+}
+
+.stockdetail-price-table>tbody>tr>td {
+  @apply text-ellipsis overflow-hidden flex-1;
+}
+
+.stockdetail-price-table>tbody>tr>td:first-child {
+  @apply text-left;
+}
+
+.stockdetail-price-table>tbody>tr>td>a>span {
+  @apply text-ellipsis overflow-hidden;
+}
+
+/* 스크롤바 */
+
+/* 스크롤바 스타일 */
+.scrollbar::-webkit-scrollbar {
+  display: inline;
+  width: 4px;
+  /* 스크롤바 너비 */
+  transition: all 0.4s ease-in-out;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-transparent;
+  border-radius: 4px;
+  /* 스크롤바 둥글게 */
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  @apply bg-neutral-400/60;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500/60 cursor-pointer;
+  /* 마우스 오버 시 색상 */
+}
+
+/* 호가 리스트 디자인 */
+.quote-ul {
+  @apply h-full w-full flex flex-col gap-0;
+}
+
+.quote-li-high {
+  @apply w-full h-full flex flex-row gap-0;
+}
+
+.quote-li-high>div {
+  /* @apply bg-neutral-400/50; */
+}
+
+.quote-li-high>div:first-child {
+  @apply flex-2/5;
+}
+
+.quote-li-high>div:last-child {
+  @apply flex-3/5;
+}
+
+.quote-li-low {
+  @apply w-full h-full flex flex-row gap-0;
+}
+
+.quote-li-low>div {
+  /* @apply bg-neutral-400/50; */
+}
+
+.quote-li-low>div:first-child {
+  @apply flex-3/5;
+}
+
+.quote-li-low>div:last-child {
+  @apply flex-2/5;
+}
+
+/* 호가 설명 텍스트 */
+.quote-ul-desc {
+  @apply h-full w-full flex flex-col justify-end;
+}
+
+.quote-ul-desc>div {
+  @apply h-fit w-full px-1 flex flex-col justify-between;
+}
+
+.quote-ul-desc>div>li {
+  @apply h-full w-full py-1 flex flex-col justify-between lg:flex-row text-gray-500;
+}
+
+/* 호가 설명 - 구분선 */
+.quote-ul-desc>div>li:nth-child(2) {
+  @apply border-b-1 border-neutral-400/40;
+}
+
+.quote-ul-desc>div>li:nth-child(5) {
+  @apply border-b-1 border-neutral-400/40;
+}
+
+/* 호가 설명 - 고가,저가 색구분 */
+.quote-ul-desc>div>li:nth-child(4) {
+  @apply text-red-400;
+}
+
+.quote-ul-desc>div>li:nth-child(5) {
+  @apply text-blue-400;
+}
+
+.quote-ul-desc>div>li:nth-child(6) {
+  @apply lg:flex-col;
+}
+
+.quote-ul-desc>div>li:nth-child(7) {
+  @apply lg:flex-col;
+}
+
+.quote-ul-desc>div>li>span:first-child {
+  @apply text-xs text-nowrap text-gray-500/70;
+}
+
+.quote-ul-desc>div>li>span {
+  @apply text-xs text-nowrap;
+}
+
+/* 호가 체결강도 */
+.quote-ul-strong {
+  @apply h-full w-full flex flex-col justify-start;
+}
+
+.quote-ul-strong>div {
+  @apply h-fit w-full px-1 flex flex-col justify-between;
+}
+
+.quote-ul-strong>div>li {
+  @apply h-full w-full py-1 flex flex-row justify-between text-gray-500;
+}
+
+.quote-ul-strong>div>li:first-child {
+  @apply flex-col;
+}
+
+.quote-ul-strong>div>li:first-child>span:first-child {
+  @apply text-gray-500/70;
+}
+
+.quote-ul-strong>div>li>span {
+  @apply text-xs text-nowrap;
+}
+
+/* 그림자 효과 커스텀 */
+@theme {
+  --shadow-round: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* 옵션 버튼 */
+.button-option {
+  @apply min-w-4/5 px-3 py-1 border-2 bg-neutral-100 border-neutral-400/30 hover:border-neutral-600/30 rounded-lg text-sm overflow-hidden flex flex-row justify-between items-center;
+}
+
+/* 옵션 박스 */
+.box-options {
+  @apply absolute top-9 right-0 w-4/5 mt-1 p-1 text-sm bg-neutral-100 border border-none rounded-lg shadow-lg overflow-hidden z-100 flex flex-col gap-1;
+}
+
+.box-option {
+  @apply px-2 py-1 cursor-pointer hover:bg-neutral-200/40 rounded-lg border-2 border-transparent transition duration-300 ease-in-out;
+}
+
+.type-disabled {
+  @apply cursor-not-allowed text-neutral-400 bg-neutral-200 hover:bg-neutral-200;
+}
+
+/* 주문 하기 - 입력 란 */
+.input-order {
+  @apply min-w-4/5 px-3 py-1 bg-neutral-100 border-2 border-neutral-400/30 hover:border-neutral-600/30 rounded-lg text-sm overflow-hidden flex flex-row justify-between items-center disabled:bg-neutral-200;
+}
+
+.input-order>div {
+  @apply bg-transparent;
+}
+
+.input-order>div:first-child {
+  @apply justify-start;
+}
+
+.input-order>div:last-child {
+  @apply justify-end;
+}
+
+.input-order>div>input {
+  @apply bg-transparent overflow-visible flex items-center p-0;
+}
+
+.input-order>div>.btn-order {
+  @apply bg-transparent px-1 py-0.5 rounded-lg transition duration-300 ease-in-out hover:bg-neutral-300/30;
+}
+
+/* 제출 버튼 */
+.button-submit {
+  @apply w-full py-2 rounded-lg font-bold;
+}
+
+/* 주문 하기 - 1줄 */
+.div-order {
+  @apply relative flex flex-row justify-between items-start gap-2;
+}
+
+.div-order>label {
+  @apply min-w-1/6 min-w-fit mt-1;
+}
+
+.order-disabled {
+  @apply cursor-not-allowed text-neutral-400 bg-neutral-200 border-neutral-200 hover:bg-neutral-200 hover:border-neutral-200;
+}
+
+.order-disabled>input {
+  @apply cursor-not-allowed;
+}
+
+.order-disabled>div>.btn-order {
+  @apply cursor-not-allowed hover:bg-transparent;
+}
+
+.order-disabled>div>input {
+  @apply cursor-not-allowed;
 }

@@ -68,7 +68,7 @@ const Search = () => {
 
     // 데이터 요청 함수
     const getData = useCallback(async () => {
-        const apiUrl = import.meta.env.VITE_API_BASE_URL;
+        const apiUrl = import.meta.env.VITE_API_MOCK_URL;
         try {
             const response = await axios.get<StockData[]>(
                 `${apiUrl}/kospi_list`

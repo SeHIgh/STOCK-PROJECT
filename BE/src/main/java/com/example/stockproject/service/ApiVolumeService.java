@@ -64,15 +64,17 @@ public class ApiVolumeService {
                     responseData.setAcml_tr_pbmn(node.get("acml_tr_pbmn").asText());
                     responseData.setMksc_shrn_iscd(node.get("mksc_shrn_iscd").asText());
                     responseData.setPrdy_vol_value(node.get("prdy_vrss").asText());
+
                     // prdy_vrss_sign 값이 2이면 "+", 5이면 "-"를 설정
                     String prdyVolSign = node.get("prdy_vrss_sign").asText();
-                    if ("2".equals(prdyVolSign)) {
-                        responseData.setPrdy_vol_sign("+");
-                    } else if ("5".equals(prdyVolSign)) {
-                        responseData.setPrdy_vol_sign("-");
-                    } else {
-                        responseData.setPrdy_vol_sign(prdyVolSign); // 기본값 유지
-                    }
+//                    if (prdyVolSign.equals("2")) {
+//                        responseData.setPrdy_vol_sign("+");
+//                    } else if (prdyVolSign.equals("5")) {
+//                        responseData.setPrdy_vol_sign("-");
+//                    } else {
+//                        responseData.setPrdy_vol_sign(prdyVolSign); // 기본값 유지
+//                    }
+                    responseData.setPrdy_vol_sign(prdyVolSign); // 기본값 유지
 
                     responseDataList.add(responseData);
                     count++;
@@ -94,7 +96,7 @@ public class ApiVolumeService {
                         .queryParam("FID_COND_SCR_DIV_CODE", "20171")
                         .queryParam("FID_INPUT_ISCD", "0002")
                         .queryParam("FID_DIV_CLS_CODE", "0")
-                        .queryParam("FID_BLNG_CLS_CODE", "1")   //0 : 평균거래량 1:거래증가율 2:평균거래회전율 3:거래금액순 4:평균거래금액회전율
+                        .queryParam("FID_BLNG_CLS_CODE", "0")   //0 : 평균거래량 1:거래증가율 2:평균거래회전율 3:거래금액순 4:평균거래금액회전율
                         .queryParam("FID_TRGT_CLS_CODE", "111111111")
                         .queryParam("FID_TRGT_EXLS_CLS_CODE", "000000")
                         .queryParam("FID_INPUT_PRICE_1", "0")
