@@ -65,13 +65,13 @@ const News = () => {
                 {newsList?.slice(0, 4).map((news, index) => (
                     <li key={index} className="flex-1 card-main gray-hover">
                         <a
-                            href="*"
+                            href={news.link}
                             className="w-full h-full p-4 flex flex-col gap-1"
                         >
                             <div className="w-full h-40 bg-linear-to-r from-neutral-300/30 to-[#4a69bd]/30 rounded-xl overflow-hidden flex items-center">
                                 <img
                                     src={news.imageUrl}
-                                    alt={news.newsId}
+                                    alt={index.toString()}
                                     className="transition duration-400 ease-in-out w-full h-full  hover:scale-105"
                                 />
                             </div>
@@ -83,7 +83,7 @@ const News = () => {
                                     {formatRelativeTime(news.createdAt)}
                                 </span>
                                 <span>∙</span>
-                                <span>{news.agencyName}</span>
+                                <span>{news.source}</span>
                             </div>
                         </a>
                     </li>
