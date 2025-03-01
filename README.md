@@ -47,5 +47,6 @@ API](https://apiportal.koreainvestment.com/apiservice/oauth2#L_5c87ba63-740a-416
 
 |FE|BE|
 |-|-|
-|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|<img width="80" alt="Juhoimda_Logo_img" src="https://github.com/user-attachments/assets/26ed1077-017f-4f35-be3a-ab531effe4ce" />|
+|<img width="80" alt="SeHi_Logo_NoTitle_Profile" src="https://github.com/user-attachments/assets/4c98b3ec-4774-4c1e-8cad-f775fb6bb3f0" />|<img width="80" alt="Juhoimda_Logo_img" src="https://github.com/user-attachments/assets/272b2956-c2e4-4489-82c7-c1a80ab213b5" />|
 |[장세현](https://github.com/SeHIgh)|[강주호](https://github.com/juhoimda)|
+
