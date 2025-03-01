@@ -11,17 +11,18 @@ export interface StockIndexProps {
 
 // 뉴스 타입 정의
 export interface NewsProps {
-    newsId: string;
+    // newsId: string; // 필요 없음
     title: string;
-    contentText: string;
-    stockCodes: string[];
-    newsType: string;
+    // contentText: string; // 필요 없음
+    // stockCodes: string[]; // 필요 없음
+    // newsType: string; // 필요 없음
     imageUrl: string;
     source: string;
-    agencyName: string;
-    relatedStocks: string[];
+    // agencyName: string; // 필요 없음
+    // relatedStocks: string[]; // 필요 없음
     createdAt: string;
-    nation: string;
+    // nation: string; // 필요 없음
+    link: string;
 }
 
 // 환율 타입 정의

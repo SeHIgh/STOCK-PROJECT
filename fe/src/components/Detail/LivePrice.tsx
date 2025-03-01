@@ -79,7 +79,7 @@ const LivePriceTable = ({
     stocks: LivePriceProps[] | null;
     isConnected: boolean;
 }) => {
-    return !isConnected ? (
+    return isConnected ? (
         <div className="h-full overflow-hidden rounded-lg flex flex-col">
             <table className="min-w-full h-full divide-y divide-gray-300 table-fixed w-full stockdetail-price-table flex flex-col">
                 <thead>
