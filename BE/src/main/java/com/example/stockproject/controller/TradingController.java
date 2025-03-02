@@ -1,7 +1,9 @@
 package com.example.stockproject.controller;
 
+import com.example.stockproject.Web.AskingPriceSocketHandler;
 import com.example.stockproject.Web.PriceStockSocketHandler;
 import com.example.stockproject.Web.WebSocketConfig1;
+import com.example.stockproject.Web.WebSocketConfig4;
 import com.example.stockproject.dto.StockInfo;
 import com.example.stockproject.dto.order.TradePossibleDTO;
 import com.example.stockproject.dto.order.OrderRequest;
@@ -9,6 +11,7 @@ import com.example.stockproject.dto.order.OrderResponseOutput;
 import com.example.stockproject.repository.StockInfoRepository;
 import com.example.stockproject.service.StockOrderService;
 import com.example.stockproject.service.TradeService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -18,23 +21,17 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequiredArgsConstructor
 public class TradingController {
     private static final Logger logger = LoggerFactory.getLogger(TradingController.class);
     private final TradeService tradeService;
-    private final PriceStockSocketHandler priceStockSocketHandler;
     private final StockOrderService stockOrderService;
     private final StockInfoRepository stockInfoRepository;
     private final WebSocketConfig1 webSocketConfig1;
+    private final WebSocketConfig4 webSocketConfig4;
+    private final PriceStockSocketHandler priceStockSocketHandler;
+    private final AskingPriceSocketHandler askingPriceSocketHandler;
 
-    public TradingController(StockOrderService stockOrderService, TradeService tradeService, PriceStockSocketHandler priceStockSocketHandler,
-                             StockInfoRepository stockInfoRepository,
-                             WebSocketConfig1 webSocketConfig1) {
-        this.stockOrderService = stockOrderService;
-        this.tradeService = tradeService;
-        this.priceStockSocketHandler = priceStockSocketHandler;
-        this.stockInfoRepository = stockInfoRepository;
-        this.webSocketConfig1 = webSocketConfig1;
-    }
 
     //주식 매수 주문
     @PostMapping("/trading/buy")
@@ -50,7 +47,7 @@ public class TradingController {
     }
 
 
-    // http://localhost:8090/trading?stockName=삼성전자
+    // http://localhost:8090/api/trading?stockName=삼성전자
     //실시간 체결가 웹소켓 통신 & 매수&매도 가능정보 반환 (+실시간 호가 웹소켓통신)
     @GetMapping("/api/trading")
     public Mono<TradePossibleDTO> tradeStock(@RequestParam String stockName){
@@ -58,10 +55,13 @@ public class TradingController {
 
         Optional<StockInfo> stockInfo = stockInfoRepository.findByStockName(stockName);
         String stockCode = stockInfo.get().getStockCode();//stockCode;
-        priceStockSocketHandler.setTrKey(stockCode);
+        //priceStockSocketHandler.setTrKey(stockCode);
+        askingPriceSocketHandler.setTrKey(stockCode);
+
 
         //웹소켓 연결시도
-        webSocketConfig1.webSocketConnectionManager().start();
+        //webSocketConfig1.webSocketConnectionManager().start();
+        webSocketConfig4.webSocketConnectionManager().start();
 
         return tradeService.getTradeInfo(stockName);
     }

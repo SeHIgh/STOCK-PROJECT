@@ -35,7 +35,7 @@ public class WebSocketConfig1 implements WebSocketConfigurer {
         connectionManager = new WebSocketConnectionManager(
                 new StandardWebSocketClient(),
                 priceStockSocketHandler,  // ✅ Spring이 관리하는 Bean 사용
-                "ws://ops.koreainvestment.com:21000/tryitout/H0STCNT0"
+                "ws://ops.koreainvestment.com:31000"
         );
 
         connectionManager.setAutoStartup(false);    //자동 연결을 막음.

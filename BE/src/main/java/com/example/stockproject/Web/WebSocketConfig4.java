@@ -24,7 +24,7 @@ public class WebSocketConfig4 implements WebSocketConfigurer {
     // 서버 WebSocket 핸들러 등록
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(askingPriceSocketHandler, "/asdf")
+        registry.addHandler(askingPriceSocketHandler, "/live")
                 .setAllowedOrigins("*");
     }
 

@@ -13,15 +13,14 @@ import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class AskingPriceSocketHandler extends TextWebSocketHandler {
     private WebSocketSession session;
-    private final StockInfoRepository stockInfoRepository;
 
     @Value("${websocket.approval-key}")
     private String approvalKey;
@@ -32,10 +31,6 @@ public class AskingPriceSocketHandler extends TextWebSocketHandler {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PriceStockSocketHandler.class);
 
     private ObjectMapper objectMapper = new ObjectMapper();
-
-    public AskingPriceSocketHandler(StockInfoRepository stockInfoRepository) {
-        this.stockInfoRepository = stockInfoRepository;
-    }
 
     //WebSocket 연결이 성공하면 실행되는 메서드
     //연결이 완료되면 afterConnectionEstablished()가 실행됨.
@@ -74,7 +69,7 @@ public class AskingPriceSocketHandler extends TextWebSocketHandler {
         Map<String, Map<String, String>> body = new HashMap<>();
         Map<String, String> input = new HashMap<>();
         input.put("tr_id", "H0STASP0"); //실시간 호가
-        input.put("tr_key", "005930");
+        input.put("tr_key", trKey);
 
         body.put("input", input);
 
@@ -97,18 +92,15 @@ public class AskingPriceSocketHandler extends TextWebSocketHandler {
         String payload = message.getPayload();
         logger.info("📩 메시지 수신: {}", payload); // 원본 메시지 확인
 
-        handleJsonMessage(payload);
-//        //오늘은 장이 안열려서 체결이 안되기 때문에 넘겨줄 데이터가 없음 그래서 여기서 임시로 데이터를 보내야할듯.
-//
-//        try {
-//            if (payload.startsWith("{")) { // 1️⃣ JSON 형식 메시지 (연결 확인 등)
-//                handleJsonMessage(payload);
-//            } else { // 2️⃣ '|'와 '^'로 구분된 실시간 데이터
-//                handleLiveData(payload);
-//            }
-//        } catch (Exception e) {
-//            logger.error("❌ 메시지 처리 중 오류 발생: {}", e.getMessage(), e);
-//        }
+        try {
+            if (payload.startsWith("{")) { // 1️⃣ JSON 형식 메시지 (연결 확인 등)
+                handleJsonMessage(payload);
+            } else { // 2️⃣ '|'와 '^'로 구분된 실시간 데이터
+                handleLiveData(payload);
+            }
+        } catch (Exception e) {
+            logger.error("❌ 메시지 처리 중 오류 발생: {}", e.getMessage(), e);
+        }
     }
     private void handleJsonMessage(String payload) {
         try {
@@ -124,7 +116,7 @@ public class AskingPriceSocketHandler extends TextWebSocketHandler {
             // "SUBSCRIBE SUCCESS" 확인 후 추가 요청 처리
             // 구독 성공 메시지를 받았을 때만 요청을 보냄
             if ("SUBSCRIBE SUCCESS".equals(msgText)) {
-                logger.info("✅ 구독 성공! 실시간 데이터를 수신할 준비 완료.");
+                logger.info("✅ 구독 성공! 실시간 호가 데이터를 수신할 준비 완료.");
             }
             logger.info("📌 응답 데이터: tr_id={}, tr_key={}, msg_cd={}, msg={}", trId, trKey, msgCode, msgText);
 
@@ -136,6 +128,76 @@ public class AskingPriceSocketHandler extends TextWebSocketHandler {
             }
         } catch (Exception e) {
             logger.error("❌ JSON 메시지 처리 실패: {}", e.getMessage(), e);
+        }
+    }
+
+    private void handleLiveData(String payload) {
+        try {
+            /*
+            005930^093730^0^71900^72000^72100^72200^72300^72400^72500^72600^72700^72800^71800^
+            71700^71600^71500^71400^71300^71200^71100^71000^70900^91918^117942^92673^79708^106729^141988^176192^113906^134077^
+            104229^95221^159371^220746^284657^212742^195370^182710^209747^376432^158171^1159362^2095167^0^0^0^0^525579^-72000^
+            5^-100.00^3159115^0^8^0^0^0
+             */
+
+            // 여러 개의 메시지가 연속해서 오는 경우가 있음 -> `|`로 먼저 분리
+            String[] messages = payload.split("\\|");
+
+            String trNum = messages[0];
+            String trId = messages[1]; // TR ID (예: H0STASP0)
+            String msgCode = messages[2]; // 메시지 코드 (예: 001)
+            String trKey = messages[3]; // 종목 코드 포함 데이터
+
+            // '^'로 세부 데이터 분리
+            String[] stockData = messages[3].split("\\^");
+
+            String stockCode = stockData[0]; // 종목 코드 (005930)
+            String timestamp = stockData[1]; // 시간 (094719)
+            String HOUR_CLS_CODE = stockData[2]; // 시간구분코드 0:장중
+
+            Map<String, Object> dataMap = new HashMap<>();
+
+            //매도호가
+            dataMap.put("askPrices", Arrays.asList(
+                    stockData[3], stockData[4], stockData[5], stockData[6], stockData[7],
+                    stockData[8], stockData[9], stockData[10], stockData[11], stockData[12]
+            ));
+
+            //매수호가
+            dataMap.put("bidPrices", Arrays.asList(
+                    stockData[13], stockData[14], stockData[15], stockData[16], stockData[17],
+                    stockData[18], stockData[19], stockData[20], stockData[21], stockData[22]
+            ));
+
+        //매도 잔량
+            dataMap.put("askVolumes", Arrays.asList(
+                    stockData[23], stockData[24], stockData[25], stockData[26], stockData[27],
+                    stockData[28], stockData[29], stockData[30], stockData[31], stockData[32]
+            ));
+
+        //매수 잔량
+            dataMap.put("bidVolumes", Arrays.asList(
+                    stockData[33], stockData[34], stockData[35], stockData[36], stockData[37],
+                    stockData[38], stockData[39], stockData[40], stockData[41], stockData[42]
+            ));
+
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonString = objectMapper.writeValueAsString(dataMap);
+
+            // 로그 출력
+            logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}", trId, stockCode, timestamp);
+
+            // WebSocket 세션이 열려 있다면 JSON 데이터 전송
+            if (session != null && session.isOpen()) {
+                session.sendMessage(new TextMessage(jsonString));
+                logger.info("📤 프론트엔드로 JSON 전송: {}", jsonString);
+            } else {
+                logger.warn("⚠️ WebSocket 세션이 닫혀 있어 데이터를 전송할 수 없음.");
+            }
+
+        } catch (Exception e) {
+            logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
         }
     }
 
@@ -166,3 +228,13 @@ public class AskingPriceSocketHandler extends TextWebSocketHandler {
         }
     }
 }
+
+/*
+
+{
+  "askPrices": ["71900", "72000", "72100", "72200", "72300", "72400", "72500", "72600", "72700", "72800"],
+  "bidPrices": ["71800", "71700", "71600", "71500", "71400", "71300", "71200", "71100", "71000", "70900"],
+  "askVolumes": ["91918", "117942", "92673", "79708", "106729", "141988", "176192", "113906", "134077", "104229"],
+  "bidVolumes": ["95221", "159371", "220746", "284657", "212742", "195370", "182710", "209747", "376432", "158171"]
+}
+ */

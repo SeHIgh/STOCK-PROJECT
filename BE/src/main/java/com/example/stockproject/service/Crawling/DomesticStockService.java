@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,12 @@ public class DomesticStockService {
         System.setProperty("webdriver.chrome.driver", driverPath);
         logger.info("✅Chrome WebDriver 실행");
 
+        //ChromeOption 설정 추가
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+
         // 웹드라이버 실행 (크롬 브라우저 띄우기)
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
         // 네이버 증권 환율 페이지 접속
         driver.get("https://finance.naver.com/sise/");
         logger.info("✅ 국내 증시 지수 정보 크롤링 시작");

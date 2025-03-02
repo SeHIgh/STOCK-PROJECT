@@ -1,7 +1,7 @@
 package com.example.stockproject.Web;
 
 import ch.qos.logback.classic.Logger;
-import com.example.stockproject.dto.StockInfo;
+import com.example.stockproject.dto.web.LiveTradingInfoDTO;
 import com.example.stockproject.repository.StockInfoRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,11 +14,9 @@ import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Component
 //@Scheduled 어노테이션을 사용하려면 해당 클래스가 Spring이 관리하는 빈(Bean)이어야 함.
@@ -26,7 +24,6 @@ import java.util.Optional;
 public class PriceStockSocketHandler extends TextWebSocketHandler {
 
     private WebSocketSession session;
-    private final StockInfoRepository stockInfoRepository;
 
     @Value("${websocket.approval-key}")
     private String approvalKey;
@@ -37,14 +34,9 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
     @Setter
     private String trKey;
 
-
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PriceStockSocketHandler.class);
 
     private ObjectMapper objectMapper = new ObjectMapper();
-
-    public PriceStockSocketHandler(StockInfoRepository stockInfoRepository) {
-        this.stockInfoRepository = stockInfoRepository;
-    }
 
     //Component로 빈으로 등록했기 때문에 생성자 필요없어짐.
 //    public PriceStockSocketHandler(String approvalKey, String trKey) {
@@ -126,29 +118,6 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
     private void handleJsonMessage(String payload) {
         try {
-
-              // JSON 파싱
-//            Map<String, Object> responseMap = objectMapper.readValue(payload, Map.class);
-//
-//            // "header"와 "body" 부분을 가져오기
-//            Map<String, Object> header = (Map<String, Object>) responseMap.get("header");
-//            Map<String, Object> body = (Map<String, Object>) responseMap.get("body");
-//
-//            // body가 null이거나 비어있는 경우 예외 처리
-//            if (body == null || body.isEmpty()) {
-//                logger.warn("⚠️ body가 존재하지 않거나 비어 있습니다. 메시지를 확인하세요: {}", payload);
-//                return;
-//            }
-//
-//
-//            // "SUBSCRIBE SUCCESS" 확인 후 추가 요청 처리
-//            String msg1 = (String) body.get("msg1");
-//
-//            // 구독 성공 메시지를 받았을 때만 요청을 보냄
-//            if ("SUBSCRIBE SUCCESS".equals(msg1)) {
-//                logger.info("✅ 구독 성공! 실시간 데이터를 수신할 준비 완료.");
-//                //sendSubscriptionRequest();
-//            }
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(payload); //json문자열을 json트리구조로 변경
 
@@ -165,7 +134,6 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
 
             logger.info("📌 응답 데이터: tr_id={}, tr_key={}, msg_cd={}, msg={}", trId, trKey, msgCode, msgText);
-            //session.sendMessage(new TextMessage(price));
 
             // 필요하면 보안 키(iv, key)도 저장
             if (jsonNode.path("body").has("output")) {
@@ -193,18 +161,36 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
                 String stockCode = stockData[0]; // 종목 코드 (005930)
                 String timestamp = stockData[1]; // 시간 (094719)
-                String price = stockData[2]; // 현재가 (51000)
 
-                // 로그 출력
-                logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}, 현재가={}", trId, stockCode, timestamp, price);
+                String tradePrice = stockData[2];         // 체결가
+                String changeRate = stockData[5];         // 전일 대비율
+                String tradeStrength= stockData[18];      // 체결강도
+                String tradeVolume = stockData[12];        // 체결 거래량
+                String tradeType = stockData[21];          // 체결구분 (1: 매수, 2: 매도)
+                String prevAccumVolumeRate = stockData[42]; // 전일 동시간 누적 거래량 비율
+                String high_price = stockData[8];           //최고가
+                String low_price = stockData[9];            //최저가
+                String total_askp_price = stockData[38];    //총 매도호가 잔량
+                String total_bid_price = stockData[39];     //총 매수호가 잔량
 
-                // price 값만 프론트엔드로 전송
-                if (session != null && session.isOpen()) {
-                    session.sendMessage(new TextMessage(price));
-                    logger.info("📤 프론트엔드로 가격 전송: {}", price);
-                } else {
-                    logger.warn("⚠️ WebSocket 세션이 닫혀 있어 데이터를 전송할 수 없음.");
-                }
+            // DTO 객체 생성
+            LiveTradingInfoDTO tradeInfo = new LiveTradingInfoDTO(tradePrice, changeRate, tradeStrength, tradeVolume, tradeType, prevAccumVolumeRate,
+                    high_price, low_price, total_askp_price, total_bid_price);
+
+            // JSON 변환
+            ObjectMapper objectMapper = new ObjectMapper();
+            String tradeInfoJson = objectMapper.writeValueAsString(tradeInfo);
+
+            // 로그 출력
+            logger.info("📊 실시간 거래 정보: {}", tradeInfoJson);
+
+            // WebSocket을 통해 JSON 전송
+            if (session != null && session.isOpen()) {
+                session.sendMessage(new TextMessage(tradeInfoJson));
+                logger.info("📤 프론트엔드로 실시간 체결가 정보 전송: {}", tradeInfoJson);
+            } else {
+                logger.warn("⚠️ WebSocket 세션이 닫혀 있어 데이터를 전송할 수 없음.");
+            }
 
         } catch (Exception e) {
             logger.error("❌ 실시간 데이터 처리 실패: {}", e.getMessage(), e);
@@ -242,4 +228,11 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
 
 }
 
-
+/*
+체결가
+전일 대비율
+체결강도
+체결 거래량
+체결구분 // 1매수 2매도
+전일 동시간 누적 거래량 비율
+ */

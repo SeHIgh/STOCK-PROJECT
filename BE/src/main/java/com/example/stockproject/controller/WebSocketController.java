@@ -65,7 +65,7 @@ public class WebSocketController {
         return "notify";
     }
 
-    @GetMapping("/web/askingprice")  //시장가 or 지정가 매수,매도 시 실시간 체결통보 정보 제공
+    @GetMapping("/web/askingprice") //실시간 호가
     public String getAskingPrice(){
         webSocketConfig4.webSocketConnectionManager().start();
         return "asking price";

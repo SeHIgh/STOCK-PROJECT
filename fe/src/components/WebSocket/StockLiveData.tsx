@@ -2,7 +2,7 @@ import React from "react";
 import useWebSocket from "../../hooks/useWebSocket";
 
 const StockLiveData: React.FC = () => {
-    const { data, isConnected } = useWebSocket("ws://localhost:8080/live");
+    const { data, isConnected } = useWebSocket("ws://localhost:8090/live");
 
     return (
         <div className="test-component">

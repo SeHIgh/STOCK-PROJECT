@@ -62,7 +62,7 @@ public class ApiFluctService {
                     responseData.setStck_prpr(node.get("stck_prpr").asText());
                     responseData.setPrdy_vrss(node.get("prdy_vrss").asText());
                     String sign = node.get("prdy_vrss_sign").asText();
-                    if ("1".equals(sign)) {
+                    if ("1".equals(sign) || "2".equals(sign)) {             //1 or 2 : + , 5 : -
                         responseData.setPrdy_vrss_sign("+");
                     } else if ("5".equals(sign)) {
                         responseData.setPrdy_vrss_sign("-");

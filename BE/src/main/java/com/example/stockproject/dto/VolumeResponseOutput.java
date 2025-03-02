@@ -31,7 +31,7 @@ public class VolumeResponseOutput {
     //private String prdyVrss;
 
     // 전일 대비율
-    //private String prdy_ctrt;
+    private String prdy_ctrt;
 
     // 누적 거래량
     private String acml_vol;
