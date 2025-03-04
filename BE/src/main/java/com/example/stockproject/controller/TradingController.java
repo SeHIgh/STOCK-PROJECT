@@ -1,9 +1,6 @@
 package com.example.stockproject.controller;
 
-import com.example.stockproject.Web.AskingPriceSocketHandler;
-import com.example.stockproject.Web.PriceStockSocketHandler;
-import com.example.stockproject.Web.WebSocketConfig1;
-import com.example.stockproject.Web.WebSocketConfig4;
+import com.example.stockproject.Web.*;
 import com.example.stockproject.dto.StockInfo;
 import com.example.stockproject.dto.order.TradePossibleDTO;
 import com.example.stockproject.dto.order.OrderRequest;
@@ -32,6 +29,9 @@ public class TradingController {
     private final PriceStockSocketHandler priceStockSocketHandler;
     private final AskingPriceSocketHandler askingPriceSocketHandler;
 
+    private final WebSocketConfig webSocketConfig;
+    private final LiveDataSocketHandler liveDataSocketHandler;
+
 
     //주식 매수 주문
     @PostMapping("/trading/buy")
@@ -49,19 +49,36 @@ public class TradingController {
 
     // http://localhost:8090/api/trading?stockName=삼성전자
     //실시간 체결가 웹소켓 통신 & 매수&매도 가능정보 반환 (+실시간 호가 웹소켓통신)
-    @GetMapping("/api/trading")
+    @GetMapping("/ws/trading")
     public Mono<TradePossibleDTO> tradeStock(@RequestParam String stockName){
         logger.info("📌 거래 시 필요 정보 - 종목명: {}", stockName);
 
         Optional<StockInfo> stockInfo = stockInfoRepository.findByStockName(stockName);
         String stockCode = stockInfo.get().getStockCode();//stockCode;
-        //priceStockSocketHandler.setTrKey(stockCode);
+        priceStockSocketHandler.setTrKey(stockCode);
         askingPriceSocketHandler.setTrKey(stockCode);
 
 
         //웹소켓 연결시도
-        //webSocketConfig1.webSocketConnectionManager().start();
+        webSocketConfig1.webSocketConnectionManager().start();
         webSocketConfig4.webSocketConnectionManager().start();
+
+        return tradeService.getTradeInfo(stockName);
+    }
+
+    //하나의 통신으로 2개의 구독 성공.
+    //http://localhost:8090/api/trading?stockName=삼성전자
+    //실시간 체결가 웹소켓 통신 & 매수&매도 가능정보 반환 (+실시간 호가 웹소켓통신)
+    @GetMapping("/api/trading")
+    public Mono<TradePossibleDTO> tradeStock2(@RequestParam String stockName){
+        logger.info("📌 거래 시 필요 정보 - 종목명: {}", stockName);
+
+        Optional<StockInfo> stockInfo = stockInfoRepository.findByStockName(stockName);
+        String stockCode = stockInfo.get().getStockCode();//stockCode;
+        liveDataSocketHandler.setTrKey(stockCode);
+
+        //웹소켓 연결시도
+        webSocketConfig.webSocketConnectionManager().start();
 
         return tradeService.getTradeInfo(stockName);
     }

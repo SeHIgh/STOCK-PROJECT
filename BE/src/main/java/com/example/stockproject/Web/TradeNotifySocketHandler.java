@@ -188,12 +188,16 @@ public class TradeNotifySocketHandler extends TextWebSocketHandler {
                     executedQuantity, executedPrice, timestamp, executionStatus
             );
 
+            Map<String, Object> notifyInfo = new HashMap<>();
+            notifyInfo.put("type","notifyInfo");
+            notifyInfo.put("data", tradeNotifyDTO);
+
             // 로그 출력
             logger.info("📊 주문구분: {}, 주문종류: {}, 종목코드: {}, 종목명: {}, 주문수량: {},,체결수량: {}, 체결단가: {}, 체결시간: {}, 체결여부: {}",
                     orderType, orderKind, stockCode, stockName, orderQuantity,executedQuantity, executedPrice, timestamp, executionStatus);
 
             //JSON 변환
-            String jsonMessage = objectMapper.writeValueAsString(tradeNotifyDTO);
+            String jsonMessage = objectMapper.writeValueAsString(notifyInfo);
             // WebSocket으로 전송
             if (session != null && session.isOpen()) {
                 session.sendMessage(new TextMessage(jsonMessage));
