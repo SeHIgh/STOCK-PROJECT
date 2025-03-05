@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 
-const useWebSocket = (url: string, reconnectInterval = 5000) => {
+const useWebSocket = <T>(url: string, reconnectInterval = 5000) => {
     // 5초마다 재연결 시도
-    const [data, setData] = useState<string | null>(null);
+    const [data, setData] = useState<T | null>(null);
     const [isConnected, setIsConnected] = useState(false);
     const socketRef = useRef<WebSocket | null>(null);
     const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -23,8 +23,13 @@ const useWebSocket = (url: string, reconnectInterval = 5000) => {
         };
 
         socket.onmessage = (event) => {
-            console.log("📩 실시간 데이터 수신:", event.data);
-            setData(event.data);
+            try {
+                const parsedData: T = JSON.parse(event.data);
+                console.log("📩 실시간 데이터 수신:", parsedData);
+                setData(parsedData);
+            } catch (error) {
+                console.error("⛔ WebSocket 데이터 파싱 실패", error);
+            }
         };
 
         socket.onerror = (error) => {

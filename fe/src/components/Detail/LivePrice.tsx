@@ -1,10 +1,10 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useCallback } from "react";
 import useFetchData from "../../hooks/useFetchData";
-import { fetchStockDailyPrice, fetchStockLivePrice } from "../../api/api";
-import { DailyPriceProps, LivePriceProps } from "../../types";
+import { fetchStockDailyPrice } from "../../api/api";
+import { DailyPriceProps, LiveTradingInfoProps } from "../../types";
 import { formatCurrency, formatTradeAmount } from "../../utils/format";
-import useLiveStockPrice from "../../api/apiws";
+import { useQuoteInfo } from "../../api/apiws";
 
 const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
     // const fetchStockLivePriceCallback = useCallback(
@@ -24,7 +24,7 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
     // } = useFetchData(fetchStockLivePriceCallback);
 
     // WebSocket 기반 실시간 데이터 훅 사용
-    const { stockLive, isConnected } = useLiveStockPrice(stockName);
+    const { tradeInfo, isConnected } = useQuoteInfo(stockName);
 
     const {
         data: stockDaily,
@@ -59,7 +59,7 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
                 <TabPanels className="h-full mt-0 overflow-hidden">
                     <TabPanel className="h-full overflow-hidden">
                         <LivePriceTable
-                            stocks={stockLive}
+                            stocks={tradeInfo}
                             isConnected={isConnected}
                         />
                     </TabPanel>
@@ -76,7 +76,7 @@ const LivePriceTable = ({
     stocks,
     isConnected,
 }: {
-    stocks: LivePriceProps[] | null;
+    stocks: LiveTradingInfoProps[] | null;
     isConnected: boolean;
 }) => {
     return isConnected ? (
@@ -173,23 +173,23 @@ const LivePriceTable = ({
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-transparent h-full overflow-y-scroll">
-                    {stocks?.map((stock: LivePriceProps, index) => (
+                    {stocks?.map((stock: LiveTradingInfoProps, index) => (
                         <tr key={index}>
                             {/* 체결가 */}
                             <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right">
-                                {formatCurrency(stock.executedPrice)}원
+                                {formatCurrency(stock.trade_price)}원
                             </td>
                             {/* 체결량(주) : orderType에 따라 (매수: 빨강, 매도: 파랑) 으로 표시, orderType 명칭은 변경 가능 */}
                             <td
                                 className={`px-1 py-0.5 whitespace-nowrap text-xs text-right rounded-r-lg ${
-                                    stock.orderType === "buy"
+                                    stock.trade_type === "1"
                                         ? "text-red-400"
-                                        : stock.orderType === "sell"
+                                        : stock.trade_type === "2"
                                         ? "text-blue-400"
                                         : "text-gray-500"
                                 }`}
                             >
-                                {formatCurrency(stock.executedQuantity)}
+                                {formatCurrency(stock.trade_volume)}
                             </td>
                             {/* 등락률 */}
                             {/* <td
@@ -231,7 +231,7 @@ const LivePriceTable = ({
 
                                     // string 형태의 일자를 가져오므로 Date 객체로 변환 필요
                                     // stock.tr_time을 현재 날짜와 합쳐서 Date 객체 생성
-                                    const dateTimeString = `${today} ${stock.timestamp}`;
+                                    const dateTimeString = `${today} ${stock.time}`;
                                     const formattedTime = new Date(
                                         dateTimeString
                                     ).toLocaleTimeString("ko-KR", {

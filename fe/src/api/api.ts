@@ -7,6 +7,8 @@ import {
     LiveChartFluctuationProps,
     LiveChartVolProps,
     LivePriceProps,
+    LiveQuoteInfoProps,
+    LiveTradingInfoProps,
     OrderProps,
     StockIndexProps,
     StockPriceProps,
@@ -314,3 +316,39 @@ export const fetchCandleData = async (
         throw error;
     }
 };
+
+// 호가 - 실시간 체결가 API
+export const fetchLiveTradingInfo = async (
+    stockName: string
+): Promise<LiveTradingInfoProps[]> => {
+    try {
+        const response = await axiosInstance.get<LiveTradingInfoProps[]>("/quote_trade_info", {
+            params: { stockName: stockName },
+        });
+        return response.data;
+    } catch (error) {
+        console.error(
+            "⛔️ 호가 - 실시간 체결가 API 데이터 요청 실패",
+            error
+        );
+        throw error;
+    }
+}
+
+// 호가 - 실시간 호가 API
+export const fetchLiveQuoteInfo = async (
+    stockName: string
+): Promise<LiveQuoteInfoProps> => {
+    try {
+        const response = await axiosInstance.get<LiveQuoteInfoProps>("/quote_order", {
+            params: { stockName: stockName },
+        });
+        return response.data;
+    } catch (error) {
+        console.error(
+            "⛔️ 호가 - 실시간 호가 API 데이터 요청 실패",
+            error
+        );
+        throw error;
+    }
+}
