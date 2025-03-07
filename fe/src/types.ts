@@ -165,10 +165,11 @@ export interface CandleProps {
 // 호가 창 - 실시간 체결가 데이터 타입 정의
 export interface LiveTradingInfoProps {
     trade_price: string; // 체결가
-    change_rate: string; // 전일 대비율 : 등락률    trade_strength: string; // 체결강도
+    change_rate: string; // 전일 대비율 : 등락률
+    trade_strength: string; // 체결강도
     trade_volume: string; // 체결 거래량
     trade_type: string; // 체결구분 (1: 매수, 2: 매도)
-    prev_accum_volumeRate: string; // 전일 동시간 누적 거래량 비율 : 체결강도
+    prev_accum_volumeRate: string; // 전일 동시간 누적 거래량 비율
     high_price: string; //최고가
     low_price: string; //최저가
     total_askp_price: string; //총 매도호가 잔량 = 판매대기
@@ -244,3 +245,13 @@ export interface TradeNotifyProps {
 //         "executionStatus":"체결"
 //       }
 // }
+
+// 특정 종목 데이터 (종목명, 종목코드, 현재가, 등락률) 타입 정의
+export interface StockDataProps {
+    stockName: string; // 종목명
+    stockCode: string; // 종목코드
+    stockPrice: string; // 현재가
+    stockChangeValue: string; // 전일대비 수치
+    stockChangeSign: string; // 전일대비 부호
+    stockChangeRate: string; // 등락률
+}

@@ -1,5 +1,5 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { indexOf } from "lodash";
+import { indexOf, set } from "lodash";
 import { Link } from "react-router-dom";
 import {
     fetchLiveChartTopDecr10,
@@ -9,6 +9,9 @@ import {
 import useFetchData from "../../hooks/useFetchData";
 import { formatCurrency, formatTradeAmount } from "../../utils/format";
 import { LiveChartFluctuationProps, LiveChartVolProps } from "../../types";
+import { useSetRecoilState } from "recoil";
+import { stockDataState } from "../../recoil/\bstockdata/atoms";
+import { useCallback } from "react";
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
@@ -31,6 +34,19 @@ const LiveCharts = () => {
         loading: loading3,
         error: error3,
     } = useFetchData(fetchLiveChartTopDecr10);
+
+    // MainPage 진입 시, Recoil 상태 초기화
+    const setStockData = useSetRecoilState(stockDataState);
+    setStockData({
+        stockName: "",
+        stockCode: "",
+        stockPrice: "",
+        stockChangeValue: "",
+        stockChangeSign: "",
+        stockChangeRate: "",
+    });
+    // 뒤로가기 를 대비하여 sessionStorage에 저장된 상태 초기화는 보류
+    // sessionStorage.removeItem("stockData");
 
     if (loading1 || error1 || loading2 || error2 || loading3 || error3)
         return (
@@ -167,6 +183,28 @@ const LiveCharts = () => {
 };
 
 const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
+    const setStockData = useSetRecoilState(stockDataState);
+
+    const handleStockClick = useCallback(
+        (stock: LiveChartVolProps) => {
+            const newStockData = {
+                stockName: stock.hts_kor_isnm,
+                stockCode: stock.mksc_shrn_iscd,
+                stockPrice: stock.stck_prpr,
+                stockChangeValue: stock.prdy_vol_value,
+                stockChangeSign: stock.prdy_vol_sign,
+                stockChangeRate: stock.vol_inrt,
+            };
+
+            // 1. Recoil 상태 업데이트
+            setStockData(newStockData);
+
+            // 2. sessionStorage에 상태 저장 (새로고침 대비)
+            sessionStorage.setItem("stockData", JSON.stringify(newStockData));
+        },
+        [setStockData]
+    );
+
     return (
         <div className="overflow-hidden rounded-lg">
             <table className="min-w-full divide-y divide-transparent table-fixed w-full stockmain-livechart-table">
@@ -202,10 +240,12 @@ const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
                                 {/* 종목 명으로 파라미터 전달 및 세부 페이지 이동*/}
                                 {/* 종목 명 및 종목 코드 사용을 위해 state로 데이터 전달 */}
                                 <Link
+                                    key={stock.mksc_shrn_iscd}
                                     to={`/stocks/${stock.hts_kor_isnm}`}
-                                    state={{
-                                        productCode: stock.mksc_shrn_iscd,
-                                    }}
+                                    onClick={() => handleStockClick(stock)}
+                                    // state={{
+                                    //     productCode: stock.mksc_shrn_iscd,
+                                    // }}
                                     className="w-full h-full flex flex-row items-center justify-start"
                                 >
                                     {/* 종목 코드를 이용한 토스증권 회사 이미지 이용 */}
@@ -229,7 +269,7 @@ const VolStockTable = ({ stocks }: { stocks: LiveChartVolProps[] | null }) => {
                                         : "text-blue-400"
                                 }`}
                             >
-                                {stock.prdy_vol_sign === "+" ? "+" : "-"}
+                                {stock.prdy_vol_sign === "+" ? "+" : ""}
                                 {formatCurrency(stock.prdy_vol_value)}
                                 주({stock.vol_inrt}%)
                             </td>
@@ -254,6 +294,27 @@ const FluctStockTable = ({
 }: {
     stocks: LiveChartFluctuationProps[] | null;
 }) => {
+    const setStockData = useSetRecoilState(stockDataState);
+
+    const handleStockClick = useCallback(
+        (stock: LiveChartFluctuationProps) => {
+            const newStockData = {
+                stockName: stock.hts_kor_isnm,
+                stockCode: stock.stck_shrn_iscd,
+                stockPrice: stock.stck_prpr,
+                stockChangeValue: stock.prdy_vrss,
+                stockChangeSign: stock.prdy_vrss_sign,
+                stockChangeRate: stock.prdy_ctrt,
+            };
+
+            // 1. Recoil 상태 업데이트
+            setStockData(newStockData);
+
+            // 2. sessionStorage에 상태 저장 (새로고침 대비)
+            sessionStorage.setItem("stockData", JSON.stringify(newStockData));
+        },
+        [setStockData]
+    );
     return (
         <div className="overflow-hidden rounded-lg">
             <table className="min-w-full divide-y divide-transparent table-fixed w-full stockmain-livechart-table">
@@ -289,10 +350,12 @@ const FluctStockTable = ({
                                 {/* 종목 명으로 파라미터 전달 및 세부 페이지 이동*/}
                                 {/* 종목 명 및 종목 코드 사용을 위해 state로 데이터 전달 */}
                                 <Link
+                                    id={stock.stck_shrn_iscd}
                                     to={`/stocks/${stock.hts_kor_isnm}`}
-                                    state={{
-                                        productCode: stock.stck_shrn_iscd,
-                                    }}
+                                    onClick={() => handleStockClick(stock)}
+                                    // state={{
+                                    //     productCode: stock.stck_shrn_iscd,
+                                    // }}
                                     className="w-full h-full flex flex-row items-center justify-start"
                                 >
                                     {/* 종목 코드를 이용한 토스증권 회사 이미지 이용 */}
@@ -316,7 +379,7 @@ const FluctStockTable = ({
                                         : "text-blue-400"
                                 }`}
                             >
-                                {stock.prdy_vrss_sign === "+" ? "+" : "-"}
+                                {stock.prdy_vrss_sign === "+" ? "+" : ""}
                                 {formatCurrency(stock.prdy_vrss)}
                                 원({stock.prdy_ctrt}%)
                             </td>
