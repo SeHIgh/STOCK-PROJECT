@@ -320,9 +320,9 @@ export const fetchCandleData = async (
 // 호가 - 실시간 체결가 API
 export const fetchLiveTradingInfo = async (
     stockName: string
-): Promise<LiveTradingInfoProps[]> => {
+): Promise<LiveTradingInfoProps> => {
     try {
-        const response = await axiosInstance.get<LiveTradingInfoProps[]>("/quote_trade_info", {
+        const response = await axiosInstance.get<LiveTradingInfoProps>("/quote_trade_info", {
             params: { stockName: stockName },
         });
         return response.data;

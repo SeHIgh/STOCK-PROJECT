@@ -16041,6 +16041,15 @@
             "ordDvsn": "01",
             "ordQty": 1,
             "ordUnpr": "0"
+        },
+        {
+            "id": "b7a3",
+            "cano": "50124326",
+            "acntPrdtCd": "01",
+            "pdno": "298380",
+            "ordDvsn": "00",
+            "ordQty": 1,
+            "ordUnpr": "300"
         }
     ],
     "sell": [
@@ -16049,6 +16058,15 @@
             "cano": "50124326",
             "acntPrdtCd": "01",
             "pdno": "475830",
+            "ordDvsn": "01",
+            "ordQty": 1,
+            "ordUnpr": "0"
+        },
+        {
+            "id": "149b",
+            "cano": "50124326",
+            "acntPrdtCd": "01",
+            "pdno": "298380",
             "ordDvsn": "01",
             "ordQty": 1,
             "ordUnpr": "0"
@@ -19356,7 +19374,21 @@
             "id": "02e6"
         }
     ],
-    "quote_trade_info": [
+    "quote_trade_info": {
+        "trade_price": "60000",
+        "change_rate": "1.8",
+        "trade_strength": "90.2",
+        "trade_volume": "1650",
+        "trade_type": "1",
+        "prev_accum_volumeRate": "0.85",
+        "high_price": "73000",
+        "low_price": "71500",
+        "total_askp_price": "520000",
+        "total_bid_price": "495000",
+        "time": "09:00:00",
+        "id": "2ad2"
+    },
+    "quote_trade_infos": [
         {
             "trade_price": "72250",
             "change_rate": "1.8",
@@ -19368,7 +19400,8 @@
             "low_price": "71500",
             "total_askp_price": "520000",
             "total_bid_price": "495000",
-            "time": "2024-04-01T09:00:00+09:00"
+            "time": "09:00:00",
+            "id": "2ad2"
         },
         {
             "trade_price": "72400",
@@ -19381,7 +19414,8 @@
             "low_price": "71700",
             "total_askp_price": "522000",
             "total_bid_price": "497500",
-            "time": "2024-04-01T09:01:00+09:00"
+            "time": "09:01:00",
+            "id": "323d"
         },
         {
             "trade_price": "72100",
@@ -19394,7 +19428,8 @@
             "low_price": "71450",
             "total_askp_price": "518500",
             "total_bid_price": "493000",
-            "time": "2024-04-01T09:02:00+09:00"
+            "time": "09:02:00",
+            "id": "cad2"
         },
         {
             "trade_price": "72550",
@@ -19407,7 +19442,8 @@
             "low_price": "71800",
             "total_askp_price": "525500",
             "total_bid_price": "500000",
-            "time": "2024-04-01T09:03:00+09:00"
+            "time": "09:03:00",
+            "id": "3a36"
         },
         {
             "trade_price": "72300",
@@ -19420,7 +19456,8 @@
             "low_price": "71600",
             "total_askp_price": "520800",
             "total_bid_price": "496500",
-            "time": "2024-04-01T09:04:00+09:00"
+            "time": "09:04:00",
+            "id": "6220"
         },
         {
             "trade_price": "72650",
@@ -19433,7 +19470,8 @@
             "low_price": "72000",
             "total_askp_price": "528000",
             "total_bid_price": "503000",
-            "time": "2024-04-01T09:05:00+09:00"
+            "time": "09:05:00",
+            "id": "5ceb"
         },
         {
             "trade_price": "72050",
@@ -19446,7 +19484,8 @@
             "low_price": "71250",
             "total_askp_price": "516000",
             "total_bid_price": "491500",
-            "time": "2024-04-01T09:06:00+09:00"
+            "time": "09:06:00",
+            "id": "2df0"
         },
         {
             "trade_price": "72800",
@@ -19459,7 +19498,8 @@
             "low_price": "72200",
             "total_askp_price": "532500",
             "total_bid_price": "507500",
-            "time": "2024-04-01T09:07:00+09:00"
+            "time": "09:07:00",
+            "id": "e627"
         },
         {
             "trade_price": "71900",
@@ -19472,7 +19512,8 @@
             "low_price": "71000",
             "total_askp_price": "513500",
             "total_bid_price": "488000",
-            "time": "2024-04-01T09:08:00+09:00"
+            "time": "09:08:00",
+            "id": "7dea"
         },
         {
             "trade_price": "72950",
@@ -19485,7 +19526,8 @@
             "low_price": "72400",
             "total_askp_price": "535000",
             "total_bid_price": "510000",
-            "time": "2024-04-01T09:09:00+09:00"
+            "time": "09:09:00",
+            "id": "5178"
         }
     ],
     "quote_order": {

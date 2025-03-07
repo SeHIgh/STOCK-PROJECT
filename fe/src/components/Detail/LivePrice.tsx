@@ -1,10 +1,13 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import useFetchData from "../../hooks/useFetchData";
 import { fetchStockDailyPrice } from "../../api/api";
 import { DailyPriceProps, LiveTradingInfoProps } from "../../types";
 import { formatCurrency, formatTradeAmount } from "../../utils/format";
 import { useQuoteInfo } from "../../api/apiws";
+import { useRecoilState } from "recoil";
+import { liveTradeDataState } from "../../recoil/livetrade/atoms";
+import { set } from "lodash";
 
 const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
     // const fetchStockLivePriceCallback = useCallback(
@@ -59,7 +62,7 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
                 <TabPanels className="h-full mt-0 overflow-hidden">
                     <TabPanel className="h-full overflow-hidden">
                         <LivePriceTable
-                            stocks={tradeInfo}
+                            tradeInfo={tradeInfo}
                             isConnected={isConnected}
                         />
                     </TabPanel>
@@ -73,12 +76,27 @@ const LivePrice: React.FC<{ stockName: string }> = ({ stockName }) => {
 };
 
 const LivePriceTable = ({
-    stocks,
+    tradeInfo,
     isConnected,
 }: {
-    stocks: LiveTradingInfoProps[] | null;
+    tradeInfo: LiveTradingInfoProps | null;
     isConnected: boolean;
 }) => {
+    const [liveTradeData, setLiveTradeData] =
+        useRecoilState(liveTradeDataState);
+    const tableRef = useRef<HTMLTableElement>(null);
+
+    useEffect(() => {
+        if (tradeInfo) {
+            setLiveTradeData((prev) => [...prev, tradeInfo]); // recoil 상태 업데이트(새로운 데이터 추가)
+        }
+    }, [tradeInfo, setLiveTradeData]);
+    useEffect(() => {
+        if (tableRef.current) {
+            tableRef.current.scrollTop = tableRef.current.scrollHeight;
+        }
+    }, [liveTradeData]);
+
     return isConnected ? (
         <div className="h-full overflow-hidden rounded-lg flex flex-col">
             <table className="min-w-full h-full divide-y divide-gray-300 table-fixed w-full stockdetail-price-table flex flex-col">
@@ -173,7 +191,7 @@ const LivePriceTable = ({
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-transparent h-full overflow-y-scroll">
-                    {stocks?.map((stock: LiveTradingInfoProps, index) => (
+                    {liveTradeData.map((stock: LiveTradingInfoProps, index) => (
                         <tr key={index}>
                             {/* 체결가 */}
                             <td className="px-1 py-0.5 whitespace-nowrap text-xs text-gray-700 text-right">
