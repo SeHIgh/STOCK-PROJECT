@@ -161,3 +161,86 @@ export interface CandleProps {
     volume: 1099046; // 거래량
     amount: 66148518400; // 거래대금
 }
+
+// 호가 창 - 실시간 체결가 데이터 타입 정의
+export interface LiveTradingInfoProps {
+    trade_price: string; // 체결가
+    change_rate: string; // 전일 대비율 : 등락률    trade_strength: string; // 체결강도
+    trade_volume: string; // 체결 거래량
+    trade_type: string; // 체결구분 (1: 매수, 2: 매도)
+    prev_accum_volumeRate: string; // 전일 동시간 누적 거래량 비율 : 체결강도
+    high_price: string; //최고가
+    low_price: string; //최저가
+    total_askp_price: string; //총 매도호가 잔량 = 판매대기
+    total_bid_price: string; //총 매수호가 잔량 = 구매 대기
+    time: string; // 체결 시간
+}
+
+// 실시간 체결가 데이터 타입 정의 (예시)
+// {
+//     "type":"tradeInfo"
+//     "data":
+//       {
+//         "tradePrice": "72250",
+//         "changeRate": "1.8",
+//         "tradeStrength": "90.2",
+//         "tradeVolume": "1650",
+//         "tradeType": "1",
+//         "prevAccumVolumeRate": "0.85",
+//         "highPrice": "73000",
+//         "lowPrice": "71500",
+//         "totalAskpPrice": "520000",
+//         "totalBidPrice": "495000",
+//         "time": "102148"
+//       }
+// }
+
+// 호가 창 - 실시간 호가 데이터 타입 정의
+export interface LiveQuoteInfoProps {
+    askPrices: string[]; // 매도호가
+    bidPrices: string[]; // 매수호가
+    askVolumes: string[]; // 매도호가 잔량
+    bidVolumes: string[]; // 매수호가 잔량
+}
+
+// 실시간 호가 데이터 타입 정의 (예시)
+// {
+//     "type":"quoteInfo"
+//     "data"
+//     {
+//       "askPrices": ["71900", "72000", "72100", "72200", "72300", "72400", "72500", "72600", "72700", "72800"],
+//       "bidPrices": ["71800", "71700", "71600", "71500", "71400", "71300", "71200", "71100", "71000", "70900"],
+//       "askVolumes": ["91918", "117942", "92673", "79708", "106729", "141988", "176192", "113906", "134077", "104229"],
+//       "bidVolumes": ["95221", "159371", "220746", "284657", "212742", "195370", "182710", "209747", "376432", "158171"]
+//     }
+// }
+
+// 실시간 체결 통보 알람 데이터 타입 정의
+export interface TradeNotifyProps {
+    orderType: string; // 매도매수구분
+    orderKind: string; // 주문 종류 - 지정가, 시장가
+    stockCode: string; //종목코드
+    stockName: string; //종목명
+    orderQuantity: string; //주문수량
+    executedQuantity: string; //체결수량
+    executedPrice: string; //체결단가
+    timestamp: string; //체결 시간
+    executionStatus: string; //체결여부 - 주문, 체결
+}
+
+// 실시간 체결 통보 알람 데이터 타입 정의 (예시)
+// {
+//     "type":"notifyInfo"
+//     "data":
+//       {
+//         "orderType": "매도",
+//         "orderKind": "시장가",
+//         "stockCode": "005930",
+//         "stockName": "삼성전자",
+//         "orderQuantity": "10",
+//         "executedQuantity": "3"
+//         "executedPrice":"55000"
+//         "timestamp":"102148"
+//         "executionStatus":"체결"
+//       }
+// }

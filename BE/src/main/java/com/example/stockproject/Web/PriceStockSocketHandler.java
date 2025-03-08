@@ -174,8 +174,12 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
                 String total_bid_price = stockData[39];     //총 매수호가 잔량
 
             // DTO 객체 생성
-            LiveTradingInfoDTO tradeInfo = new LiveTradingInfoDTO(tradePrice, changeRate, tradeStrength, tradeVolume, tradeType, prevAccumVolumeRate,
-                    high_price, low_price, total_askp_price, total_bid_price);
+            LiveTradingInfoDTO tradeInfoDTO = new LiveTradingInfoDTO(tradePrice, changeRate, tradeStrength, tradeVolume, tradeType, prevAccumVolumeRate,
+                    high_price, low_price, total_askp_price, total_bid_price, timestamp);
+
+            Map<String, Object> tradeInfo = new HashMap<>();
+            tradeInfo.put("type","tradeInfo");
+            tradeInfo.put("data", tradeInfoDTO);
 
             // JSON 변환
             ObjectMapper objectMapper = new ObjectMapper();

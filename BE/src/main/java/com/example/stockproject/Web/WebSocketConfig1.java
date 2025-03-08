@@ -31,16 +31,19 @@ public class WebSocketConfig1 implements WebSocketConfigurer {
     }
 
     // 클라이언트 WebSocket 연결 [수동] 설정
+    @Bean
     public WebSocketConnectionManager webSocketConnectionManager() {
-        connectionManager = new WebSocketConnectionManager(
-                new StandardWebSocketClient(),
-                priceStockSocketHandler,  // ✅ Spring이 관리하는 Bean 사용
-                "ws://ops.koreainvestment.com:31000"
-        );
-
-        connectionManager.setAutoStartup(false);    //자동 연결을 막음.
+        if (connectionManager == null) { // ✅ 기존 연결이 없을 때만 생성
+            connectionManager = new WebSocketConnectionManager(
+                    new StandardWebSocketClient(),
+                    priceStockSocketHandler,
+                    "ws://ops.koreainvestment.com:31000"
+            );
+            connectionManager.setAutoStartup(false); // 수동 연결 관리
+        }
         return connectionManager;
     }
+
 
     //연결 종료 메서드 추가
     public void stopWebSocketConnection(){

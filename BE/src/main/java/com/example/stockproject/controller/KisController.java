@@ -4,10 +4,8 @@ import com.example.stockproject.dto.DailyChartResponseOutput;
 import com.example.stockproject.dto.FluctResponseOutput;
 import com.example.stockproject.dto.PriceResponseOutput;
 import com.example.stockproject.dto.VolumeResponseOutput;
-import com.example.stockproject.service.ApiDailychartService;
-import com.example.stockproject.service.ApiFluctService;
-import com.example.stockproject.service.ApiVolumeService;
-import com.example.stockproject.service.ApiPriceService;
+import com.example.stockproject.dto.candle.MinuteCandleResponseOutput;
+import com.example.stockproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,16 +21,19 @@ public class KisController {
     private ApiVolumeService apiVolumeService;
     private ApiFluctService apiFluctService;
     private ApiDailychartService apiDailychartService;
+    private ApiMinuteCandleService apiMinuteCandleService;
 
     @Autowired
     public KisController(ApiVolumeService apiVolumeService,
                          ApiFluctService apiFluctService,
                          ApiPriceService apiPriceService,
-                         ApiDailychartService apiDailychartService) {
+                         ApiDailychartService apiDailychartService,
+                         ApiMinuteCandleService apiMinuteCandleService) {
         this.apiVolumeService = apiVolumeService;
         this.apiFluctService = apiFluctService;
         this.apiPriceService = apiPriceService;
         this.apiDailychartService = apiDailychartService;
+        this.apiMinuteCandleService = apiMinuteCandleService;
     }
 
     //거래량 순위를 위한 controller
@@ -60,9 +61,16 @@ public class KisController {
         return apiPriceService.getPriceByStockName(stockName);
     }
 
+    //주식 일별차트 조회
     //http://localhost:8090/dailyprice?stockName=삼성전자
     @GetMapping("/api/dailyprice")
     public Mono<List<DailyChartResponseOutput>> getDailyChart(@RequestParam String stockName){
         return apiDailychartService.getDailyChartByStockName(stockName);
+    }
+
+    //주식 당일분봉 조회
+    @GetMapping("/api/minutecandle")
+    public Mono<List<MinuteCandleResponseOutput>> getMinuteCandle(@RequestParam String stockName){
+        return apiMinuteCandleService.getCandleInformation(stockName);
     }
 }

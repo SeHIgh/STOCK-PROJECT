@@ -266,15 +266,15 @@ public class LiveDataSocketHandler extends TextWebSocketHandler {
             quoteInfo.put("data", dataMap);
 
             ObjectMapper objectMapper = new ObjectMapper();
-            String jsonString = objectMapper.writeValueAsString(quoteInfo);
+            String quoteInfoJson = objectMapper.writeValueAsString(quoteInfo);
 
             // 로그 출력
             logger.info("📊 실시간 데이터: TR ID={}, 종목 코드={}, 시간={}", trId, stockCode, timestamp);
 
             // WebSocket 세션이 열려 있다면 JSON 데이터 전송
             if (session != null && session.isOpen()) {
-                session.sendMessage(new TextMessage(jsonString));
-                logger.info("📤 프론트엔드로 실시간 호가 정보 전송: {}", jsonString);
+                session.sendMessage(new TextMessage(quoteInfoJson));
+                logger.info("📤 프론트엔드로 실시간 호가 정보 전송: {}", quoteInfoJson);
             } else {
                 logger.warn("⚠️ WebSocket 세션이 닫혀 있어 데이터를 전송할 수 없음.");
             }
