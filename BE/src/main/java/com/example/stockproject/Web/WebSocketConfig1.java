@@ -30,19 +30,19 @@ public class WebSocketConfig1 implements WebSocketConfigurer {
                 .setAllowedOrigins("*");
     }
 
-    // 클라이언트 WebSocket 연결 [수동] 설정
-    @Bean
-    public WebSocketConnectionManager webSocketConnectionManager() {
-        if (connectionManager == null) { // ✅ 기존 연결이 없을 때만 생성
-            connectionManager = new WebSocketConnectionManager(
-                    new StandardWebSocketClient(),
-                    priceStockSocketHandler,
-                    "ws://ops.koreainvestment.com:31000"
-            );
-            connectionManager.setAutoStartup(false); // 수동 연결 관리
-        }
-        return connectionManager;
-    }
+//    // 클라이언트 WebSocket 연결 [수동] 설정
+//    @Bean
+//    public WebSocketConnectionManager webSocketConnectionManager() {
+//        if (connectionManager == null) { // ✅ 기존 연결이 없을 때만 생성
+//            connectionManager = new WebSocketConnectionManager(
+//                    new StandardWebSocketClient(),
+//                    priceStockSocketHandler,
+//                    "ws://ops.koreainvestment.com:31000"
+//            );
+//            connectionManager.setAutoStartup(false); // 수동 연결 관리
+//        }
+//        return connectionManager;
+//    }
 
 
     //연결 종료 메서드 추가

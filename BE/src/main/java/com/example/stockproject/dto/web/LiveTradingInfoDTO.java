@@ -19,4 +19,7 @@ public class LiveTradingInfoDTO {
     private String total_askp_price;    //총 매도호가 잔량 = 판매대기
     private String total_bid_price;     //총 매수호가 잔량 = 구매 대기
     private String time;                //체결 시간
+    private String opening_price;          // 시가
+    private String upper_limit_price;      // 상한가
+    private String lower_limit_price;      // 하한가
 }

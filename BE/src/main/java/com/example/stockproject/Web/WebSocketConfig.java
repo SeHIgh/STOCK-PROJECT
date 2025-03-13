@@ -26,18 +26,18 @@ public class WebSocketConfig implements WebSocketConfigurer{
                 .setAllowedOrigins("*");
     }
 
-//    @Bean
-//    public WebSocketConnectionManager webSocketConnectionManager() {
-//        if (connectionManager == null) { // ✅ 기존 연결이 없을 때만 생성
-//            connectionManager = new WebSocketConnectionManager(
-//                    new StandardWebSocketClient(),
-//                    liveDataSocketHandler,
-//                    "ws://ops.koreainvestment.com:31000"
-//            );
-//            connectionManager.setAutoStartup(false); // 수동 연결 관리
-//        }
-//        return connectionManager;
-//    }
+    @Bean
+    public WebSocketConnectionManager webSocketConnectionManager() {
+        if (connectionManager == null) { // ✅ 기존 연결이 없을 때만 생성
+            connectionManager = new WebSocketConnectionManager(
+                    new StandardWebSocketClient(),
+                    liveDataSocketHandler,
+                    "ws://ops.koreainvestment.com:31000"
+            );
+            connectionManager.setAutoStartup(false); // 수동 연결 관리
+        }
+        return connectionManager;
+    }
 
     public void stopWebSocketConnection() {
         if (connectionManager != null) {

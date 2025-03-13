@@ -151,31 +151,48 @@ public class PriceStockSocketHandler extends TextWebSocketHandler {
             // 여러 개의 메시지가 연속해서 오는 경우가 있음 -> `|`로 먼저 분리
             String[] messages = payload.split("\\|");
 
-                String trNum = messages[0];
-                String trId = messages[1]; // TR ID (예: H0STASP0)
-                String msgCode = messages[2]; // 메시지 코드 (예: 001)
-                String trKey = messages[3]; // 종목 코드 포함 데이터
+            String trNum = messages[0];
+            String trId = messages[1]; // TR ID (예: H0STASP0)
+            String msgCode = messages[2]; // 메시지 코드 (예: 001)
+            String trKey = messages[3]; // 종목 코드 포함 데이터
 
-                // '^'로 세부 데이터 분리
-                String[] stockData = messages[3].split("\\^");
+            // '^'로 세부 데이터 분리
+            String[] stockData = messages[3].split("\\^");
 
-                String stockCode = stockData[0]; // 종목 코드 (005930)
-                String timestamp = stockData[1]; // 시간 (094719)
+            String stockCode = stockData[0]; // 종목 코드 (005930)
+            String timestamp = stockData[1]; // 시간 (094719)
 
-                String tradePrice = stockData[2];         // 체결가
-                String changeRate = stockData[5];         // 전일 대비율
-                String tradeStrength= stockData[18];      // 체결강도
-                String tradeVolume = stockData[12];        // 체결 거래량
-                String tradeType = stockData[21];          // 체결구분 (1: 매수, 2: 매도)
-                String prevAccumVolumeRate = stockData[42]; // 전일 동시간 누적 거래량 비율
-                String high_price = stockData[8];           //최고가
-                String low_price = stockData[9];            //최저가
-                String total_askp_price = stockData[38];    //총 매도호가 잔량
-                String total_bid_price = stockData[39];     //총 매수호가 잔량
+            String tradePrice = stockData[2];         // 체결가
+            String changeRate = stockData[5];         // 전일 대비율
+            String tradeStrength= stockData[18];      // 체결강도
+            String tradeVolume = stockData[12];        // 체결 거래량
+            String tradeType = stockData[21];          // 체결구분 (1: 매수, 2: 매도)
+            String prevAccumVolumeRate = stockData[42]; // 전일 동시간 누적 거래량 비율
+            String highPrice = stockData[8];           //최고가
+            String lowPrice = stockData[9];            //최저가
+            String totalAskpPrice = stockData[38];    //총 매도호가 잔량
+            String totalBidPrice = stockData[39];     //총 매수호가 잔량
+            String time = timestamp;
+            String opening_price = stockData[7];        //주식 시가
+
+            //현재가와 전일대비율로 전일종가계산
+            double current_price = Double.parseDouble(tradePrice);
+            double change_rate = Double.parseDouble(changeRate);
+            //종가
+            double prev_close_price = current_price / (1 + change_rate / 100);
+
+            //상한가, 하한가 계산 (전일종가대비 30% 증가, 감소)
+            double upper_limit_price = prev_close_price * 1.3;  // 상한가: 전일 종가의 130%
+            double lower_limit_price = prev_close_price * 0.7;  // 하한가: 전일 종가의 70%
+
+            // double 값을 소수점 없이 String으로 변환
+            String upperLimitPrice = String.format("%.0f", upper_limit_price);  // 소수점 없이 변환
+            String lowerLimitPrice = String.format("%.0f", lower_limit_price);  // 소수점 없이 변환
 
             // DTO 객체 생성
             LiveTradingInfoDTO tradeInfoDTO = new LiveTradingInfoDTO(tradePrice, changeRate, tradeStrength, tradeVolume, tradeType, prevAccumVolumeRate,
-                    high_price, low_price, total_askp_price, total_bid_price, timestamp);
+                    highPrice, lowPrice, totalAskpPrice, totalBidPrice, time,
+                    opening_price, upperLimitPrice, lowerLimitPrice);
 
             Map<String, Object> tradeInfo = new HashMap<>();
             tradeInfo.put("type","tradeInfo");

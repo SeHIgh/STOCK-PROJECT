@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 
 //매수, 매도 시 필요한 정보
 public class TradePossibleDTO {
-    private String stockName;
-    private String deposit; //예수금(매수 가능 금액)
-    private String holdingQuantity; //보유수량
+    String stockName;
+    String deposit; //예수금(매수 가능 금액)
+    String holdingQuantity; //보유수량
+
+    String stockPrice;
+    String prdyCtrt;    //전일대비율
+    String prdyVrss;    //전일대비
 }

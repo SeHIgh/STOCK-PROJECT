@@ -1,9 +1,6 @@
 package com.example.stockproject.controller;
 
-import com.example.stockproject.dto.DailyChartResponseOutput;
-import com.example.stockproject.dto.FluctResponseOutput;
-import com.example.stockproject.dto.PriceResponseOutput;
-import com.example.stockproject.dto.VolumeResponseOutput;
+import com.example.stockproject.dto.*;
 import com.example.stockproject.dto.candle.MinuteCandleResponseOutput;
 import com.example.stockproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +19,21 @@ public class KisController {
     private ApiFluctService apiFluctService;
     private ApiDailychartService apiDailychartService;
     private ApiMinuteCandleService apiMinuteCandleService;
+    private ApiPeriodchartService apiPeriodChartService;
 
     @Autowired
     public KisController(ApiVolumeService apiVolumeService,
                          ApiFluctService apiFluctService,
                          ApiPriceService apiPriceService,
                          ApiDailychartService apiDailychartService,
-                         ApiMinuteCandleService apiMinuteCandleService) {
+                         ApiMinuteCandleService apiMinuteCandleService,
+                         ApiPeriodchartService apiPeriodchartService) {
         this.apiVolumeService = apiVolumeService;
         this.apiFluctService = apiFluctService;
         this.apiPriceService = apiPriceService;
         this.apiDailychartService = apiDailychartService;
         this.apiMinuteCandleService = apiMinuteCandleService;
+        this.apiPeriodChartService = apiPeriodchartService;
     }
 
     //거래량 순위를 위한 controller
@@ -72,5 +72,15 @@ public class KisController {
     @GetMapping("/api/minutecandle")
     public Mono<List<MinuteCandleResponseOutput>> getMinuteCandle(@RequestParam String stockName){
         return apiMinuteCandleService.getCandleInformation(stockName);
+    }
+
+    //기간별 캔들 조회
+    //http://localhost:8090/api/periodchart?stockName=삼성전자&period=D
+    //http://localhost:8090/api/periodchart?stockName=삼성전자&period=W
+    //http://localhost:8090/api/periodchart?stockName=삼성전자&period=M
+    //http://localhost:8090/api/periodchart?stockName=삼성전자&period=Y
+    @GetMapping("/api/periodchart")
+    public Mono<List<PeriodChartResponseOutput>> getPeriodChart(@RequestParam String stockName, @RequestParam String period){
+        return apiPeriodChartService.getPeriodChartByStockName(stockName, period);
     }
 }
